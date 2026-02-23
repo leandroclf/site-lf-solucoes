@@ -110,6 +110,12 @@ h2 { margin: 0 0 .8rem; font-size: clamp(1.6rem, 3vw, 2.2rem); }
   padding: 2rem;
 }
 .cta p { color: var(--muted); }
+.legal-note {
+  margin-top: 1rem;
+  font-size: .92rem;
+  color: #c7d5f2;
+  opacity: .92;
+}
 
 .btn {
   display: inline-flex;
