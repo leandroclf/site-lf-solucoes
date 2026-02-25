@@ -1,18 +1,28 @@
 {
-  "updatedAt": "2026-02-25T12:55:00Z",
+  "updatedAt": "2026-02-25T13:10:00Z",
   "columns": [
     {
       "id": "to-review",
       "title": "TO REVIEW",
       "tasks": [
         {
-          "title": "Implementar KPI de SLA humano no dashboard",
-          "description": "Adicionar visual de SLA alvo x realizado para tarefas HUMAN.",
-          "owner": "Architect-tech",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
+          "title": "Implementar coleta de tempos reais para KPI SLA (fase 2)",
+          "description": "Definir fonte e frequência de coleta para medir SLA real.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
           "priority": "Média",
-          "status": "Aguardando execução"
+          "status": "Aguardando autorização",
+          "runbookSteps": [
+            "Definir fonte oficial dos tempos reais.",
+            "Definir frequência de atualização.",
+            "Aprovar e registrar em board/PDCA."
+          ],
+          "expectedEvidence": [
+            "Fonte definida",
+            "Frequência aprovada",
+            "Registro no board"
+          ]
         }
       ]
     },
@@ -21,23 +31,13 @@
       "title": "AUTHORIZED",
       "tasks": [
         {
-          "title": "Aprovar baseline de SLA para tarefas HUMAN",
-          "description": "Autorização explícita necessária para SLA v1 (24h/72h/24h/8h).",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
+          "title": "Implementar KPI de SLA humano no dashboard",
+          "description": "Publicar bloco de SLA alvo x realizado no painel.",
+          "owner": "Architect-tech",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
           "priority": "Média",
-          "status": "Aguardando autorização",
-          "runbookSteps": [
-            "Autorizar SLA v1 no chat com a frase: 'Aprovado SLA v1'.",
-            "Se necessário, enviar ajustes no formato: item -> novo valor.",
-            "Após autorização, validar atualização do board/dashboard/PDCA."
-          ],
-          "expectedEvidence": [
-            "Confirmação explícita no chat",
-            "Board atualizado",
-            "SLA refletido no dashboard"
-          ]
+          "status": "Pronto para execução"
         }
       ]
     },
@@ -55,6 +55,24 @@
       "id": "done",
       "title": "DONE",
       "tasks": [
+        {
+          "title": "Aprovação do SLA v1 para tarefas HUMAN",
+          "description": "SLA v1 aprovado: revisão 24h, execução 72h, desbloqueio 24h, escalonamento 8h.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Baixa",
+          "status": "Concluído",
+          "runbookSteps": [
+            "Revisar proposta SLA v1.",
+            "Confirmar aprovação explícita no chat.",
+            "Atualizar board/dashboard/PDCA."
+          ],
+          "expectedEvidence": [
+            "Mensagem 'Aprovado SLA v1'",
+            "Board atualizado"
+          ]
+        },
         {
           "title": "Configuração de credenciais GitHub no Gateway",
           "description": "GH_TOKEN e GITHUB_TOKEN configurados com restart aplicado.",
@@ -81,15 +99,6 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "Concluído"
-        },
-        {
-          "title": "Decisão de rotação de token",
-          "description": "Risco aceito pelo responsável: manter token atual por ora.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Baixa",
           "status": "Concluído"
         },
         {

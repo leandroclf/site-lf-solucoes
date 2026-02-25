@@ -137,6 +137,20 @@ function renderCharts(tasks) {
   renderOwnerBars(tasks);
 }
 
+function updateSlaPanel(tasks) {
+  const reviewEl = document.getElementById('sla-review');
+  const execEl = document.getElementById('sla-exec');
+  const unblockEl = document.getElementById('sla-unblock');
+  if (!reviewEl || !execEl || !unblockEl) return;
+
+  const overdue = tasks.filter((t) => String(t.status || '').toLowerCase().includes('atras')).length;
+  const blocked = tasks.filter((t) => t.mode === 'HUMAN' && (!Array.isArray(t.runbookSteps) || t.runbookSteps.length === 0)).length;
+
+  reviewEl.textContent = overdue ? 'Atenção' : 'Dentro do alvo';
+  execEl.textContent = blocked ? 'Atenção' : 'Dentro do alvo';
+  unblockEl.textContent = (overdue || blocked) ? 'Monitorar' : 'Dentro do alvo';
+}
+
 function updateMetrics(tasks) {
   const humanTasks = tasks.filter((t) => t.mode === 'HUMAN');
   const blockedHuman = humanTasks.filter((t) => !Array.isArray(t.runbookSteps) || t.runbookSteps.length === 0);
@@ -147,6 +161,7 @@ function updateMetrics(tasks) {
   if (blockedMetric) blockedMetric.textContent = String(blockedHuman.length);
 
   updateTrafficLight(tasks, humanTasks.length, blockedHuman.length);
+  updateSlaPanel(tasks);
 }
 
 function updateTrafficLight(tasks, humanCount, blockedCount) {
