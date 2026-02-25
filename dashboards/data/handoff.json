@@ -134,9 +134,9 @@
     "model": "single-master-autopilot",
     "masterJob": "Autopilot sequential delivery cycle",
     "daily": [
-      "Autopilot sequencial: a cada 30 min (11:00–22:00 UTC | 08:00–19:00 BRT), executando pipeline completo em ordem",
-      "Watchdog de ociosidade: a cada 20 min (11:00–22:00 UTC | 08:00–19:00 BRT), com mini-ciclo quando necessário",
-      "Deploy/CI audit: minuto 12 de cada hora (11:00–22:00 UTC | 08:12–19:12 BRT)"
+      "Autopilot sequencial: 24/7, a cada 30 min (UTC/BRT), executando pipeline completo em ordem",
+      "Watchdog de ociosidade: 24/7, a cada 20 min (UTC/BRT), com mini-ciclo quando necessário",
+      "Deploy/CI audit: 24/7, minuto 12 de cada hora (UTC/BRT)"
     ],
     "weekly": [
       "Acoplado ao job principal: segunda-feira entre 12:00 e 14:59 UTC (09:00–11:59 BRT)"
@@ -148,9 +148,6 @@
       "Acoplado ao job principal: dia 1 entre 15:00 e 15:59 UTC (12:00–12:59 BRT)"
     ],
     "supportJobs": [
-      "Autopilot sequential delivery cycle (*/30 11-22 UTC | UTC-3: 08:00-19:30)",
-      "Autopilot idle watchdog (*/20 11-22 UTC | UTC-3: 08:00-19:40)",
-      "Deploy log capture and status audit (12 11-22 UTC | UTC-3: 08:12-19:12)",
       "Daily specialist onboarding audit (22:15 UTC | 19:15 BRT)",
       "Daily gitflow compliance audit (22:25 UTC | 19:25 BRT)",
       "Daily autopilot SLA tracker (22:50 UTC | 19:50 BRT)",
@@ -160,7 +157,8 @@
     "legacyDisabledByDesign": [
       "Todos os jobs individuais diários/semanais/quinzenais/mensais de governança"
     ],
-    "activeJobCount": 8
+    "activeJobCount": 8,
+    "runtimePolicy": "24x7 continuous operation (no rest window)"
   },
   "handoffChecklist": [
     "Abrir dashboard e validar semáforo + pendências HUMAN",
