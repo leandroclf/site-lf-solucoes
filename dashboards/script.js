@@ -543,7 +543,22 @@ function computeSlaFromHistory(historyActivities, targetPct) {
   const actual = latestWeek ? Number(weekStats[latestWeek].pct) : 0;
   const status = actual >= targetPct ? '✅ Meta atingida' : '⚠️ Abaixo da meta';
 
-  return { actual, status, weekStats };
+  return { actual, status, weekStats, doneHuman };
+}
+
+function computeFlowFromHistory(historyActivities) {
+  const doneHuman = (historyActivities || []).filter((a) => a.mode === 'HUMAN' && a.status === 'done' && a.createdAt && a.completedAt);
+  const last7Cutoff = Date.now() - (7 * 24 * 36e5);
+
+  const leadTimes = doneHuman.map((a) => (new Date(a.completedAt) - new Date(a.createdAt)) / 36e5);
+  const leadAvg = leadTimes.length ? leadTimes.reduce((s, v) => s + v, 0) / leadTimes.length : 0;
+
+  const throughput7d = doneHuman.filter((a) => new Date(a.completedAt).getTime() >= last7Cutoff).length;
+
+  const reopenedSum = doneHuman.reduce((s, a) => s + Number(a.reopened || 0), 0);
+  const reworkPct = doneHuman.length ? (reopenedSum / doneHuman.length) * 100 : 0;
+
+  return { leadAvg, throughput7d, reworkPct };
 }
 
 async function loadOpsAnalytics() {
@@ -561,15 +576,19 @@ async function loadOpsAnalytics() {
       updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
     }
 
-    document.getElementById('ops-lead-time').textContent = `${Number(data.descriptive?.leadTimeHoursAvg || 0).toFixed(1)}h`;
-    document.getElementById('ops-throughput').textContent = `${data.descriptive?.throughputWeek?.total || 0}/semana`;
-    document.getElementById('ops-rework').textContent = `${Number(data.descriptive?.reworkRatePct || 0).toFixed(1)}%`;
+    const flow = computeFlowFromHistory(history.activities || []);
+    document.getElementById('ops-lead-time').textContent = `${Number(flow.leadAvg || 0).toFixed(1)}h`;
+    document.getElementById('ops-throughput').textContent = `${flow.throughput7d || 0}/7d`;
+    document.getElementById('ops-rework').textContent = `${Number(flow.reworkPct || 0).toFixed(1)}%`;
 
     document.getElementById('ops-risk-score').textContent = `${data.diagnostic?.humanRiskScore || 0}/100`;
     document.getElementById('ops-risk-trend').textContent = `Tendência: ${data.diagnostic?.humanRiskTrend || 'n/d'}`;
 
     document.getElementById('ops-cognitive').textContent = `${data.diagnostic?.cognitiveLoad?.weightedEffortTotal || 0} pts`;
-    document.getElementById('ops-quality').textContent = `${Number(data.quality?.reopenRatePct || 0).toFixed(1)}% reopen`;
+    const doneHuman = (history.activities || []).filter((a) => a.mode === 'HUMAN' && a.status === 'done');
+    const reopenedAny = doneHuman.filter((a) => Number(a.reopened || 0) > 0).length;
+    const reopenRate = doneHuman.length ? (reopenedAny / doneHuman.length) * 100 : 0;
+    document.getElementById('ops-quality').textContent = `${reopenRate.toFixed(1)}% reopen`;
 
     const target = Number(data.sla?.targetWeeklyPct || 85);
     const computed = computeSlaFromHistory(history.activities || [], target);
