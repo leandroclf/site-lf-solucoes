@@ -1,0 +1,65 @@
+{
+  "updatedAt": "2026-02-25T07:45:00Z",
+  "columns": [
+    {
+      "id": "to-review",
+      "title": "TO REVIEW",
+      "tasks": [
+        {
+          "title": "Validar novo dataset de logística urbana",
+          "description": "Checar licença comercial e frequência de atualização.",
+          "owner": "Reviewer-delivery",
+          "status": "Aguardando validação"
+        }
+      ]
+    },
+    {
+      "id": "authorized",
+      "title": "AUTHORIZED",
+      "tasks": [
+        {
+          "title": "MVP de alerta de rota com dados públicos",
+          "description": "Issue com escopo fechado e critérios de aceite definidos.",
+          "owner": "Architect-tech",
+          "status": "Pronto para execução"
+        }
+      ]
+    },
+    {
+      "id": "in-progress",
+      "title": "IN PROGRESS",
+      "tasks": [
+        {
+          "title": "Configurar permissões para criação automática de repositórios",
+          "description": "Tarefa HUMAN com runbook e evidências obrigatórias.",
+          "owner": "Leandro",
+          "status": "Em andamento"
+        }
+      ]
+    },
+    {
+      "id": "validation",
+      "title": "VALIDATION",
+      "tasks": [
+        {
+          "title": "Revisar checklist de qualidade do projeto vehicle-tracking",
+          "description": "Conferir testes, docs e evidências de entrega.",
+          "owner": "Reviewer-delivery",
+          "status": "Validação final"
+        }
+      ]
+    },
+    {
+      "id": "done",
+      "title": "DONE",
+      "tasks": [
+        {
+          "title": "Publicação do dashboard no GitHub Pages",
+          "description": "Dashboard operacional disponível para acompanhamento web.",
+          "owner": "Builder-repo",
+          "status": "Concluído"
+        }
+      ]
+    }
+  ]
+}

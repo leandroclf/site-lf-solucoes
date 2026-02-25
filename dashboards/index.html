@@ -56,52 +56,8 @@
           <h2>Kanban de atividades</h2>
           <span class="badge">Visão consolidada para acompanhamento</span>
         </div>
-        <div class="kanban">
-          <article class="kanban-col">
-            <h3>TO REVIEW</h3>
-            <div class="task">
-              <p class="task-title">Validar novo dataset de logística urbana</p>
-              <p class="task-desc">Checar licença comercial e frequência de atualização.</p>
-              <p class="task-meta">Responsável: Reviewer-delivery • Status: Aguardando validação</p>
-            </div>
-          </article>
-
-          <article class="kanban-col">
-            <h3>AUTHORIZED</h3>
-            <div class="task">
-              <p class="task-title">MVP de alerta de rota com dados públicos</p>
-              <p class="task-desc">Issue com escopo fechado e critérios de aceite definidos.</p>
-              <p class="task-meta">Responsável: Architect-tech • Status: Pronto para execução</p>
-            </div>
-          </article>
-
-          <article class="kanban-col">
-            <h3>IN PROGRESS</h3>
-            <div class="task">
-              <p class="task-title">Configurar permissões para criação automática de repositórios</p>
-              <p class="task-desc">Tarefa HUMAN com runbook e evidências obrigatórias.</p>
-              <p class="task-meta">Responsável: Leandro • Status: Em andamento</p>
-            </div>
-          </article>
-
-          <article class="kanban-col">
-            <h3>VALIDATION</h3>
-            <div class="task">
-              <p class="task-title">Revisar checklist de qualidade do projeto vehicle-tracking</p>
-              <p class="task-desc">Conferir testes, docs e evidências de entrega.</p>
-              <p class="task-meta">Responsável: Reviewer-delivery • Status: Validação final</p>
-            </div>
-          </article>
-
-          <article class="kanban-col">
-            <h3>DONE</h3>
-            <div class="task">
-              <p class="task-title">Publicação do dashboard no GitHub Pages</p>
-              <p class="task-desc">Dashboard operacional disponível para acompanhamento web.</p>
-              <p class="task-meta">Responsável: Builder-repo • Status: Concluído</p>
-            </div>
-          </article>
-        </div>
+        <p id="kanban-updated-at" class="task-meta">Atualizado em: carregando...</p>
+        <div id="kanban-board" class="kanban"></div>
       </section>
 
       <section class="card">
@@ -112,5 +68,6 @@
         </p>
       </section>
     </main>
+    <script src="./script.js"></script>
   </body>
 </html>
