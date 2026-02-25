@@ -1,1 +1,114 @@
-*{box-sizing:border-box}body{margin:0;font-family:Inter,Arial,sans-serif;background:#0b1220;color:#e9f0ff}.topbar{display:flex;justify-content:space-between;align-items:center;padding:16px 20px;border-bottom:1px solid #223250;background:#101a2f;position:sticky;top:0}.btn{background:#35aef1;color:#052033;padding:8px 12px;border-radius:8px;text-decoration:none;font-weight:700}.container{width:min(1100px,92%);margin:20px auto;display:grid;gap:14px}.grid{display:grid;gap:12px}.metrics{grid-template-columns:repeat(3,minmax(0,1fr))}.two{grid-template-columns:repeat(2,minmax(0,1fr))}.card{border:1px solid #25385e;background:#121d33;border-radius:14px;padding:14px}.big{font-size:1.2rem;font-weight:700}.ok{color:#67e8a4}h1{font-size:1.1rem;margin:0}h2{margin:0 0 8px}h3{margin:0 0 8px}ul{margin:0;padding-left:18px}li{margin:6px 0}@media(max-width:900px){.metrics,.two{grid-template-columns:1fr}}
+* { box-sizing: border-box; }
+body {
+  margin: 0;
+  font-family: Inter, Arial, sans-serif;
+  background: #0b1220;
+  color: #e9f0ff;
+}
+
+.topbar {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  padding: 16px 20px;
+  border-bottom: 1px solid #223250;
+  background: #101a2f;
+  position: sticky;
+  top: 0;
+}
+
+.btn {
+  background: #35aef1;
+  color: #052033;
+  padding: 8px 12px;
+  border-radius: 8px;
+  text-decoration: none;
+  font-weight: 700;
+}
+
+.container {
+  width: min(1200px, 92%);
+  margin: 20px auto;
+  display: grid;
+  gap: 14px;
+}
+
+.grid { display: grid; gap: 12px; }
+.metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+
+.card {
+  border: 1px solid #25385e;
+  background: #121d33;
+  border-radius: 14px;
+  padding: 14px;
+}
+
+.big { font-size: 1.2rem; font-weight: 700; }
+.ok { color: #67e8a4; }
+h1 { font-size: 1.1rem; margin: 0; }
+h2 { margin: 0 0 8px; }
+h3 { margin: 0 0 8px; font-size: .95rem; }
+ul { margin: 0; padding-left: 18px; }
+li { margin: 6px 0; }
+
+.section-head {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  gap: 10px;
+  margin-bottom: 10px;
+}
+
+.badge {
+  font-size: .78rem;
+  padding: 6px 10px;
+  border-radius: 999px;
+  border: 1px solid #3964aa;
+  color: #b8d8ff;
+  background: #0f2445;
+}
+
+.kanban {
+  display: grid;
+  grid-template-columns: repeat(5, minmax(210px, 1fr));
+  gap: 10px;
+  overflow-x: auto;
+  padding-bottom: 4px;
+}
+
+.kanban-col {
+  background: #0f1a30;
+  border: 1px solid #243a63;
+  border-radius: 12px;
+  padding: 10px;
+  min-height: 220px;
+}
+
+.task {
+  border: 1px solid #2d4674;
+  background: #13213a;
+  border-radius: 10px;
+  padding: 10px;
+}
+
+.task-title {
+  font-weight: 700;
+  margin: 0 0 6px;
+}
+
+.task-desc {
+  margin: 0 0 8px;
+  color: #c6d8f8;
+  font-size: .92rem;
+}
+
+.task-meta {
+  margin: 0;
+  font-size: .82rem;
+  color: #9ab4df;
+}
+
+@media (max-width: 900px) {
+  .metrics, .two { grid-template-columns: 1fr; }
+}
