@@ -1,0 +1,60 @@
+{
+  "updatedAt": "2026-02-25T14:10:00Z",
+  "descriptive": {
+    "leadTimeHoursAvg": 31.4,
+    "stageTimeHoursAvg": {
+      "toReview": 6.2,
+      "authorized": 3.1,
+      "inProgress": 17.8,
+      "validation": 4.3
+    },
+    "throughputWeek": {
+      "total": 9,
+      "byAnalyst": [
+        { "name": "Leandro", "done": 3 },
+        { "name": "Reviewer-delivery", "done": 4 },
+        { "name": "Architect-tech", "done": 2 }
+      ]
+    },
+    "reworkRatePct": 8.7
+  },
+  "diagnostic": {
+    "humanRiskScore": 34,
+    "humanRiskTrend": "stable",
+    "cognitiveLoad": {
+      "weightedEffortTotal": 21,
+      "byAnalyst": [
+        { "name": "Leandro", "effort": 9 },
+        { "name": "Reviewer-delivery", "effort": 7 },
+        { "name": "Architect-tech", "effort": 5 }
+      ]
+    },
+    "runbookCoveragePct": 96,
+    "runbookFreshnessPct": 88,
+    "blockedTimeHoursAvg": 3.9,
+    "blockers": {
+      "internalPct": 62,
+      "externalPct": 38,
+      "topCauses": [
+        "Aprovação humana pendente",
+        "Dependência de decisão de escopo",
+        "Validação de evidência de aceite"
+      ]
+    }
+  },
+  "predictive": {
+    "slaBreachRiskPct": 18,
+    "leadTimeDriftPct": 6,
+    "reworkTrendPct": 4,
+    "alerts": [
+      "Risco moderado de estouro de SLA em tarefas HUMAN com prioridade alta.",
+      "Leve aumento de lead time na etapa IN PROGRESS nas últimas 2 semanas.",
+      "Recomenda-se limitar WIP humano para reduzir risco de degradação."
+    ]
+  },
+  "quality": {
+    "reopenRatePct": 7.1,
+    "humanIncidentsCount": 1,
+    "speedVsQuality": "balanced"
+  }
+}

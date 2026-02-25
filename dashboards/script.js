@@ -490,6 +490,39 @@ async function loadHandoff() {
   }
 }
 
+async function loadOpsAnalytics() {
+  const updated = document.getElementById('ops-analytics-updated');
+  try {
+    const response = await fetch('./data/ops-analytics.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Falha ao carregar ops-analytics.json');
+    const data = await response.json();
+
+    if (updated) {
+      updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+    }
+
+    document.getElementById('ops-lead-time').textContent = `${Number(data.descriptive?.leadTimeHoursAvg || 0).toFixed(1)}h`;
+    document.getElementById('ops-throughput').textContent = `${data.descriptive?.throughputWeek?.total || 0}/semana`;
+    document.getElementById('ops-rework').textContent = `${Number(data.descriptive?.reworkRatePct || 0).toFixed(1)}%`;
+
+    document.getElementById('ops-risk-score').textContent = `${data.diagnostic?.humanRiskScore || 0}/100`;
+    document.getElementById('ops-risk-trend').textContent = `Tendência: ${data.diagnostic?.humanRiskTrend || 'n/d'}`;
+
+    document.getElementById('ops-cognitive').textContent = `${data.diagnostic?.cognitiveLoad?.weightedEffortTotal || 0} pts`;
+    document.getElementById('ops-quality').textContent = `${Number(data.quality?.reopenRatePct || 0).toFixed(1)}% reopen`;
+
+    const alertsEl = document.getElementById('ops-predictive-alerts');
+    const alerts = data.predictive?.alerts || [];
+    alertsEl.innerHTML = alerts.length
+      ? alerts.map((a) => `<li>${a}</li>`).join('')
+      : '<li>Sem alertas preditivos no momento.</li>';
+  } catch {
+    if (updated) updated.textContent = 'Atualizado em: erro de leitura';
+    const alertsEl = document.getElementById('ops-predictive-alerts');
+    if (alertsEl) alertsEl.innerHTML = '<li>Não foi possível carregar analytics avançado.</li>';
+  }
+}
+
 function downloadHandoff() {
   const data = window.__handoffData;
   if (!data) return;
@@ -534,8 +567,10 @@ document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo
 loadKanban();
 loadSemaphoreState();
 loadHandoff();
+loadOpsAnalytics();
 setInterval(() => {
   loadKanban();
   loadSemaphoreState();
   loadHandoff();
+  loadOpsAnalytics();
 }, AUTO_REFRESH_MS);
