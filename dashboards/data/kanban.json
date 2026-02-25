@@ -1,27 +1,26 @@
 {
-  "updatedAt": "2026-02-25T13:10:00Z",
+  "updatedAt": "2026-02-25T13:25:00Z",
   "columns": [
     {
       "id": "to-review",
       "title": "TO REVIEW",
       "tasks": [
         {
-          "title": "Implementar coleta de tempos reais para KPI SLA (fase 2)",
-          "description": "Definir fonte e frequência de coleta para medir SLA real.",
+          "title": "Definir meta mínima de cumprimento semanal do SLA",
+          "description": "Aprovar % alvo e regra de ação corretiva quando meta não for atingida.",
           "owner": "Leandro",
           "project": "Governança Multiagente",
           "mode": "HUMAN",
-          "priority": "Média",
+          "priority": "Baixa",
           "status": "Aguardando autorização",
           "runbookSteps": [
-            "Definir fonte oficial dos tempos reais.",
-            "Definir frequência de atualização.",
-            "Aprovar e registrar em board/PDCA."
+            "Definir percentual alvo semanal (ex.: 85%).",
+            "Definir ação corretiva se ficar abaixo da meta.",
+            "Registrar no board e dashboard."
           ],
           "expectedEvidence": [
-            "Fonte definida",
-            "Frequência aprovada",
-            "Registro no board"
+            "Meta aprovada",
+            "Regra corretiva definida"
           ]
         }
       ]
@@ -31,8 +30,8 @@
       "title": "AUTHORIZED",
       "tasks": [
         {
-          "title": "Implementar KPI de SLA humano no dashboard",
-          "description": "Publicar bloco de SLA alvo x realizado no painel.",
+          "title": "Implementar KPI de SLA humano no dashboard (coleta v2 aprovada)",
+          "description": "Publicar cumprimento semanal com dados reais e status de meta.",
           "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -62,16 +61,16 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Baixa",
-          "status": "Concluído",
-          "runbookSteps": [
-            "Revisar proposta SLA v1.",
-            "Confirmar aprovação explícita no chat.",
-            "Atualizar board/dashboard/PDCA."
-          ],
-          "expectedEvidence": [
-            "Mensagem 'Aprovado SLA v1'",
-            "Board atualizado"
-          ]
+          "status": "Concluído"
+        },
+        {
+          "title": "Aprovação da coleta SLA v2",
+          "description": "Coleta de tempos reais aprovada explicitamente pelo responsável.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Baixa",
+          "status": "Concluído"
         },
         {
           "title": "Configuração de credenciais GitHub no Gateway",
@@ -80,17 +79,7 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Média",
-          "status": "Concluído",
-          "runbookSteps": [
-            "Aplicar token no gateway via config patch.",
-            "Validar restart e disponibilidade.",
-            "Conferir variáveis de ambiente para automação."
-          ],
-          "expectedEvidence": [
-            "Config patch OK",
-            "Restart OK",
-            "Token acessível no ambiente"
-          ]
+          "status": "Concluído"
         },
         {
           "title": "Criar repositório de teste automático para validar permissão GitHub API",
