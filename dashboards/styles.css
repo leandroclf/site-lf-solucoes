@@ -162,6 +162,17 @@ li { margin: 6px 0; }
   font-size: .86rem;
 }
 
+.runbook-alert {
+  margin-top: 8px;
+  border: 1px solid #a33b4e;
+  background: #3a1320;
+  color: #ffd4dc;
+  border-radius: 8px;
+  padding: 8px;
+  font-size: .84rem;
+  font-weight: 600;
+}
+
 .priority {
   margin: 8px 0 0;
   display: inline-block;

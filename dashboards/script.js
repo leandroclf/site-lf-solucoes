@@ -134,15 +134,24 @@ function renderKanban(data) {
       const card = document.createElement('div');
       card.className = 'task';
 
-      const runbookHtml = task.mode === 'HUMAN' && Array.isArray(task.runbookSteps)
-        ? `
-          <details class="runbook">
-            <summary>Passo a passo (HUMAN)</summary>
-            <ol>${task.runbookSteps.map((s) => `<li>${s}</li>`).join('')}</ol>
-            ${Array.isArray(task.expectedEvidence) ? `<p class="task-meta"><strong>Evidências:</strong> ${task.expectedEvidence.join(' • ')}</p>` : ''}
-          </details>
-        `
-        : '';
+      let runbookHtml = '';
+      if (task.mode === 'HUMAN') {
+        if (Array.isArray(task.runbookSteps) && task.runbookSteps.length > 0) {
+          runbookHtml = `
+            <details class="runbook">
+              <summary>Passo a passo (HUMAN)</summary>
+              <ol>${task.runbookSteps.map((s) => `<li>${s}</li>`).join('')}</ol>
+              ${Array.isArray(task.expectedEvidence) && task.expectedEvidence.length > 0 ? `<p class="task-meta"><strong>Evidências:</strong> ${task.expectedEvidence.join(' • ')}</p>` : '<p class="task-meta"><strong>Evidências:</strong> não informadas</p>'}
+            </details>
+          `;
+        } else {
+          runbookHtml = `
+            <div class="runbook-alert">
+              ⚠️ Runbook ausente — atividade HUMAN bloqueada até detalhar passo a passo e evidências.
+            </div>
+          `;
+        }
+      }
 
       card.innerHTML = `
         <p class="task-title">${task.title || '-'}</p>
