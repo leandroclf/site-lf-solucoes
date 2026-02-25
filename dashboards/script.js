@@ -16,6 +16,79 @@ function matchesSearch(task, searchTerm) {
   return haystack.includes(searchTerm);
 }
 
+function pct(part, total) {
+  return total ? Math.round((part / total) * 100) : 0;
+}
+
+function setStackedBar(containerId, segments) {
+  const el = document.getElementById(containerId);
+  el.innerHTML = '';
+  for (const seg of segments) {
+    const d = document.createElement('div');
+    d.className = seg.className;
+    d.style.width = `${seg.percentage}%`;
+    d.title = `${seg.label}: ${seg.value}`;
+    el.appendChild(d);
+  }
+}
+
+function renderOwnerBars(tasks) {
+  const owners = {};
+  tasks.forEach((t) => {
+    owners[t.owner || 'Sem responsável'] = (owners[t.owner || 'Sem responsável'] || 0) + 1;
+  });
+
+  const top = Object.entries(owners)
+    .sort((a, b) => b[1] - a[1])
+    .slice(0, 4);
+
+  const max = top.length ? top[0][1] : 1;
+  const target = document.getElementById('chart-owners');
+  target.innerHTML = '';
+
+  if (!top.length) {
+    target.innerHTML = '<p class="task-meta">Sem dados no filtro atual.</p>';
+    return;
+  }
+
+  top.forEach(([owner, count]) => {
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    const width = Math.max(8, Math.round((count / max) * 100));
+
+    row.innerHTML = `
+      <span class="task-meta">${owner}</span>
+      <div class="bar" style="width:${width}%"></div>
+      <span class="task-meta">${count}</span>
+    `;
+    target.appendChild(row);
+  });
+}
+
+function renderCharts(tasks) {
+  const total = tasks.length;
+
+  const auto = tasks.filter((t) => t.mode === 'AUTO').length;
+  const human = tasks.filter((t) => t.mode === 'HUMAN').length;
+  setStackedBar('chart-mode', [
+    { className: 'seg-auto', percentage: pct(auto, total), label: 'AUTO', value: auto },
+    { className: 'seg-human', percentage: pct(human, total), label: 'HUMAN', value: human },
+  ]);
+  document.getElementById('chart-mode-label').textContent = `AUTO ${auto} • HUMAN ${human}`;
+
+  const high = tasks.filter((t) => t.priority === 'Alta').length;
+  const med = tasks.filter((t) => t.priority === 'Média').length;
+  const low = tasks.filter((t) => (t.priority || 'Baixa') === 'Baixa').length;
+  setStackedBar('chart-priority', [
+    { className: 'seg-high', percentage: pct(high, total), label: 'Alta', value: high },
+    { className: 'seg-medium', percentage: pct(med, total), label: 'Média', value: med },
+    { className: 'seg-low', percentage: pct(low, total), label: 'Baixa', value: low },
+  ]);
+  document.getElementById('chart-priority-label').textContent = `Alta ${high} • Média ${med} • Baixa ${low}`;
+
+  renderOwnerBars(tasks);
+}
+
 function renderKanban(data) {
   const board = document.getElementById('kanban-board');
   const summary = document.getElementById('kanban-summary');
@@ -28,6 +101,7 @@ function renderKanban(data) {
   board.innerHTML = '';
 
   let totalShown = 0;
+  const shownTasks = [];
 
   for (const column of data.columns || []) {
     const tasks = (column.tasks || []).filter((task) => {
@@ -39,6 +113,7 @@ function renderKanban(data) {
       return ownerOk && projectOk && modeOk && priorityOk && searchOk;
     });
 
+    shownTasks.push(...tasks);
     totalShown += tasks.length;
 
     const col = document.createElement('article');
@@ -74,6 +149,7 @@ function renderKanban(data) {
   }
 
   summary.textContent = `Resumo: ${totalShown} atividade(s) visível(is) no filtro atual.`;
+  renderCharts(shownTasks);
 }
 
 function populateSelect(data, selectId, valueSelector) {
