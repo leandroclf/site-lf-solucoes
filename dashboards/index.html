@@ -56,6 +56,23 @@
           <h2>Kanban de atividades</h2>
           <span class="badge">Visão consolidada para acompanhamento</span>
         </div>
+        <div class="filters">
+          <label>
+            Responsável
+            <select id="filter-owner">
+              <option value="">Todos</option>
+            </select>
+          </label>
+          <label>
+            Prioridade
+            <select id="filter-priority">
+              <option value="">Todas</option>
+              <option value="Alta">Alta</option>
+              <option value="Média">Média</option>
+              <option value="Baixa">Baixa</option>
+            </select>
+          </label>
+        </div>
         <p id="kanban-updated-at" class="task-meta">Atualizado em: carregando...</p>
         <div id="kanban-board" class="kanban"></div>
       </section>

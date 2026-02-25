@@ -69,6 +69,28 @@ li { margin: 6px 0; }
   background: #0f2445;
 }
 
+.filters {
+  display: flex;
+  gap: 12px;
+  flex-wrap: wrap;
+  margin-bottom: 8px;
+}
+
+.filters label {
+  display: grid;
+  gap: 4px;
+  font-size: .85rem;
+  color: #b8ccef;
+}
+
+.filters select {
+  background: #0f1a30;
+  color: #d8e6ff;
+  border: 1px solid #2e4878;
+  border-radius: 8px;
+  padding: 6px 8px;
+}
+
 .kanban {
   display: grid;
   grid-template-columns: repeat(5, minmax(210px, 1fr));
@@ -90,6 +112,7 @@ li { margin: 6px 0; }
   background: #13213a;
   border-radius: 10px;
   padding: 10px;
+  margin-bottom: 8px;
 }
 
 .task-title {
@@ -108,6 +131,19 @@ li { margin: 6px 0; }
   font-size: .82rem;
   color: #9ab4df;
 }
+
+.priority {
+  margin: 8px 0 0;
+  display: inline-block;
+  font-size: .75rem;
+  border-radius: 999px;
+  padding: 4px 8px;
+  font-weight: 700;
+}
+
+.priority-high { background: #4a1b22; color: #ffb2c1; border: 1px solid #7f2d3a; }
+.priority-medium { background: #42300f; color: #ffd98b; border: 1px solid #73541b; }
+.priority-low { background: #173523; color: #a6efc8; border: 1px solid #2d6b46; }
 
 @media (max-width: 900px) {
   .metrics, .two { grid-template-columns: 1fr; }
