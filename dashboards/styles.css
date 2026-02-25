@@ -223,6 +223,10 @@ li { margin: 6px 0; }
 .bar-row { display: grid; grid-template-columns: 120px 1fr 30px; gap: 8px; align-items: center; }
 .bar { height: 10px; border-radius: 999px; background: #2f4d83; }
 
+.sla-week-row { display: grid; grid-template-columns: 90px 1fr 55px; gap: 8px; align-items: center; }
+.sla-week-bar-wrap { height: 10px; border-radius: 999px; border: 1px solid #2e4878; overflow: hidden; }
+.sla-week-bar { height: 100%; background: #35aef1; }
+
 .traffic-wrap {
   display: flex;
   align-items: center;

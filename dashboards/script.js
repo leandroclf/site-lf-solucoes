@@ -490,12 +490,72 @@ async function loadHandoff() {
   }
 }
 
+function isoWeekKey(date) {
+  const d = new Date(Date.UTC(date.getUTCFullYear(), date.getUTCMonth(), date.getUTCDate()));
+  const dayNum = d.getUTCDay() || 7;
+  d.setUTCDate(d.getUTCDate() + 4 - dayNum);
+  const yearStart = new Date(Date.UTC(d.getUTCFullYear(), 0, 1));
+  const weekNo = Math.ceil((((d - yearStart) / 86400000) + 1) / 7);
+  return `${d.getUTCFullYear()}-W${String(weekNo).padStart(2, '0')}`;
+}
+
+function renderSlaWeeklyBars(weekStats, targetPct) {
+  const container = document.getElementById('sla-weekly-bars');
+  if (!container) return;
+  container.innerHTML = '';
+
+  const keys = Object.keys(weekStats).sort().slice(-4);
+  keys.forEach((wk) => {
+    const stat = weekStats[wk];
+    const pctVal = Number(stat.pct || 0);
+    const row = document.createElement('div');
+    row.className = 'sla-week-row';
+    row.innerHTML = `
+      <span class="task-meta">${wk}</span>
+      <div class="sla-week-bar-wrap"><div class="sla-week-bar" style="width:${Math.min(100, Math.max(0, pctVal))}%"></div></div>
+      <span class="task-meta">${pctVal.toFixed(0)}%</span>
+    `;
+    container.appendChild(row);
+  });
+
+  if (!keys.length) {
+    container.innerHTML = '<p class="task-meta">Sem histórico suficiente.</p>';
+  }
+}
+
+function computeSlaFromHistory(historyActivities, targetPct) {
+  const doneHuman = (historyActivities || []).filter((a) => a.mode === 'HUMAN' && a.status === 'done' && a.createdAt && a.completedAt);
+  const weekStats = {};
+
+  doneHuman.forEach((a) => {
+    const created = new Date(a.createdAt);
+    const completed = new Date(a.completedAt);
+    const hours = (completed - created) / 36e5;
+    const within = hours <= Number(a.slaHours || 0);
+    const wk = isoWeekKey(completed);
+    if (!weekStats[wk]) weekStats[wk] = { total: 0, within: 0, pct: 0 };
+    weekStats[wk].total += 1;
+    if (within) weekStats[wk].within += 1;
+    weekStats[wk].pct = weekStats[wk].total ? (weekStats[wk].within / weekStats[wk].total) * 100 : 0;
+  });
+
+  const latestWeek = Object.keys(weekStats).sort().slice(-1)[0];
+  const actual = latestWeek ? Number(weekStats[latestWeek].pct) : 0;
+  const status = actual >= targetPct ? '✅ Meta atingida' : '⚠️ Abaixo da meta';
+
+  return { actual, status, weekStats };
+}
+
 async function loadOpsAnalytics() {
   const updated = document.getElementById('ops-analytics-updated');
   try {
-    const response = await fetch('./data/ops-analytics.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Falha ao carregar ops-analytics.json');
-    const data = await response.json();
+    const [opsRes, histRes] = await Promise.all([
+      fetch('./data/ops-analytics.json', { cache: 'no-store' }),
+      fetch('./data/activities-history.json', { cache: 'no-store' })
+    ]);
+    if (!opsRes.ok) throw new Error('Falha ao carregar ops-analytics.json');
+    const data = await opsRes.json();
+    const history = histRes.ok ? await histRes.json() : { activities: [] };
 
     if (updated) {
       updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
@@ -511,13 +571,13 @@ async function loadOpsAnalytics() {
     document.getElementById('ops-cognitive').textContent = `${data.diagnostic?.cognitiveLoad?.weightedEffortTotal || 0} pts`;
     document.getElementById('ops-quality').textContent = `${Number(data.quality?.reopenRatePct || 0).toFixed(1)}% reopen`;
 
-    const target = Number(data.sla?.targetWeeklyPct || 0);
-    const actual = Number(data.sla?.actualWeeklyPct || 0);
+    const target = Number(data.sla?.targetWeeklyPct || 85);
+    const computed = computeSlaFromHistory(history.activities || [], target);
     const slaEl = document.getElementById('sla-weekly');
     if (slaEl) {
-      const status = actual >= target ? '✅ Meta atingida' : '⚠️ Abaixo da meta';
-      slaEl.textContent = `Cumprimento semanal: ${actual.toFixed(1)}% | Meta: ${target.toFixed(1)}% — ${status}`;
+      slaEl.textContent = `Cumprimento semanal: ${computed.actual.toFixed(1)}% | Meta: ${target.toFixed(1)}% — ${computed.status}`;
     }
+    renderSlaWeeklyBars(computed.weekStats, target);
 
     const alertsEl = document.getElementById('ops-predictive-alerts');
     const alerts = data.predictive?.alerts || [];
