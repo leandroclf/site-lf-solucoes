@@ -1,18 +1,18 @@
 {
-  "updatedAt": "2026-02-25T07:45:00Z",
+  "updatedAt": "2026-02-25T10:55:00Z",
   "columns": [
     {
       "id": "to-review",
       "title": "TO REVIEW",
       "tasks": [
         {
-          "title": "Validar novo dataset de logística urbana",
-          "description": "Checar licença comercial e frequência de atualização.",
-          "owner": "Reviewer-delivery",
-          "project": "DataOps",
+          "title": "Criar repositório de teste automático para validar permissão GitHub API",
+          "description": "Executar criação de repo e push inicial para confirmar automação ponta a ponta.",
+          "owner": "Builder-repo",
+          "project": "Governança Multiagente",
           "mode": "AUTO",
-          "priority": "Média",
-          "status": "Aguardando validação"
+          "priority": "Alta",
+          "status": "Aguardando execução"
         }
       ]
     },
@@ -21,10 +21,10 @@
       "title": "AUTHORIZED",
       "tasks": [
         {
-          "title": "MVP de alerta de rota com dados públicos",
-          "description": "Issue com escopo fechado e critérios de aceite definidos.",
-          "owner": "Architect-tech",
-          "project": "Mobility Alerts MVP",
+          "title": "Validar fluxo de criação automática pós-configuração de token",
+          "description": "Aplicar checklist de aceite com evidências de criação e push.",
+          "owner": "Reviewer-delivery",
+          "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
           "status": "Pronto para execução"
@@ -36,25 +36,24 @@
       "title": "IN PROGRESS",
       "tasks": [
         {
-          "title": "Configurar permissões para criação automática de repositórios",
-          "description": "Tarefa HUMAN com runbook e evidências obrigatórias.",
+          "title": "Aprovar nome do repositório de teste para automação",
+          "description": "Token GitHub já configurado no ambiente; falta autorização final do nome do repo de teste.",
           "owner": "Leandro",
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
           "status": "Em andamento",
           "runbookSteps": [
-            "Gerar token Fine-grained no GitHub para a conta leandroclf.",
-            "Conceder permissões: Contents (read/write), Metadata (read) e Administration (read/write).",
-            "Definir validade curta (30-90 dias) e escopo mínimo necessário.",
-            "Configurar o token no OpenClaw como GH_TOKEN/GITHUB_TOKEN.",
-            "Executar teste de criação automática de repositório e push inicial.",
-            "Registrar evidências (link do repo teste + logs) no board de delivery."
+            "Definir nome final do repositório de teste (ex.: lf-repo-autotest).",
+            "Autorizar criação automática pelo agente.",
+            "Confirmar no GitHub a criação do repo.",
+            "Validar commit/push inicial e workflow básico.",
+            "Registrar evidências no board para aprovação final."
           ],
           "expectedEvidence": [
-            "Token configurado no ambiente",
-            "Repositório de teste criado automaticamente",
-            "Commit/push realizado sem ação manual"
+            "URL do repositório criado",
+            "Commit inicial no main",
+            "Logs de criação automática"
           ]
         }
       ]
@@ -64,13 +63,24 @@
       "title": "VALIDATION",
       "tasks": [
         {
-          "title": "Revisar checklist de qualidade do projeto vehicle-tracking",
-          "description": "Conferir testes, docs e evidências de entrega.",
+          "title": "Configuração de credenciais GitHub no Gateway",
+          "description": "GH_TOKEN e GITHUB_TOKEN aplicados; validar criação automática do primeiro repositório.",
           "owner": "Reviewer-delivery",
-          "project": "Vehicle Tracking",
-          "mode": "AUTO",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
           "priority": "Média",
-          "status": "Validação final"
+          "status": "Validação final",
+          "runbookSteps": [
+            "Confirmar variáveis GH_TOKEN/GITHUB_TOKEN ativas.",
+            "Rodar teste de criação automática de repositório.",
+            "Validar push inicial.",
+            "Aprovar no board e mover para DONE."
+          ],
+          "expectedEvidence": [
+            "Confirmação de config patch",
+            "Repo teste criado",
+            "Push inicial concluído"
+          ]
         }
       ]
     },
@@ -79,9 +89,9 @@
       "title": "DONE",
       "tasks": [
         {
-          "title": "Publicação do dashboard no GitHub Pages",
-          "description": "Dashboard operacional disponível para acompanhamento web.",
-          "owner": "Builder-repo",
+          "title": "Dashboard operacional evoluído com filtros, semáforo e histórico",
+          "description": "Painel web com Kanban, métricas HUMAN, semáforo e tendência semanal de risco.",
+          "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",
           "priority": "Baixa",
