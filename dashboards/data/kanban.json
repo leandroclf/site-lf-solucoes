@@ -1,10 +1,65 @@
 {
-  "updatedAt": "2026-02-25T15:20:00Z",
+  "updatedAt": "2026-02-25T16:15:00Z",
   "columns": [
     {
       "id": "to-review",
       "title": "TO REVIEW",
-      "tasks": []
+      "tasks": [
+        {
+          "title": "[ISSUE-007] Hardening transversal de CI (anti-regressão de imports/PYTHONPATH)",
+          "description": "Prevenir recorrência de falhas em sequência via smoke local pré-push + check de path/import + padrão único de bootstrap de testes. Aceite: 5 CIs sucessivos por repositório, smoke documentado nos 3 READMEs e evidência consolidada em ops/multiagent/kpis/code-evolution.md.",
+          "owner": "Infra-analyst + Builder-repo",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Alta",
+          "status": "A revisar"
+        },
+        {
+          "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
+          "description": "Instrumentar jornada descoberta->qualificação->proposta->fechamento com 1 KPI norte por ICP.",
+          "owner": "Strategist-product + Growth-sales",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar"
+        },
+        {
+          "title": "[ISSUE-009] Product accountability por responsável",
+          "description": "Exigir métrica de impacto por ISSUE antes de DONE.",
+          "owner": "Reviewer-delivery + Strategist-product",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar"
+        },
+        {
+          "title": "[ISSUE-010] SLA administrativo por processo interno",
+          "description": "Mapear etapas administrativas e reduzir lead time de aprovação.",
+          "owner": "Orchestrator + Reviewer-delivery",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar"
+        },
+        {
+          "title": "[ISSUE-011] Baseline financeiro semanal (MRR/CAC/LTV)",
+          "description": "Eliminar N/D no KPI financeiro com rotina semanal.",
+          "owner": "Finance-ops + Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Alta",
+          "status": "A revisar"
+        },
+        {
+          "title": "[ISSUE-012] Matriz jurídica/LGPD por fonte de dados crítica",
+          "description": "Consolidar base legal/finalidade/retenção para OSM/OpenAQ e demais fontes críticas.",
+          "owner": "Validator-license + Human-legal-specialist",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Alta",
+          "status": "A revisar"
+        }
+      ]
     },
     {
       "id": "authorized",
@@ -68,7 +123,7 @@
       "tasks": [
         {
           "title": "[ISSUE-004] Gate automático de compliance de licença (license_policy.yaml)",
-          "description": "Resultado da suíte PASS (12/12, 0 falsos negativos, 0 falsos positivos). Pendente aceite final de redução de tempo médio de autorização (>=20%) após 2 ciclos; baseline concluído (6.42h), ciclo 1 ainda sem amostra concluída e decisão atual HOLD.",
+          "description": "Resultado da suíte PASS (12/12, 0 falsos negativos, 0 falsos positivos). Pendente aceite final de redução de tempo médio de autorização (>=20%) após 2 ciclos; baseline concluído (6.42h), ciclo 1 sem amostra concluída e decisão atual HOLD.",
           "owner": "Validator-license + Builder-repo + Reviewer-delivery",
           "project": "Governança Multiagente",
           "mode": "AUTO",
@@ -120,51 +175,6 @@
         {
           "title": "Dashboard operacional publicado e evoluído com filtros, semáforo e histórico",
           "description": "Painel operacional entregue com evolução contínua de visualização e controle.",
-          "owner": "Architect-tech",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Concluído"
-        },
-        {
-          "title": "Decisão de rotação de token",
-          "description": "Resultado: manter token atual (risco aceito).",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Média",
-          "status": "Concluído"
-        },
-        {
-          "title": "Aprovação do SLA v1 para tarefas HUMAN",
-          "description": "SLA v1 aprovado para operação HUMAN.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Média",
-          "status": "Concluído"
-        },
-        {
-          "title": "Aprovação da coleta SLA v2",
-          "description": "Coleta v2 aprovada para acompanhamento operacional.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Média",
-          "status": "Concluído"
-        },
-        {
-          "title": "Definição da meta mínima de cumprimento semanal do SLA",
-          "description": "Meta definida em 85% com ação corretiva para desvios.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Média",
-          "status": "Concluído"
-        },
-        {
-          "title": "Implementar KPI de SLA humano no dashboard (coleta v2)",
-          "description": "KPI implementado no painel para monitoramento semanal.",
           "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",
