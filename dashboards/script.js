@@ -178,8 +178,15 @@ function updateTrafficLight(tasks, humanCount, blockedCount) {
   reason.textContent = 'Sem bloqueios críticos no filtro atual.';
 }
 
+function dotClassByStatus(status) {
+  if (status === 'red') return 'dot-red';
+  if (status === 'yellow') return 'dot-yellow';
+  return 'dot-green';
+}
+
 async function loadSemaphoreState() {
   const el = document.getElementById('traffic-consecutive');
+  const historyEl = document.getElementById('traffic-history');
   if (!el) return;
 
   try {
@@ -191,6 +198,26 @@ async function loadSemaphoreState() {
     el.textContent = `Dias consecutivos em vermelho: ${days}`;
   } catch {
     el.textContent = 'Dias consecutivos em vermelho: n/d';
+  }
+
+  if (!historyEl) return;
+  try {
+    const response = await fetch('./data/semaphore-history.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Falha ao carregar semaphore-history.json');
+    const history = await response.json();
+    const days = (history.days || []).slice(-7);
+
+    historyEl.innerHTML = '';
+    days.forEach((d) => {
+      const date = String(d.date || '').slice(5);
+      const status = String(d.status || 'green').toLowerCase();
+      const item = document.createElement('div');
+      item.className = 'traffic-day';
+      item.innerHTML = `<div class="dot ${dotClassByStatus(status)}"></div><div>${date}</div><div>${status.toUpperCase()}</div>`;
+      historyEl.appendChild(item);
+    });
+  } catch {
+    historyEl.innerHTML = '<div class="traffic-day">n/d</div>';
   }
 }
 

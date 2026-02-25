@@ -239,6 +239,33 @@ li { margin: 6px 0; }
 .traffic-yellow { background: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,.18); }
 .traffic-red { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,.18); }
 
+.traffic-history {
+  display: grid;
+  grid-template-columns: repeat(7, minmax(0, 1fr));
+  gap: 6px;
+  margin-top: 6px;
+}
+
+.traffic-day {
+  border: 1px solid #2f4776;
+  border-radius: 8px;
+  padding: 6px;
+  text-align: center;
+  font-size: .72rem;
+  color: #c8daf7;
+}
+
+.traffic-day .dot {
+  width: 10px;
+  height: 10px;
+  border-radius: 999px;
+  margin: 0 auto 4px;
+}
+
+.dot-green { background: #10b981; }
+.dot-yellow { background: #f59e0b; }
+.dot-red { background: #ef4444; }
+
 .actions-row {
   margin-top: 10px;
   display: flex;
