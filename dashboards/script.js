@@ -764,9 +764,14 @@ async function loadHumanDecisionSla() {
       }
     }
 
+    const cardEl = document.getElementById('human-sla-card');
     if (!items.length) {
       summaryEl.textContent = 'Nenhuma pendência HUMAN 011/012 encontrada.';
       listEl.innerHTML = '<li>Sem itens.</li>';
+      if (cardEl) {
+        cardEl.classList.remove('sla-yellow', 'sla-red');
+        cardEl.classList.add('sla-green');
+      }
       return;
     }
 
@@ -774,12 +779,24 @@ async function loadHumanDecisionSla() {
     const warning = items.filter((i) => i.elapsed > 48 && i.elapsed <= 120).length;
     summaryEl.textContent = `Itens monitorados: ${items.length} | Atenção: ${warning} | Crítico: ${critical}`;
 
+    if (cardEl) {
+      cardEl.classList.remove('sla-green', 'sla-yellow', 'sla-red');
+      if (critical > 0) cardEl.classList.add('sla-red');
+      else if (warning > 0) cardEl.classList.add('sla-yellow');
+      else cardEl.classList.add('sla-green');
+    }
+
     listEl.innerHTML = items.map((i) => {
       return `<li><strong>${i.risk} ${i.title}</strong> — Stage: ${i.stage} | Triagem em: ${i.remainDecision.toFixed(1)}h | Parecer final em: ${i.remainFinal.toFixed(1)}h</li>`;
     }).join('');
   } catch {
+    const cardEl = document.getElementById('human-sla-card');
     summaryEl.textContent = 'Erro ao calcular SLA de decisões HUMAN.';
     listEl.innerHTML = '<li>Falha de leitura do kanban.</li>';
+    if (cardEl) {
+      cardEl.classList.remove('sla-green', 'sla-yellow');
+      cardEl.classList.add('sla-red');
+    }
   }
 }
 
