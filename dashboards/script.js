@@ -735,6 +735,54 @@ async function loadDeployStatus() {
   }
 }
 
+async function loadHumanDecisionSla() {
+  const summaryEl = document.getElementById('human-sla-summary');
+  const listEl = document.getElementById('human-sla-list');
+  if (!summaryEl || !listEl) return;
+
+  try {
+    const response = await fetch('./data/kanban.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Falha ao carregar kanban.json');
+    const data = await response.json();
+
+    const items = [];
+    for (const col of (data.columns || [])) {
+      for (const task of (col.tasks || [])) {
+        const t = task.title || '';
+        if (t.includes('ISSUE-011') || t.includes('ISSUE-012')) {
+          const openedAt = task.openedAt ? new Date(task.openedAt) : null;
+          const now = new Date();
+          const decisionHours = Number(task.slaDecisionHours || 48);
+          const finalHours = Number(task.slaFinalHours || 120);
+          const elapsed = openedAt ? (now - openedAt) / 36e5 : 0;
+          const remainDecision = Math.max(0, decisionHours - elapsed);
+          const remainFinal = Math.max(0, finalHours - elapsed);
+          const stage = col.title || col.id || 'n/d';
+          const risk = elapsed > finalHours ? '🔴' : (elapsed > decisionHours ? '🟡' : '🟢');
+          items.push({ title: t, stage, risk, remainDecision, remainFinal, elapsed });
+        }
+      }
+    }
+
+    if (!items.length) {
+      summaryEl.textContent = 'Nenhuma pendência HUMAN 011/012 encontrada.';
+      listEl.innerHTML = '<li>Sem itens.</li>';
+      return;
+    }
+
+    const critical = items.filter((i) => i.elapsed > 120).length;
+    const warning = items.filter((i) => i.elapsed > 48 && i.elapsed <= 120).length;
+    summaryEl.textContent = `Itens monitorados: ${items.length} | Atenção: ${warning} | Crítico: ${critical}`;
+
+    listEl.innerHTML = items.map((i) => {
+      return `<li><strong>${i.risk} ${i.title}</strong> — Stage: ${i.stage} | Triagem em: ${i.remainDecision.toFixed(1)}h | Parecer final em: ${i.remainFinal.toFixed(1)}h</li>`;
+    }).join('');
+  } catch {
+    summaryEl.textContent = 'Erro ao calcular SLA de decisões HUMAN.';
+    listEl.innerHTML = '<li>Falha de leitura do kanban.</li>';
+  }
+}
+
 function downloadHandoff() {
   const data = window.__handoffData;
   if (!data) return;
@@ -782,6 +830,7 @@ loadHandoff();
 loadOpsAnalytics();
 loadAutopilotSla();
 loadDeployStatus();
+loadHumanDecisionSla();
 setInterval(() => {
   loadKanban();
   loadSemaphoreState();
@@ -789,4 +838,5 @@ setInterval(() => {
   loadOpsAnalytics();
   loadAutopilotSla();
   loadDeployStatus();
+  loadHumanDecisionSla();
 }, AUTO_REFRESH_MS);

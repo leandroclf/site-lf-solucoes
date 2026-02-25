@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T16:50:00Z",
+  "updatedAt": "2026-02-25T16:58:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -30,7 +30,10 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
-          "status": "A revisar"
+          "status": "A revisar",
+          "openedAt": "2026-02-25T16:20:00Z",
+          "slaDecisionHours": 48,
+          "slaFinalHours": 120
         },
         {
           "title": "[ISSUE-012] Matriz jurídica/LGPD por fonte de dados crítica",
@@ -39,7 +42,10 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
-          "status": "A revisar"
+          "status": "A revisar",
+          "openedAt": "2026-02-25T16:20:00Z",
+          "slaDecisionHours": 48,
+          "slaFinalHours": 120
         }
       ]
     },
