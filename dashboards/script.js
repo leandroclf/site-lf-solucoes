@@ -460,6 +460,8 @@ async function loadHandoff() {
     const daily = (data.automation?.daily || []).map((x) => `<li>${x}</li>`).join('');
     const weekly = (data.automation?.weekly || []).map((x) => `<li>${x}</li>`).join('');
     const checklist = (data.handoffChecklist || []).map((x) => `<li>${x}</li>`).join('');
+    const capability = data.team?.capabilityControl || {};
+    const requiredFields = (capability.requiredTaskFields || []).map((f) => `<li>${f}</li>`).join('');
 
     target.innerHTML = `
       <div class="handoff-block">
@@ -484,6 +486,16 @@ async function loadHandoff() {
         <ul>${daily}</ul>
         <p class="task-meta" style="margin-top:8px;"><strong>Semanais</strong></p>
         <ul>${weekly}</ul>
+      </div>
+      <div class="handoff-block">
+        <h3>Controle de capacidade e função</h3>
+        <ul>
+          <li>Matriz: ${capability.matrix || 'n/d'}</li>
+          <li>Alocação ativa: ${capability.allocation || 'n/d'}</li>
+          <li>Roteamento: ${capability.routing || 'n/d'}</li>
+        </ul>
+        <p class="task-meta"><strong>Campos obrigatórios por task</strong></p>
+        <ul>${requiredFields}</ul>
       </div>
       <div class="handoff-block">
         <h3>Checklist de transição</h3>
@@ -832,6 +844,13 @@ function downloadHandoff() {
     lines.push(`- ${cat}:`);
     (roles || []).forEach((r) => lines.push(`  - ${r}`));
   });
+  lines.push('');
+  lines.push('Controle de capacidade e função:');
+  const capability = data.team?.capabilityControl || {};
+  lines.push(`- Matriz: ${capability.matrix || 'n/d'}`);
+  lines.push(`- Alocação: ${capability.allocation || 'n/d'}`);
+  lines.push(`- Roteamento: ${capability.routing || 'n/d'}`);
+  (capability.requiredTaskFields || []).forEach((f) => lines.push(`- Campo obrigatório: ${f}`));
   lines.push('');
   lines.push('Rotinas diárias:');
   (data.automation?.daily || []).forEach((r) => lines.push(`- ${r}`));
