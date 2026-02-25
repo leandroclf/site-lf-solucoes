@@ -451,6 +451,12 @@ async function loadHandoff() {
 
     updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
 
+    const jobsMetric = document.getElementById('metric-jobs');
+    if (jobsMetric) {
+      const n = Number(data.automation?.activeJobCount || (data.automation?.supportJobs || []).length || 0);
+      jobsMetric.textContent = String(n);
+    }
+
     const projects = (data.projects || []).map((p) => `<li><strong>${p.name}</strong> — ${p.status}${p.repo ? ` — <a href="${p.repo}" target="_blank" rel="noreferrer">repo</a>` : ''}</li>`).join('');
     const team = (data.team?.roles || []).map((r) => `<li>${r}</li>`).join('');
     const categoriesObj = data.team?.categories || {};

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T18:40:00Z",
+  "updatedAt": "2026-02-25T19:10:00Z",
   "program": {
     "name": "Programa de Governança Multiagente + Entrega Comercial",
     "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
@@ -134,23 +134,33 @@
     "model": "single-master-autopilot",
     "masterJob": "Autopilot sequential delivery cycle",
     "daily": [
-      "Autopilot sequencial: de 11:00 até 22:00 UTC (a cada hora), executando pipeline completo em ordem"
+      "Autopilot sequencial: a cada 30 min (11:00–22:00 UTC | 08:00–19:00 BRT), executando pipeline completo em ordem",
+      "Watchdog de ociosidade: a cada 20 min (11:00–22:00 UTC | 08:00–19:00 BRT), com mini-ciclo quando necessário",
+      "Deploy/CI audit: minuto 12 de cada hora (11:00–22:00 UTC | 08:12–19:12 BRT)"
     ],
     "weekly": [
-      "Acoplado ao job principal: segunda-feira entre 12:00 e 14:59 UTC (KPI/risk, PDCA, staffing, skills coherence)"
+      "Acoplado ao job principal: segunda-feira entre 12:00 e 14:59 UTC (09:00–11:59 BRT)"
     ],
     "biweekly": [
       "Acoplado ao job principal: revisão SLA quando completar janela >=14 dias desde última revisão"
     ],
     "monthly": [
-      "Acoplado ao job principal: dia 1 entre 15:00 e 15:59 UTC (portfolio/governança)"
+      "Acoplado ao job principal: dia 1 entre 15:00 e 15:59 UTC (12:00–12:59 BRT)"
     ],
     "supportJobs": [
-      "Daily autopilot SLA tracker (22:50 UTC)"
+      "Autopilot sequential delivery cycle (*/30 11-22 UTC | UTC-3: 08:00-19:30)",
+      "Autopilot idle watchdog (*/20 11-22 UTC | UTC-3: 08:00-19:40)",
+      "Deploy log capture and status audit (12 11-22 UTC | UTC-3: 08:12-19:12)",
+      "Daily specialist onboarding audit (22:15 UTC | 19:15 BRT)",
+      "Daily gitflow compliance audit (22:25 UTC | 19:25 BRT)",
+      "Daily autopilot SLA tracker (22:50 UTC | 19:50 BRT)",
+      "Daily summary rotation (23:10 UTC | 20:10 BRT)",
+      "Weekly code evolution KPI audit (Seg 15:00 UTC | 12:00 BRT)"
     ],
     "legacyDisabledByDesign": [
       "Todos os jobs individuais diários/semanais/quinzenais/mensais de governança"
-    ]
+    ],
+    "activeJobCount": 8
   },
   "handoffChecklist": [
     "Abrir dashboard e validar semáforo + pendências HUMAN",
@@ -162,7 +172,7 @@
   ],
   "focus30d": {
     "customer": "ISSUE-008 em progresso: ICP+JTBD template v1 publicado e funil em instrumentação",
-    "product": "ISSUE-009 em progresso: ownership map baseline e scorecard weights publicados",
+    "product": "Recuperação 48h ativa (ISSUE-025): meta 80/20 em PASS com execução GitFlow reforçada",
     "admin": "SLA administrativo por processo interno (ISSUE-010)",
     "accounting": "Baseline semanal MRR/CAC/LTV (ISSUE-011)",
     "legal": "Matriz LGPD/licença por fonte crítica (ISSUE-012)"
@@ -202,6 +212,20 @@
       "items": [
         "ISSUE-008: outreach script JTBD v1 publicado.",
         "ISSUE-009: snapshot diário de cobertura de decisão publicado."
+      ]
+    },
+    {
+      "at": "2026-02-25T18:57:12Z",
+      "items": [
+        "ISSUE-025 movida para IN PROGRESS com evidência de capacidade 80/20.",
+        "Pack GitFlow de branches/PR para issues 001/002/003/008/009 publicado."
+      ]
+    },
+    {
+      "at": "2026-02-25T19:01:10Z",
+      "items": [
+        "ISSUE-001: checklist de prontidão de PR (GitFlow) publicado.",
+        "ISSUE-002: matriz de testes de matching publicada com gate de precisão."
       ]
     }
   ],
