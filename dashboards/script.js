@@ -705,6 +705,30 @@ async function loadAutopilotSla() {
   }
 }
 
+async function loadDeployStatus() {
+  const updatedEl = document.getElementById('deploy-status-updated');
+  const listEl = document.getElementById('deploy-status-list');
+  if (!listEl) return;
+  try {
+    const response = await fetch('./data/deploy-status.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Falha ao carregar deploy-status.json');
+    const data = await response.json();
+    if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+
+    listEl.innerHTML = (data.repos || []).map((r) => {
+      const concl = r.conclusion || r.status || 'n/d';
+      const ok = String(concl).toLowerCase() === 'success';
+      const badge = ok ? '🟢' : '🔴';
+      const run = r.runUrl ? `<a href="${r.runUrl}" target="_blank" rel="noreferrer">run</a>` : 'run n/d';
+      return `<li><strong>${badge} ${r.repo}</strong> — ${concl} (${run})</li>`;
+    }).join('');
+    if (!listEl.innerHTML) listEl.innerHTML = '<li>Sem dados de deploy no momento.</li>';
+  } catch {
+    if (updatedEl) updatedEl.textContent = 'Atualizado em: erro de leitura';
+    listEl.innerHTML = '<li>Não foi possível carregar status de deploy/CI.</li>';
+  }
+}
+
 function downloadHandoff() {
   const data = window.__handoffData;
   if (!data) return;
@@ -751,10 +775,12 @@ loadSemaphoreState();
 loadHandoff();
 loadOpsAnalytics();
 loadAutopilotSla();
+loadDeployStatus();
 setInterval(() => {
   loadKanban();
   loadSemaphoreState();
   loadHandoff();
   loadOpsAnalytics();
   loadAutopilotSla();
+  loadDeployStatus();
 }, AUTO_REFRESH_MS);
