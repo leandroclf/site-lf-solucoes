@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T17:09:00Z",
+  "updatedAt": "2026-02-25T17:31:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -17,7 +17,11 @@
           "categorySupport": [
             "engenharia-arquitetura"
           ],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Infra-analyst",
+          "ownerSupport": [
+            "Builder-repo"
+          ]
         },
         {
           "title": "[ISSUE-010] SLA administrativo por processo interno",
@@ -29,7 +33,11 @@
           "status": "A revisar",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Orchestrator",
+          "ownerSupport": [
+            "Reviewer-delivery"
+          ]
         },
         {
           "title": "[ISSUE-011] Baseline financeiro semanal (MRR/CAC/LTV)",
@@ -44,7 +52,11 @@
           "slaFinalHours": 120,
           "categoryPrimary": "produto-receita",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Finance-ops",
+          "ownerSupport": [
+            "Leandro"
+          ]
         },
         {
           "title": "[ISSUE-012] Matriz jurídica/LGPD por fonte de dados crítica",
@@ -59,7 +71,11 @@
           "slaFinalHours": 120,
           "categoryPrimary": "dados-compliance-juridico",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Validator-license",
+          "ownerSupport": [
+            "Human-legal-specialist"
+          ]
         },
         {
           "title": "[ISSUE-014] Otimização de custo/performance do pipeline de dados",
@@ -74,7 +90,9 @@
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "Custo por execução (-15%)"
+          "valueKpi": "Custo por execução (-15%)",
+          "ownerPrimary": "sre-cost-specialist",
+          "ownerSupport": []
         },
         {
           "title": "[ISSUE-015] Contratos de qualidade de dados por fonte",
@@ -89,7 +107,9 @@
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "Taxa de completude >95%"
+          "valueKpi": "Taxa de completude >95%",
+          "ownerPrimary": "data-quality-steward",
+          "ownerSupport": []
         },
         {
           "title": "[ISSUE-017] UX do funil comercial no dashboard",
@@ -104,7 +124,9 @@
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "Taxa de uso do painel por analista"
+          "valueKpi": "Taxa de uso do painel por analista",
+          "ownerPrimary": "ux-ui-designer",
+          "ownerSupport": []
         },
         {
           "title": "[ISSUE-018] Frontend de insight por ICP",
@@ -119,7 +141,9 @@
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "Tempo para gerar proposta (dias)"
+          "valueKpi": "Tempo para gerar proposta (dias)",
+          "ownerPrimary": "frontend-specialist",
+          "ownerSupport": []
         },
         {
           "title": "[ISSUE-019] Arquitetura-alvo V1 dos 3 componentes",
@@ -134,7 +158,9 @@
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "Redução de retrabalho técnico"
+          "valueKpi": "Redução de retrabalho técnico",
+          "ownerPrimary": "solution-architect",
+          "ownerSupport": []
         },
         {
           "title": "[ISSUE-020] Planejamento semanal de execução por valor",
@@ -149,7 +175,9 @@
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "% capacidade alocada em itens de receita"
+          "valueKpi": "% capacidade alocada em itens de receita",
+          "ownerPrimary": "planner-issues",
+          "ownerSupport": []
         }
       ]
     },
@@ -167,7 +195,9 @@
           "status": "Em desenvolvimento",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [],
-          "valueKpi": "+20% cobertura de atributos por lead"
+          "valueKpi": "+20% cobertura de atributos por lead",
+          "ownerPrimary": "Builder-repo",
+          "ownerSupport": []
         },
         {
           "title": "[ISSUE-002] Grafo de entidades com Wikidata para normalização e matching",
@@ -179,7 +209,9 @@
           "status": "Em desenvolvimento",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [],
-          "valueKpi": "+25% precisão de matching"
+          "valueKpi": "+25% precisão de matching",
+          "ownerPrimary": "Architect-tech",
+          "ownerSupport": []
         },
         {
           "title": "[ISSUE-003] Módulo de risco-país e pricing regional com World Bank",
@@ -191,7 +223,9 @@
           "status": "Em desenvolvimento",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [],
-          "valueKpi": "2 propostas com score regional ativo"
+          "valueKpi": "2 propostas com score regional ativo",
+          "ownerPrimary": "Architect-tech",
+          "ownerSupport": []
         },
         {
           "title": "[ISSUE-005] Trilha jurídica de OpenStreetMap (ODbL) para produto comercial",
@@ -205,7 +239,11 @@
           "categorySupport": [
             "dados-compliance-juridico"
           ],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Reviewer-delivery",
+          "ownerSupport": [
+            "Human-legal-specialist"
+          ]
         },
         {
           "title": "[ISSUE-006] Trilha de compliance por fonte no OpenAQ",
@@ -217,69 +255,11 @@
           "status": "Autorizado",
           "categoryPrimary": "dados-compliance-juridico",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
-        },
-        {
-          "title": "[ISSUE-013] Backlog de hipóteses de receita por ICP",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
-          "owner": "revenue-ops-specialist",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Autorizado",
-          "categoryPrimary": "produto-receita",
-          "categorySupport": [
-            "produto-receita",
-            "engenharia-arquitetura"
-          ],
-          "valueKpi": "Conversão SQL->Proposta (%)",
-          "ownerPrimary": "revenue-ops-specialist"
-        },
-        {
-          "title": "[ISSUE-016] Endpoint backend de valor por proposta",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
-          "owner": "backend-specialist",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Autorizado",
-          "categoryPrimary": "engenharia-arquitetura",
-          "categorySupport": [
-            "produto-receita",
-            "engenharia-arquitetura"
-          ],
-          "valueKpi": "Tempo de resposta <300ms",
-          "ownerPrimary": "backend-specialist"
-        },
-        {
-          "title": "[ISSUE-021] Hardening CI/CD com smoke obrigatório pré-merge",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
-          "owner": "devops-ci-cd-specialist",
-          "project": "Governança Multiagente",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Autorizado",
-          "categoryPrimary": "plataforma-infra-qualidade",
-          "categorySupport": [
-            "produto-receita"
-          ],
-          "valueKpi": "Taxa de sucesso CI >95%",
-          "ownerPrimary": "devops-ci-cd-specialist"
-        },
-        {
-          "title": "[ISSUE-022] Scout contínuo de datasets com potencial comercial",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
-          "owner": "scout-datasets",
-          "project": "Governança Multiagente",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Autorizado",
-          "categoryPrimary": "dados-compliance-juridico",
-          "categorySupport": [
-            "produto-receita"
-          ],
-          "valueKpi": "Novas oportunidades qualificadas/semana",
-          "ownerPrimary": "scout-datasets"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Validator-license",
+          "ownerSupport": [
+            "Human-legal-specialist"
+          ]
         }
       ]
     },
@@ -289,7 +269,7 @@
       "tasks": [
         {
           "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md | Evidência 17:30 UTC: ops/multiagent/research/2026-02-25-jtbd-interview-tracker.csv",
           "owner": "Strategist-product + Growth-sales",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -297,11 +277,15 @@
           "status": "Em progresso",
           "categoryPrimary": "produto-receita",
           "categorySupport": [],
-          "valueKpi": "Conversão por ICP no funil"
+          "valueKpi": "Conversão por ICP no funil",
+          "ownerPrimary": "Strategist-product",
+          "ownerSupport": [
+            "Growth-sales"
+          ]
         },
         {
           "title": "[ISSUE-009] Product accountability por responsável",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md | Evidência 17:30 UTC: ops/multiagent/delivery/product-decision-log-2026-W09.md",
           "owner": "Reviewer-delivery + Strategist-product",
           "project": "Governança Multiagente",
           "mode": "AUTO",
@@ -311,7 +295,77 @@
           "categorySupport": [
             "produto-receita"
           ],
-          "valueKpi": "% issues com métrica de impacto"
+          "valueKpi": "% issues com métrica de impacto",
+          "ownerPrimary": "Reviewer-delivery",
+          "ownerSupport": [
+            "Strategist-product"
+          ]
+        },
+        {
+          "title": "[ISSUE-013] Backlog de hipóteses de receita por ICP",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria.",
+          "owner": "revenue-ops-specialist",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Em progresso",
+          "categoryPrimary": "produto-receita",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Conversão SQL->Proposta (%)",
+          "ownerPrimary": "revenue-ops-specialist",
+          "ownerSupport": []
+        },
+        {
+          "title": "[ISSUE-016] Endpoint backend de valor por proposta",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria.",
+          "owner": "backend-specialist",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Em progresso",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Tempo de resposta <300ms",
+          "ownerPrimary": "backend-specialist",
+          "ownerSupport": []
+        },
+        {
+          "title": "[ISSUE-021] Hardening CI/CD com smoke obrigatório pré-merge",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria.",
+          "owner": "devops-ci-cd-specialist",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Em progresso",
+          "categoryPrimary": "plataforma-infra-qualidade",
+          "categorySupport": [
+            "produto-receita"
+          ],
+          "valueKpi": "Taxa de sucesso CI >95%",
+          "ownerPrimary": "devops-ci-cd-specialist",
+          "ownerSupport": []
+        },
+        {
+          "title": "[ISSUE-022] Scout contínuo de datasets com potencial comercial",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria.",
+          "owner": "scout-datasets",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Em progresso",
+          "categoryPrimary": "dados-compliance-juridico",
+          "categorySupport": [
+            "produto-receita"
+          ],
+          "valueKpi": "Novas oportunidades qualificadas/semana",
+          "ownerPrimary": "scout-datasets",
+          "ownerSupport": []
         }
       ]
     },
@@ -332,7 +386,12 @@
             "engenharia-arquitetura",
             "orquestracao-governanca"
           ],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Validator-license",
+          "ownerSupport": [
+            "Builder-repo",
+            "Reviewer-delivery"
+          ]
         }
       ]
     },
@@ -350,7 +409,9 @@
           "status": "Concluído",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Team-evolution-governor",
+          "ownerSupport": []
         },
         {
           "title": "Revisão quinzenal da meta SLA com base em dados reais",
@@ -362,7 +423,11 @@
           "status": "Concluído",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Reviewer-delivery",
+          "ownerSupport": [
+            "Operations-analytics-specialist"
+          ]
         },
         {
           "title": "Configuração de credenciais GitHub no Gateway",
@@ -374,7 +439,9 @@
           "status": "Concluído",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Reviewer-delivery",
+          "ownerSupport": []
         },
         {
           "title": "Criar repositório de teste automático para validar permissão GitHub API",
@@ -386,7 +453,9 @@
           "status": "Concluído",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Builder-repo",
+          "ownerSupport": []
         },
         {
           "title": "Dashboard operacional publicado e evoluído com filtros, semáforo e histórico",
@@ -398,9 +467,16 @@
           "status": "Concluído",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [],
-          "valueKpi": "KPI definido no aceite da issue"
+          "valueKpi": "KPI definido no aceite da issue",
+          "ownerPrimary": "Architect-tech",
+          "ownerSupport": []
         }
       ]
     }
-  ]
+  ],
+  "wipPolicy": {
+    "maxInProgressPerCategory": 2,
+    "pullDailyByCategory": true,
+    "ownerPrimaryRequired": true
+  }
 }

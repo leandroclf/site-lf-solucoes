@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T17:00:58Z",
+  "updatedAt": "2026-02-25T17:25:00Z",
   "program": {
     "name": "Programa de Governança Multiagente + Entrega Comercial",
     "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
@@ -167,6 +167,19 @@
         "ISSUE-008: plano operacional de entrevistas JTBD (D3/D4) publicado.",
         "ISSUE-009: baseline W09 de accountability publicado com cobertura 100% de ownership/valueKpi."
       ]
+    },
+    {
+      "at": "2026-02-25T17:30:56Z",
+      "items": [
+        "ISSUE-008: tracker operacional de entrevistas JTBD criado (2 entrevistas planejadas).",
+        "ISSUE-009: product decision log W09 criado com decisões manter para 008/009."
+      ]
     }
-  ]
+  ],
+  "capacityControl": {
+    "wipPolicy": "max 2 IN PROGRESS por categoria",
+    "ownerPrimaryRequired": true,
+    "antiIdleMode": "ativo",
+    "batchExecution": "lotes por categoria com foco em valor ao cliente"
+  }
 }
