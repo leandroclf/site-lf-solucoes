@@ -453,6 +453,10 @@ async function loadHandoff() {
 
     const projects = (data.projects || []).map((p) => `<li><strong>${p.name}</strong> — ${p.status}${p.repo ? ` — <a href="${p.repo}" target="_blank" rel="noreferrer">repo</a>` : ''}</li>`).join('');
     const team = (data.team?.roles || []).map((r) => `<li>${r}</li>`).join('');
+    const categoriesObj = data.team?.categories || {};
+    const categories = Object.keys(categoriesObj).length
+      ? Object.entries(categoriesObj).map(([name, roles]) => `<li><strong>${name}</strong><ul>${(roles || []).map((r) => `<li>${r}</li>`).join('')}</ul></li>`).join('')
+      : '';
     const daily = (data.automation?.daily || []).map((x) => `<li>${x}</li>`).join('');
     const weekly = (data.automation?.weekly || []).map((x) => `<li>${x}</li>`).join('');
     const checklist = (data.handoffChecklist || []).map((x) => `<li>${x}</li>`).join('');
@@ -469,6 +473,10 @@ async function loadHandoff() {
       <div class="handoff-block">
         <h3>Equipe especialista</h3>
         <ul>${team}</ul>
+      </div>
+      <div class="handoff-block">
+        <h3>Especialistas por categoria</h3>
+        ${categories ? `<ul>${categories}</ul>` : '<p class="task-meta">Sem categorização disponível.</p>'}
       </div>
       <div class="handoff-block">
         <h3>Rotinas automáticas</h3>
@@ -817,6 +825,13 @@ function downloadHandoff() {
   lines.push('');
   lines.push('Equipe especialista:');
   (data.team?.roles || []).forEach((r) => lines.push(`- ${r}`));
+  lines.push('');
+  lines.push('Especialistas por categoria:');
+  const categories = data.team?.categories || {};
+  Object.entries(categories).forEach(([cat, roles]) => {
+    lines.push(`- ${cat}:`);
+    (roles || []).forEach((r) => lines.push(`  - ${r}`));
+  });
   lines.push('');
   lines.push('Rotinas diárias:');
   (data.automation?.daily || []).forEach((r) => lines.push(`- ${r}`));
