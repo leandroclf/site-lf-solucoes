@@ -12,7 +12,7 @@ function normalize(text) {
 
 function matchesSearch(task, searchTerm) {
   if (!searchTerm) return true;
-  const haystack = `${task.title || ''} ${task.description || ''} ${task.owner || ''} ${task.status || ''}`.toLowerCase();
+  const haystack = `${task.title || ''} ${task.description || ''} ${task.owner || ''} ${task.status || ''} ${task.project || ''} ${task.mode || ''}`.toLowerCase();
   return haystack.includes(searchTerm);
 }
 
@@ -20,6 +20,8 @@ function renderKanban(data) {
   const board = document.getElementById('kanban-board');
   const summary = document.getElementById('kanban-summary');
   const ownerFilter = document.getElementById('filter-owner').value;
+  const projectFilter = document.getElementById('filter-project').value;
+  const modeFilter = document.getElementById('filter-mode').value;
   const priorityFilter = document.getElementById('filter-priority').value;
   const searchTerm = normalize(document.getElementById('filter-search').value.trim());
 
@@ -30,9 +32,11 @@ function renderKanban(data) {
   for (const column of data.columns || []) {
     const tasks = (column.tasks || []).filter((task) => {
       const ownerOk = !ownerFilter || task.owner === ownerFilter;
+      const projectOk = !projectFilter || task.project === projectFilter;
+      const modeOk = !modeFilter || task.mode === modeFilter;
       const priorityOk = !priorityFilter || task.priority === priorityFilter;
       const searchOk = matchesSearch(task, searchTerm);
-      return ownerOk && priorityOk && searchOk;
+      return ownerOk && projectOk && modeOk && priorityOk && searchOk;
     });
 
     totalShown += tasks.length;
@@ -58,7 +62,8 @@ function renderKanban(data) {
       card.innerHTML = `
         <p class="task-title">${task.title || '-'}</p>
         <p class="task-desc">${task.description || ''}</p>
-        <p class="task-meta">Responsável: ${task.owner || '-'} • Status: ${task.status || '-'}</p>
+        <p class="task-meta">Projeto: ${task.project || '-'} • Responsável: ${task.owner || '-'} • Modo: ${task.mode || '-'}</p>
+        <p class="task-meta">Status: ${task.status || '-'}</p>
         <p class="priority ${priorityClass(task.priority)}">Prioridade: ${task.priority || 'Baixa'}</p>
       `;
 
@@ -71,21 +76,22 @@ function renderKanban(data) {
   summary.textContent = `Resumo: ${totalShown} atividade(s) visível(is) no filtro atual.`;
 }
 
-function populateOwnerFilter(data) {
-  const ownerSelect = document.getElementById('filter-owner');
-  const owners = new Set();
+function populateSelect(data, selectId, valueSelector) {
+  const select = document.getElementById(selectId);
+  const values = new Set();
 
   for (const col of data.columns || []) {
     for (const task of col.tasks || []) {
-      if (task.owner) owners.add(task.owner);
+      const value = valueSelector(task);
+      if (value) values.add(value);
     }
   }
 
-  for (const owner of [...owners].sort()) {
+  for (const value of [...values].sort()) {
     const opt = document.createElement('option');
-    opt.value = owner;
-    opt.textContent = owner;
-    ownerSelect.appendChild(opt);
+    opt.value = value;
+    opt.textContent = value;
+    select.appendChild(opt);
   }
 }
 
@@ -98,7 +104,8 @@ async function loadKanban() {
     if (!response.ok) throw new Error('Falha ao carregar kanban.json');
 
     kanbanData = await response.json();
-    populateOwnerFilter(kanbanData);
+    populateSelect(kanbanData, 'filter-owner', (task) => task.owner);
+    populateSelect(kanbanData, 'filter-project', (task) => task.project);
     renderKanban(kanbanData);
 
     if (kanbanData.updatedAt) {
@@ -114,6 +121,14 @@ async function loadKanban() {
 }
 
 document.getElementById('filter-owner').addEventListener('change', () => {
+  if (kanbanData) renderKanban(kanbanData);
+});
+
+document.getElementById('filter-project').addEventListener('change', () => {
+  if (kanbanData) renderKanban(kanbanData);
+});
+
+document.getElementById('filter-mode').addEventListener('change', () => {
   if (kanbanData) renderKanban(kanbanData);
 });
 

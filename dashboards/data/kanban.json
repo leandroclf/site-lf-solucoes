@@ -9,6 +9,8 @@
           "title": "Validar novo dataset de logística urbana",
           "description": "Checar licença comercial e frequência de atualização.",
           "owner": "Reviewer-delivery",
+          "project": "DataOps",
+          "mode": "AUTO",
           "priority": "Média",
           "status": "Aguardando validação"
         }
@@ -22,6 +24,8 @@
           "title": "MVP de alerta de rota com dados públicos",
           "description": "Issue com escopo fechado e critérios de aceite definidos.",
           "owner": "Architect-tech",
+          "project": "Mobility Alerts MVP",
+          "mode": "AUTO",
           "priority": "Alta",
           "status": "Pronto para execução"
         }
@@ -35,6 +39,8 @@
           "title": "Configurar permissões para criação automática de repositórios",
           "description": "Tarefa HUMAN com runbook e evidências obrigatórias.",
           "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
           "priority": "Alta",
           "status": "Em andamento"
         }
@@ -48,6 +54,8 @@
           "title": "Revisar checklist de qualidade do projeto vehicle-tracking",
           "description": "Conferir testes, docs e evidências de entrega.",
           "owner": "Reviewer-delivery",
+          "project": "Vehicle Tracking",
+          "mode": "AUTO",
           "priority": "Média",
           "status": "Validação final"
         }
@@ -61,6 +69,8 @@
           "title": "Publicação do dashboard no GitHub Pages",
           "description": "Dashboard operacional disponível para acompanhamento web.",
           "owner": "Builder-repo",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
           "priority": "Baixa",
           "status": "Concluído"
         }
