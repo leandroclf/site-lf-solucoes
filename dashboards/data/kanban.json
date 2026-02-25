@@ -42,7 +42,20 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
-          "status": "Em andamento"
+          "status": "Em andamento",
+          "runbookSteps": [
+            "Gerar token Fine-grained no GitHub para a conta leandroclf.",
+            "Conceder permissões: Contents (read/write), Metadata (read) e Administration (read/write).",
+            "Definir validade curta (30-90 dias) e escopo mínimo necessário.",
+            "Configurar o token no OpenClaw como GH_TOKEN/GITHUB_TOKEN.",
+            "Executar teste de criação automática de repositório e push inicial.",
+            "Registrar evidências (link do repo teste + logs) no board de delivery."
+          ],
+          "expectedEvidence": [
+            "Token configurado no ambiente",
+            "Repositório de teste criado automaticamente",
+            "Commit/push realizado sem ação manual"
+          ]
         }
       ]
     },

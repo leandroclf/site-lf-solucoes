@@ -138,6 +138,30 @@ li { margin: 6px 0; }
   color: #9ab4df;
 }
 
+.runbook {
+  margin-top: 8px;
+  border-top: 1px dashed #365486;
+  padding-top: 8px;
+}
+
+.runbook summary {
+  cursor: pointer;
+  color: #b9d8ff;
+  font-size: .85rem;
+  margin-bottom: 4px;
+}
+
+.runbook ol {
+  margin: 8px 0;
+  padding-left: 18px;
+}
+
+.runbook li {
+  margin: 4px 0;
+  color: #d8e8ff;
+  font-size: .86rem;
+}
+
 .priority {
   margin: 8px 0 0;
   display: inline-block;

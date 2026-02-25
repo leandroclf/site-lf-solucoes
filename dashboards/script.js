@@ -134,12 +134,23 @@ function renderKanban(data) {
       const card = document.createElement('div');
       card.className = 'task';
 
+      const runbookHtml = task.mode === 'HUMAN' && Array.isArray(task.runbookSteps)
+        ? `
+          <details class="runbook">
+            <summary>Passo a passo (HUMAN)</summary>
+            <ol>${task.runbookSteps.map((s) => `<li>${s}</li>`).join('')}</ol>
+            ${Array.isArray(task.expectedEvidence) ? `<p class="task-meta"><strong>Evidências:</strong> ${task.expectedEvidence.join(' • ')}</p>` : ''}
+          </details>
+        `
+        : '';
+
       card.innerHTML = `
         <p class="task-title">${task.title || '-'}</p>
         <p class="task-desc">${task.description || ''}</p>
         <p class="task-meta">Projeto: ${task.project || '-'} • Responsável: ${task.owner || '-'} • Modo: ${task.mode || '-'}</p>
         <p class="task-meta">Status: ${task.status || '-'}</p>
         <p class="priority ${priorityClass(task.priority)}">Prioridade: ${task.priority || 'Baixa'}</p>
+        ${runbookHtml}
       `;
 
       col.appendChild(card);
