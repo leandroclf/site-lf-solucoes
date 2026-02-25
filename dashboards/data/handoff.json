@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T15:08:00Z",
+  "updatedAt": "2026-02-25T15:14:00Z",
   "program": {
     "name": "Programa de Governança Multiagente + Entrega Comercial",
     "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
@@ -38,21 +38,21 @@
       "repo": "https://github.com/leandroclf/lf-openalex-enrichment-mvp",
       "status": "Em desenvolvimento",
       "issue": "ISSUE-001",
-      "latestCommit": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/1a25b4e"
+      "latestCommit": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/c1e0325"
     },
     {
       "name": "Wikidata Entity Graph",
       "repo": "https://github.com/leandroclf/lf-wikidata-entity-graph",
       "status": "Em desenvolvimento",
       "issue": "ISSUE-002",
-      "latestCommit": "https://github.com/leandroclf/lf-wikidata-entity-graph/commit/d030e52"
+      "latestCommit": "https://github.com/leandroclf/lf-wikidata-entity-graph/commit/a65a6ad"
     },
     {
       "name": "World Bank Risk Pricing",
       "repo": "https://github.com/leandroclf/lf-worldbank-risk-pricing",
       "status": "Em desenvolvimento",
       "issue": "ISSUE-003",
-      "latestCommit": "https://github.com/leandroclf/lf-worldbank-risk-pricing/commit/140ac07"
+      "latestCommit": "https://github.com/leandroclf/lf-worldbank-risk-pricing/commit/37cbd4f"
     }
   ],
   "team": {
