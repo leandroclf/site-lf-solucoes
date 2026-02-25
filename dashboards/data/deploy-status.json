@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T15:45:08.587700Z",
+  "updatedAt": "2026-02-25T16:43:21.759290Z",
   "owner": "leandroclf",
   "repos": [
     {
@@ -62,15 +62,15 @@
     {
       "repo": "site-lf-solucoes",
       "workflow": "Deploy static site to GitHub Pages",
-      "runId": 22404177280,
+      "runId": 22406384827,
       "status": "completed",
       "conclusion": "success",
       "branch": "main",
-      "commit": "2e85879ae02493822b1bcd1b147cc83a0998c115",
-      "runUrl": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/22404177280",
-      "logsUrl": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22404177280/logs",
-      "createdAt": "2026-02-25T15:43:20Z",
-      "updatedAt": "2026-02-25T15:43:37Z",
+      "commit": "31e212da00d8519cbaf96cd4c7f451098ae30eac",
+      "runUrl": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/22406384827",
+      "logsUrl": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22406384827/logs",
+      "createdAt": "2026-02-25T16:38:58Z",
+      "updatedAt": "2026-02-25T16:39:17Z",
       "actor": "leandroclf",
       "lastTwoConclusions": [
         "success",
@@ -80,12 +80,13 @@
     },
     {
       "repo": "openclaw-workspace",
-      "status": "error",
+      "status": "excluded",
+      "reason": "actions-permission-missing",
       "error": "HTTP Error 403: Forbidden"
     }
   ],
   "aggregate": {
-    "status": "yellow",
+    "status": "green",
     "rule": "red=2 falhas consecutivas em qualquer repo; yellow=alguma falha ou erro de consulta; green=todos success"
   }
 }

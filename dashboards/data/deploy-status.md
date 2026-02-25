@@ -1,7 +1,7 @@
 # Deploy Status Snapshot
 
-Atualizado em: 2026-02-25T15:45:08.587700Z
-Semáforo agregado: yellow
+Atualizado em: 2026-02-25T16:43:21.759290Z
+Semáforo agregado: green
 
 ## lf-openalex-enrichment-mvp
 - Workflow: CI
@@ -34,13 +34,13 @@ Semáforo agregado: yellow
 - Workflow: Deploy static site to GitHub Pages
 - Status: completed | Conclusion: success
 - Branch: main
-- Commit: 2e85879ae02493822b1bcd1b147cc83a0998c115
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/22404177280
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22404177280/logs
-- Updated: 2026-02-25T15:43:37Z
+- Commit: 31e212da00d8519cbaf96cd4c7f451098ae30eac
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/22406384827
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22406384827/logs
+- Updated: 2026-02-25T16:39:17Z
 
 ## openclaw-workspace
-- Status: erro ao consultar workflow (HTTP Error 403: Forbidden)
+- Status: excluído do semáforo (actions-permission-missing)
 
 Agente: orchestrator
 Skill: n/a (execução direta)
