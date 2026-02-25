@@ -187,6 +187,8 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
 
   const prevSla = Number(autopilotData?.history?.previousCycleCompletionPct || 0) || null;
   const prevTmr = Number(window.__analyticsCache?.leadTimePrev || 0) || null;
+  const prevDayJobs = Number(window.__analyticsCache?.prevDayJobs || 0) || null;
+  const prevDayDelayed = Number(window.__analyticsCache?.prevDayDelayed || 0) || null;
 
   const set = (id, value) => {
     const el = document.getElementById(id);
@@ -204,8 +206,8 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
   const varSla = document.getElementById('metric-sla-var');
   const varTmr = document.getElementById('metric-tmr-var');
   const varThroughput = document.getElementById('metric-throughput-var');
-  if (varJobs) varJobs.textContent = 'Variação: n/d';
-  if (varDelayed) varDelayed.textContent = 'Variação: n/d';
+  if (varJobs) varJobs.textContent = fmtVar(totalJobs, prevDayJobs);
+  if (varDelayed) varDelayed.textContent = fmtVar(delayedJobs, prevDayDelayed);
   if (varSla) varSla.textContent = fmtVar(sla, prevSla);
   if (varTmr) varTmr.textContent = fmtVar(tmr || 0, prevTmr, '');
   if (varThroughput) varThroughput.textContent = fmtVar(throughput, throughputPrev);
@@ -218,11 +220,39 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
     return 'red';
   };
 
-  setKpiState('kpi-jobs-ativos', totalJobs >= 8 ? 'green' : 'yellow');
-  setKpiState('kpi-jobs-atrasados', delayedJobs === 0 ? 'green' : (delayedJobs <= 1 ? 'yellow' : 'red'));
-  setKpiState('kpi-sla', stateByTarget(sla, 95));
-  setKpiState('kpi-tmr', stateByTarget(tmr, 24, true));
-  setKpiState('kpi-throughput', throughput >= 6 ? 'green' : (throughput >= 5 ? 'yellow' : 'red'));
+  const states = {
+    jobs: totalJobs >= 8 ? 'green' : 'yellow',
+    delayed: delayedJobs === 0 ? 'green' : (delayedJobs <= 1 ? 'yellow' : 'red'),
+    sla: stateByTarget(sla, 95),
+    tmr: stateByTarget(tmr, 24, true),
+    throughput: throughput >= 6 ? 'green' : (throughput >= 5 ? 'yellow' : 'red'),
+  };
+  setKpiState('kpi-jobs-ativos', states.jobs);
+  setKpiState('kpi-jobs-atrasados', states.delayed);
+  setKpiState('kpi-sla', states.sla);
+  setKpiState('kpi-tmr', states.tmr);
+  setKpiState('kpi-throughput', states.throughput);
+
+  const badge = document.getElementById('immediate-action-badge');
+  if (badge) {
+    const vals = Object.values(states);
+    const red = vals.filter((x) => x === 'red').length;
+    const yellow = vals.filter((x) => x === 'yellow').length;
+    badge.classList.remove('badge-green', 'badge-yellow', 'badge-red');
+    if (red > 0) {
+      badge.classList.add('badge-red');
+      badge.textContent = `Ação imediata: ${red} KPI(s) críticos`;
+    } else if (yellow > 0) {
+      badge.classList.add('badge-yellow');
+      badge.textContent = `Atenção: ${yellow} KPI(s) em alerta`;
+    } else {
+      badge.classList.add('badge-green');
+      badge.textContent = 'Operação sob controle';
+    }
+  }
+
+  window.__analyticsCache.prevDayJobs = totalJobs;
+  window.__analyticsCache.prevDayDelayed = delayedJobs;
 }
 
 function renderOperationalAlerts(tasks, deployData) {
@@ -241,7 +271,16 @@ function renderOperationalAlerts(tasks, deployData) {
   };
 
   const top = [...tasks].sort((a, b) => score(b) - score(a)).slice(0, 5);
-  bottlenecksEl.innerHTML = top.map((t) => `<li><strong>${t.title}</strong> — ${t.status || 'n/d'} (${t.ownerPrimary || t.owner || 'n/d'})</li>`).join('') || '<li>Sem gargalos relevantes.</li>';
+  bottlenecksEl.innerHTML = top.map((t, idx) => `<li><button class="btn btn-secondary drill-task" data-task-title="${String(t.title || '').replace(/"/g, '&quot;')}">#${idx + 1} ${t.title}</button> — ${t.status || 'n/d'} (${t.ownerPrimary || t.owner || 'n/d'})</li>`).join('') || '<li>Sem gargalos relevantes.</li>';
+  bottlenecksEl.querySelectorAll('.drill-task').forEach((btn) => {
+    btn.addEventListener('click', () => {
+      const title = btn.getAttribute('data-task-title') || '';
+      const search = document.getElementById('filter-search');
+      if (search) search.value = title;
+      if (kanbanData) renderKanban(kanbanData);
+      document.getElementById('kanban-board')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    });
+  });
 
   const repos = deployData?.repos || [];
   const critical = repos.map((r) => {
