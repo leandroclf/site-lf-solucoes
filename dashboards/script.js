@@ -439,13 +439,103 @@ document.getElementById('filter-search').addEventListener('input', () => {
 });
 
 document.getElementById('clear-filters').addEventListener('click', clearFilters);
+async function loadHandoff() {
+  const target = document.getElementById('handoff-content');
+  const updated = document.getElementById('handoff-updated');
+  if (!target || !updated) return;
+
+  try {
+    const response = await fetch('./data/handoff.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Falha ao carregar handoff.json');
+    const data = await response.json();
+
+    updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+
+    const projects = (data.projects || []).map((p) => `<li><strong>${p.name}</strong> — ${p.status}${p.repo ? ` — <a href="${p.repo}" target="_blank" rel="noreferrer">repo</a>` : ''}</li>`).join('');
+    const team = (data.team?.roles || []).map((r) => `<li>${r}</li>`).join('');
+    const daily = (data.automation?.daily || []).map((x) => `<li>${x}</li>`).join('');
+    const weekly = (data.automation?.weekly || []).map((x) => `<li>${x}</li>`).join('');
+    const checklist = (data.handoffChecklist || []).map((x) => `<li>${x}</li>`).join('');
+
+    target.innerHTML = `
+      <div class="handoff-block">
+        <h3>Objetivo do programa</h3>
+        <p class="task-meta">${data.program?.objective || '-'}</p>
+      </div>
+      <div class="handoff-block">
+        <h3>Projetos e status</h3>
+        <ul>${projects}</ul>
+      </div>
+      <div class="handoff-block">
+        <h3>Equipe especialista</h3>
+        <ul>${team}</ul>
+      </div>
+      <div class="handoff-block">
+        <h3>Rotinas automáticas</h3>
+        <p class="task-meta"><strong>Diárias</strong></p>
+        <ul>${daily}</ul>
+        <p class="task-meta" style="margin-top:8px;"><strong>Semanais</strong></p>
+        <ul>${weekly}</ul>
+      </div>
+      <div class="handoff-block">
+        <h3>Checklist de transição</h3>
+        <ul>${checklist}</ul>
+      </div>
+    `;
+
+    window.__handoffData = data;
+  } catch {
+    updated.textContent = 'Atualizado em: erro de leitura';
+    target.innerHTML = '<div class="handoff-block"><p class="task-meta">Não foi possível carregar o contexto de handoff.</p></div>';
+  }
+}
+
+function downloadHandoff() {
+  const data = window.__handoffData;
+  if (!data) return;
+
+  const lines = [];
+  lines.push('HANDOFF OPERACIONAL - LF SOLUÇÕES');
+  lines.push(`Gerado em UTC: ${new Date().toISOString()}`);
+  lines.push('');
+  lines.push(`Objetivo: ${data.program?.objective || '-'}`);
+  lines.push('');
+  lines.push('Projetos:');
+  (data.projects || []).forEach((p) => {
+    lines.push(`- ${p.name} | Status: ${p.status} | Repo: ${p.repo || 'n/d'}`);
+  });
+  lines.push('');
+  lines.push('Equipe especialista:');
+  (data.team?.roles || []).forEach((r) => lines.push(`- ${r}`));
+  lines.push('');
+  lines.push('Rotinas diárias:');
+  (data.automation?.daily || []).forEach((r) => lines.push(`- ${r}`));
+  lines.push('');
+  lines.push('Rotinas semanais:');
+  (data.automation?.weekly || []).forEach((r) => lines.push(`- ${r}`));
+  lines.push('');
+  lines.push('Checklist de handoff:');
+  (data.handoffChecklist || []).forEach((r) => lines.push(`- ${r}`));
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `handoff-operacional-${new Date().toISOString().slice(0, 10)}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 document.getElementById('download-weekly-report').addEventListener('click', downloadWeeklyReport);
+document.getElementById('download-handoff').addEventListener('click', downloadHandoff);
 
 document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo (a cada ${Math.round(AUTO_REFRESH_MS / 60000)} min)`;
 
 loadKanban();
 loadSemaphoreState();
+loadHandoff();
 setInterval(() => {
   loadKanban();
   loadSemaphoreState();
+  loadHandoff();
 }, AUTO_REFRESH_MS);

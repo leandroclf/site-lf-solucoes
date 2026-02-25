@@ -165,11 +165,12 @@
       </section>
 
       <section class="card">
-        <h2>Observação</h2>
-        <p>
-          Este dashboard já inclui Kanban com descrição, andamento, responsáveis e status.
-          Na próxima etapa, podemos integrar atualização automática via JSON das rotinas diárias.
-        </p>
+        <div class="section-head">
+          <h2>Handoff para analista (contexto completo)</h2>
+          <button id="download-handoff" class="btn btn-secondary" type="button">Baixar handoff (.txt)</button>
+        </div>
+        <p id="handoff-updated" class="task-meta">Atualizado em: carregando...</p>
+        <div id="handoff-content" class="handoff"></div>
       </section>
     </main>
     <script src="./script.js"></script>

@@ -1,0 +1,128 @@
+{
+  "updatedAt": "2026-02-25T13:50:00Z",
+  "program": {
+    "name": "Programa de Governança Multiagente + Entrega Comercial",
+    "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
+    "principles": [
+      "AUTO-first com segurança",
+      "Toda tarefa HUMAN com runbook",
+      "Decisão orientada por KPI (receita, qualidade, lead time)",
+      "Revisão contínua de equipe e skills"
+    ]
+  },
+  "projects": [
+    {
+      "name": "OpenClaw Workspace Governance",
+      "repo": "https://github.com/leandroclf/openclaw-workspace",
+      "status": "Ativo",
+      "scope": [
+        "Governança multiagente",
+        "Board e controle diário",
+        "PDCA semanal",
+        "Gestão de risco e semáforo"
+      ],
+      "keyFiles": [
+        "ops/multiagent/README.md",
+        "ops/multiagent/delivery/board.md",
+        "ops/multiagent/delivery/human-activities.md",
+        "ops/multiagent/delivery/daily-summary.md",
+        "ops/multiagent/delivery/semaphore-state.json",
+        "ops/multiagent/delivery/semaphore-history.json",
+        "ops/skills-governance/approved-skillset.json"
+      ]
+    },
+    {
+      "name": "Site LF Soluções + Dashboard Operacional",
+      "repo": "https://github.com/leandroclf/site-lf-solucoes",
+      "publicUrl": "https://leandroclf.github.io/site-lf-solucoes/",
+      "dashboardUrl": "https://leandroclf.github.io/site-lf-solucoes/dashboards/",
+      "status": "Ativo",
+      "scope": [
+        "Site institucional",
+        "Dashboard Kanban com filtros",
+        "Semáforo operacional",
+        "Histórico de risco e SLA"
+      ],
+      "keyFiles": [
+        "dashboards/index.html",
+        "dashboards/script.js",
+        "dashboards/data/kanban.json",
+        "dashboards/data/semaphore-state.json",
+        "dashboards/data/semaphore-history.json"
+      ]
+    },
+    {
+      "name": "Vehicle Tracking Hardening",
+      "repo": "https://github.com/leandroclf/vehicle-tracking",
+      "status": "Em manutenção",
+      "scope": [
+        "Correções de lint/build",
+        "Hardening de hooks e estabilidade",
+        "Melhorias de frontend/performance"
+      ]
+    },
+    {
+      "name": "GitHub Automation Test",
+      "repo": "https://github.com/leandroclf/lf-repo-autotest",
+      "status": "Concluído (validação)",
+      "scope": [
+        "Validação de criação automática via token",
+        "Commit/push inicial automatizado"
+      ]
+    }
+  ],
+  "team": {
+    "roles": [
+      "scout-datasets",
+      "validator-license",
+      "strategist-product",
+      "architect-tech",
+      "builder-repo",
+      "planner-issues",
+      "reviewer-delivery",
+      "growth-sales",
+      "finance-ops",
+      "team-evolution-governor",
+      "orchestrator"
+    ],
+    "precedence": [
+      "Segurança/compliance",
+      "Negócio/receita",
+      "Viabilidade técnica/risco",
+      "Execução/entrega",
+      "Evolução de equipe"
+    ]
+  },
+  "currentHumanApprovals": [
+    {
+      "title": "Definir meta mínima de cumprimento semanal do SLA",
+      "requiredAnswer": "Aprovado meta SLA semanal 85%",
+      "alternatives": "Pode aprovar outro percentual explicitando o valor"
+    }
+  ],
+  "automation": {
+    "daily": [
+      "11:00 dataset scout",
+      "20:00 decisão e backlog",
+      "20:20 gate reviewer-delivery",
+      "20:40 controle HUMAN",
+      "21:00 team evolution review",
+      "21:20 sync dashboard",
+      "21:30 resumo executivo",
+      "21:35 alerta semáforo vermelho persistente"
+    ],
+    "weekly": [
+      "Seg 12:00 KPI/risk review",
+      "Seg 13:00 PDCA",
+      "Seg 13:30 staffing decision",
+      "Seg 14:00 skills coherence review"
+    ]
+  },
+  "handoffChecklist": [
+    "Abrir dashboard e validar semáforo + pendências HUMAN",
+    "Ler board.md e human-activities.md no workspace",
+    "Confirmar aprovações humanas pendentes",
+    "Executar tarefas AUTHORIZED e registrar evidências",
+    "Atualizar kanban.json e daily-summary.md no fim do ciclo"
+  ]
+}

@@ -277,6 +277,27 @@ li { margin: 6px 0; }
   flex-wrap: wrap;
 }
 
+.handoff {
+  display: grid;
+  gap: 10px;
+}
+
+.handoff-block {
+  border: 1px solid #2c436f;
+  border-radius: 10px;
+  padding: 10px;
+  background: #0f1a30;
+}
+
+.handoff h3 {
+  margin: 0 0 6px;
+}
+
+.handoff ul {
+  margin: 0;
+  padding-left: 16px;
+}
+
 @media (max-width: 900px) {
   .metrics, .two, .mini-grid { grid-template-columns: 1fr; }
 }
