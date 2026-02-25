@@ -47,11 +47,11 @@
             <p class="task-meta" id="metric-tmr-meta">Meta: <= 24h</p>
             <p class="task-meta" id="metric-tmr-var">Variação: n/d</p>
           </article>
-          <article class="card kpi" id="kpi-block-rate" title="Taxa de bloqueios em relação às atividades ativas">
-            <h3>Taxa de Bloqueios (%)</h3>
-            <p class="big" id="metric-block-rate">—</p>
-            <p class="task-meta" id="metric-block-rate-meta">Meta: <= 10%</p>
-            <p class="task-meta" id="metric-block-rate-var">Variação: n/d</p>
+          <article class="card kpi" id="kpi-throughput" title="Throughput semanal com comparação de período anterior">
+            <h3>Throughput Semanal</h3>
+            <p class="big" id="metric-throughput">—</p>
+            <p class="task-meta" id="metric-throughput-meta">Meta: >= 6/semana</p>
+            <p class="task-meta" id="metric-throughput-var">Variação: n/d</p>
           </article>
         </section>
       </section>
@@ -69,12 +69,19 @@
           </div>
           <div class="card">
             <h3>SLA violado (24h)</h3>
+            <p class="task-meta">Threshold de alerta (h): <input id="alert-threshold-hours" type="number" min="1" value="24" style="width:80px;" /></p>
             <ul id="sla-violations-list" class="task-list"></ul>
           </div>
         </div>
-        <div class="handoff-block" style="margin-top:10px;">
-          <h3>Heatmap por categoria (volume de bloqueio)</h3>
-          <div id="heatmap-categories" class="heatmap-grid"></div>
+        <div class="mini-grid" style="margin-top:10px;">
+          <div class="card">
+            <h3>Bloqueios por tipo</h3>
+            <ul id="blocked-by-type" class="task-list"></ul>
+          </div>
+          <div class="card">
+            <h3>Heatmap por categoria (volume de bloqueio)</h3>
+            <div id="heatmap-categories" class="heatmap-grid"></div>
+          </div>
         </div>
       </section>
 
@@ -85,7 +92,7 @@
             Período
             <select id="trend-period">
               <option value="7">7 dias</option>
-              <option value="15">15 dias</option>
+              <option value="14">14 dias</option>
               <option value="30">30 dias</option>
             </select>
           </label>
@@ -108,6 +115,10 @@
         </div>
         <div class="mini-grid" style="margin-top:10px;">
           <div class="card"><h3>Status empilhado</h3><div id="trend-status-stacked" class="stacked-bar"></div><p id="trend-status-label" class="task-meta">—</p></div>
+          <div class="card"><h3>Retrabalho (histórico)</h3><div id="trend-rework" class="trend-box"></div></div>
+          <div class="card"><h3>Risco humano (histórico)</h3><div id="trend-human-risk" class="trend-box"></div></div>
+        </div>
+        <div class="mini-grid" style="margin-top:10px;">
           <div class="card"><h3>Outliers de resolução</h3><ul id="tmr-outliers" class="task-list"></ul></div>
         </div>
       </section>

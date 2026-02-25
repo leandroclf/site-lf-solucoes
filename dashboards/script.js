@@ -177,9 +177,13 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
   const done = (activities || []).filter((a) => a.status === 'done' && a.createdAt && a.completedAt);
   const tmr = done.length ? (done.reduce((s, a) => s + ((new Date(a.completedAt) - new Date(a.createdAt)) / 36e5), 0) / done.length) : null;
 
-  const active = tasks.filter((t) => ['A revisar', 'Autorizado', 'Em progresso', 'Em validação', 'BLOCKED_ONBOARDING'].includes(String(t.status || ''))).length || tasks.length;
-  const blocked = tasks.filter((t) => String(t.status || '').toLowerCase().includes('blocked')).length;
-  const blockRate = active ? (blocked / active) * 100 : 0;
+  const weeklyCut = Date.now() - (7 * 24 * 36e5);
+  const prevWeeklyCut = Date.now() - (14 * 24 * 36e5);
+  const throughput = done.filter((a) => new Date(a.completedAt).getTime() >= weeklyCut).length;
+  const throughputPrev = done.filter((a) => {
+    const t = new Date(a.completedAt).getTime();
+    return t >= prevWeeklyCut && t < weeklyCut;
+  }).length;
 
   const prevSla = Number(autopilotData?.history?.previousCycleCompletionPct || 0) || null;
   const prevTmr = Number(window.__analyticsCache?.leadTimePrev || 0) || null;
@@ -193,18 +197,18 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
   set('metric-jobs-delayed', String(delayedJobs));
   set('metric-sla-current', `${sla.toFixed(1)}%`);
   set('metric-tmr', tmr === null ? 'n/d' : `${tmr.toFixed(1)}h`);
-  set('metric-block-rate', `${blockRate.toFixed(1)}%`);
+  set('metric-throughput', `${throughput}/sem`);
 
   const varJobs = document.getElementById('metric-jobs-var');
   const varDelayed = document.getElementById('metric-jobs-delayed-var');
   const varSla = document.getElementById('metric-sla-var');
   const varTmr = document.getElementById('metric-tmr-var');
-  const varBlock = document.getElementById('metric-block-rate-var');
+  const varThroughput = document.getElementById('metric-throughput-var');
   if (varJobs) varJobs.textContent = 'Variação: n/d';
   if (varDelayed) varDelayed.textContent = 'Variação: n/d';
   if (varSla) varSla.textContent = fmtVar(sla, prevSla);
   if (varTmr) varTmr.textContent = fmtVar(tmr || 0, prevTmr, '');
-  if (varBlock) varBlock.textContent = 'Variação: n/d';
+  if (varThroughput) varThroughput.textContent = fmtVar(throughput, throughputPrev);
 
   const stateByTarget = (value, target, inverse = false) => {
     if (value === null || Number.isNaN(value)) return 'gray';
@@ -218,15 +222,16 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
   setKpiState('kpi-jobs-atrasados', delayedJobs === 0 ? 'green' : (delayedJobs <= 1 ? 'yellow' : 'red'));
   setKpiState('kpi-sla', stateByTarget(sla, 95));
   setKpiState('kpi-tmr', stateByTarget(tmr, 24, true));
-  setKpiState('kpi-block-rate', stateByTarget(blockRate, 10, true));
+  setKpiState('kpi-throughput', throughput >= 6 ? 'green' : (throughput >= 5 ? 'yellow' : 'red'));
 }
 
 function renderOperationalAlerts(tasks, deployData) {
   const bottlenecksEl = document.getElementById('bottlenecks-list');
   const criticalJobsEl = document.getElementById('critical-jobs-bars');
   const slaViolEl = document.getElementById('sla-violations-list');
+  const blockedTypeEl = document.getElementById('blocked-by-type');
   const heatEl = document.getElementById('heatmap-categories');
-  if (!bottlenecksEl || !criticalJobsEl || !slaViolEl || !heatEl) return;
+  if (!bottlenecksEl || !criticalJobsEl || !slaViolEl || !heatEl || !blockedTypeEl) return;
 
   const score = (t) => {
     const p = t.priority === 'Alta' ? 3 : (t.priority === 'Média' ? 2 : 1);
@@ -256,13 +261,31 @@ function renderOperationalAlerts(tasks, deployData) {
     criticalJobsEl.appendChild(row);
   });
 
+  const threshold = Number(document.getElementById('alert-threshold-hours')?.value || 24);
   const now = Date.now();
-  const slaViol = tasks.filter((t) => {
-    if (!t.openedAt || !t.slaDecisionHours) return false;
-    const elapsed = (now - new Date(t.openedAt).getTime()) / 36e5;
-    return elapsed > Number(t.slaDecisionHours);
-  }).slice(0, 10);
-  slaViolEl.innerHTML = slaViol.map((t) => `<li><strong>${t.title}</strong> — SLA vencido</li>`).join('') || '<li>Nenhum SLA vencido nas últimas 24h.</li>';
+  const slaViol = tasks
+    .map((t) => {
+      if (!t.openedAt) return null;
+      const elapsed = (now - new Date(t.openedAt).getTime()) / 36e5;
+      const slaHours = Number(t.slaDecisionHours || threshold);
+      const violation = elapsed - slaHours;
+      return { task: t, elapsed, slaHours, violation };
+    })
+    .filter((x) => x && x.elapsed > threshold)
+    .sort((a, b) => b.violation - a.violation)
+    .slice(0, 5);
+  slaViolEl.innerHTML = slaViol.map(({ task, violation }) => `<li><strong>${task.title}</strong> — violação ${violation.toFixed(1)}h</li>`).join('') || '<li>Nenhum SLA vencido nas últimas 24h.</li>';
+
+  const blockedByType = {
+    onboarding: tasks.filter((t) => String(t.status || '').includes('BLOCKED_ONBOARDING')).length,
+    human: tasks.filter((t) => t.mode === 'HUMAN' && String(t.status || '').toLowerCase().includes('blocked')).length,
+    technical: tasks.filter((t) => String(t.status || '').toLowerCase().includes('blocked') && t.mode !== 'HUMAN').length,
+  };
+  blockedTypeEl.innerHTML = `
+    <li><strong>Onboarding</strong>: ${blockedByType.onboarding}</li>
+    <li><strong>HUMAN</strong>: ${blockedByType.human}</li>
+    <li><strong>Técnico</strong>: ${blockedByType.technical}</li>
+  `;
 
   const byCat = {};
   tasks.forEach((t) => {
@@ -327,10 +350,21 @@ function renderAnalyticalLayer(tasks, activities) {
   const vol = days.map((d) => byDay[d].total);
   const sla = days.map((d) => byDay[d].total ? (byDay[d].done / byDay[d].total) * 100 : 0);
   const tmr = days.map((d) => byDay[d].tmr.length ? (byDay[d].tmr.reduce((s, v) => s + v, 0) / byDay[d].tmr.length) : 0);
+  const rework = days.map((d) => {
+    const arr = filteredAct.filter((a) => (new Date(a.createdAt || a.completedAt).toISOString().slice(0, 10) === d) && a.status === 'done');
+    const reopened = arr.filter((a) => Number(a.reopened || 0) > 0).length;
+    return arr.length ? (reopened / arr.length) * 100 : 0;
+  });
+  const humanRisk = days.map((d) => {
+    const openDay = filteredAct.filter((a) => a.mode === 'HUMAN' && a.status !== 'done' && (new Date(a.createdAt || Date.now()).toISOString().slice(0, 10) === d)).length;
+    return Math.min(100, openDay * 15);
+  });
 
   drawSparkline('trend-volume', vol);
   drawSparkline('trend-sla', sla, ' SLA');
   drawSparkline('trend-tmr', tmr, ' TMR');
+  drawSparkline('trend-rework', rework, ' rework');
+  drawSparkline('trend-human-risk', humanRisk, ' risco');
 
   const statuses = {
     aberto: filteredTasks.filter((t) => String(t.status).toLowerCase().includes('revisar') || String(t.status).toLowerCase().includes('autoriz')).length,
@@ -690,6 +724,8 @@ const trendPeriodEl = document.getElementById('trend-period');
 const trendTeamEl = document.getElementById('trend-team');
 if (trendPeriodEl) trendPeriodEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
 if (trendTeamEl) trendTeamEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
+const thresholdEl = document.getElementById('alert-threshold-hours');
+if (thresholdEl) thresholdEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
 
 async function loadHandoff() {
   const target = document.getElementById('handoff-content');
@@ -1115,8 +1151,10 @@ async function loadDashboardFreshness() {
 
     const red = results.filter((r) => r.status === 'red').length;
     const yellow = results.filter((r) => r.status === 'yellow').length;
+    const green = results.filter((r) => r.status === 'green').length;
+    const score = Math.max(0, Math.min(100, Math.round(((green + (yellow * 0.5)) / Math.max(results.length, 1)) * 100)));
 
-    summaryEl.textContent = `Fontes: ${results.length} | Red: ${red} | Yellow: ${yellow}`;
+    summaryEl.textContent = `Confiabilidade: ${score}% | Fontes: ${results.length} | Red: ${red} | Yellow: ${yellow}`;
     listEl.innerHTML = results.map((r) => {
       const dot = r.status === 'red' ? '🔴' : (r.status === 'yellow' ? '🟡' : '🟢');
       const age = r.ageMin === null ? 'n/d' : `${r.ageMin.toFixed(1)} min`;
