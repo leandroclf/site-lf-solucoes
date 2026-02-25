@@ -102,6 +102,24 @@
           <h3>Alertas preditivos</h3>
           <ul id="ops-predictive-alerts"></ul>
         </div>
+
+        <div class="mini-grid" style="margin-top:10px;">
+          <div class="card">
+            <h3>Saúde do Autopilot (24h)</h3>
+            <p id="autopilot-completion" class="big">—</p>
+            <p id="autopilot-runs" class="task-meta">Runs: —</p>
+          </div>
+          <div class="card">
+            <h3>Duração média do ciclo</h3>
+            <p id="autopilot-duration" class="big">—</p>
+            <p id="autopilot-interruptions" class="task-meta">Interrupções: —</p>
+          </div>
+          <div class="card">
+            <h3>Intervenção humana</h3>
+            <p id="autopilot-human" class="big">—</p>
+            <p id="autopilot-updated" class="task-meta">Atualizado em: —</p>
+          </div>
+        </div>
       </section>
 
       <section class="card">
@@ -137,23 +155,21 @@
 
       <section class="grid two">
         <article class="card">
-          <h2>Jobs diários</h2>
+          <h2>Job principal (autopilot)</h2>
           <ul>
-            <li>11:00 UTC — dataset scout</li>
-            <li>20:00 UTC — decision & backlog</li>
-            <li>20:20 UTC — reviewer authorization gate</li>
-            <li>20:40 UTC — human activities control</li>
-            <li>21:00 UTC — team evolution governance</li>
-            <li>21:20 UTC — dashboard kanban sync</li>
-            <li>21:30 UTC — daily executive summary</li>
+            <li>11:00–22:00 UTC (hora em hora) — ciclo sequencial completo</li>
+            <li>Retry automático para falhas transitórias (até 2x)</li>
+            <li>Interrompe apenas com HARD_BLOCKER/HUMAN_BLOCKER</li>
+            <li>Avisa humano somente quando intervenção é necessária</li>
           </ul>
         </article>
         <article class="card">
-          <h2>Jobs semanais</h2>
+          <h2>Cadências acopladas</h2>
           <ul>
-            <li>Seg 12:00 UTC — KPI/risk review</li>
-            <li>Seg 13:00 UTC — PDCA cycle review</li>
-            <li>Seg 13:30 UTC — staffing decision</li>
+            <li>Semanal (Seg 12:00–14:59 UTC) — KPI/risk + PDCA + staffing + skills</li>
+            <li>Quinzenal — revisão SLA (>=14 dias)</li>
+            <li>Mensal (dia 1, 15:00–15:59 UTC) — portfólio/governança</li>
+            <li>22:50 UTC — SLA do autopilot (job de suporte)</li>
           </ul>
         </article>
       </section>

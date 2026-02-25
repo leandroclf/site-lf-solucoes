@@ -1,0 +1,21 @@
+{
+  "updatedAt": "2026-02-25T14:18:00Z",
+  "cycles": [
+    {
+      "cycleId": "2026-02-25T13:37:00Z",
+      "startedAt": "2026-02-25T13:37:00Z",
+      "endedAt": "2026-02-25T13:37:34Z",
+      "durationMs": 34000,
+      "status": "SUCESSO",
+      "blockerType": "NONE"
+    },
+    {
+      "cycleId": "2026-02-25T13:38:00Z",
+      "startedAt": "2026-02-25T13:38:00Z",
+      "endedAt": "2026-02-25T13:38:34Z",
+      "durationMs": 34100,
+      "status": "SUCESSO",
+      "blockerType": "NONE"
+    }
+  ]
+}

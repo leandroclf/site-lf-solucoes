@@ -668,6 +668,43 @@ async function loadOpsAnalytics() {
   }
 }
 
+async function loadAutopilotSla() {
+  try {
+    const response = await fetch('./data/autopilot-sla.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Falha ao carregar autopilot-sla.json');
+    const data = await response.json();
+    const k = data.kpis || {};
+
+    const completionEl = document.getElementById('autopilot-completion');
+    const runsEl = document.getElementById('autopilot-runs');
+    const durationEl = document.getElementById('autopilot-duration');
+    const interruptionsEl = document.getElementById('autopilot-interruptions');
+    const humanEl = document.getElementById('autopilot-human');
+    const updatedEl = document.getElementById('autopilot-updated');
+
+    if (completionEl) completionEl.textContent = `${Number(k.cycleCompletionPct || 0).toFixed(1)}%`;
+    if (runsEl) runsEl.textContent = `Runs: ${k.cyclesRun || 0} | Concluídos: ${k.cyclesCompleted || 0}`;
+    if (durationEl) durationEl.textContent = `${Number(k.avgCycleDurationMinutes || 0).toFixed(1)} min`;
+    if (interruptionsEl) interruptionsEl.textContent = `Interrupções: ${k.cyclesInterrupted || 0}`;
+    if (humanEl) humanEl.textContent = `${k.humanInterventionCount || 0}`;
+    if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+  } catch {
+    const completionEl = document.getElementById('autopilot-completion');
+    const runsEl = document.getElementById('autopilot-runs');
+    const durationEl = document.getElementById('autopilot-duration');
+    const interruptionsEl = document.getElementById('autopilot-interruptions');
+    const humanEl = document.getElementById('autopilot-human');
+    const updatedEl = document.getElementById('autopilot-updated');
+
+    if (completionEl) completionEl.textContent = '—';
+    if (runsEl) runsEl.textContent = 'Runs: n/d';
+    if (durationEl) durationEl.textContent = '—';
+    if (interruptionsEl) interruptionsEl.textContent = 'Interrupções: n/d';
+    if (humanEl) humanEl.textContent = '—';
+    if (updatedEl) updatedEl.textContent = 'Atualizado em: erro de leitura';
+  }
+}
+
 function downloadHandoff() {
   const data = window.__handoffData;
   if (!data) return;
@@ -713,9 +750,11 @@ loadKanban();
 loadSemaphoreState();
 loadHandoff();
 loadOpsAnalytics();
+loadAutopilotSla();
 setInterval(() => {
   loadKanban();
   loadSemaphoreState();
   loadHandoff();
   loadOpsAnalytics();
+  loadAutopilotSla();
 }, AUTO_REFRESH_MS);
