@@ -707,6 +707,7 @@ async function loadAutopilotSla() {
 
 async function loadDeployStatus() {
   const updatedEl = document.getElementById('deploy-status-updated');
+  const aggregateEl = document.getElementById('deploy-aggregate');
   const listEl = document.getElementById('deploy-status-list');
   if (!listEl) return;
   try {
@@ -714,17 +715,22 @@ async function loadDeployStatus() {
     if (!response.ok) throw new Error('Falha ao carregar deploy-status.json');
     const data = await response.json();
     if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+    if (aggregateEl) aggregateEl.textContent = `Semáforo agregado: ${String(data.aggregate?.status || 'n/d').toUpperCase()}`;
 
     listEl.innerHTML = (data.repos || []).map((r) => {
       const concl = r.conclusion || r.status || 'n/d';
-      const ok = String(concl).toLowerCase() === 'success';
-      const badge = ok ? '🟢' : '🔴';
+      const lower = String(concl).toLowerCase();
+      const ok = lower === 'success';
+      const warn = ['failure','cancelled','timed_out'].includes(lower) || r.status === 'error';
+      const badge = r.consecutiveFailures ? '🔴' : (ok ? '🟢' : (warn ? '🟡' : '⚪'));
       const run = r.runUrl ? `<a href="${r.runUrl}" target="_blank" rel="noreferrer">run</a>` : 'run n/d';
-      return `<li><strong>${badge} ${r.repo}</strong> — ${concl} (${run})</li>`;
+      const extra = r.consecutiveFailures ? ' | 2 falhas seguidas' : '';
+      return `<li><strong>${badge} ${r.repo}</strong> — ${concl}${extra} (${run})</li>`;
     }).join('');
     if (!listEl.innerHTML) listEl.innerHTML = '<li>Sem dados de deploy no momento.</li>';
   } catch {
     if (updatedEl) updatedEl.textContent = 'Atualizado em: erro de leitura';
+    if (aggregateEl) aggregateEl.textContent = 'Semáforo agregado: erro';
     listEl.innerHTML = '<li>Não foi possível carregar status de deploy/CI.</li>';
   }
 }

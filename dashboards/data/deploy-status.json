@@ -1,67 +1,91 @@
 {
-  "updatedAt": "2026-02-25T15:41:38.121643Z",
+  "updatedAt": "2026-02-25T15:45:08.587700Z",
   "owner": "leandroclf",
   "repos": [
     {
       "repo": "lf-openalex-enrichment-mvp",
       "workflow": "CI",
       "runId": 22404107197,
-      "status": "queued",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "branch": "main",
       "commit": "6669ce98ce87ba9c569a120393c30026dd63a67e",
       "runUrl": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22404107197",
       "logsUrl": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22404107197/logs",
       "createdAt": "2026-02-25T15:41:35Z",
-      "updatedAt": "2026-02-25T15:41:35Z",
-      "actor": "leandroclf"
+      "updatedAt": "2026-02-25T15:41:47Z",
+      "actor": "leandroclf",
+      "lastTwoConclusions": [
+        "success",
+        "failure"
+      ],
+      "consecutiveFailures": false
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "workflow": "CI",
       "runId": 22404107034,
-      "status": "queued",
-      "conclusion": null,
+      "status": "completed",
+      "conclusion": "success",
       "branch": "main",
       "commit": "e96bdabfa09257e5ba01b89a7bf72d30cbdc18e0",
       "runUrl": "https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/22404107034",
       "logsUrl": "https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/22404107034/logs",
       "createdAt": "2026-02-25T15:41:35Z",
-      "updatedAt": "2026-02-25T15:41:35Z",
-      "actor": "leandroclf"
+      "updatedAt": "2026-02-25T15:41:51Z",
+      "actor": "leandroclf",
+      "lastTwoConclusions": [
+        "success",
+        "failure"
+      ],
+      "consecutiveFailures": false
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "workflow": "CI",
-      "runId": 22403986724,
+      "runId": 22404116628,
       "status": "completed",
-      "conclusion": "failure",
+      "conclusion": "success",
       "branch": "main",
-      "commit": "dfcc9f08abc7ccc7fb59308c74b2cac211a1daad",
-      "runUrl": "https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/22403986724",
-      "logsUrl": "https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/22403986724/logs",
-      "createdAt": "2026-02-25T15:38:38Z",
-      "updatedAt": "2026-02-25T15:38:53Z",
-      "actor": "leandroclf"
+      "commit": "3bda7067329addcc6f33dd38e54c31f3279c711a",
+      "runUrl": "https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/22404116628",
+      "logsUrl": "https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/22404116628/logs",
+      "createdAt": "2026-02-25T15:41:50Z",
+      "updatedAt": "2026-02-25T15:42:02Z",
+      "actor": "leandroclf",
+      "lastTwoConclusions": [
+        "success",
+        "failure"
+      ],
+      "consecutiveFailures": false
     },
     {
       "repo": "site-lf-solucoes",
       "workflow": "Deploy static site to GitHub Pages",
-      "runId": 22404003823,
+      "runId": 22404177280,
       "status": "completed",
       "conclusion": "success",
       "branch": "main",
-      "commit": "dae5a387a64bb99f1ec60ea47961e12586358a20",
-      "runUrl": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/22404003823",
-      "logsUrl": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22404003823/logs",
-      "createdAt": "2026-02-25T15:39:02Z",
-      "updatedAt": "2026-02-25T15:39:22Z",
-      "actor": "leandroclf"
+      "commit": "2e85879ae02493822b1bcd1b147cc83a0998c115",
+      "runUrl": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/22404177280",
+      "logsUrl": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22404177280/logs",
+      "createdAt": "2026-02-25T15:43:20Z",
+      "updatedAt": "2026-02-25T15:43:37Z",
+      "actor": "leandroclf",
+      "lastTwoConclusions": [
+        "success",
+        "success"
+      ],
+      "consecutiveFailures": false
     },
     {
       "repo": "openclaw-workspace",
       "status": "error",
       "error": "HTTP Error 403: Forbidden"
     }
-  ]
+  ],
+  "aggregate": {
+    "status": "yellow",
+    "rule": "red=2 falhas consecutivas em qualquer repo; yellow=alguma falha ou erro de consulta; green=todos success"
+  }
 }
