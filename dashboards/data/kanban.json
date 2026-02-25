@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T17:31:00Z",
+  "updatedAt": "2026-02-25T19:22:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -187,7 +187,7 @@
       "tasks": [
         {
           "title": "[ISSUE-001] MVP de Enrichment B2B com OpenAlex",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%. Repo: https://github.com/leandroclf/lf-openalex-enrichment-mvp Último avanço: https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/6669ce9",
+          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%. Repo: https://github.com/leandroclf/lf-openalex-enrichment-mvp Último avanço: https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/6669ce9 | Evidência 19:00 UTC: issue-001-pr-readiness-checklist-2026-02-25.md",
           "owner": "Builder-repo",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -201,7 +201,7 @@
         },
         {
           "title": "[ISSUE-002] Grafo de entidades com Wikidata para normalização e matching",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de precisão de matching +25% no piloto. Repo: https://github.com/leandroclf/lf-wikidata-entity-graph Último avanço: https://github.com/leandroclf/lf-wikidata-entity-graph/commit/e96bdab",
+          "description": "Gate PASS (CC0) e aceite PASS com meta de precisão de matching +25% no piloto. Repo: https://github.com/leandroclf/lf-wikidata-entity-graph Último avanço: https://github.com/leandroclf/lf-wikidata-entity-graph/commit/e96bdab | Evidência 19:00 UTC: issue-002-entity-matching-test-matrix-2026-02-25.md",
           "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -229,12 +229,12 @@
         },
         {
           "title": "[ISSUE-005] Trilha jurídica de OpenStreetMap (ODbL) para produto comercial",
-          "description": "PASS CONDICIONAL: depende de parecer jurídico formal; runbook humano completo.",
+          "description": "PASS CONDICIONAL: depende de parecer jurídico formal; runbook humano completo. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
           "owner": "Reviewer-delivery + Human-legal-specialist",
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
-          "status": "Autorizado",
+          "status": "Em progresso",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [
             "dados-compliance-juridico"
@@ -247,12 +247,12 @@
         },
         {
           "title": "[ISSUE-006] Trilha de compliance por fonte no OpenAQ",
-          "description": "PASS CONDICIONAL por fonte; aceite em 100% das fontes ativas com decisão documentada; runbook humano completo.",
+          "description": "PASS CONDICIONAL por fonte; aceite em 100% das fontes ativas com decisão documentada; runbook humano completo. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
           "owner": "Validator-license + Human-legal-specialist",
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
-          "status": "Autorizado",
+          "status": "Em progresso",
           "categoryPrimary": "dados-compliance-juridico",
           "categorySupport": [],
           "valueKpi": "KPI definido no aceite da issue",
@@ -269,7 +269,7 @@
       "tasks": [
         {
           "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md | Evidência 17:30 UTC: ops/multiagent/research/2026-02-25-jtbd-interview-tracker.csv",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md | Evidência 17:30 UTC: ops/multiagent/research/2026-02-25-jtbd-interview-tracker.csv | Evidência 18:00 UTC: ops/multiagent/research/2026-02-25-jtbd-synthesis-template-v1.md | Evidência 18:30 UTC: ops/multiagent/research/2026-02-25-jtbd-outreach-script-v1.md",
           "owner": "Strategist-product + Growth-sales",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -285,7 +285,7 @@
         },
         {
           "title": "[ISSUE-009] Product accountability por responsável",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md | Evidência 17:30 UTC: ops/multiagent/delivery/product-decision-log-2026-W09.md",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md | Evidência 17:30 UTC: ops/multiagent/delivery/product-decision-log-2026-W09.md | Evidência 18:00 UTC: ops/multiagent/kpis/product-gate-checklist-coverage-2026-W09.md | Evidência 18:30 UTC: ops/multiagent/kpis/product-decision-coverage-daily-2026-02-25-1830.md",
           "owner": "Reviewer-delivery + Strategist-product",
           "project": "Governança Multiagente",
           "mode": "AUTO",
@@ -303,7 +303,7 @@
         },
         {
           "title": "[ISSUE-013] Backlog de hipóteses de receita por ICP",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
           "owner": "revenue-ops-specialist",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -320,7 +320,7 @@
         },
         {
           "title": "[ISSUE-016] Endpoint backend de valor por proposta",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
           "owner": "backend-specialist",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -337,7 +337,7 @@
         },
         {
           "title": "[ISSUE-021] Hardening CI/CD com smoke obrigatório pré-merge",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
           "owner": "devops-ci-cd-specialist",
           "project": "Governança Multiagente",
           "mode": "AUTO",
@@ -353,7 +353,7 @@
         },
         {
           "title": "[ISSUE-022] Scout contínuo de datasets com potencial comercial",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
           "owner": "scout-datasets",
           "project": "Governança Multiagente",
           "mode": "AUTO",
