@@ -1,36 +1,45 @@
 {
-  "updatedAt": "2026-02-25T12:05:00Z",
+  "updatedAt": "2026-02-25T12:35:00Z",
   "columns": [
     {
       "id": "to-review",
       "title": "TO REVIEW",
       "tasks": [
         {
-          "title": "Rotacionar token GitHub após validação inicial",
-          "description": "Revogar token atual e aplicar novo token com escopo mínimo por segurança.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
+          "title": "Implementar KPI de SLA humano no dashboard",
+          "description": "Adicionar visual de SLA alvo x realizado para tarefas HUMAN.",
+          "owner": "Architect-tech",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
           "priority": "Média",
-          "status": "Aguardando execução",
-          "runbookSteps": [
-            "Revogar token atual no GitHub.",
-            "Gerar novo token fine-grained com escopo mínimo.",
-            "Enviar novo token para atualização no gateway.",
-            "Revalidar criação automática e push em repo teste."
-          ],
-          "expectedEvidence": [
-            "Token antigo revogado",
-            "Novo token ativo",
-            "Teste automático aprovado"
-          ]
+          "status": "Aguardando execução"
         }
       ]
     },
     {
       "id": "authorized",
       "title": "AUTHORIZED",
-      "tasks": []
+      "tasks": [
+        {
+          "title": "Consolidar baseline de SLA para tarefas HUMAN",
+          "description": "Definir e aprovar SLA por tipo de atividade humana.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Média",
+          "status": "Pronto para execução",
+          "runbookSteps": [
+            "Definir SLA por tipo (revisão, execução, desbloqueio).",
+            "Validar capacidade da equipe humana.",
+            "Aprovar metas de SLA.",
+            "Registrar no board e PDCA."
+          ],
+          "expectedEvidence": [
+            "Tabela de SLA aprovada",
+            "Registro em board/PDCA"
+          ]
+        }
+      ]
     },
     {
       "id": "in-progress",
@@ -72,6 +81,15 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
+          "status": "Concluído"
+        },
+        {
+          "title": "Decisão de rotação de token",
+          "description": "Risco aceito pelo responsável: manter token atual por ora.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Baixa",
           "status": "Concluído"
         },
         {
