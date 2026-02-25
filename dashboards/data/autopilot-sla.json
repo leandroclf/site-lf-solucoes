@@ -1,19 +1,19 @@
 {
-  "updatedAt": "2026-02-25T14:18:00Z",
+  "updatedAt": "2026-02-25T15:00:40Z",
   "window": {
     "kind": "rolling-24h",
-    "start": "2026-02-24T13:51:00Z",
-    "end": "2026-02-25T13:51:00Z"
+    "start": "2026-02-24T15:00:40Z",
+    "end": "2026-02-25T15:00:40Z"
   },
   "job": {
     "name": "Autopilot sequential delivery cycle",
     "id": "25d0fcc7-c72a-4e8f-be0d-0819865a3560"
   },
   "kpis": {
-    "cycleCompletionPct": 100,
-    "avgCycleDurationMinutes": 34.1,
-    "cyclesRun": 2,
-    "cyclesCompleted": 2,
+    "cycleCompletionPct": 100.0,
+    "avgCycleDurationMinutes": 0.61,
+    "cyclesRun": 5,
+    "cyclesCompleted": 5,
     "cyclesInterrupted": 0,
     "humanInterventionCount": 0
   },
@@ -27,5 +27,9 @@
       "status",
       "blockerType"
     ]
-  }
+  },
+  "notes": [
+    "Rolling-24h calculado com base no histórico de ciclos.",
+    "Média de duração calculada diretamente de durationMs."
+  ]
 }

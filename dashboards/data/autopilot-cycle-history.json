@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T14:18:00Z",
+  "updatedAt": "2026-02-25T15:00:40Z",
   "cycles": [
     {
       "cycleId": "2026-02-25T13:37:00Z",
@@ -14,6 +14,30 @@
       "startedAt": "2026-02-25T13:38:00Z",
       "endedAt": "2026-02-25T13:38:34Z",
       "durationMs": 34100,
+      "status": "SUCESSO",
+      "blockerType": "NONE"
+    },
+    {
+      "cycleId": "2026-02-25T14:54:00Z",
+      "startedAt": "2026-02-25T14:54:00Z",
+      "endedAt": "2026-02-25T14:54:36Z",
+      "durationMs": 36000,
+      "status": "SUCESSO",
+      "blockerType": "NONE"
+    },
+    {
+      "cycleId": "2026-02-25T14:56:00Z",
+      "startedAt": "2026-02-25T14:56:00Z",
+      "endedAt": "2026-02-25T14:56:38Z",
+      "durationMs": 38000,
+      "status": "SUCESSO",
+      "blockerType": "NONE"
+    },
+    {
+      "cycleId": "2026-02-25T15:00:00Z",
+      "startedAt": "2026-02-25T15:00:00Z",
+      "endedAt": "2026-02-25T15:00:40Z",
+      "durationMs": 40000,
       "status": "SUCESSO",
       "blockerType": "NONE"
     }
