@@ -558,7 +558,58 @@ function computeFlowFromHistory(historyActivities) {
   const reopenedSum = doneHuman.reduce((s, a) => s + Number(a.reopened || 0), 0);
   const reworkPct = doneHuman.length ? (reopenedSum / doneHuman.length) * 100 : 0;
 
-  return { leadAvg, throughput7d, reworkPct };
+  const blockedAvg = doneHuman.length
+    ? doneHuman.reduce((s, a) => s + Number(a.blockedHours || 0), 0) / doneHuman.length
+    : 0;
+
+  return { leadAvg, throughput7d, reworkPct, blockedAvg, doneHuman };
+}
+
+function computeHumanRisk(historyActivities) {
+  const now = Date.now();
+  const human = (historyActivities || []).filter((a) => a.mode === 'HUMAN');
+  const openHuman = human.filter((a) => a.status === 'open' && a.createdAt);
+  const doneHuman = human.filter((a) => a.status === 'done' && a.createdAt && a.completedAt);
+
+  // Fator 1: proximidade de SLA (0-100)
+  const nearSlaCount = openHuman.filter((a) => {
+    const elapsed = (now - new Date(a.createdAt).getTime()) / 36e5;
+    const ratio = Number(a.slaHours || 1) > 0 ? elapsed / Number(a.slaHours) : 0;
+    return ratio >= 0.8;
+  }).length;
+  const f1 = openHuman.length ? (nearSlaCount / openHuman.length) * 100 : 0;
+
+  // Fator 2: volume aberto acima da média diária histórica (últimos 14d)
+  const cutoff14 = now - (14 * 24 * 36e5);
+  const done14 = doneHuman.filter((a) => new Date(a.completedAt).getTime() >= cutoff14).length;
+  const avgPerDay = done14 / 14;
+  const volumeRatio = avgPerDay > 0 ? openHuman.length / avgPerDay : openHuman.length;
+  const f2 = Math.min(100, Math.max(0, (volumeRatio - 1) * 100));
+
+  // Fator 3: concentração crítica (prioridade alta em aberto)
+  const criticalOpen = openHuman.filter((a) => String(a.priority || '').toLowerCase() === 'alta').length;
+  const f3 = openHuman.length ? (criticalOpen / openHuman.length) * 100 : 0;
+
+  // Fator 4: reincidência de incidentes (reaberturas)
+  const reopenedSum = doneHuman.reduce((s, a) => s + Number(a.reopened || 0), 0);
+  const f4 = doneHuman.length ? Math.min(100, (reopenedSum / doneHuman.length) * 100) : 0;
+
+  const score = Math.round((0.30 * f1) + (0.25 * f2) + (0.25 * f3) + (0.20 * f4));
+
+  // tendência simples: comparar 7d recente vs 7d anterior (lead time)
+  const recentCut = now - (7 * 24 * 36e5);
+  const prevCut = now - (14 * 24 * 36e5);
+  const recent = doneHuman.filter((a) => new Date(a.completedAt).getTime() >= recentCut);
+  const previous = doneHuman.filter((a) => {
+    const t = new Date(a.completedAt).getTime();
+    return t >= prevCut && t < recentCut;
+  });
+  const avg = (arr) => arr.length ? arr.reduce((s, a) => s + ((new Date(a.completedAt) - new Date(a.createdAt)) / 36e5), 0) / arr.length : 0;
+  const recentAvg = avg(recent);
+  const prevAvg = avg(previous);
+  const trend = prevAvg > 0 && recentAvg > prevAvg * 1.1 ? 'degrading' : (recentAvg > 0 ? 'stable' : 'insufficient-data');
+
+  return { score, trend, factors: { f1, f2, f3, f4 } };
 }
 
 async function loadOpsAnalytics() {
@@ -581,14 +632,15 @@ async function loadOpsAnalytics() {
     document.getElementById('ops-throughput').textContent = `${flow.throughput7d || 0}/7d`;
     document.getElementById('ops-rework').textContent = `${Number(flow.reworkPct || 0).toFixed(1)}%`;
 
-    document.getElementById('ops-risk-score').textContent = `${data.diagnostic?.humanRiskScore || 0}/100`;
-    document.getElementById('ops-risk-trend').textContent = `Tendência: ${data.diagnostic?.humanRiskTrend || 'n/d'}`;
+    const risk = computeHumanRisk(history.activities || []);
+    document.getElementById('ops-risk-score').textContent = `${risk.score}/100`;
+    document.getElementById('ops-risk-trend').textContent = `Tendência: ${risk.trend}`;
 
     document.getElementById('ops-cognitive').textContent = `${data.diagnostic?.cognitiveLoad?.weightedEffortTotal || 0} pts`;
-    const doneHuman = (history.activities || []).filter((a) => a.mode === 'HUMAN' && a.status === 'done');
+    const doneHuman = flow.doneHuman || [];
     const reopenedAny = doneHuman.filter((a) => Number(a.reopened || 0) > 0).length;
     const reopenRate = doneHuman.length ? (reopenedAny / doneHuman.length) * 100 : 0;
-    document.getElementById('ops-quality').textContent = `${reopenRate.toFixed(1)}% reopen`;
+    document.getElementById('ops-quality').textContent = `${reopenRate.toFixed(1)}% reopen | bloqueio médio ${flow.blockedAvg.toFixed(1)}h`;
 
     const target = Number(data.sla?.targetWeeklyPct || 85);
     const computed = computeSlaFromHistory(history.activities || [], target);
@@ -600,8 +652,12 @@ async function loadOpsAnalytics() {
 
     const alertsEl = document.getElementById('ops-predictive-alerts');
     const alerts = data.predictive?.alerts || [];
+    const predictiveDerived = [];
+    if (risk.score >= 70) predictiveDerived.push('Risco humano composto alto (>=70): revisar capacidade e WIP imediatamente.');
+    else if (risk.score >= 40) predictiveDerived.push('Risco humano composto moderado (>=40): monitorar SLA e reduzir carga crítica.');
+    if (flow.leadAvg > 24) predictiveDerived.push('Lead time médio acima de 24h: revisar gargalos de aprovação e validação.');
     const corrective = data.sla?.correctiveRule ? [`Regra corretiva: ${data.sla.correctiveRule}`] : [];
-    const merged = [...alerts, ...corrective];
+    const merged = [...alerts, ...predictiveDerived, ...corrective];
     alertsEl.innerHTML = merged.length
       ? merged.map((a) => `<li>${a}</li>`).join('')
       : '<li>Sem alertas preditivos no momento.</li>';
