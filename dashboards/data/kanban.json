@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T16:16:00Z",
+  "updatedAt": "2026-02-25T16:21:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -12,24 +12,6 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "A revisar"
-        },
-        {
-          "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
-          "description": "Instrumentar jornada descoberta->qualificação->proposta->fechamento com 1 KPI norte por ICP.",
-          "owner": "Strategist-product + Growth-sales",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "A revisar"
-        },
-        {
-          "title": "[ISSUE-009] Product accountability por responsável",
-          "description": "Exigir métrica de impacto por ISSUE antes de DONE.",
-          "owner": "Reviewer-delivery + Strategist-product",
-          "project": "Governança Multiagente",
-          "mode": "AUTO",
-          "priority": "Média",
           "status": "A revisar"
         },
         {
@@ -108,6 +90,24 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
+          "status": "Autorizado"
+        },
+        {
+          "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
+          "description": "Gate PASS com plano de 7 dias para instrumentar funil e JTBD por ICP. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard.",
+          "owner": "Strategist-product + Growth-sales",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Autorizado"
+        },
+        {
+          "title": "[ISSUE-009] Product accountability por responsável",
+          "description": "Gate PASS com plano de 7 dias para scorecard e gate de produto antes de DONE. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues.",
+          "owner": "Reviewer-delivery + Strategist-product",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
           "status": "Autorizado"
         }
       ]
