@@ -1,7 +1,7 @@
 {
-  "lastUpdatedAt": "2026-02-25T11:20:00Z",
-  "lastStatus": "red",
-  "consecutiveRed": 1,
-  "lastReason": "Item HUMAN em bloqueio ativo por runbook incompleto/aceite mensurável não definido/validação de fonte-licença pendente; board com status BLOQUEADO.",
+  "lastUpdatedAt": "2026-02-25T15:05:00Z",
+  "lastStatus": "green",
+  "consecutiveRed": 0,
+  "lastReason": "Sem bloqueios críticos ativos; atividade HUMAN com runbook completo e gate liberado.",
   "lastAlertAt": null
 }
