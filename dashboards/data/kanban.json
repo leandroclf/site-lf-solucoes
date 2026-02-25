@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T16:22:00Z",
+  "updatedAt": "2026-02-25T16:30:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -94,7 +94,7 @@
         },
         {
           "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
-          "description": "Gate PASS com plano de 7 dias para instrumentar funil e JTBD por ICP. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard.",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard.",
           "owner": "Strategist-product + Growth-sales",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -103,7 +103,7 @@
         },
         {
           "title": "[ISSUE-009] Product accountability por responsável",
-          "description": "Gate PASS com plano de 7 dias para scorecard e gate de produto antes de DONE. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues.",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues.",
           "owner": "Reviewer-delivery + Strategist-product",
           "project": "Governança Multiagente",
           "mode": "AUTO",
