@@ -223,6 +223,22 @@ li { margin: 6px 0; }
 .bar-row { display: grid; grid-template-columns: 120px 1fr 30px; gap: 8px; align-items: center; }
 .bar { height: 10px; border-radius: 999px; background: #2f4d83; }
 
+.traffic-wrap {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.traffic-dot {
+  width: 14px;
+  height: 14px;
+  border-radius: 999px;
+  display: inline-block;
+}
+.traffic-green { background: #10b981; box-shadow: 0 0 0 4px rgba(16,185,129,.18); }
+.traffic-yellow { background: #f59e0b; box-shadow: 0 0 0 4px rgba(245,158,11,.18); }
+.traffic-red { background: #ef4444; box-shadow: 0 0 0 4px rgba(239,68,68,.18); }
+
 .actions-row {
   margin-top: 10px;
   display: flex;

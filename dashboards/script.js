@@ -145,6 +145,37 @@ function updateMetrics(tasks) {
   const blockedMetric = document.getElementById('metric-blocked');
   if (humanMetric) humanMetric.textContent = String(humanTasks.length);
   if (blockedMetric) blockedMetric.textContent = String(blockedHuman.length);
+
+  updateTrafficLight(tasks, humanTasks.length, blockedHuman.length);
+}
+
+function updateTrafficLight(tasks, humanCount, blockedCount) {
+  const dot = document.getElementById('traffic-dot');
+  const label = document.getElementById('traffic-label');
+  const reason = document.getElementById('traffic-reason');
+  if (!dot || !label || !reason) return;
+
+  const overdue = tasks.filter((t) => String(t.status || '').toLowerCase().includes('atras')).length;
+
+  dot.classList.remove('traffic-green', 'traffic-yellow', 'traffic-red');
+
+  if (blockedCount > 0 || overdue > 0) {
+    dot.classList.add('traffic-red');
+    label.textContent = 'Vermelho — Atenção imediata';
+    reason.textContent = `Bloqueios HUMAN: ${blockedCount} | Itens atrasados: ${overdue}`;
+    return;
+  }
+
+  if (humanCount >= 3) {
+    dot.classList.add('traffic-yellow');
+    label.textContent = 'Amarelo — Monitorar capacidade';
+    reason.textContent = `Pendências HUMAN altas (${humanCount}). Recomenda-se priorizar desbloqueio.`;
+    return;
+  }
+
+  dot.classList.add('traffic-green');
+  label.textContent = 'Verde — Operação saudável';
+  reason.textContent = 'Sem bloqueios críticos no filtro atual.';
 }
 
 function renderKanban(data) {
