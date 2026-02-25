@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T13:50:00Z",
+  "updatedAt": "2026-02-25T14:06:00Z",
   "program": {
     "name": "Programa de Governança Multiagente + Entrega Comercial",
     "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
@@ -11,18 +11,86 @@
     ]
   },
   "projects": [
-    {"name":"OpenClaw Workspace Governance","repo":"https://github.com/leandroclf/openclaw-workspace","status":"Ativo"},
-    {"name":"Site LF Soluções + Dashboard Operacional","repo":"https://github.com/leandroclf/site-lf-solucoes","status":"Ativo","publicUrl":"https://leandroclf.github.io/site-lf-solucoes/","dashboardUrl":"https://leandroclf.github.io/site-lf-solucoes/dashboards/"},
-    {"name":"Vehicle Tracking Hardening","repo":"https://github.com/leandroclf/vehicle-tracking","status":"Em manutenção"},
-    {"name":"GitHub Automation Test","repo":"https://github.com/leandroclf/lf-repo-autotest","status":"Concluído (validação)"}
+    {
+      "name": "OpenClaw Workspace Governance",
+      "repo": "https://github.com/leandroclf/openclaw-workspace",
+      "status": "Ativo"
+    },
+    {
+      "name": "Site LF Soluções + Dashboard Operacional",
+      "repo": "https://github.com/leandroclf/site-lf-solucoes",
+      "status": "Ativo",
+      "publicUrl": "https://leandroclf.github.io/site-lf-solucoes/",
+      "dashboardUrl": "https://leandroclf.github.io/site-lf-solucoes/dashboards/"
+    },
+    {
+      "name": "Vehicle Tracking Hardening",
+      "repo": "https://github.com/leandroclf/vehicle-tracking",
+      "status": "Em manutenção"
+    },
+    {
+      "name": "GitHub Automation Test",
+      "repo": "https://github.com/leandroclf/lf-repo-autotest",
+      "status": "Concluído (validação)"
+    },
+    {
+      "name": "OpenAlex Enrichment MVP",
+      "repo": "https://github.com/leandroclf/lf-openalex-enrichment-mvp",
+      "status": "Ativo (bootstrap)",
+      "issue": "ISSUE-001"
+    },
+    {
+      "name": "Wikidata Entity Graph",
+      "repo": "https://github.com/leandroclf/lf-wikidata-entity-graph",
+      "status": "Ativo (bootstrap)",
+      "issue": "ISSUE-002"
+    },
+    {
+      "name": "World Bank Risk Pricing",
+      "repo": "https://github.com/leandroclf/lf-worldbank-risk-pricing",
+      "status": "Ativo (bootstrap)",
+      "issue": "ISSUE-003"
+    }
   ],
   "team": {
-    "roles": ["scout-datasets","validator-license","strategist-product","architect-tech","builder-repo","planner-issues","reviewer-delivery","growth-sales","finance-ops","team-evolution-governor","orchestrator"],
-    "precedence": ["Segurança/compliance","Negócio/receita","Viabilidade técnica/risco","Execução/entrega","Evolução de equipe"]
+    "roles": [
+      "scout-datasets",
+      "validator-license",
+      "strategist-product",
+      "architect-tech",
+      "builder-repo",
+      "planner-issues",
+      "reviewer-delivery",
+      "growth-sales",
+      "finance-ops",
+      "team-evolution-governor",
+      "orchestrator"
+    ],
+    "precedence": [
+      "Segurança/compliance",
+      "Negócio/receita",
+      "Viabilidade técnica/risco",
+      "Execução/entrega",
+      "Evolução de equipe"
+    ]
   },
   "automation": {
-    "daily": ["11:00 dataset scout","20:00 decisão e backlog","20:20 gate reviewer-delivery","20:40 controle HUMAN","21:00 team evolution review","21:20 sync dashboard","21:30 resumo executivo","21:35 alerta semáforo"],
-    "weekly": ["Seg 12:00 KPI/risk review","Seg 13:00 PDCA","Seg 13:30 staffing decision","Seg 14:00 skills coherence review"]
+    "daily": [
+      "11:00 dataset scout",
+      "20:00 decisão e backlog",
+      "20:20 gate reviewer-delivery",
+      "20:40 controle HUMAN",
+      "21:00 team evolution review",
+      "21:20 sync dashboard",
+      "21:30 resumo executivo",
+      "21:35 alerta semáforo"
+    ],
+    "weekly": [
+      "Seg 12:00 KPI/risk review",
+      "Seg 13:00 PDCA",
+      "Seg 13:30 staffing decision",
+      "Seg 14:00 skills coherence review"
+    ]
   },
   "handoffChecklist": [
     "Abrir dashboard e validar semáforo + pendências HUMAN",

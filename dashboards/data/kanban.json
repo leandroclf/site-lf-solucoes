@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T13:03:00Z",
+  "updatedAt": "2026-02-25T14:06:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -12,7 +12,7 @@
       "tasks": [
         {
           "title": "[ISSUE-001] MVP de Enrichment B2B com OpenAlex",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%.",
+          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%. Repo: https://github.com/leandroclf/lf-openalex-enrichment-mvp",
           "owner": "Builder-repo",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -21,7 +21,7 @@
         },
         {
           "title": "[ISSUE-002] Grafo de entidades com Wikidata para normalização e matching",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de precisão de matching +25% no piloto.",
+          "description": "Gate PASS (CC0) e aceite PASS com meta de precisão de matching +25% no piloto. Repo: https://github.com/leandroclf/lf-wikidata-entity-graph",
           "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -30,7 +30,7 @@
         },
         {
           "title": "[ISSUE-003] Módulo de risco-país e pricing regional com World Bank",
-          "description": "Gate PASS (CC BY 4.0) e aceite PASS com score regional via API para 2 propostas piloto.",
+          "description": "Gate PASS (CC BY 4.0) e aceite PASS com score regional via API para 2 propostas piloto. Repo: https://github.com/leandroclf/lf-worldbank-risk-pricing",
           "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",

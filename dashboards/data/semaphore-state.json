@@ -1,7 +1,7 @@
 {
-  "lastUpdatedAt": "2026-02-25T12:57:00Z",
+  "lastUpdatedAt": "2026-02-25T14:02:00Z",
   "lastStatus": "green",
   "consecutiveRed": 0,
-  "lastReason": "Sem itens HUMAN sem runbook/sem responsável/atrasados e sem itens com atraso/bloqueio no board.",
+  "lastReason": "Ciclo sequencial (14:02 UTC) concluído sem impedimentos objetivos: sem erro técnico, sem bloqueio de compliance/licença e sem dados críticos ausentes.",
   "lastAlertAt": null
 }
