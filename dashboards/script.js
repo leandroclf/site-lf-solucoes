@@ -1,4 +1,5 @@
 let kanbanData = null;
+const AUTO_REFRESH_MS = 180000;
 
 function priorityClass(priority) {
   if (priority === 'Alta') return 'priority-high';
@@ -10,10 +11,60 @@ function normalize(text) {
   return String(text || '').toLowerCase();
 }
 
-function matchesSearch(task, searchTerm) {
-  if (!searchTerm) return true;
-  const haystack = `${task.title || ''} ${task.description || ''} ${task.owner || ''} ${task.status || ''} ${task.project || ''} ${task.mode || ''}`.toLowerCase();
-  return haystack.includes(searchTerm);
+function getFilters() {
+  return {
+    owner: document.getElementById('filter-owner').value,
+    project: document.getElementById('filter-project').value,
+    mode: document.getElementById('filter-mode').value,
+    priority: document.getElementById('filter-priority').value,
+    search: document.getElementById('filter-search').value.trim(),
+  };
+}
+
+function applyFiltersFromURL() {
+  const params = new URLSearchParams(window.location.search);
+  const map = {
+    owner: 'filter-owner',
+    project: 'filter-project',
+    mode: 'filter-mode',
+    priority: 'filter-priority',
+    search: 'filter-search',
+  };
+
+  for (const [key, elId] of Object.entries(map)) {
+    const val = params.get(key);
+    if (val !== null) {
+      const el = document.getElementById(elId);
+      if (el) el.value = val;
+    }
+  }
+}
+
+function persistFiltersToURL() {
+  const filters = getFilters();
+  const params = new URLSearchParams();
+
+  Object.entries(filters).forEach(([k, v]) => {
+    if (v) params.set(k, v);
+  });
+
+  const newUrl = `${window.location.pathname}${params.toString() ? `?${params}` : ''}`;
+  window.history.replaceState({}, '', newUrl);
+}
+
+function filterTasks(tasks) {
+  const { owner, project, mode, priority, search } = getFilters();
+  const searchTerm = normalize(search);
+
+  return tasks.filter((task) => {
+    const ownerOk = !owner || task.owner === owner;
+    const projectOk = !project || task.project === project;
+    const modeOk = !mode || task.mode === mode;
+    const priorityOk = !priority || task.priority === priority;
+    const haystack = `${task.title || ''} ${task.description || ''} ${task.owner || ''} ${task.status || ''} ${task.project || ''} ${task.mode || ''}`.toLowerCase();
+    const searchOk = !searchTerm || haystack.includes(searchTerm);
+    return ownerOk && projectOk && modeOk && priorityOk && searchOk;
+  });
 }
 
 function pct(part, total) {
@@ -38,10 +89,7 @@ function renderOwnerBars(tasks) {
     owners[t.owner || 'Sem responsável'] = (owners[t.owner || 'Sem responsável'] || 0) + 1;
   });
 
-  const top = Object.entries(owners)
-    .sort((a, b) => b[1] - a[1])
-    .slice(0, 4);
-
+  const top = Object.entries(owners).sort((a, b) => b[1] - a[1]).slice(0, 4);
   const max = top.length ? top[0][1] : 1;
   const target = document.getElementById('chart-owners');
   target.innerHTML = '';
@@ -102,26 +150,13 @@ function updateMetrics(tasks) {
 function renderKanban(data) {
   const board = document.getElementById('kanban-board');
   const summary = document.getElementById('kanban-summary');
-  const ownerFilter = document.getElementById('filter-owner').value;
-  const projectFilter = document.getElementById('filter-project').value;
-  const modeFilter = document.getElementById('filter-mode').value;
-  const priorityFilter = document.getElementById('filter-priority').value;
-  const searchTerm = normalize(document.getElementById('filter-search').value.trim());
-
   board.innerHTML = '';
 
   let totalShown = 0;
   const shownTasks = [];
 
   for (const column of data.columns || []) {
-    const tasks = (column.tasks || []).filter((task) => {
-      const ownerOk = !ownerFilter || task.owner === ownerFilter;
-      const projectOk = !projectFilter || task.project === projectFilter;
-      const modeOk = !modeFilter || task.mode === modeFilter;
-      const priorityOk = !priorityFilter || task.priority === priorityFilter;
-      const searchOk = matchesSearch(task, searchTerm);
-      return ownerOk && projectOk && modeOk && priorityOk && searchOk;
-    });
+    const tasks = filterTasks(column.tasks || []);
 
     shownTasks.push(...tasks);
     totalShown += tasks.length;
@@ -181,6 +216,7 @@ function renderKanban(data) {
   summary.textContent = `Resumo: ${totalShown} atividade(s) visível(is) no filtro atual.`;
   renderCharts(shownTasks);
   updateMetrics(shownTasks);
+  persistFiltersToURL();
 }
 
 function populateSelect(data, selectId, valueSelector) {
@@ -211,6 +247,33 @@ function clearFilters() {
   if (kanbanData) renderKanban(kanbanData);
 }
 
+function downloadWeeklyReport() {
+  if (!kanbanData) return;
+  const lines = [];
+  lines.push('LF Soluções - Resumo Semanal de Atividades');
+  lines.push(`Gerado em UTC: ${new Date().toISOString()}`);
+  lines.push('');
+
+  for (const col of kanbanData.columns || []) {
+    const tasks = filterTasks(col.tasks || []);
+    lines.push(`## ${col.title} (${tasks.length})`);
+    tasks.forEach((t, i) => {
+      lines.push(`${i + 1}. ${t.title}`);
+      lines.push(`   Projeto: ${t.project || '-'} | Responsável: ${t.owner || '-'} | Modo: ${t.mode || '-'} | Prioridade: ${t.priority || 'Baixa'} | Status: ${t.status || '-'}`);
+    });
+    if (!tasks.length) lines.push('   (Sem itens no filtro atual)');
+    lines.push('');
+  }
+
+  const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
+  const url = URL.createObjectURL(blob);
+  const a = document.createElement('a');
+  a.href = url;
+  a.download = `resumo-semanal-kanban-${new Date().toISOString().slice(0, 10)}.txt`;
+  a.click();
+  URL.revokeObjectURL(url);
+}
+
 async function loadKanban() {
   const board = document.getElementById('kanban-board');
   const stamp = document.getElementById('kanban-updated-at');
@@ -219,9 +282,16 @@ async function loadKanban() {
     const response = await fetch('./data/kanban.json', { cache: 'no-store' });
     if (!response.ok) throw new Error('Falha ao carregar kanban.json');
 
-    kanbanData = await response.json();
-    populateSelect(kanbanData, 'filter-owner', (task) => task.owner);
-    populateSelect(kanbanData, 'filter-project', (task) => task.project);
+    const incoming = await response.json();
+    const firstLoad = !kanbanData;
+    kanbanData = incoming;
+
+    if (firstLoad) {
+      populateSelect(kanbanData, 'filter-owner', (task) => task.owner);
+      populateSelect(kanbanData, 'filter-project', (task) => task.project);
+      applyFiltersFromURL();
+    }
+
     renderKanban(kanbanData);
 
     if (kanbanData.updatedAt) {
@@ -236,20 +306,10 @@ async function loadKanban() {
   }
 }
 
-document.getElementById('filter-owner').addEventListener('change', () => {
-  if (kanbanData) renderKanban(kanbanData);
-});
-
-document.getElementById('filter-project').addEventListener('change', () => {
-  if (kanbanData) renderKanban(kanbanData);
-});
-
-document.getElementById('filter-mode').addEventListener('change', () => {
-  if (kanbanData) renderKanban(kanbanData);
-});
-
-document.getElementById('filter-priority').addEventListener('change', () => {
-  if (kanbanData) renderKanban(kanbanData);
+['filter-owner', 'filter-project', 'filter-mode', 'filter-priority'].forEach((id) => {
+  document.getElementById(id).addEventListener('change', () => {
+    if (kanbanData) renderKanban(kanbanData);
+  });
 });
 
 document.getElementById('filter-search').addEventListener('input', () => {
@@ -257,5 +317,9 @@ document.getElementById('filter-search').addEventListener('input', () => {
 });
 
 document.getElementById('clear-filters').addEventListener('click', clearFilters);
+document.getElementById('download-weekly-report').addEventListener('click', downloadWeeklyReport);
+
+document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo (a cada ${Math.round(AUTO_REFRESH_MS / 60000)} min)`;
 
 loadKanban();
+setInterval(loadKanban, AUTO_REFRESH_MS);

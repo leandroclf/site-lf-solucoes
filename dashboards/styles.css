@@ -223,6 +223,13 @@ li { margin: 6px 0; }
 .bar-row { display: grid; grid-template-columns: 120px 1fr 30px; gap: 8px; align-items: center; }
 .bar { height: 10px; border-radius: 999px; background: #2f4d83; }
 
+.actions-row {
+  margin-top: 10px;
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+}
+
 @media (max-width: 900px) {
   .metrics, .two, .mini-grid { grid-template-columns: 1fr; }
 }
