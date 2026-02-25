@@ -826,6 +826,67 @@ async function loadHumanDecisionSla() {
   }
 }
 
+async function loadDashboardFreshness() {
+  const summaryEl = document.getElementById('freshness-summary');
+  const listEl = document.getElementById('freshness-list');
+  const cardEl = document.getElementById('freshness-card');
+  if (!summaryEl || !listEl) return;
+
+  const sources = [
+    { label: 'Kanban', path: './data/kanban.json' },
+    { label: 'Handoff', path: './data/handoff.json' },
+    { label: 'Deploy status', path: './data/deploy-status.json' },
+    { label: 'Autopilot SLA', path: './data/autopilot-sla.json' },
+  ];
+
+  try {
+    const now = Date.now();
+    const results = [];
+
+    for (const src of sources) {
+      try {
+        const res = await fetch(src.path, { cache: 'no-store' });
+        if (!res.ok) throw new Error('falha HTTP');
+        const data = await res.json();
+        const updatedAt = data.updatedAt ? new Date(data.updatedAt).getTime() : null;
+        const ageMin = updatedAt ? (now - updatedAt) / 60000 : null;
+
+        let status = 'green';
+        if (ageMin === null || ageMin > 240) status = 'red';
+        else if (ageMin > 90) status = 'yellow';
+
+        results.push({ label: src.label, ageMin, status });
+      } catch {
+        results.push({ label: src.label, ageMin: null, status: 'red' });
+      }
+    }
+
+    const red = results.filter((r) => r.status === 'red').length;
+    const yellow = results.filter((r) => r.status === 'yellow').length;
+
+    summaryEl.textContent = `Fontes: ${results.length} | Red: ${red} | Yellow: ${yellow}`;
+    listEl.innerHTML = results.map((r) => {
+      const dot = r.status === 'red' ? '🔴' : (r.status === 'yellow' ? '🟡' : '🟢');
+      const age = r.ageMin === null ? 'n/d' : `${r.ageMin.toFixed(1)} min`;
+      return `<li><strong>${dot} ${r.label}</strong> — idade: ${age}</li>`;
+    }).join('');
+
+    if (cardEl) {
+      cardEl.classList.remove('sla-green', 'sla-yellow', 'sla-red');
+      if (red > 0) cardEl.classList.add('sla-red');
+      else if (yellow > 0) cardEl.classList.add('sla-yellow');
+      else cardEl.classList.add('sla-green');
+    }
+  } catch {
+    summaryEl.textContent = 'Erro ao calcular confiabilidade.';
+    listEl.innerHTML = '<li>Falha ao ler fontes de dados.</li>';
+    if (cardEl) {
+      cardEl.classList.remove('sla-green', 'sla-yellow');
+      cardEl.classList.add('sla-red');
+    }
+  }
+}
+
 function downloadHandoff() {
   const data = window.__handoffData;
   if (!data) return;
@@ -888,6 +949,7 @@ loadOpsAnalytics();
 loadAutopilotSla();
 loadDeployStatus();
 loadHumanDecisionSla();
+loadDashboardFreshness();
 setInterval(() => {
   loadKanban();
   loadSemaphoreState();
@@ -896,4 +958,5 @@ setInterval(() => {
   loadAutopilotSla();
   loadDeployStatus();
   loadHumanDecisionSla();
+  loadDashboardFreshness();
 }, AUTO_REFRESH_MS);
