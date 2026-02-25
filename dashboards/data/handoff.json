@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T19:31:08Z",
+  "updatedAt": "2026-02-25T21:01:04Z",
   "program": {
     "name": "Programa de Governança Multiagente + Entrega Comercial",
     "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
@@ -231,6 +231,27 @@
       "items": [
         "ISSUE-003: contrato v1 da Risk Score API publicado com gate de PR.",
         "Linkagem de KPI de valor consolidada para issues 001/002/003/008/009."
+      ]
+    },
+    {
+      "at": "2026-02-25T20:01:06Z",
+      "items": [
+        "ISSUE-001: template de benchmark de cobertura KPI publicado para PR readiness.",
+        "ISSUE-003: template de evidência de propostas piloto publicado."
+      ]
+    },
+    {
+      "at": "2026-02-25T20:31:05Z",
+      "items": [
+        "ISSUE-002: template de descrição de PR publicado (GitFlow + KPI).",
+        "ISSUE-008: outline de síntese semanal JTBD publicado."
+      ]
+    },
+    {
+      "at": "2026-02-25T21:01:04Z",
+      "items": [
+        "ISSUE-001: test checklist de PR publicado.",
+        "ISSUE-009: backlog closure de decisões de produto publicado."
       ]
     }
   ],

@@ -1,6 +1,6 @@
 # Deploy Status Snapshot
 
-Atualizado em: 2026-02-25T19:04:09.874039Z
+Atualizado em: 2026-02-25T21:09:55.246256Z
 Semáforo agregado: green
 
 ## lf-openalex-enrichment-mvp
@@ -34,10 +34,10 @@ Semáforo agregado: green
 - Workflow: Deploy static site to GitHub Pages
 - Status: completed | Conclusion: success
 - Branch: main
-- Commit: 7f4a532c1eaa61d89c3044c9ce0ac48d3b2acac1
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/22411093291
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22411093291/logs
-- Updated: 2026-02-25T18:50:31Z
+- Commit: 476168c72811792dd9104bb07fb69deabc265a43
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/22414612612
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22414612612/logs
+- Updated: 2026-02-25T20:28:40Z
 
 ## openclaw-workspace
 - Status: excluído do semáforo (actions-permission-missing)

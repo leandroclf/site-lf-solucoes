@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T19:22:00Z",
+  "updatedAt": "2026-02-25T21:09:29.669377Z",
   "columns": [
     {
       "id": "to-review",
@@ -187,7 +187,7 @@
       "tasks": [
         {
           "title": "[ISSUE-001] MVP de Enrichment B2B com OpenAlex",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%. Repo: https://github.com/leandroclf/lf-openalex-enrichment-mvp Último avanço: https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/6669ce9 | Evidência 19:00 UTC: issue-001-pr-readiness-checklist-2026-02-25.md",
+          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%. Repo: https://github.com/leandroclf/lf-openalex-enrichment-mvp Último avanço: https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/6669ce9 | Evidência 19:00 UTC: issue-001-pr-readiness-checklist-2026-02-25.md | Evidência 20:00 UTC: issue-001-coverage-benchmark-template-2026-02-25.md | Evidência 21:00 UTC: issue-001-test-checklist-2026-02-25-2100.md",
           "owner": "Builder-repo",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -201,7 +201,7 @@
         },
         {
           "title": "[ISSUE-002] Grafo de entidades com Wikidata para normalização e matching",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de precisão de matching +25% no piloto. Repo: https://github.com/leandroclf/lf-wikidata-entity-graph Último avanço: https://github.com/leandroclf/lf-wikidata-entity-graph/commit/e96bdab | Evidência 19:00 UTC: issue-002-entity-matching-test-matrix-2026-02-25.md",
+          "description": "Gate PASS (CC0) e aceite PASS com meta de precisão de matching +25% no piloto. Repo: https://github.com/leandroclf/lf-wikidata-entity-graph Último avanço: https://github.com/leandroclf/lf-wikidata-entity-graph/commit/e96bdab | Evidência 19:00 UTC: issue-002-entity-matching-test-matrix-2026-02-25.md | Evidência 20:30 UTC: issue-002-pr-description-template-2026-02-25.md",
           "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -215,7 +215,7 @@
         },
         {
           "title": "[ISSUE-003] Módulo de risco-país e pricing regional com World Bank",
-          "description": "Gate PASS (CC BY 4.0) e aceite PASS com score regional via API para 2 propostas piloto. Repo: https://github.com/leandroclf/lf-worldbank-risk-pricing Último avanço: https://github.com/leandroclf/lf-worldbank-risk-pricing/commit/3bda706",
+          "description": "Gate PASS (CC BY 4.0) e aceite PASS com score regional via API para 2 propostas piloto. Repo: https://github.com/leandroclf/lf-worldbank-risk-pricing Último avanço: https://github.com/leandroclf/lf-worldbank-risk-pricing/commit/3bda706 | Evidência 19:30 UTC: issue-003-risk-score-api-contract-v1.md | Evidência 20:00 UTC: issue-003-pilot-proposal-evidence-template-2026-02-25.md",
           "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -269,7 +269,7 @@
       "tasks": [
         {
           "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md | Evidência 17:30 UTC: ops/multiagent/research/2026-02-25-jtbd-interview-tracker.csv | Evidência 18:00 UTC: ops/multiagent/research/2026-02-25-jtbd-synthesis-template-v1.md | Evidência 18:30 UTC: ops/multiagent/research/2026-02-25-jtbd-outreach-script-v1.md",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md | Evidência 17:30 UTC: ops/multiagent/research/2026-02-25-jtbd-interview-tracker.csv | Evidência 18:00 UTC: ops/multiagent/research/2026-02-25-jtbd-synthesis-template-v1.md | Evidência 18:30 UTC: ops/multiagent/research/2026-02-25-jtbd-outreach-script-v1.md | Evidência 20:30 UTC: 2026-02-25-jtbd-weekly-synthesis-outline.md",
           "owner": "Strategist-product + Growth-sales",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -285,7 +285,7 @@
         },
         {
           "title": "[ISSUE-009] Product accountability por responsável",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md | Evidência 17:30 UTC: ops/multiagent/delivery/product-decision-log-2026-W09.md | Evidência 18:00 UTC: ops/multiagent/kpis/product-gate-checklist-coverage-2026-W09.md | Evidência 18:30 UTC: ops/multiagent/kpis/product-decision-coverage-daily-2026-02-25-1830.md",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md | Evidência 17:30 UTC: ops/multiagent/delivery/product-decision-log-2026-W09.md | Evidência 18:00 UTC: ops/multiagent/kpis/product-gate-checklist-coverage-2026-W09.md | Evidência 18:30 UTC: ops/multiagent/kpis/product-decision-coverage-daily-2026-02-25-1830.md | Evidência 21:00 UTC: product-decision-backlog-closure-2026-02-25-2100.md",
           "owner": "Reviewer-delivery + Strategist-product",
           "project": "Governança Multiagente",
           "mode": "AUTO",
