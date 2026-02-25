@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T12:59:00Z",
+  "updatedAt": "2026-02-25T13:03:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -68,7 +68,7 @@
       "tasks": [
         {
           "title": "[ISSUE-004] Gate automático de compliance de licença (license_policy.yaml)",
-          "description": "Resultado da suíte PASS (12/12, 0 falsos negativos, 0 falsos positivos). Pendente aceite final de redução de tempo médio de autorização (>=20%) após 2 ciclos, com plano e template GO/HOLD/NO-GO definidos.",
+          "description": "Resultado da suíte PASS (12/12, 0 falsos negativos, 0 falsos positivos). Pendente aceite final de redução de tempo médio de autorização (>=20%) após 2 ciclos; baseline concluído (6.42h) e ciclo 1 ainda sem amostra concluída.",
           "owner": "Validator-license + Builder-repo + Reviewer-delivery",
           "project": "Governança Multiagente",
           "mode": "AUTO",
