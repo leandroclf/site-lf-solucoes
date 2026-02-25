@@ -1,10 +1,21 @@
 {
-  "updatedAt": "2026-02-25T14:25:00Z",
+  "updatedAt": "2026-02-25T11:18:00Z",
   "columns": [
     {
       "id": "to-review",
       "title": "TO REVIEW",
-      "tasks": []
+      "tasks": [
+        {
+          "title": "Revisão quinzenal da meta SLA com base em dados reais",
+          "description": "Gate BLOQUEADO: ICP não explicitado, dataset/licença não validados, critério de aceite mensurável ausente e runbook humano incompleto.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Média",
+          "status": "Bloqueado",
+          "nextStep": "Concluir gate de liberação com runbook completo + critério mensurável + validação de fonte/licença"
+        }
+      ]
     },
     {
       "id": "authorized",
@@ -26,44 +37,8 @@
       "title": "DONE",
       "tasks": [
         {
-          "title": "Aprovação do SLA v1 para tarefas HUMAN",
-          "description": "SLA v1 aprovado: revisão 24h, execução 72h, desbloqueio 24h, escalonamento 8h.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Baixa",
-          "status": "Concluído"
-        },
-        {
-          "title": "Aprovação da coleta SLA v2",
-          "description": "Coleta de tempos reais aprovada explicitamente pelo responsável.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Baixa",
-          "status": "Concluído"
-        },
-        {
-          "title": "Definição da meta mínima de cumprimento semanal do SLA",
-          "description": "Meta definida em 85% com regra de ação corretiva para desvios.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Baixa",
-          "status": "Concluído"
-        },
-        {
-          "title": "Implementar KPI de SLA humano no dashboard (coleta v2)",
-          "description": "Painel com meta semanal e cumprimento real (alvo x realizado).",
-          "owner": "Architect-tech",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Concluído"
-        },
-        {
           "title": "Configuração de credenciais GitHub no Gateway",
-          "description": "GH_TOKEN e GITHUB_TOKEN configurados com restart aplicado.",
+          "description": "Credenciais configuradas e operação estabilizada no gateway.",
           "owner": "Reviewer-delivery",
           "project": "Governança Multiagente",
           "mode": "HUMAN",
@@ -72,7 +47,7 @@
         },
         {
           "title": "Criar repositório de teste automático para validar permissão GitHub API",
-          "description": "Criação automática concluída com commit e push inicial.",
+          "description": "Repositório criado e validado com evidência pública: https://github.com/leandroclf/lf-repo-autotest",
           "owner": "Builder-repo",
           "project": "Governança Multiagente",
           "mode": "AUTO",
@@ -80,12 +55,57 @@
           "status": "Concluído"
         },
         {
-          "title": "Dashboard operacional evoluído com filtros, semáforo e histórico",
-          "description": "Painel web com Kanban, métricas HUMAN, semáforo e tendência semanal de risco.",
+          "title": "Dashboard operacional publicado e evoluído com filtros, semáforo e histórico",
+          "description": "Painel operacional entregue com evolução contínua de visualização e controle.",
           "owner": "Architect-tech",
           "project": "Site LF Soluções",
           "mode": "AUTO",
-          "priority": "Baixa",
+          "priority": "Média",
+          "status": "Concluído"
+        },
+        {
+          "title": "Decisão de rotação de token",
+          "description": "Resultado: manter token atual (risco aceito).",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Média",
+          "status": "Concluído"
+        },
+        {
+          "title": "Aprovação do SLA v1 para tarefas HUMAN",
+          "description": "SLA v1 aprovado para operação HUMAN.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Média",
+          "status": "Concluído"
+        },
+        {
+          "title": "Aprovação da coleta SLA v2",
+          "description": "Coleta v2 aprovada para acompanhamento operacional.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Média",
+          "status": "Concluído"
+        },
+        {
+          "title": "Definição da meta mínima de cumprimento semanal do SLA",
+          "description": "Meta definida em 85% com ação corretiva para desvios.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Média",
+          "status": "Concluído"
+        },
+        {
+          "title": "Implementar KPI de SLA humano no dashboard (coleta v2)",
+          "description": "KPI implementado no painel para monitoramento semanal.",
+          "owner": "Architect-tech",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
           "status": "Concluído"
         }
       ]
