@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T12:35:00Z",
+  "updatedAt": "2026-02-25T12:55:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -21,22 +21,22 @@
       "title": "AUTHORIZED",
       "tasks": [
         {
-          "title": "Consolidar baseline de SLA para tarefas HUMAN",
-          "description": "Definir e aprovar SLA por tipo de atividade humana.",
+          "title": "Aprovar baseline de SLA para tarefas HUMAN",
+          "description": "Autorização explícita necessária para SLA v1 (24h/72h/24h/8h).",
           "owner": "Leandro",
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Média",
-          "status": "Pronto para execução",
+          "status": "Aguardando autorização",
           "runbookSteps": [
-            "Definir SLA por tipo (revisão, execução, desbloqueio).",
-            "Validar capacidade da equipe humana.",
-            "Aprovar metas de SLA.",
-            "Registrar no board e PDCA."
+            "Autorizar SLA v1 no chat com a frase: 'Aprovado SLA v1'.",
+            "Se necessário, enviar ajustes no formato: item -> novo valor.",
+            "Após autorização, validar atualização do board/dashboard/PDCA."
           ],
           "expectedEvidence": [
-            "Tabela de SLA aprovada",
-            "Registro em board/PDCA"
+            "Confirmação explícita no chat",
+            "Board atualizado",
+            "SLA refletido no dashboard"
           ]
         }
       ]
