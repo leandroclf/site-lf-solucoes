@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T16:30:00Z",
+  "updatedAt": "2026-02-25T16:37:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -91,31 +91,32 @@
           "mode": "HUMAN",
           "priority": "Alta",
           "status": "Autorizado"
-        },
-        {
-          "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard.",
-          "owner": "Strategist-product + Growth-sales",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Autorizado"
-        },
-        {
-          "title": "[ISSUE-009] Product accountability por responsável",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues.",
-          "owner": "Reviewer-delivery + Strategist-product",
-          "project": "Governança Multiagente",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Autorizado"
         }
       ]
     },
     {
       "id": "in-progress",
       "title": "IN PROGRESS",
-      "tasks": []
+      "tasks": [
+        {
+          "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace.",
+          "owner": "Strategist-product + Growth-sales",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Em progresso"
+        },
+        {
+          "title": "[ISSUE-009] Product accountability por responsável",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace.",
+          "owner": "Reviewer-delivery + Strategist-product",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Em progresso"
+        }
+      ]
     },
     {
       "id": "validation",
