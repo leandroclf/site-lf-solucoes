@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T16:58:00Z",
+  "updatedAt": "2026-02-25T16:59:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -12,7 +12,12 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "A revisar"
+          "status": "A revisar",
+          "categoryPrimary": "plataforma-infra-qualidade",
+          "categorySupport": [
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "KPI definido no aceite da issue"
         },
         {
           "title": "[ISSUE-010] SLA administrativo por processo interno",
@@ -21,7 +26,10 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Média",
-          "status": "A revisar"
+          "status": "A revisar",
+          "categoryPrimary": "orquestracao-governanca",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
         },
         {
           "title": "[ISSUE-011] Baseline financeiro semanal (MRR/CAC/LTV)",
@@ -33,7 +41,10 @@
           "status": "A revisar",
           "openedAt": "2026-02-25T16:20:00Z",
           "slaDecisionHours": 48,
-          "slaFinalHours": 120
+          "slaFinalHours": 120,
+          "categoryPrimary": "produto-receita",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
         },
         {
           "title": "[ISSUE-012] Matriz jurídica/LGPD por fonte de dados crítica",
@@ -45,7 +56,158 @@
           "status": "A revisar",
           "openedAt": "2026-02-25T16:20:00Z",
           "slaDecisionHours": 48,
-          "slaFinalHours": 120
+          "slaFinalHours": 120,
+          "categoryPrimary": "dados-compliance-juridico",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
+        },
+        {
+          "title": "[ISSUE-013] Backlog de hipóteses de receita por ICP",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "revenue-ops-specialist",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "produto-receita",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Conversão SQL->Proposta (%)"
+        },
+        {
+          "title": "[ISSUE-014] Otimização de custo/performance do pipeline de dados",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "sre-cost-specialist",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "plataforma-infra-qualidade",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Custo por execução (-15%)"
+        },
+        {
+          "title": "[ISSUE-015] Contratos de qualidade de dados por fonte",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "data-quality-steward",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "plataforma-infra-qualidade",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Taxa de completude >95%"
+        },
+        {
+          "title": "[ISSUE-016] Endpoint backend de valor por proposta",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "backend-specialist",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Tempo de resposta <300ms"
+        },
+        {
+          "title": "[ISSUE-017] UX do funil comercial no dashboard",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "ux-ui-designer",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Taxa de uso do painel por analista"
+        },
+        {
+          "title": "[ISSUE-018] Frontend de insight por ICP",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "frontend-specialist",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Tempo para gerar proposta (dias)"
+        },
+        {
+          "title": "[ISSUE-019] Arquitetura-alvo V1 dos 3 componentes",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "solution-architect",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Redução de retrabalho técnico"
+        },
+        {
+          "title": "[ISSUE-020] Planejamento semanal de execução por valor",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "planner-issues",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "orquestracao-governanca",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "% capacidade alocada em itens de receita"
+        },
+        {
+          "title": "[ISSUE-021] Hardening CI/CD com smoke obrigatório pré-merge",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "devops-ci-cd-specialist",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "plataforma-infra-qualidade",
+          "categorySupport": [
+            "produto-receita"
+          ],
+          "valueKpi": "Taxa de sucesso CI >95%"
+        },
+        {
+          "title": "[ISSUE-022] Scout contínuo de datasets com potencial comercial",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "scout-datasets",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "A revisar",
+          "categoryPrimary": "dados-compliance-juridico",
+          "categorySupport": [
+            "produto-receita"
+          ],
+          "valueKpi": "Novas oportunidades qualificadas/semana"
         }
       ]
     },
@@ -60,7 +222,10 @@
           "project": "Site LF Soluções",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "Em desenvolvimento"
+          "status": "Em desenvolvimento",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [],
+          "valueKpi": "+20% cobertura de atributos por lead"
         },
         {
           "title": "[ISSUE-002] Grafo de entidades com Wikidata para normalização e matching",
@@ -69,7 +234,10 @@
           "project": "Site LF Soluções",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "Em desenvolvimento"
+          "status": "Em desenvolvimento",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [],
+          "valueKpi": "+25% precisão de matching"
         },
         {
           "title": "[ISSUE-003] Módulo de risco-país e pricing regional com World Bank",
@@ -78,7 +246,10 @@
           "project": "Site LF Soluções",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "Em desenvolvimento"
+          "status": "Em desenvolvimento",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [],
+          "valueKpi": "2 propostas com score regional ativo"
         },
         {
           "title": "[ISSUE-005] Trilha jurídica de OpenStreetMap (ODbL) para produto comercial",
@@ -87,7 +258,12 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
-          "status": "Autorizado"
+          "status": "Autorizado",
+          "categoryPrimary": "orquestracao-governanca",
+          "categorySupport": [
+            "dados-compliance-juridico"
+          ],
+          "valueKpi": "KPI definido no aceite da issue"
         },
         {
           "title": "[ISSUE-006] Trilha de compliance por fonte no OpenAQ",
@@ -96,7 +272,10 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
-          "status": "Autorizado"
+          "status": "Autorizado",
+          "categoryPrimary": "dados-compliance-juridico",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
         }
       ]
     },
@@ -111,7 +290,10 @@
           "project": "Site LF Soluções",
           "mode": "AUTO",
           "priority": "Média",
-          "status": "Em progresso"
+          "status": "Em progresso",
+          "categoryPrimary": "produto-receita",
+          "categorySupport": [],
+          "valueKpi": "Conversão por ICP no funil"
         },
         {
           "title": "[ISSUE-009] Product accountability por responsável",
@@ -120,7 +302,12 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Média",
-          "status": "Em progresso"
+          "status": "Em progresso",
+          "categoryPrimary": "orquestracao-governanca",
+          "categorySupport": [
+            "produto-receita"
+          ],
+          "valueKpi": "% issues com métrica de impacto"
         }
       ]
     },
@@ -135,7 +322,13 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "Em validação"
+          "status": "Em validação",
+          "categoryPrimary": "dados-compliance-juridico",
+          "categorySupport": [
+            "engenharia-arquitetura",
+            "orquestracao-governanca"
+          ],
+          "valueKpi": "KPI definido no aceite da issue"
         }
       ]
     },
@@ -150,7 +343,10 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Média",
-          "status": "Concluído"
+          "status": "Concluído",
+          "categoryPrimary": "orquestracao-governanca",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
         },
         {
           "title": "Revisão quinzenal da meta SLA com base em dados reais",
@@ -159,7 +355,10 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Média",
-          "status": "Concluído"
+          "status": "Concluído",
+          "categoryPrimary": "orquestracao-governanca",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
         },
         {
           "title": "Configuração de credenciais GitHub no Gateway",
@@ -168,7 +367,10 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Média",
-          "status": "Concluído"
+          "status": "Concluído",
+          "categoryPrimary": "orquestracao-governanca",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
         },
         {
           "title": "Criar repositório de teste automático para validar permissão GitHub API",
@@ -177,7 +379,10 @@
           "project": "Governança Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "Concluído"
+          "status": "Concluído",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
         },
         {
           "title": "Dashboard operacional publicado e evoluído com filtros, semáforo e histórico",
@@ -186,7 +391,10 @@
           "project": "Site LF Soluções",
           "mode": "AUTO",
           "priority": "Média",
-          "status": "Concluído"
+          "status": "Concluído",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [],
+          "valueKpi": "KPI definido no aceite da issue"
         }
       ]
     }
