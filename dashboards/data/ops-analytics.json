@@ -56,5 +56,10 @@
     "reopenRatePct": 7.1,
     "humanIncidentsCount": 1,
     "speedVsQuality": "balanced"
+  },
+  "sla": {
+    "targetWeeklyPct": 85,
+    "actualWeeklyPct": 91,
+    "correctiveRule": "Se < 85% por 2 ciclos, reduzir WIP humano e priorizar desbloqueios críticos em até 24h"
   }
 }

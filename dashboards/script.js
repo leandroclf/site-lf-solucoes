@@ -511,10 +511,20 @@ async function loadOpsAnalytics() {
     document.getElementById('ops-cognitive').textContent = `${data.diagnostic?.cognitiveLoad?.weightedEffortTotal || 0} pts`;
     document.getElementById('ops-quality').textContent = `${Number(data.quality?.reopenRatePct || 0).toFixed(1)}% reopen`;
 
+    const target = Number(data.sla?.targetWeeklyPct || 0);
+    const actual = Number(data.sla?.actualWeeklyPct || 0);
+    const slaEl = document.getElementById('sla-weekly');
+    if (slaEl) {
+      const status = actual >= target ? '✅ Meta atingida' : '⚠️ Abaixo da meta';
+      slaEl.textContent = `Cumprimento semanal: ${actual.toFixed(1)}% | Meta: ${target.toFixed(1)}% — ${status}`;
+    }
+
     const alertsEl = document.getElementById('ops-predictive-alerts');
     const alerts = data.predictive?.alerts || [];
-    alertsEl.innerHTML = alerts.length
-      ? alerts.map((a) => `<li>${a}</li>`).join('')
+    const corrective = data.sla?.correctiveRule ? [`Regra corretiva: ${data.sla.correctiveRule}`] : [];
+    const merged = [...alerts, ...corrective];
+    alertsEl.innerHTML = merged.length
+      ? merged.map((a) => `<li>${a}</li>`).join('')
       : '<li>Sem alertas preditivos no momento.</li>';
   } catch {
     if (updated) updated.textContent = 'Atualizado em: erro de leitura';

@@ -1,44 +1,15 @@
 {
-  "updatedAt": "2026-02-25T13:25:00Z",
+  "updatedAt": "2026-02-25T14:25:00Z",
   "columns": [
     {
       "id": "to-review",
       "title": "TO REVIEW",
-      "tasks": [
-        {
-          "title": "Definir meta mínima de cumprimento semanal do SLA",
-          "description": "Aprovar % alvo e regra de ação corretiva quando meta não for atingida.",
-          "owner": "Leandro",
-          "project": "Governança Multiagente",
-          "mode": "HUMAN",
-          "priority": "Baixa",
-          "status": "Aguardando autorização",
-          "runbookSteps": [
-            "Definir percentual alvo semanal (ex.: 85%).",
-            "Definir ação corretiva se ficar abaixo da meta.",
-            "Registrar no board e dashboard."
-          ],
-          "expectedEvidence": [
-            "Meta aprovada",
-            "Regra corretiva definida"
-          ]
-        }
-      ]
+      "tasks": []
     },
     {
       "id": "authorized",
       "title": "AUTHORIZED",
-      "tasks": [
-        {
-          "title": "Implementar KPI de SLA humano no dashboard (coleta v2 aprovada)",
-          "description": "Publicar cumprimento semanal com dados reais e status de meta.",
-          "owner": "Architect-tech",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "Pronto para execução"
-        }
-      ]
+      "tasks": []
     },
     {
       "id": "in-progress",
@@ -70,6 +41,24 @@
           "project": "Governança Multiagente",
           "mode": "HUMAN",
           "priority": "Baixa",
+          "status": "Concluído"
+        },
+        {
+          "title": "Definição da meta mínima de cumprimento semanal do SLA",
+          "description": "Meta definida em 85% com regra de ação corretiva para desvios.",
+          "owner": "Leandro",
+          "project": "Governança Multiagente",
+          "mode": "HUMAN",
+          "priority": "Baixa",
+          "status": "Concluído"
+        },
+        {
+          "title": "Implementar KPI de SLA humano no dashboard (coleta v2)",
+          "description": "Painel com meta semanal e cumprimento real (alvo x realizado).",
+          "owner": "Architect-tech",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
           "status": "Concluído"
         },
         {
