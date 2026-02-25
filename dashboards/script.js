@@ -178,6 +178,22 @@ function updateTrafficLight(tasks, humanCount, blockedCount) {
   reason.textContent = 'Sem bloqueios críticos no filtro atual.';
 }
 
+async function loadSemaphoreState() {
+  const el = document.getElementById('traffic-consecutive');
+  if (!el) return;
+
+  try {
+    const response = await fetch('./data/semaphore-state.json', { cache: 'no-store' });
+    if (!response.ok) throw new Error('Falha ao carregar semaphore-state.json');
+
+    const state = await response.json();
+    const days = Number(state.consecutiveRed || 0);
+    el.textContent = `Dias consecutivos em vermelho: ${days}`;
+  } catch {
+    el.textContent = 'Dias consecutivos em vermelho: n/d';
+  }
+}
+
 function renderKanban(data) {
   const board = document.getElementById('kanban-board');
   const summary = document.getElementById('kanban-summary');
@@ -353,4 +369,8 @@ document.getElementById('download-weekly-report').addEventListener('click', down
 document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo (a cada ${Math.round(AUTO_REFRESH_MS / 60000)} min)`;
 
 loadKanban();
-setInterval(loadKanban, AUTO_REFRESH_MS);
+loadSemaphoreState();
+setInterval(() => {
+  loadKanban();
+  loadSemaphoreState();
+}, AUTO_REFRESH_MS);
