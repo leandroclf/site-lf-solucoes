@@ -1,0 +1,63 @@
+<!doctype html>
+<html lang="pt-BR">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>LF Soluções | Dashboard Operacional</title>
+    <link rel="stylesheet" href="./styles.css" />
+  </head>
+  <body>
+    <header class="topbar">
+      <h1>Dashboard Operacional — LF Soluções</h1>
+      <a href="../index.html" class="btn">← Voltar ao site</a>
+    </header>
+
+    <main class="container">
+      <section class="grid metrics">
+        <article class="card"><h3>Jobs ativos (cron)</h3><p class="big">8</p></article>
+        <article class="card"><h3>Pendências HUMAN</h3><p class="big">Acompanhar em controle diário</p></article>
+        <article class="card"><h3>Status de governança</h3><p class="big ok">Ativo</p></article>
+      </section>
+
+      <section class="card">
+        <h2>Pontos de controle</h2>
+        <ul>
+          <li>Pesquisa de datasets (diário)</li>
+          <li>Decisão e backlog (diário)</li>
+          <li>Gate de autorização (reviewer-delivery, diário)</li>
+          <li>Controle de atividades HUMAN (diário)</li>
+          <li>PDCA semanal + KPI de receita + revisão de equipe</li>
+        </ul>
+      </section>
+
+      <section class="grid two">
+        <article class="card">
+          <h2>Jobs diários</h2>
+          <ul>
+            <li>11:00 UTC — dataset scout</li>
+            <li>20:00 UTC — decision & backlog</li>
+            <li>20:30 UTC — reviewer authorization gate</li>
+            <li>20:45 UTC — team evolution governance</li>
+            <li>21:00 UTC — human activities control</li>
+          </ul>
+        </article>
+        <article class="card">
+          <h2>Jobs semanais</h2>
+          <ul>
+            <li>Seg 12:00 UTC — KPI/risk review</li>
+            <li>Seg 13:00 UTC — PDCA cycle review</li>
+            <li>Seg 13:30 UTC — staffing decision</li>
+          </ul>
+        </article>
+      </section>
+
+      <section class="card">
+        <h2>Observação</h2>
+        <p>
+          Este dashboard é a visão web inicial para facilitar acompanhamento. Na próxima etapa,
+          podemos integrar atualização automática via JSON gerado pelas rotinas diárias.
+        </p>
+      </section>
+    </main>
+  </body>
+</html>
