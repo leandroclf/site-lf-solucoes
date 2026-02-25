@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T16:59:00Z",
+  "updatedAt": "2026-02-25T17:09:00Z",
   "columns": [
     {
       "id": "to-review",
@@ -62,21 +62,6 @@
           "valueKpi": "KPI definido no aceite da issue"
         },
         {
-          "title": "[ISSUE-013] Backlog de hipóteses de receita por ICP",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
-          "owner": "revenue-ops-specialist",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "A revisar",
-          "categoryPrimary": "produto-receita",
-          "categorySupport": [
-            "produto-receita",
-            "engenharia-arquitetura"
-          ],
-          "valueKpi": "Conversão SQL->Proposta (%)"
-        },
-        {
           "title": "[ISSUE-014] Otimização de custo/performance do pipeline de dados",
           "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
           "owner": "sre-cost-specialist",
@@ -105,21 +90,6 @@
             "engenharia-arquitetura"
           ],
           "valueKpi": "Taxa de completude >95%"
-        },
-        {
-          "title": "[ISSUE-016] Endpoint backend de valor por proposta",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
-          "owner": "backend-specialist",
-          "project": "Site LF Soluções",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "A revisar",
-          "categoryPrimary": "engenharia-arquitetura",
-          "categorySupport": [
-            "produto-receita",
-            "engenharia-arquitetura"
-          ],
-          "valueKpi": "Tempo de resposta <300ms"
         },
         {
           "title": "[ISSUE-017] UX do funil comercial no dashboard",
@@ -180,34 +150,6 @@
             "engenharia-arquitetura"
           ],
           "valueKpi": "% capacidade alocada em itens de receita"
-        },
-        {
-          "title": "[ISSUE-021] Hardening CI/CD com smoke obrigatório pré-merge",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
-          "owner": "devops-ci-cd-specialist",
-          "project": "Governança Multiagente",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "A revisar",
-          "categoryPrimary": "plataforma-infra-qualidade",
-          "categorySupport": [
-            "produto-receita"
-          ],
-          "valueKpi": "Taxa de sucesso CI >95%"
-        },
-        {
-          "title": "[ISSUE-022] Scout contínuo de datasets com potencial comercial",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
-          "owner": "scout-datasets",
-          "project": "Governança Multiagente",
-          "mode": "AUTO",
-          "priority": "Média",
-          "status": "A revisar",
-          "categoryPrimary": "dados-compliance-juridico",
-          "categorySupport": [
-            "produto-receita"
-          ],
-          "valueKpi": "Novas oportunidades qualificadas/semana"
         }
       ]
     },
@@ -276,6 +218,68 @@
           "categoryPrimary": "dados-compliance-juridico",
           "categorySupport": [],
           "valueKpi": "KPI definido no aceite da issue"
+        },
+        {
+          "title": "[ISSUE-013] Backlog de hipóteses de receita por ICP",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "revenue-ops-specialist",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Autorizado",
+          "categoryPrimary": "produto-receita",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Conversão SQL->Proposta (%)",
+          "ownerPrimary": "revenue-ops-specialist"
+        },
+        {
+          "title": "[ISSUE-016] Endpoint backend de valor por proposta",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "backend-specialist",
+          "project": "Site LF Soluções",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Autorizado",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [
+            "produto-receita",
+            "engenharia-arquitetura"
+          ],
+          "valueKpi": "Tempo de resposta <300ms",
+          "ownerPrimary": "backend-specialist"
+        },
+        {
+          "title": "[ISSUE-021] Hardening CI/CD com smoke obrigatório pré-merge",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "devops-ci-cd-specialist",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Autorizado",
+          "categoryPrimary": "plataforma-infra-qualidade",
+          "categorySupport": [
+            "produto-receita"
+          ],
+          "valueKpi": "Taxa de sucesso CI >95%",
+          "ownerPrimary": "devops-ci-cd-specialist"
+        },
+        {
+          "title": "[ISSUE-022] Scout contínuo de datasets com potencial comercial",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "owner": "scout-datasets",
+          "project": "Governança Multiagente",
+          "mode": "AUTO",
+          "priority": "Média",
+          "status": "Autorizado",
+          "categoryPrimary": "dados-compliance-juridico",
+          "categorySupport": [
+            "produto-receita"
+          ],
+          "valueKpi": "Novas oportunidades qualificadas/semana",
+          "ownerPrimary": "scout-datasets"
         }
       ]
     },
@@ -285,7 +289,7 @@
       "tasks": [
         {
           "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace.",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md",
           "owner": "Strategist-product + Growth-sales",
           "project": "Site LF Soluções",
           "mode": "AUTO",
@@ -297,7 +301,7 @@
         },
         {
           "title": "[ISSUE-009] Product accountability por responsável",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace.",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md",
           "owner": "Reviewer-delivery + Strategist-product",
           "project": "Governança Multiagente",
           "mode": "AUTO",

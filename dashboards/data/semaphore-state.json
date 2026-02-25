@@ -1,7 +1,7 @@
 {
-  "lastUpdatedAt": "2026-02-25T16:32:52Z",
+  "lastUpdatedAt": "2026-02-25T17:00:58Z",
   "lastStatus": "green",
   "consecutiveRed": 0,
-  "lastReason": "Ciclo 16:32 UTC concluído com OK_CONTINUE e micro-lotes anti-ociosidade em issues AUTO elegíveis (008/009).",
+  "lastReason": "Ciclo 17:00 UTC concluído com pipeline base + 2 micro-lotes AUTO (ISSUE-008/009) sem bloqueios.",
   "lastAlertAt": null
 }

@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T17:05:00Z",
+  "updatedAt": "2026-02-25T17:00:58Z",
   "program": {
     "name": "Programa de Governança Multiagente + Entrega Comercial",
     "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
@@ -159,6 +159,13 @@
       "items": [
         "ISSUE-008 micro-lote: ICP/KPI definidos e template JTBD v1 publicado.",
         "ISSUE-009 micro-lote: ownership map baseline e pesos do scorecard publicados."
+      ]
+    },
+    {
+      "at": "2026-02-25T17:00:58Z",
+      "items": [
+        "ISSUE-008: plano operacional de entrevistas JTBD (D3/D4) publicado.",
+        "ISSUE-009: baseline W09 de accountability publicado com cobertura 100% de ownership/valueKpi."
       ]
     }
   ]
