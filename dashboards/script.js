@@ -89,6 +89,16 @@ function renderCharts(tasks) {
   renderOwnerBars(tasks);
 }
 
+function updateMetrics(tasks) {
+  const humanTasks = tasks.filter((t) => t.mode === 'HUMAN');
+  const blockedHuman = humanTasks.filter((t) => !Array.isArray(t.runbookSteps) || t.runbookSteps.length === 0);
+
+  const humanMetric = document.getElementById('metric-human');
+  const blockedMetric = document.getElementById('metric-blocked');
+  if (humanMetric) humanMetric.textContent = String(humanTasks.length);
+  if (blockedMetric) blockedMetric.textContent = String(blockedHuman.length);
+}
+
 function renderKanban(data) {
   const board = document.getElementById('kanban-board');
   const summary = document.getElementById('kanban-summary');
@@ -170,6 +180,7 @@ function renderKanban(data) {
 
   summary.textContent = `Resumo: ${totalShown} atividade(s) visível(is) no filtro atual.`;
   renderCharts(shownTasks);
+  updateMetrics(shownTasks);
 }
 
 function populateSelect(data, selectId, valueSelector) {
@@ -189,6 +200,15 @@ function populateSelect(data, selectId, valueSelector) {
     opt.textContent = value;
     select.appendChild(opt);
   }
+}
+
+function clearFilters() {
+  document.getElementById('filter-owner').value = '';
+  document.getElementById('filter-project').value = '';
+  document.getElementById('filter-mode').value = '';
+  document.getElementById('filter-priority').value = '';
+  document.getElementById('filter-search').value = '';
+  if (kanbanData) renderKanban(kanbanData);
 }
 
 async function loadKanban() {
@@ -235,5 +255,7 @@ document.getElementById('filter-priority').addEventListener('change', () => {
 document.getElementById('filter-search').addEventListener('input', () => {
   if (kanbanData) renderKanban(kanbanData);
 });
+
+document.getElementById('clear-filters').addEventListener('click', clearFilters);
 
 loadKanban();

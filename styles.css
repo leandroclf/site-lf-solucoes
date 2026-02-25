@@ -45,6 +45,15 @@ body {
 .menu { display: flex; gap: 1.1rem; align-items: center; }
 .menu a { color: var(--muted); text-decoration: none; font-weight: 500; }
 .menu a:hover { color: var(--text); }
+.menu-toggle {
+  display: none;
+  background: transparent;
+  color: var(--text);
+  border: 1px solid rgba(255,255,255,.25);
+  border-radius: 10px;
+  padding: .45rem .65rem;
+  font-size: 1rem;
+}
 
 .hero { padding: 5.5rem 0 4rem; }
 .hero-grid { display: grid; gap: 2rem; grid-template-columns: 1.2fr .8fr; align-items: start; }
@@ -165,6 +174,21 @@ h2 { margin: 0 0 .8rem; font-size: clamp(1.6rem, 3vw, 2.2rem); }
 }
 
 @media (max-width: 760px) {
-  .menu { display: none; }
+  .menu-toggle { display: inline-flex; }
+  .menu {
+    display: none;
+    position: absolute;
+    top: 74px;
+    right: 4%;
+    left: 4%;
+    background: #0f1a30;
+    border: 1px solid #2f4776;
+    border-radius: 12px;
+    padding: .8rem;
+    flex-direction: column;
+    align-items: flex-start;
+    z-index: 25;
+  }
+  .menu.open { display: flex; }
   .hero { padding-top: 4.3rem; }
 }

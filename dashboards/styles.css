@@ -24,6 +24,17 @@ body {
   border-radius: 8px;
   text-decoration: none;
   font-weight: 700;
+  border: 1px solid transparent;
+}
+
+.btn-secondary {
+  background: transparent;
+  color: #d8e6ff;
+  border-color: #3964aa;
+  cursor: pointer;
+}
+.btn-secondary:hover {
+  background: #173156;
 }
 
 .container {

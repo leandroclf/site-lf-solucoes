@@ -1,5 +1,22 @@
 document.getElementById('year').textContent = new Date().getFullYear();
 
+// Mobile menu toggle
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('main-menu');
+if (menuToggle && menu) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  menu.querySelectorAll('a[href^="#"]').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
 // Smooth scroll for anchor links
 for (const link of document.querySelectorAll('a[href^="#"]')) {
   link.addEventListener('click', (event) => {
