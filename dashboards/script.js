@@ -1,6 +1,9 @@
 let kanbanData = null;
 window.__analyticsCache = window.__analyticsCache || {};
-const AUTO_REFRESH_MS = 300000;
+const IS_MOBILE = window.matchMedia('(max-width: 768px)').matches;
+const SAVE_DATA = Boolean(navigator.connection && navigator.connection.saveData);
+const AUTO_REFRESH_MS = SAVE_DATA ? 900000 : (IS_MOBILE ? 600000 : 300000);
+let autoRefreshTimer = null;
 
 function priorityClass(priority) {
   if (priority === 'Alta') return 'priority-high';
@@ -1271,15 +1274,7 @@ document.getElementById('download-handoff').addEventListener('click', downloadHa
 
 document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo (a cada ${Math.round(AUTO_REFRESH_MS / 60000)} min)`;
 
-loadKanban();
-loadSemaphoreState();
-loadHandoff();
-loadOpsAnalytics();
-loadAutopilotSla();
-loadDeployStatus();
-loadHumanDecisionSla();
-loadDashboardFreshness();
-setInterval(() => {
+function refreshAll() {
   loadKanban();
   loadSemaphoreState();
   loadHandoff();
@@ -1288,4 +1283,19 @@ setInterval(() => {
   loadDeployStatus();
   loadHumanDecisionSla();
   loadDashboardFreshness();
-}, AUTO_REFRESH_MS);
+}
+
+function scheduleAutoRefresh() {
+  if (autoRefreshTimer) clearTimeout(autoRefreshTimer);
+  autoRefreshTimer = setTimeout(() => {
+    if (!document.hidden) refreshAll();
+    scheduleAutoRefresh();
+  }, AUTO_REFRESH_MS);
+}
+
+refreshAll();
+scheduleAutoRefresh();
+
+document.addEventListener('visibilitychange', () => {
+  if (!document.hidden) refreshAll();
+});
