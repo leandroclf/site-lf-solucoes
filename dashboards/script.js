@@ -6,26 +6,43 @@ function priorityClass(priority) {
   return 'priority-low';
 }
 
+function normalize(text) {
+  return String(text || '').toLowerCase();
+}
+
+function matchesSearch(task, searchTerm) {
+  if (!searchTerm) return true;
+  const haystack = `${task.title || ''} ${task.description || ''} ${task.owner || ''} ${task.status || ''}`.toLowerCase();
+  return haystack.includes(searchTerm);
+}
+
 function renderKanban(data) {
   const board = document.getElementById('kanban-board');
+  const summary = document.getElementById('kanban-summary');
   const ownerFilter = document.getElementById('filter-owner').value;
   const priorityFilter = document.getElementById('filter-priority').value;
+  const searchTerm = normalize(document.getElementById('filter-search').value.trim());
 
   board.innerHTML = '';
 
+  let totalShown = 0;
+
   for (const column of data.columns || []) {
+    const tasks = (column.tasks || []).filter((task) => {
+      const ownerOk = !ownerFilter || task.owner === ownerFilter;
+      const priorityOk = !priorityFilter || task.priority === priorityFilter;
+      const searchOk = matchesSearch(task, searchTerm);
+      return ownerOk && priorityOk && searchOk;
+    });
+
+    totalShown += tasks.length;
+
     const col = document.createElement('article');
     col.className = 'kanban-col';
 
     const title = document.createElement('h3');
-    title.textContent = column.title;
+    title.textContent = `${column.title} (${tasks.length})`;
     col.appendChild(title);
-
-    const tasks = (column.tasks || []).filter((task) => {
-      const ownerOk = !ownerFilter || task.owner === ownerFilter;
-      const priorityOk = !priorityFilter || task.priority === priorityFilter;
-      return ownerOk && priorityOk;
-    });
 
     if (!tasks.length) {
       const empty = document.createElement('p');
@@ -50,6 +67,8 @@ function renderKanban(data) {
 
     board.appendChild(col);
   }
+
+  summary.textContent = `Resumo: ${totalShown} atividade(s) visível(is) no filtro atual.`;
 }
 
 function populateOwnerFilter(data) {
@@ -99,6 +118,10 @@ document.getElementById('filter-owner').addEventListener('change', () => {
 });
 
 document.getElementById('filter-priority').addEventListener('change', () => {
+  if (kanbanData) renderKanban(kanbanData);
+});
+
+document.getElementById('filter-search').addEventListener('input', () => {
   if (kanbanData) renderKanban(kanbanData);
 });
 

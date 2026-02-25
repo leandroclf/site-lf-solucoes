@@ -83,12 +83,18 @@ li { margin: 6px 0; }
   color: #b8ccef;
 }
 
-.filters select {
+.filters select,
+.filters input {
   background: #0f1a30;
   color: #d8e6ff;
   border: 1px solid #2e4878;
   border-radius: 8px;
   padding: 6px 8px;
+}
+
+.search-wrap {
+  min-width: 280px;
+  flex: 1;
 }
 
 .kanban {
