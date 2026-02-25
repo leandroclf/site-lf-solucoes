@@ -266,6 +266,10 @@ li { margin: 6px 0; }
 .dot-yellow { background: #f59e0b; }
 .dot-red { background: #ef4444; }
 
+.seg-trend-green { background: #10b981; }
+.seg-trend-yellow { background: #f59e0b; }
+.seg-trend-red { background: #ef4444; }
+
 .actions-row {
   margin-top: 10px;
   display: flex;

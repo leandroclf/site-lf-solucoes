@@ -184,6 +184,34 @@ function dotClassByStatus(status) {
   return 'dot-green';
 }
 
+function renderTrend(days) {
+  const trend = document.getElementById('traffic-trend');
+  const label = document.getElementById('traffic-trend-label');
+  if (!trend || !label) return;
+
+  const total = days.length || 1;
+  const green = days.filter((d) => d.status === 'green').length;
+  const yellow = days.filter((d) => d.status === 'yellow').length;
+  const red = days.filter((d) => d.status === 'red').length;
+
+  trend.innerHTML = '';
+  const segments = [
+    { cls: 'seg-trend-green', p: Math.round((green / total) * 100), title: `Green: ${green}` },
+    { cls: 'seg-trend-yellow', p: Math.round((yellow / total) * 100), title: `Yellow: ${yellow}` },
+    { cls: 'seg-trend-red', p: Math.round((red / total) * 100), title: `Red: ${red}` },
+  ];
+
+  segments.forEach((s) => {
+    const el = document.createElement('div');
+    el.className = s.cls;
+    el.style.width = `${s.p}%`;
+    el.title = s.title;
+    trend.appendChild(el);
+  });
+
+  label.textContent = `Green ${green} • Yellow ${yellow} • Red ${red}`;
+}
+
 async function loadSemaphoreState() {
   const el = document.getElementById('traffic-consecutive');
   const historyEl = document.getElementById('traffic-history');
@@ -205,19 +233,24 @@ async function loadSemaphoreState() {
     const response = await fetch('./data/semaphore-history.json', { cache: 'no-store' });
     if (!response.ok) throw new Error('Falha ao carregar semaphore-history.json');
     const history = await response.json();
-    const days = (history.days || []).slice(-7);
+    const days = (history.days || []).slice(-7).map((d) => ({
+      date: d.date,
+      status: String(d.status || 'green').toLowerCase(),
+    }));
 
     historyEl.innerHTML = '';
     days.forEach((d) => {
       const date = String(d.date || '').slice(5);
-      const status = String(d.status || 'green').toLowerCase();
       const item = document.createElement('div');
       item.className = 'traffic-day';
-      item.innerHTML = `<div class="dot ${dotClassByStatus(status)}"></div><div>${date}</div><div>${status.toUpperCase()}</div>`;
+      item.innerHTML = `<div class="dot ${dotClassByStatus(d.status)}"></div><div>${date}</div><div>${d.status.toUpperCase()}</div>`;
       historyEl.appendChild(item);
     });
+
+    renderTrend(days);
   } catch {
     historyEl.innerHTML = '<div class="traffic-day">n/d</div>';
+    renderTrend([]);
   }
 }
 
