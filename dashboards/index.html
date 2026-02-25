@@ -13,13 +13,106 @@
     </header>
 
     <main class="container">
-      <section class="grid metrics">
-        <article class="card"><h3>Jobs ativos (cron)</h3><p class="big" id="metric-jobs">8</p></article>
-        <article class="card"><h3>Pendências HUMAN</h3><p class="big" id="metric-human">0</p></article>
-        <article class="card"><h3>HUMAN sem runbook</h3><p class="big" id="metric-blocked">0</p></article>
+      <section class="card">
+        <div class="section-head">
+          <h2>Camada Estratégica — Status Geral</h2>
+          <div class="view-switch">
+            <button id="view-executive" class="btn btn-secondary" type="button">Visão Executiva</button>
+            <button id="view-operational" class="btn btn-secondary" type="button">Visão Operacional</button>
+          </div>
+        </div>
+        <p id="last-updated-global" class="task-meta">Última atualização: carregando...</p>
+        <section class="grid metrics metrics-5">
+          <article class="card kpi" id="kpi-jobs-ativos" title="Quantidade total de jobs ativos no cron">
+            <h3>Total de Jobs Ativos</h3>
+            <p class="big" id="metric-jobs">—</p>
+            <p class="task-meta" id="metric-jobs-meta">Meta: >= 8</p>
+            <p class="task-meta" id="metric-jobs-var">Variação: n/d</p>
+          </article>
+          <article class="card kpi" id="kpi-jobs-atrasados" title="Jobs com falha/erro no último ciclo conhecido">
+            <h3>Jobs Atrasados</h3>
+            <p class="big" id="metric-jobs-delayed">—</p>
+            <p class="task-meta" id="metric-jobs-delayed-meta">Meta: 0</p>
+            <p class="task-meta" id="metric-jobs-delayed-var">Variação: n/d</p>
+          </article>
+          <article class="card kpi" id="kpi-sla" title="SLA médio atual do autopilot e operação">
+            <h3>SLA Médio Atual (%)</h3>
+            <p class="big" id="metric-sla-current">—</p>
+            <p class="task-meta" id="metric-sla-meta">Meta: >= 95%</p>
+            <p class="task-meta" id="metric-sla-var">Variação: n/d</p>
+          </article>
+          <article class="card kpi" id="kpi-tmr" title="Tempo médio de resolução das atividades concluídas">
+            <h3>TMR (h)</h3>
+            <p class="big" id="metric-tmr">—</p>
+            <p class="task-meta" id="metric-tmr-meta">Meta: <= 24h</p>
+            <p class="task-meta" id="metric-tmr-var">Variação: n/d</p>
+          </article>
+          <article class="card kpi" id="kpi-block-rate" title="Taxa de bloqueios em relação às atividades ativas">
+            <h3>Taxa de Bloqueios (%)</h3>
+            <p class="big" id="metric-block-rate">—</p>
+            <p class="task-meta" id="metric-block-rate-meta">Meta: <= 10%</p>
+            <p class="task-meta" id="metric-block-rate-var">Variação: n/d</p>
+          </article>
+        </section>
       </section>
 
-      <section class="card">
+      <section class="card" data-view="operational">
+        <h2>Camada de Alertas e Gargalos</h2>
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Top 5 gargalos</h3>
+            <ul id="bottlenecks-list" class="task-list"></ul>
+          </div>
+          <div class="card">
+            <h3>Jobs mais críticos</h3>
+            <div id="critical-jobs-bars" class="bars"></div>
+          </div>
+          <div class="card">
+            <h3>SLA violado (24h)</h3>
+            <ul id="sla-violations-list" class="task-list"></ul>
+          </div>
+        </div>
+        <div class="handoff-block" style="margin-top:10px;">
+          <h3>Heatmap por categoria (volume de bloqueio)</h3>
+          <div id="heatmap-categories" class="heatmap-grid"></div>
+        </div>
+      </section>
+
+      <section class="card" data-view="executive operational">
+        <h2>Camada Analítica (Tendências)</h2>
+        <div class="filters">
+          <label>
+            Período
+            <select id="trend-period">
+              <option value="7">7 dias</option>
+              <option value="15">15 dias</option>
+              <option value="30">30 dias</option>
+            </select>
+          </label>
+          <label>
+            Equipe/Categoria
+            <select id="trend-team">
+              <option value="">Todas</option>
+              <option value="produto-receita">Produto e Receita</option>
+              <option value="engenharia-arquitetura">Engenharia e Arquitetura</option>
+              <option value="plataforma-infra-qualidade">Plataforma/Infra/Qualidade</option>
+              <option value="dados-compliance-juridico">Dados/Compliance/Jurídico</option>
+              <option value="orquestracao-governanca">Orquestração/Governança</option>
+            </select>
+          </label>
+        </div>
+        <div class="mini-grid">
+          <div class="card"><h3>Volume de atividades</h3><div id="trend-volume" class="trend-box"></div></div>
+          <div class="card"><h3>SLA médio (%)</h3><div id="trend-sla" class="trend-box"></div></div>
+          <div class="card"><h3>TMR (h)</h3><div id="trend-tmr" class="trend-box"></div></div>
+        </div>
+        <div class="mini-grid" style="margin-top:10px;">
+          <div class="card"><h3>Status empilhado</h3><div id="trend-status-stacked" class="stacked-bar"></div><p id="trend-status-label" class="task-meta">—</p></div>
+          <div class="card"><h3>Outliers de resolução</h3><ul id="tmr-outliers" class="task-list"></ul></div>
+        </div>
+      </section>
+
+      <section class="card" data-view="executive operational">
         <h2>Semáforo operacional</h2>
         <div class="traffic-wrap">
           <span id="traffic-dot" class="traffic-dot traffic-green" aria-label="Semáforo"></span>

@@ -1,5 +1,6 @@
 let kanbanData = null;
-const AUTO_REFRESH_MS = 180000;
+window.__analyticsCache = window.__analyticsCache || {};
+const AUTO_REFRESH_MS = 300000;
 
 function priorityClass(priority) {
   if (priority === 'Alta') return 'priority-high';
@@ -151,14 +152,223 @@ function updateSlaPanel(tasks) {
   unblockEl.textContent = (overdue || blocked) ? 'Monitorar' : 'Dentro do alvo';
 }
 
+function setKpiState(elId, state) {
+  const el = document.getElementById(elId);
+  if (!el) return;
+  el.classList.remove('kpi-green', 'kpi-yellow', 'kpi-red', 'kpi-gray');
+  el.classList.add(`kpi-${state}`);
+}
+
+function fmtVar(current, previous, suffix = '') {
+  if (previous === null || previous === undefined || previous === 0) return 'Variação: n/d';
+  const delta = ((current - previous) / Math.abs(previous)) * 100;
+  const arrow = delta > 0 ? '↑' : (delta < 0 ? '↓' : '→');
+  return `Variação: ${arrow} ${Math.abs(delta).toFixed(1)}%${suffix}`;
+}
+
+function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
+  const totalJobs = Number((window.__handoffData?.automation?.activeJobCount) || 0);
+  const delayedJobs = (deployData?.repos || []).filter((r) => {
+    const c = String(r.conclusion || '').toLowerCase();
+    return ['failure', 'cancelled', 'timed_out'].includes(c) || r.status === 'error';
+  }).length;
+  const sla = Number(autopilotData?.kpis?.cycleCompletionPct || 0);
+
+  const done = (activities || []).filter((a) => a.status === 'done' && a.createdAt && a.completedAt);
+  const tmr = done.length ? (done.reduce((s, a) => s + ((new Date(a.completedAt) - new Date(a.createdAt)) / 36e5), 0) / done.length) : null;
+
+  const active = tasks.filter((t) => ['A revisar', 'Autorizado', 'Em progresso', 'Em validação', 'BLOCKED_ONBOARDING'].includes(String(t.status || ''))).length || tasks.length;
+  const blocked = tasks.filter((t) => String(t.status || '').toLowerCase().includes('blocked')).length;
+  const blockRate = active ? (blocked / active) * 100 : 0;
+
+  const prevSla = Number(autopilotData?.history?.previousCycleCompletionPct || 0) || null;
+  const prevTmr = Number(window.__analyticsCache?.leadTimePrev || 0) || null;
+
+  const set = (id, value) => {
+    const el = document.getElementById(id);
+    if (el) el.textContent = value;
+  };
+
+  set('metric-jobs', String(totalJobs));
+  set('metric-jobs-delayed', String(delayedJobs));
+  set('metric-sla-current', `${sla.toFixed(1)}%`);
+  set('metric-tmr', tmr === null ? 'n/d' : `${tmr.toFixed(1)}h`);
+  set('metric-block-rate', `${blockRate.toFixed(1)}%`);
+
+  const varJobs = document.getElementById('metric-jobs-var');
+  const varDelayed = document.getElementById('metric-jobs-delayed-var');
+  const varSla = document.getElementById('metric-sla-var');
+  const varTmr = document.getElementById('metric-tmr-var');
+  const varBlock = document.getElementById('metric-block-rate-var');
+  if (varJobs) varJobs.textContent = 'Variação: n/d';
+  if (varDelayed) varDelayed.textContent = 'Variação: n/d';
+  if (varSla) varSla.textContent = fmtVar(sla, prevSla);
+  if (varTmr) varTmr.textContent = fmtVar(tmr || 0, prevTmr, '');
+  if (varBlock) varBlock.textContent = 'Variação: n/d';
+
+  const stateByTarget = (value, target, inverse = false) => {
+    if (value === null || Number.isNaN(value)) return 'gray';
+    const deviationPct = inverse ? ((value - target) / target) * 100 : ((target - value) / target) * 100;
+    if (deviationPct >= 0) return 'green';
+    if (Math.abs(deviationPct) <= 10) return 'yellow';
+    return 'red';
+  };
+
+  setKpiState('kpi-jobs-ativos', totalJobs >= 8 ? 'green' : 'yellow');
+  setKpiState('kpi-jobs-atrasados', delayedJobs === 0 ? 'green' : (delayedJobs <= 1 ? 'yellow' : 'red'));
+  setKpiState('kpi-sla', stateByTarget(sla, 95));
+  setKpiState('kpi-tmr', stateByTarget(tmr, 24, true));
+  setKpiState('kpi-block-rate', stateByTarget(blockRate, 10, true));
+}
+
+function renderOperationalAlerts(tasks, deployData) {
+  const bottlenecksEl = document.getElementById('bottlenecks-list');
+  const criticalJobsEl = document.getElementById('critical-jobs-bars');
+  const slaViolEl = document.getElementById('sla-violations-list');
+  const heatEl = document.getElementById('heatmap-categories');
+  if (!bottlenecksEl || !criticalJobsEl || !slaViolEl || !heatEl) return;
+
+  const score = (t) => {
+    const p = t.priority === 'Alta' ? 3 : (t.priority === 'Média' ? 2 : 1);
+    const blocked = String(t.status || '').toLowerCase().includes('blocked') ? 3 : 0;
+    const human = t.mode === 'HUMAN' ? 1 : 0;
+    return p + blocked + human;
+  };
+
+  const top = [...tasks].sort((a, b) => score(b) - score(a)).slice(0, 5);
+  bottlenecksEl.innerHTML = top.map((t) => `<li><strong>${t.title}</strong> — ${t.status || 'n/d'} (${t.ownerPrimary || t.owner || 'n/d'})</li>`).join('') || '<li>Sem gargalos relevantes.</li>';
+
+  const repos = deployData?.repos || [];
+  const critical = repos.map((r) => {
+    const c = String(r.conclusion || r.status || '').toLowerCase();
+    let weight = 1;
+    if (['failure', 'cancelled', 'timed_out'].includes(c)) weight = 3;
+    else if (r.status === 'error') weight = 2;
+    return { name: r.repo, weight, c };
+  }).sort((a, b) => b.weight - a.weight);
+
+  criticalJobsEl.innerHTML = '';
+  critical.forEach((j) => {
+    const row = document.createElement('div');
+    row.className = 'bar-row';
+    const width = Math.max(10, (j.weight / 3) * 100);
+    row.innerHTML = `<span class='task-meta'>${j.name}</span><div class='bar' style='width:${width}%;'></div><span class='task-meta'>${j.c || 'n/d'}</span>`;
+    criticalJobsEl.appendChild(row);
+  });
+
+  const now = Date.now();
+  const slaViol = tasks.filter((t) => {
+    if (!t.openedAt || !t.slaDecisionHours) return false;
+    const elapsed = (now - new Date(t.openedAt).getTime()) / 36e5;
+    return elapsed > Number(t.slaDecisionHours);
+  }).slice(0, 10);
+  slaViolEl.innerHTML = slaViol.map((t) => `<li><strong>${t.title}</strong> — SLA vencido</li>`).join('') || '<li>Nenhum SLA vencido nas últimas 24h.</li>';
+
+  const byCat = {};
+  tasks.forEach((t) => {
+    const cat = t.categoryPrimary || 'sem-categoria';
+    const isBlocked = String(t.status || '').toLowerCase().includes('blocked');
+    byCat[cat] = byCat[cat] || { total: 0, blocked: 0 };
+    byCat[cat].total += 1;
+    if (isBlocked) byCat[cat].blocked += 1;
+  });
+  heatEl.innerHTML = Object.entries(byCat).map(([cat, v]) => {
+    const ratio = v.total ? (v.blocked / v.total) : 0;
+    const bg = ratio > 0.4 ? 'rgba(239,68,68,.25)' : (ratio > 0.15 ? 'rgba(245,158,11,.25)' : 'rgba(16,185,129,.2)');
+    return `<div class='heat-cell' style='background:${bg}'><strong>${cat}</strong><div>Bloq: ${v.blocked}/${v.total}</div></div>`;
+  }).join('');
+}
+
+function drawSparkline(containerId, values, suffix = '') {
+  const el = document.getElementById(containerId);
+  if (!el) return;
+  if (!values.length) {
+    el.innerHTML = '<p class="task-meta">Dados insuficientes</p>';
+    return;
+  }
+  const min = Math.min(...values);
+  const max = Math.max(...values);
+  const range = max - min || 1;
+  const w = 280; const h = 100;
+  const pts = values.map((v, i) => {
+    const x = (i / Math.max(values.length - 1, 1)) * (w - 20) + 10;
+    const y = h - (((v - min) / range) * (h - 20) + 10);
+    return `${x},${y}`;
+  }).join(' ');
+  const delta = values.length > 1 ? ((values[values.length - 1] - values[0]) / (Math.abs(values[0]) || 1)) * 100 : 0;
+  const arrow = delta > 0 ? '↑' : (delta < 0 ? '↓' : '→');
+  el.innerHTML = `<svg width='100%' viewBox='0 0 ${w} ${h}'><polyline fill='none' stroke='#2563eb' stroke-width='3' points='${pts}'/></svg><p class='task-meta'>${arrow} ${Math.abs(delta).toFixed(1)}%${suffix}</p>`;
+}
+
+function renderAnalyticalLayer(tasks, activities) {
+  const period = Number(document.getElementById('trend-period')?.value || 7);
+  const team = document.getElementById('trend-team')?.value || '';
+
+  const filteredTasks = team ? tasks.filter((t) => t.categoryPrimary === team) : tasks;
+  const now = Date.now();
+  const cutoff = now - (period * 24 * 36e5);
+  const filteredAct = (activities || []).filter((a) => {
+    const t = new Date(a.createdAt || a.completedAt || Date.now()).getTime();
+    return t >= cutoff;
+  });
+
+  const byDay = {};
+  filteredAct.forEach((a) => {
+    const d = new Date(a.createdAt || a.completedAt).toISOString().slice(0, 10);
+    byDay[d] = byDay[d] || { total: 0, done: 0, tmr: [] };
+    byDay[d].total += 1;
+    if (a.status === 'done') {
+      byDay[d].done += 1;
+      if (a.createdAt && a.completedAt) byDay[d].tmr.push((new Date(a.completedAt) - new Date(a.createdAt)) / 36e5);
+    }
+  });
+
+  const days = Object.keys(byDay).sort();
+  const vol = days.map((d) => byDay[d].total);
+  const sla = days.map((d) => byDay[d].total ? (byDay[d].done / byDay[d].total) * 100 : 0);
+  const tmr = days.map((d) => byDay[d].tmr.length ? (byDay[d].tmr.reduce((s, v) => s + v, 0) / byDay[d].tmr.length) : 0);
+
+  drawSparkline('trend-volume', vol);
+  drawSparkline('trend-sla', sla, ' SLA');
+  drawSparkline('trend-tmr', tmr, ' TMR');
+
+  const statuses = {
+    aberto: filteredTasks.filter((t) => String(t.status).toLowerCase().includes('revisar') || String(t.status).toLowerCase().includes('autoriz')).length,
+    andamento: filteredTasks.filter((t) => String(t.status).toLowerCase().includes('progresso')).length,
+    bloqueado: filteredTasks.filter((t) => String(t.status).toLowerCase().includes('blocked')).length,
+    concluido: filteredTasks.filter((t) => String(t.status).toLowerCase().includes('conclu')).length,
+  };
+  const total = Object.values(statuses).reduce((s, v) => s + v, 0) || 1;
+  setStackedBar('trend-status-stacked', [
+    { className: 'seg-low', percentage: pct(statuses.aberto, total), label: 'Aberto', value: statuses.aberto },
+    { className: 'seg-auto', percentage: pct(statuses.andamento, total), label: 'Em andamento', value: statuses.andamento },
+    { className: 'seg-high', percentage: pct(statuses.bloqueado, total), label: 'Bloqueado', value: statuses.bloqueado },
+    { className: 'seg-human', percentage: pct(statuses.concluido, total), label: 'Concluído', value: statuses.concluido },
+  ]);
+  const lbl = document.getElementById('trend-status-label');
+  if (lbl) lbl.textContent = `Aberto ${statuses.aberto} • Andamento ${statuses.andamento} • Bloqueado ${statuses.bloqueado} • Concluído ${statuses.concluido}`;
+
+  const outEl = document.getElementById('tmr-outliers');
+  const out = (activities || [])
+    .filter((a) => a.status === 'done' && a.createdAt && a.completedAt)
+    .map((a) => ({ title: a.title || a.id, tmr: (new Date(a.completedAt) - new Date(a.createdAt)) / 36e5 }))
+    .sort((a, b) => b.tmr - a.tmr)
+    .slice(0, 5);
+  if (outEl) outEl.innerHTML = out.map((o) => `<li><strong>${o.title}</strong> — ${o.tmr.toFixed(1)}h</li>`).join('') || '<li>Sem outliers relevantes.</li>';
+}
+
+function applyViewMode(mode) {
+  const sections = document.querySelectorAll('[data-view]');
+  sections.forEach((s) => {
+    const val = s.getAttribute('data-view') || '';
+    const show = val.includes(mode) || val.includes('executive operational');
+    s.classList.toggle('view-hidden', !show);
+  });
+}
+
 function updateMetrics(tasks) {
   const humanTasks = tasks.filter((t) => t.mode === 'HUMAN');
   const blockedHuman = humanTasks.filter((t) => !Array.isArray(t.runbookSteps) || t.runbookSteps.length === 0);
-
-  const humanMetric = document.getElementById('metric-human');
-  const blockedMetric = document.getElementById('metric-blocked');
-  if (humanMetric) humanMetric.textContent = String(humanTasks.length);
-  if (blockedMetric) blockedMetric.textContent = String(blockedHuman.length);
 
   updateTrafficLight(tasks, humanTasks.length, blockedHuman.length);
   updateSlaPanel(tasks);
@@ -396,15 +606,42 @@ function downloadWeeklyReport() {
   URL.revokeObjectURL(url);
 }
 
+async function fetchJson(path) {
+  const response = await fetch(path, { cache: 'no-store' });
+  if (!response.ok) throw new Error(`Falha ao carregar ${path}`);
+  return response.json();
+}
+
+async function refreshDecisionLayers(tasks) {
+  try {
+    const [deployData, autopilotData, activitiesData] = await Promise.all([
+      fetchJson('./data/deploy-status.json'),
+      fetchJson('./data/autopilot-sla.json'),
+      fetchJson('./data/activities-history.json'),
+    ]);
+
+    const activities = activitiesData.activities || [];
+    renderStrategicKpis(tasks, deployData, autopilotData, activities);
+    renderOperationalAlerts(tasks, deployData);
+    renderAnalyticalLayer(tasks, activities);
+
+    const lu = document.getElementById('last-updated-global');
+    if (lu) {
+      const ts = [autopilotData.updatedAt, deployData.updatedAt, activitiesData.updatedAt].filter(Boolean).sort().slice(-1)[0];
+      lu.textContent = ts ? `Última atualização: ${new Date(ts).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT` : 'Última atualização: n/d';
+    }
+  } catch {
+    const lu = document.getElementById('last-updated-global');
+    if (lu) lu.textContent = 'Última atualização: erro de leitura';
+  }
+}
+
 async function loadKanban() {
   const board = document.getElementById('kanban-board');
   const stamp = document.getElementById('kanban-updated-at');
 
   try {
-    const response = await fetch('./data/kanban.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Falha ao carregar kanban.json');
-
-    const incoming = await response.json();
+    const incoming = await fetchJson('./data/kanban.json');
     const firstLoad = !kanbanData;
     kanbanData = incoming;
 
@@ -415,10 +652,11 @@ async function loadKanban() {
     }
 
     renderKanban(kanbanData);
+    await refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || []));
 
     if (kanbanData.updatedAt) {
       const dt = new Date(kanbanData.updatedAt);
-      stamp.textContent = `Atualizado em: ${dt.toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+      stamp.textContent = `Atualizado em: ${dt.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
     } else {
       stamp.textContent = 'Atualizado em: n/d';
     }
@@ -439,6 +677,20 @@ document.getElementById('filter-search').addEventListener('input', () => {
 });
 
 document.getElementById('clear-filters').addEventListener('click', clearFilters);
+
+const execBtn = document.getElementById('view-executive');
+const opBtn = document.getElementById('view-operational');
+if (execBtn && opBtn) {
+  execBtn.addEventListener('click', () => applyViewMode('executive'));
+  opBtn.addEventListener('click', () => applyViewMode('operational'));
+  applyViewMode('operational');
+}
+
+const trendPeriodEl = document.getElementById('trend-period');
+const trendTeamEl = document.getElementById('trend-team');
+if (trendPeriodEl) trendPeriodEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
+if (trendTeamEl) trendTeamEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
+
 async function loadHandoff() {
   const target = document.getElementById('handoff-content');
   const updated = document.getElementById('handoff-updated');
@@ -449,7 +701,7 @@ async function loadHandoff() {
     if (!response.ok) throw new Error('Falha ao carregar handoff.json');
     const data = await response.json();
 
-    updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+    updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
 
     const jobsMetric = document.getElementById('metric-jobs');
     if (jobsMetric) {
@@ -650,7 +902,7 @@ async function loadOpsAnalytics() {
     const history = histRes.ok ? await histRes.json() : { activities: [] };
 
     if (updated) {
-      updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+      updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
     }
 
     const flow = computeFlowFromHistory(history.activities || []);
@@ -713,7 +965,7 @@ async function loadAutopilotSla() {
     if (durationEl) durationEl.textContent = `${Number(k.avgCycleDurationMinutes || 0).toFixed(1)} min`;
     if (interruptionsEl) interruptionsEl.textContent = `Interrupções: ${k.cyclesInterrupted || 0}`;
     if (humanEl) humanEl.textContent = `${k.humanInterventionCount || 0}`;
-    if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+    if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
   } catch {
     const completionEl = document.getElementById('autopilot-completion');
     const runsEl = document.getElementById('autopilot-runs');
@@ -740,7 +992,7 @@ async function loadDeployStatus() {
     const response = await fetch('./data/deploy-status.json', { cache: 'no-store' });
     if (!response.ok) throw new Error('Falha ao carregar deploy-status.json');
     const data = await response.json();
-    if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'UTC' })} UTC`;
+    if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
     if (aggregateEl) aggregateEl.textContent = `Semáforo agregado: ${String(data.aggregate?.status || 'n/d').toUpperCase()}`;
 
     listEl.innerHTML = (data.repos || []).map((r) => {

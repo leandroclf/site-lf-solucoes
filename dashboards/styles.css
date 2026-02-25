@@ -2,8 +2,8 @@
 body {
   margin: 0;
   font-family: Inter, Arial, sans-serif;
-  background: #0b1220;
-  color: #e9f0ff;
+  background: #f5f7fb;
+  color: #1f2937;
 }
 
 .topbar {
@@ -11,15 +11,15 @@ body {
   justify-content: space-between;
   align-items: center;
   padding: 16px 20px;
-  border-bottom: 1px solid #223250;
-  background: #101a2f;
+  border-bottom: 1px solid #d9e1ee;
+  background: #ffffff;
   position: sticky;
   top: 0;
 }
 
 .btn {
-  background: #35aef1;
-  color: #052033;
+  background: #2563eb;
+  color: #ffffff;
   padding: 8px 12px;
   border-radius: 8px;
   text-decoration: none;
@@ -28,13 +28,13 @@ body {
 }
 
 .btn-secondary {
-  background: transparent;
-  color: #d8e6ff;
-  border-color: #3964aa;
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #c7d4ea;
   cursor: pointer;
 }
 .btn-secondary:hover {
-  background: #173156;
+  background: #eef3fb;
 }
 
 .container {
@@ -46,11 +46,21 @@ body {
 
 .grid { display: grid; gap: 12px; }
 .metrics { grid-template-columns: repeat(3, minmax(0, 1fr)); }
+.metrics-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.view-switch { display:flex; gap:8px; }
+.kpi.kpi-green { border-left: 5px solid #10b981; }
+.kpi.kpi-yellow { border-left: 5px solid #f59e0b; }
+.kpi.kpi-red { border-left: 5px solid #ef4444; }
+.kpi.kpi-gray { border-left: 5px solid #9ca3af; }
+.heatmap-grid { display:grid; grid-template-columns: repeat(5, minmax(120px,1fr)); gap:8px; }
+.heat-cell { border:1px solid #d7e2f1; border-radius:8px; padding:8px; font-size:.8rem; }
+.trend-box { min-height: 120px; border:1px dashed #c9d7ee; border-radius:10px; padding:8px; }
+.view-hidden { display:none !important; }
 
 .card {
-  border: 1px solid #25385e;
-  background: #121d33;
+  border: 1px solid #d7e2f1;
+  background: #ffffff;
   border-radius: 14px;
   padding: 14px;
 }
@@ -75,9 +85,9 @@ li { margin: 6px 0; }
   font-size: .78rem;
   padding: 6px 10px;
   border-radius: 999px;
-  border: 1px solid #3964aa;
-  color: #b8d8ff;
-  background: #0f2445;
+  border: 1px solid #bfd0ea;
+  color: #1e3a5f;
+  background: #eef4ff;
 }
 
 .filters {
@@ -91,14 +101,14 @@ li { margin: 6px 0; }
   display: grid;
   gap: 4px;
   font-size: .85rem;
-  color: #b8ccef;
+  color: #334155;
 }
 
 .filters select,
 .filters input {
-  background: #0f1a30;
-  color: #d8e6ff;
-  border: 1px solid #2e4878;
+  background: #ffffff;
+  color: #1f2937;
+  border: 1px solid #c9d7ee;
   border-radius: 8px;
   padding: 6px 8px;
 }
@@ -117,16 +127,16 @@ li { margin: 6px 0; }
 }
 
 .kanban-col {
-  background: #0f1a30;
-  border: 1px solid #243a63;
+  background: #f8fbff;
+  border: 1px solid #d6e2f1;
   border-radius: 12px;
   padding: 10px;
   min-height: 220px;
 }
 
 .task {
-  border: 1px solid #2d4674;
-  background: #13213a;
+  border: 1px solid #d3e0f1;
+  background: #ffffff;
   border-radius: 10px;
   padding: 10px;
   margin-bottom: 8px;
@@ -287,10 +297,10 @@ li { margin: 6px 0; }
 }
 
 .handoff-block {
-  border: 1px solid #2c436f;
+  border: 1px solid #d6e3f2;
   border-radius: 10px;
   padding: 10px;
-  background: #0f1a30;
+  background: #f8fbff;
 }
 
 .handoff h3 {
