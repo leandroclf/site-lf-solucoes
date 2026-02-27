@@ -287,7 +287,7 @@ function renderOperationalAlerts(tasks, deployData) {
 
   const repos = deployData?.repos || [];
   const critical = repos.map((r) => {
-    const c = String(r.conclusion || r.status || '').toLowerCase();
+    const c = String(r.conclusion || '').toLowerCase();
     let weight = 1;
     if (['failure', 'cancelled', 'timed_out'].includes(c)) weight = 3;
     else if (r.status === 'error') weight = 2;
@@ -684,7 +684,7 @@ function downloadWeeklyReport() {
 
 async function fetchJson(path) {
   const response = await fetch(path, { cache: 'no-store' });
-  if (!response.ok) throw new Error(`Falha ao carregar ${path}`);
+  if (!response.ok) throw new Error('Falha ao carregar ${path}');
   return response.json();
 }
 
@@ -764,7 +764,7 @@ if (execBtn && opBtn) {
 
 const trendPeriodEl = document.getElementById('trend-period');
 const trendTeamEl = document.getElementById('trend-team');
-if (trendPeriodEl) trendPeriodEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
+if (trendPeriodEl) trendTeamEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
 if (trendTeamEl) trendTeamEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
 const thresholdEl = document.getElementById('alert-threshold-hours');
 if (thresholdEl) thresholdEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
@@ -788,7 +788,7 @@ async function loadHandoff() {
     }
 
     const projects = (data.projects || []).map((p) => `<li><strong>${p.name}</strong> — ${p.status}${p.repo ? ` — <a href="${p.repo}" target="_blank" rel="noreferrer">repo</a>` : ''}</li>`).join('');
-    const team = (data.team?.roles || []).map((r) => `<li>${r}</li>`).join('');
+    // const team = (data.team?.roles || []).map((r) => `<li>${r}</li>`).join(''); // REMOVED
     const categoriesObj = data.team?.categories || {};
     const categories = Object.keys(categoriesObj).length
       ? Object.entries(categoriesObj).map(([name, roles]) => `<li><strong>${name}</strong><ul>${(roles || []).map((r) => `<li>${r}</li>`).join('')}</ul></li>`).join('')
@@ -1081,7 +1081,7 @@ async function loadDeployStatus() {
     }).join('');
     if (!listEl.innerHTML) listEl.innerHTML = '<li>Sem dados de deploy no momento.</li>';
   } catch {
-    if (updatedEl) updatedEl.textContent = 'Atualizado em: erro de leitura';
+    if (updatedEl) updated.textContent = 'Atualizado em: erro de leitura';
     if (aggregateEl) aggregateEl.textContent = 'Semáforo agregado: erro';
     listEl.innerHTML = '<li>Não foi possível carregar status de deploy/CI.</li>';
   }
@@ -1155,6 +1155,7 @@ async function loadHumanDecisionSla() {
 async function loadDashboardFreshness() {
   const summaryEl = document.getElementById('freshness-summary');
   const listEl = document.getElementById('freshness-list');
+
   const cardEl = document.getElementById('freshness-card');
   if (!summaryEl || !listEl) return;
 
@@ -1230,8 +1231,8 @@ function downloadHandoff() {
     lines.push(`- ${p.name} | Status: ${p.status} | Repo: ${p.repo || 'n/d'}`);
   });
   lines.push('');
-  lines.push('Equipe especialista:');
-  (data.team?.roles || []).forEach((r) => lines.push(`- ${r}`));
+  // lines.push('Equipe especialista:'); // REMOVED
+  // (data.team?.roles || []).forEach((r) => lines.push(`- ${r}`)); // REMOVED
   lines.push('');
   lines.push('Especialistas por categoria:');
   const categories = data.team?.categories || {};
