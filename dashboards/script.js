@@ -809,10 +809,6 @@ async function loadHandoff() {
         <ul>${projects}</ul>
       </div>
       <div class="handoff-block">
-        <h3>Equipe especialista</h3>
-        <ul>${team}</ul>
-      </div>
-      <div class="handoff-block">
         <h3>Especialistas por categoria</h3>
         ${categories ? `<ul>${categories}</ul>` : '<p class="task-meta">Sem categorização disponível.</p>'}
       </div>
