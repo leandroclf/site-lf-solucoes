@@ -1,92 +1,119 @@
 {
-  "updatedAt": "2026-02-25T21:09:55.246256Z",
-  "owner": "leandroclf",
-  "repos": [
-    {
-      "repo": "lf-openalex-enrichment-mvp",
-      "workflow": "GitFlow Guard",
-      "runId": 22411070494,
-      "status": "completed",
-      "conclusion": "success",
-      "branch": "main",
-      "commit": "c2d17ba4f229efec31d575f0405c384f3fc96e8d",
-      "runUrl": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22411070494",
-      "logsUrl": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22411070494/logs",
-      "createdAt": "2026-02-25T18:49:33Z",
-      "updatedAt": "2026-02-25T18:49:39Z",
-      "actor": "leandroclf",
-      "lastTwoConclusions": [
-        "success",
-        "success"
-      ],
-      "consecutiveFailures": false
+  "updatedAt": "2026-02-27T13:14:13.898917+00:00",
+  "repos": {
+    "lf-openalex-enrichment-mvp": {
+      "latest_run": {
+        "id": 22487031929,
+        "run_number": 11,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-02-27T12:54:05Z",
+        "html_url": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22487031929",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22487031929/logs",
+        "head_commit": {
+          "id": "ecd0a81eff1850ebca2f87aa961645d6a35551bf",
+          "tree_id": "be6327fb52d8f6779fa3ab6772c3e2ec5e5a90e0",
+          "message": "fix(ci): add requirements.txt to resolve setup-python cache error",
+          "timestamp": "2026-02-27T12:54:01Z",
+          "author": {
+            "name": "Leandro Bot",
+            "email": "leandroclf@hotmail.com"
+          },
+          "committer": {
+            "name": "Leandro Bot",
+            "email": "leandroclf@hotmail.com"
+          }
+        }
+      },
+      "semaphore": "\ud83d\udfe2 GREEN",
+      "consecutive_failures": 0
     },
-    {
-      "repo": "lf-wikidata-entity-graph",
-      "workflow": "CI",
-      "runId": 22411071464,
-      "status": "completed",
-      "conclusion": "success",
-      "branch": "main",
-      "commit": "ac120966c50c7b631b8f28561baf3153883a63f6",
-      "runUrl": "https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/22411071464",
-      "logsUrl": "https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/22411071464/logs",
-      "createdAt": "2026-02-25T18:49:35Z",
-      "updatedAt": "2026-02-25T18:49:47Z",
-      "actor": "leandroclf",
-      "lastTwoConclusions": [
-        "success",
-        "success"
-      ],
-      "consecutiveFailures": false
+    "lf-wikidata-entity-graph": {
+      "latest_run": {
+        "id": 22487034373,
+        "run_number": 12,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-02-27T12:54:09Z",
+        "html_url": "https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/22487034373",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/22487034373/logs",
+        "head_commit": {
+          "id": "ad3188c7136cbfe9b557b6f0750aa4df11006469",
+          "tree_id": "c550fe92ce252bf274421754927ed5606464ead7",
+          "message": "fix(ci): add requirements.txt to resolve setup-python cache error",
+          "timestamp": "2026-02-27T12:54:06Z",
+          "author": {
+            "name": "Leandro Bot",
+            "email": "leandroclf@hotmail.com"
+          },
+          "committer": {
+            "name": "Leandro Bot",
+            "email": "leandroclf@hotmail.com"
+          }
+        }
+      },
+      "semaphore": "\ud83d\udfe2 GREEN",
+      "consecutive_failures": 0
     },
-    {
-      "repo": "lf-worldbank-risk-pricing",
-      "workflow": "GitFlow Guard",
-      "runId": 22411072391,
-      "status": "completed",
-      "conclusion": "success",
-      "branch": "main",
-      "commit": "6b1e8fef571ac798b785017cedf8520faab700b8",
-      "runUrl": "https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/22411072391",
-      "logsUrl": "https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/22411072391/logs",
-      "createdAt": "2026-02-25T18:49:36Z",
-      "updatedAt": "2026-02-25T18:49:42Z",
-      "actor": "leandroclf",
-      "lastTwoConclusions": [
-        "success",
-        "success"
-      ],
-      "consecutiveFailures": false
+    "lf-worldbank-risk-pricing": {
+      "latest_run": {
+        "id": 22486706744,
+        "run_number": 5,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-02-27T12:43:51Z",
+        "html_url": "https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/22486706744",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/22486706744/logs",
+        "head_commit": {
+          "id": "4dd2394c0bb51bd467587cf3b13f3fccd24061ab",
+          "tree_id": "372958b89095e3d243da4da88f9379bd0eb62b30",
+          "message": "chore: remove gitflow-guard direct main push blocker and add governance placeholder",
+          "timestamp": "2026-02-27T12:43:48Z",
+          "author": {
+            "name": "Leandro Bot",
+            "email": "leandroclf@hotmail.com"
+          },
+          "committer": {
+            "name": "Leandro Bot",
+            "email": "leandroclf@hotmail.com"
+          }
+        }
+      },
+      "semaphore": "\ud83d\udfe2 GREEN",
+      "consecutive_failures": 0
     },
-    {
-      "repo": "site-lf-solucoes",
-      "workflow": "Deploy static site to GitHub Pages",
-      "runId": 22414612612,
-      "status": "completed",
-      "conclusion": "success",
-      "branch": "main",
-      "commit": "476168c72811792dd9104bb07fb69deabc265a43",
-      "runUrl": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/22414612612",
-      "logsUrl": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22414612612/logs",
-      "createdAt": "2026-02-25T20:28:22Z",
-      "updatedAt": "2026-02-25T20:28:40Z",
-      "actor": "leandroclf",
-      "lastTwoConclusions": [
-        "success",
-        "success"
-      ],
-      "consecutiveFailures": false
+    "site-lf-solucoes": {
+      "latest_run": {
+        "id": 22421449028,
+        "run_number": 86,
+        "status": "completed",
+        "conclusion": "success",
+        "created_at": "2026-02-25T23:57:37Z",
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/22421449028",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22421449028/logs",
+        "head_commit": {
+          "id": "1578ca4960d7d93096b054cff54f725991fdf0d6",
+          "tree_id": "ed689b22012d275271180b1dfa8d9083bb7ccaad",
+          "message": "perf(mobile): step 2 optimize smartphone rendering and adaptive dashboard refresh",
+          "timestamp": "2026-02-25T23:57:31Z",
+          "author": {
+            "name": "Leandro",
+            "email": "leandroclf@hotmail.com"
+          },
+          "committer": {
+            "name": "Leandro",
+            "email": "leandroclf@hotmail.com"
+          }
+        }
+      },
+      "semaphore": "\ud83d\udfe2 GREEN",
+      "consecutive_failures": 0
     },
-    {
-      "repo": "openclaw-workspace",
-      "status": "excluded",
-      "reason": "actions-permission-missing",
-      "error": "HTTP Error 403: Forbidden"
+    "openclaw-workspace": {
+      "error": "no-workflow-runs",
+      "details": "No workflow runs found for this repository.",
+      "semaphore": "\ud83d\udfe1 YELLOW"
     }
-  ],
-  "aggregate": {
-    "status": "green",
-    "rule": "red=2 falhas consecutivas em qualquer repo; yellow=falha real/no-runs/erro de consulta; green=sucessos (repos excluded-by-policy não entram no cálculo)"
-  }
+  },
+  "aggregate_semaphore": "\ud83d\udfe1 YELLOW"
 }

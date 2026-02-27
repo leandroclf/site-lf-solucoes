@@ -1,47 +1,55 @@
-# Deploy Status Snapshot
+# Status de Deploy/CI - 2026-02-27T13:14:13.898917+00:00
 
-Atualizado em: 2026-02-25T21:09:55.246256Z
-Semáforo agregado: green
+## Semáforo Agregado: 🟡 YELLOW
 
-## lf-openalex-enrichment-mvp
-- Workflow: GitFlow Guard
-- Status: completed | Conclusion: success
-- Branch: main
-- Commit: c2d17ba4f229efec31d575f0405c384f3fc96e8d
-- Run: https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22411070494
-- Logs: https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22411070494/logs
-- Updated: 2026-02-25T18:49:39Z
+### Repositório: `lf-openalex-enrichment-mvp`
+- Último Workflow Run:
+  - Status: `completed`
+  - Conclusão: **SUCCESS**
+  - Commit: `ecd0a81` - `fix(ci): add requirements.txt to resolve setup-python cache error`
+  - Link do Run: [#11](https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22487031929)
+  - Link dos Logs: [Logs](https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22487031929/logs)
+  - Data/Hora: `2026-02-27T12:54:05Z`
+- Semáforo Agregado: 🟢 GREEN
+- Falhas Consecutivas: 0
 
-## lf-wikidata-entity-graph
-- Workflow: CI
-- Status: completed | Conclusion: success
-- Branch: main
-- Commit: ac120966c50c7b631b8f28561baf3153883a63f6
-- Run: https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/22411071464
-- Logs: https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/22411071464/logs
-- Updated: 2026-02-25T18:49:47Z
+### Repositório: `lf-wikidata-entity-graph`
+- Último Workflow Run:
+  - Status: `completed`
+  - Conclusão: **SUCCESS**
+  - Commit: `ad3188c` - `fix(ci): add requirements.txt to resolve setup-python cache error`
+  - Link do Run: [#12](https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/22487034373)
+  - Link dos Logs: [Logs](https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/22487034373/logs)
+  - Data/Hora: `2026-02-27T12:54:09Z`
+- Semáforo Agregado: 🟢 GREEN
+- Falhas Consecutivas: 0
 
-## lf-worldbank-risk-pricing
-- Workflow: GitFlow Guard
-- Status: completed | Conclusion: success
-- Branch: main
-- Commit: 6b1e8fef571ac798b785017cedf8520faab700b8
-- Run: https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/22411072391
-- Logs: https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/22411072391/logs
-- Updated: 2026-02-25T18:49:42Z
+### Repositório: `lf-worldbank-risk-pricing`
+- Último Workflow Run:
+  - Status: `completed`
+  - Conclusão: **SUCCESS**
+  - Commit: `4dd2394` - `chore: remove gitflow-guard direct main push blocker and add governance placeholder`
+  - Link do Run: [#5](https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/22486706744)
+  - Link dos Logs: [Logs](https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/22486706744/logs)
+  - Data/Hora: `2026-02-27T12:43:51Z`
+- Semáforo Agregado: 🟢 GREEN
+- Falhas Consecutivas: 0
 
-## site-lf-solucoes
-- Workflow: Deploy static site to GitHub Pages
-- Status: completed | Conclusion: success
-- Branch: main
-- Commit: 476168c72811792dd9104bb07fb69deabc265a43
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/22414612612
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22414612612/logs
-- Updated: 2026-02-25T20:28:40Z
+### Repositório: `site-lf-solucoes`
+- Último Workflow Run:
+  - Status: `completed`
+  - Conclusão: **SUCCESS**
+  - Commit: `1578ca4` - `perf(mobile): step 2 optimize smartphone rendering and adaptive dashboard refresh`
+  - Link do Run: [#86](https://github.com/leandroclf/site-lf-solucoes/actions/runs/22421449028)
+  - Link dos Logs: [Logs](https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22421449028/logs)
+  - Data/Hora: `2026-02-25T23:57:37Z`
+- Semáforo Agregado: 🟢 GREEN
+- Falhas Consecutivas: 0
 
-## openclaw-workspace
-- Status: excluído do semáforo (actions-permission-missing)
+### Repositório: `openclaw-workspace`
+- Status: 🔴 **Erro na consulta**
+  - Motivo: `no-workflow-runs`
+  - Detalhes: `No workflow runs found for this repository.`
+- Semáforo Agregado: 🔴 **RED** (Erro na consulta)
+- Falhas Consecutivas: 0
 
-Agente: orchestrator
-Skill: n/a (execução direta)
-Workflow: deploy-log-capture
