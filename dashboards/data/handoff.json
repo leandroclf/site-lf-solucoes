@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-02-25T21:01:04Z",
+  "updatedAt": "2026-02-27T13:43:05.561369Z",
   "program": {
     "name": "Programa de Governança Multiagente + Entrega Comercial",
     "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
@@ -177,35 +177,6 @@
   },
   "recentAdvances": [
     {
-      "at": "2026-02-25T16:32:52Z",
-      "items": [
-        "ISSUE-008 micro-lote: ICP/KPI definidos e template JTBD v1 publicado.",
-        "ISSUE-009 micro-lote: ownership map baseline e pesos do scorecard publicados."
-      ]
-    },
-    {
-      "at": "2026-02-25T17:00:58Z",
-      "items": [
-        "ISSUE-008: plano operacional de entrevistas JTBD (D3/D4) publicado.",
-        "ISSUE-009: baseline W09 de accountability publicado com cobertura 100% de ownership/valueKpi."
-      ]
-    },
-    {
-      "at": "2026-02-25T17:30:56Z",
-      "items": [
-        "ISSUE-008: tracker operacional de entrevistas JTBD criado (2 entrevistas planejadas).",
-        "ISSUE-009: product decision log W09 criado com decisões manter para 008/009."
-      ]
-    },
-    {
-      "at": "2026-02-25T18:01:04Z",
-      "items": [
-        "ISSUE-008: template de síntese JTBD v1 publicado.",
-        "ISSUE-009: cobertura do gate de produto W09 publicada.",
-        "Onboarding C4 corrigido no handoff (roles); C5 pendente com reviewer-delivery (ISSUE-023)."
-      ]
-    },
-    {
       "at": "2026-02-25T18:31:02Z",
       "items": [
         "ISSUE-008: outreach script JTBD v1 publicado.",
@@ -253,6 +224,99 @@
         "ISSUE-001: test checklist de PR publicado.",
         "ISSUE-009: backlog closure de decisões de produto publicado."
       ]
+    },
+    {
+      "at": "2026-02-25T22:01:02Z",
+      "items": [
+        "ISSUE-008: mapa insight->feature publicado.",
+        "ISSUE-003: checklist de PR da API publicado."
+      ]
+    },
+    {
+      "at": "2026-02-25T23:02:06Z",
+      "items": [
+        "Bundle de evidências KPI de produto consolidado para PRs (001/002/003/008/009).",
+        "Checklist de enforcement de decisão de produto publicado para ISSUE-009."
+      ]
+    },
+    {
+      "at": "2026-02-26T00:04:20Z",
+      "items": [
+        "ISSUE-001: commit local 39d2d26 com cálculo de coverage + testes.",
+        "ISSUE-002: commit local f108abc com métricas de matching + testes.",
+        "Bloqueio persistente: push remoto falhou por SSH publickey (ação humana necessária)."
+      ]
+    },
+    {
+      "at": "2026-02-26T00:17:10Z",
+      "items": [
+        "ISSUE-001/002: commits locais anteriores publicados em remoto com sucesso via SSH explícito.",
+        "ISSUE-003: commit 9d5ff53 (risk score response + teste) publicado em branch feature.",
+        "PR links prontos para abertura/atualização em 001/002/003."
+      ]
+    },
+    {
+      "at": "2026-02-26T00:18:30Z",
+      "items": [
+        "OpenAlex: commit e248d8c (ISSUE-016/021) push com GitFlow SSH explícito.",
+        "Wikidata: commit 3443f5f (ISSUE-002) push com GitFlow SSH explícito."
+      ]
+    },
+    {
+      "at": "2026-02-26T00:22:40Z",
+      "items": [
+        "OpenAlex: commit 99ab512 (código+teste) push em feature branch.",
+        "WorldBank: commit f745551 (código+teste) push em feature branch."
+      ]
+    },
+    {
+      "at": "2026-02-26T00:31:40Z",
+      "items": [
+        "Wikidata: commit 92b36c4 (best-match selector + test) push OK.",
+        "WorldBank: commit cf03945 (GitFlow guard hardening) push OK."
+      ]
+    },
+    {
+      "at": "2026-02-26T01:01:35Z",
+      "items": [
+        "OpenAlex: commit f062c21 (ISSUE-016 slot) com teste e push OK.",
+        "WorldBank: commit 7132cba (ISSUE-003) com teste e push OK."
+      ]
+    },
+    {
+      "at": "2026-02-26T01:31:30Z",
+      "items": [
+        "OpenAlex: commit bebb323 (value band) push OK.",
+        "Wikidata: commit 83e4189 (similarity score) push OK."
+      ]
+    },
+    {
+      "at": "2026-02-26T02:01:35Z",
+      "items": [
+        "WorldBank: commit ac56687 (multiplier+teste) push OK.",
+        "Wikidata: commit e70124b (ISSUE-021 hardening) push OK."
+      ]
+    },
+    {
+      "at": "2026-02-26T02:31:25Z",
+      "items": [
+        "OpenAlex: commit ef516e4 (summary helper+test) push OK.",
+        "Wikidata: commit 2666bba (threshold gate+test) push OK."
+      ]
+    },
+    {
+      "at": "2026-02-26T03:01:30Z",
+      "items": [
+        "WorldBank: commit 74296f7 (pricing decision builder) push OK.",
+        "OpenAlex: commit c24e1a6 (high-value helper) push OK."
+      ]
+    },
+    {
+      "at": "2026-02-26T03:31:35Z",
+      "items": [
+        "OpenAlex: commit b0a2971 (percentile helper+test) push OK.",
+        "Wikidata: commit 8a5d55d (match decision+test) push OK."
+      ]
     }
   ],
   "capacityControl": {
@@ -274,5 +338,6 @@
       "revenue-ops-specialist",
       "human-legal-specialist"
     ]
-  }
+  },
+  "risks": []
 }
