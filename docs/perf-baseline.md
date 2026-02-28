@@ -1,21 +1,21 @@
 # Baseline de Performance
 
-Gerado automaticamente em: **2026-02-28 23:15 UTC**
+Gerado automaticamente em: **2026-02-28 23:21 UTC**
 
 ## Inventario de tamanho estatico
 
-- HTML total: **139.12 KB** (12 arquivos)
+- HTML total: **138.94 KB** (12 arquivos)
 - CSS total: **22.83 KB** (2 arquivos)
-- JS total: **72.41 KB** (5 arquivos)
+- JS total: **73.20 KB** (5 arquivos)
 - Imagens totais: **9.71 KB** (2 arquivos)
 
 ## Maiores arquivos (top 12)
 
 | Arquivo | Tamanho (KB) |
 |---|---:|
-| `dashboards/script.js` | 57.20 |
+| `dashboards/script.js` | 57.99 |
 | `index.html` | 26.26 |
-| `dashboards/index.html` | 18.00 |
+| `dashboards/index.html` | 17.81 |
 | `dashboards/styles.css` | 12.24 |
 | `sobre/nossa-equipe.html` | 12.02 |
 | `styles.css` | 10.59 |

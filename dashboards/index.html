@@ -8,12 +8,6 @@
       name="description"
       content="Painel operacional da LF Solucoes com visao executiva de SLA, deploy, produtividade e acompanhamento de iniciativas."
     />
-    <link rel="preconnect" href="https://fonts.googleapis.com" />
-    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
-    <link
-      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
-      rel="stylesheet"
-    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -110,7 +104,10 @@
           </div>
           <div class="card">
             <h3>SLA violado (24h)</h3>
-            <p class="task-meta">Threshold de alerta (h): <input id="alert-threshold-hours" type="number" min="1" value="24" style="width:80px;" /></p>
+            <p class="task-meta">
+              <label for="alert-threshold-hours">Threshold de alerta (h):</label>
+              <input id="alert-threshold-hours" type="number" min="1" value="24" style="width:80px;" />
+            </p>
             <ul id="sla-violations-list" class="task-list"></ul>
           </div>
         </div>

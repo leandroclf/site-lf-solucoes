@@ -7,6 +7,7 @@ const DATA_CACHE_TTL_MS = 60000;
 const DATA_CACHE = new Map();
 let autoRefreshTimer = null;
 let kanbanRenderToken = 0;
+let kanbanBoardHydrated = false;
 
 function scheduleLowPriority(fn, delayMs = 0) {
   if ('requestIdleCallback' in window) {
@@ -712,6 +713,23 @@ function renderKanban(data) {
   persistFiltersToURL();
 }
 
+function collectFilteredTasks(data) {
+  const filtered = [];
+  for (const column of data.columns || []) {
+    filtered.push(...filterTasks(column.tasks || []));
+  }
+  return filtered;
+}
+
+function renderKanbanSummaryOnly(data) {
+  const summary = document.getElementById('kanban-summary');
+  const tasks = collectFilteredTasks(data);
+  if (summary) summary.textContent = `Resumo: ${tasks.length} atividade(s) visível(is) no filtro atual.`;
+  renderCharts(tasks);
+  updateMetrics(tasks);
+  persistFiltersToURL();
+}
+
 function populateSelect(data, selectId, valueSelector) {
   const select = document.getElementById(selectId);
   const values = new Set();
@@ -788,6 +806,7 @@ function getAllKanbanTasks() {
 function renderCurrentKanban() {
   if (!kanbanData) return;
   renderKanban(kanbanData);
+  kanbanBoardHydrated = true;
 }
 
 async function refreshDecisionLayers(tasks, options = {}) {
@@ -819,7 +838,8 @@ async function refreshDecisionLayers(tasks, options = {}) {
   }
 }
 
-async function loadKanban() {
+async function loadKanban(options = {}) {
+  const shouldRenderBoard = options.renderBoard !== false;
   const board = document.getElementById('kanban-board');
   const stamp = document.getElementById('kanban-updated-at');
 
@@ -834,7 +854,11 @@ async function loadKanban() {
       applyFiltersFromURL();
     }
 
-    renderKanban(kanbanData);
+    if (shouldRenderBoard || kanbanBoardHydrated) {
+      renderCurrentKanban();
+    } else {
+      renderKanbanSummaryOnly(kanbanData);
+    }
     await refreshDecisionLayers(getAllKanbanTasks());
 
     if (kanbanData.updatedAt) {
@@ -1364,7 +1388,7 @@ document.getElementById('download-handoff').addEventListener('click', downloadHa
 document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo (a cada ${Math.round(AUTO_REFRESH_MS / 60000)} min)`;
 
 function refreshAll() {
-  Promise.all([loadKanban(), loadSemaphoreState()]).catch(() => {});
+  Promise.all([loadKanban({ renderBoard: false }), loadSemaphoreState()]).catch(() => {});
 
   scheduleLowPriority(() => {
     loadDeployStatus();
@@ -1372,6 +1396,7 @@ function refreshAll() {
   }, 120);
 
   scheduleLowPriority(() => {
+    renderCurrentKanban();
     loadHandoff();
     loadOpsAnalytics();
     loadHumanDecisionSla();

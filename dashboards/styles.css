@@ -221,8 +221,8 @@ li { margin: 6px 0; }
   padding: 6px 10px;
   border-radius: 999px;
   border: 1px solid #3964aa;
-  color: #b8d8ff;
-  background: #0f2445;
+  color: #e1eeff;
+  background: #16335f;
 }
 
 .filters {
@@ -291,7 +291,7 @@ li { margin: 6px 0; }
 .task-meta {
   margin: 0;
   font-size: .82rem;
-  color: #c7d8f8;
+  color: #dbe8ff;
 }
 
 .runbook {
