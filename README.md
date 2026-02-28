@@ -64,6 +64,13 @@ O CI executa:
 2. assert em modo observacao
 3. quality gate bloqueante (Performance, SEO, A11y e budgets)
 
+Thresholds atuais:
+
+- Home e Sobre: Performance >= 90, SEO >= 95, A11y >= 95, Best Practices >= 90
+- Dashboard operacional: Performance >= 80, SEO >= 95, A11y >= 86, Best Practices >= 90
+
+Obs.: dashboard possui gate transitorio com melhoria planejada no backlog (`Ticket 11`).
+
 ## Deploy
 
 - Publicacao automatica em GitHub Pages via `.github/workflows/deploy-pages.yml`

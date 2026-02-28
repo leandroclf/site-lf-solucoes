@@ -6,6 +6,7 @@
 - [ ] JS total sem crescimento fora do budget
 - [ ] CSS total sem crescimento fora do budget
 - [ ] Lighthouse CI aprovado
+- [ ] Dashboard com plano de melhoria ativo ate atingir meta final (ticket 11)
 
 ## Acessibilidade
 

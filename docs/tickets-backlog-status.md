@@ -51,3 +51,11 @@ Status consolidado dos tickets planejados para evolucao segura do site.
 - Status: Concluido
 - Entrega: `docs/hardening-checklist.md`, `scripts/quality_smoke.py`, `scripts/budget_check.py`, workflow `quality-smoke.yml`
 - Metricas: checks automatizados para evitar regressao estrutural/SEO/A11y basico
+
+## Ticket 11 - Dashboard Lighthouse uplift (proxima iteracao)
+- Status: Planejado
+- Objetivo: elevar `dashboards/` para Performance >= 0.90 e A11y >= 0.95
+- Escopo inicial:
+  - reduzir custo de render inicial no `dashboards/script.js`
+  - corrigir contrastes e semantica para acessibilidade
+  - medir impacto com LHCI por URL

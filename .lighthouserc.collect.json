@@ -2,8 +2,10 @@
   "ci": {
     "collect": {
       "numberOfRuns": 2,
+      "outputDir": ".lighthouseci",
       "startServerCommand": "python3 -m http.server 4173",
       "startServerReadyPattern": "Serving HTTP on",
+      "startServerReadyTimeout": 20000,
       "url": [
         "http://127.0.0.1:4173/",
         "http://127.0.0.1:4173/sobre/nossa-equipe.html",
