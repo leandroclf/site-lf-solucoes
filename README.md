@@ -31,6 +31,18 @@ Validacao estrutural de navegacao e links:
 python3 scripts/validate_site_structure.py
 ```
 
+Smoke de qualidade (SEO/A11y basico):
+
+```bash
+python3 scripts/quality_smoke.py
+```
+
+Budgets estaticos:
+
+```bash
+python3 scripts/budget_check.py
+```
+
 Baseline de ativos estaticos:
 
 ```bash
@@ -40,6 +52,7 @@ python3 scripts/collect_perf_baseline.py
 ## Qualidade automatizada (CI)
 
 - Workflow: `.github/workflows/lighthouse-observe.yml`
+- Workflow adicional: `.github/workflows/quality-smoke.yml`
 - Configs:
   - `.lighthouserc.collect.json`
   - `.lighthouserc.observe.json`

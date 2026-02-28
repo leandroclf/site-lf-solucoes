@@ -1,11 +1,11 @@
 # Baseline de Performance
 
-Gerado automaticamente em: **2026-02-28 21:55 UTC**
+Gerado automaticamente em: **2026-02-28 22:22 UTC**
 
 ## Inventario de tamanho estatico
 
-- HTML total: **116.00 KB** (9 arquivos)
-- CSS total: **22.16 KB** (2 arquivos)
+- HTML total: **116.24 KB** (9 arquivos)
+- CSS total: **22.44 KB** (2 arquivos)
 - JS total: **71.29 KB** (5 arquivos)
 - Imagens totais: **9.71 KB** (2 arquivos)
 
@@ -15,9 +15,9 @@ Gerado automaticamente em: **2026-02-28 21:55 UTC**
 |---|---:|
 | `dashboards/script.js` | 56.08 |
 | `index.html` | 25.88 |
-| `dashboards/index.html` | 17.43 |
+| `dashboards/index.html` | 17.67 |
 | `sobre/nossa-equipe.html` | 12.02 |
-| `dashboards/styles.css` | 11.57 |
+| `dashboards/styles.css` | 11.85 |
 | `styles.css` | 10.59 |
 | `solucoes/whatsapp-automation.html` | 10.33 |
 | `solucoes/integrations-apis.html` | 10.33 |
