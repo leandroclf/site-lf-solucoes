@@ -1,30 +1,57 @@
 # site-lf-solucoes
 
-Landing page institucional da **LF Soluções** (versão remodelada).
+Site institucional da **LF Solucoes**, publicado via GitHub Pages.
 
-## Estrutura
+## Estrutura principal
 
-- `index.html` → página principal
-- `styles.css` → estilos globais
-- `script.js` → utilidades simples
-- `assets/logo-lf-oficial.jpg` → logo oficial da LF Soluções
-- `assets/logo-lf.svg` → logo placeholder (backup)
+- `index.html` - home institucional
+- `styles.css` / `script.js` - base visual e comportamento global
+- `sobre/` - pagina institucional da equipe
+- `solucoes/` - paginas de ofertas
+- `dashboards/` - painel operacional
+- `docs/` - runbooks e checklists de qualidade
+- `scripts/` - validadores e utilitarios locais
 
-## Como rodar localmente
+## Rodar localmente
 
-Basta abrir o `index.html` no navegador.
+```bash
+python3 -m http.server 8080
+```
 
-## Checklist de personalização antes de publicar
+Abrir:
 
-1. (Concluído) Logo oficial aplicado em `assets/logo-lf-oficial.jpg`.
-2. (Concluído) Contatos atualizados em `#contato`.
-3. Ajustar textos de prova social (clientes/cases reais).
-4. Inserir domínio e configurar analytics (GA4 / Meta Pixel, se aplicável).
+- `http://localhost:8080/`
+- `http://localhost:8080/dashboards/`
 
-## Observação
+## Validacoes locais
 
-Esta versão prioriza:
-- visual profissional e limpo
-- copy orientada a resultado
-- carregamento rápido
-- manutenção simples
+Validacao estrutural de navegacao e links:
+
+```bash
+python3 scripts/validate_site_structure.py
+```
+
+Baseline de ativos estaticos:
+
+```bash
+python3 scripts/collect_perf_baseline.py
+```
+
+## Qualidade automatizada (CI)
+
+- Workflow: `.github/workflows/lighthouse-observe.yml`
+- Configs:
+  - `.lighthouserc.collect.json`
+  - `.lighthouserc.observe.json`
+  - `.lighthouserc.json`
+
+O CI executa:
+
+1. coleta de Lighthouse em URLs chave
+2. assert em modo observacao
+3. quality gate bloqueante (Performance, SEO, A11y e budgets)
+
+## Deploy
+
+- Publicacao automatica em GitHub Pages via `.github/workflows/deploy-pages.yml`
+- Branch de deploy: `main`

@@ -1,0 +1,41 @@
+name: Lighthouse CI
+
+on:
+  pull_request:
+  push:
+    branches: ["main"]
+
+permissions:
+  contents: read
+
+jobs:
+  lighthouse-observe:
+    runs-on: ubuntu-latest
+    steps:
+      - name: Checkout
+        uses: actions/checkout@v4
+
+      - name: Setup Node
+        uses: actions/setup-node@v4
+        with:
+          node-version: "22"
+
+      - name: Install LHCI
+        run: npm install --no-save @lhci/cli@0.15.x
+
+      - name: Collect Lighthouse data
+        run: npx lhci collect --config=.lighthouserc.collect.json
+
+      - name: Assert (observation mode)
+        run: npx lhci assert --config=.lighthouserc.observe.json
+
+      - name: Assert (quality gate)
+        run: npx lhci assert --config=.lighthouserc.json
+
+      - name: Upload Lighthouse artifacts
+        if: always()
+        uses: actions/upload-artifact@v4
+        with:
+          name: lighthouse-observe-report
+          path: .lighthouseci
+          if-no-files-found: ignore

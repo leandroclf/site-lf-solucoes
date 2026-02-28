@@ -1,0 +1,56 @@
+{
+  "ci": {
+    "assert": {
+      "assertions": {
+        "categories:performance": [
+          "warn",
+          {
+            "minScore": 0.9
+          }
+        ],
+        "categories:accessibility": [
+          "warn",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "categories:seo": [
+          "warn",
+          {
+            "minScore": 0.95
+          }
+        ],
+        "categories:best-practices": [
+          "warn",
+          {
+            "minScore": 0.9
+          }
+        ],
+        "resource-summary:script:size": [
+          "warn",
+          {
+            "maxNumericValue": 190000
+          }
+        ],
+        "resource-summary:stylesheet:size": [
+          "warn",
+          {
+            "maxNumericValue": 80000
+          }
+        ],
+        "resource-summary:image:size": [
+          "warn",
+          {
+            "maxNumericValue": 450000
+          }
+        ],
+        "resource-summary:total:size": [
+          "warn",
+          {
+            "maxNumericValue": 900000
+          }
+        ]
+      }
+    }
+  }
+}

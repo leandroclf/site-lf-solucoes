@@ -13,6 +13,14 @@ python3 scripts/validate_site_structure.py
 Esperado:
 
 - `OK: estrutura validada (menus, links e secao Sobre)`
+- `scripts/diagnostic.js` <= 12 KB
+- `scripts/roi-simulator.js` <= 6 KB
+
+Comando:
+
+```bash
+wc -c scripts/diagnostic.js scripts/roi-simulator.js
+```
 
 ## 2) Smoke visual desktop
 
