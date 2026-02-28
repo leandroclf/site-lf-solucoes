@@ -6,7 +6,7 @@
 - [ ] JS total sem crescimento fora do budget
 - [ ] CSS total sem crescimento fora do budget
 - [ ] Lighthouse CI aprovado
-- [ ] Dashboard com plano de melhoria ativo ate atingir meta final (ticket 11)
+- [ ] Dashboard com meta final aplicada (Performance >= 90 e A11y >= 95)
 
 ## Acessibilidade
 
@@ -27,3 +27,13 @@
 - [ ] Deploy de Pages executado sem erro
 - [ ] Validacao estrutural (`validate_site_structure.py`) em OK
 - [ ] Rollback simples: reverter ultimo commit em `main` se necessario
+
+## Comandos de validacao final
+
+```bash
+python3 scripts/validate_site_structure.py
+python3 scripts/quality_smoke.py
+python3 scripts/budget_check.py
+python3 scripts/collect_perf_baseline.py
+node --check script.js dashboards/script.js scripts/*.js
+```

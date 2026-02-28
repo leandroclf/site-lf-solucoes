@@ -22,6 +22,7 @@ Abrir:
 
 - `http://localhost:8080/`
 - `http://localhost:8080/dashboards/`
+- `http://localhost:8080/solucoes/automacao-processos.html`
 
 ## Validacoes locais
 
@@ -67,9 +68,7 @@ O CI executa:
 Thresholds atuais:
 
 - Home e Sobre: Performance >= 90, SEO >= 95, A11y >= 95, Best Practices >= 90
-- Dashboard operacional: Performance >= 80, SEO >= 95, A11y >= 86, Best Practices >= 90
-
-Obs.: dashboard possui gate transitorio com melhoria planejada no backlog (`Ticket 11`).
+- Dashboard operacional: Performance >= 90, SEO >= 95, A11y >= 95, Best Practices >= 90
 
 ## Deploy
 
