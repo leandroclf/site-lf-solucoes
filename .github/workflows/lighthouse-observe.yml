@@ -38,4 +38,5 @@ jobs:
         with:
           name: lighthouse-observe-report
           path: .lighthouseci
+          include-hidden-files: true
           if-no-files-found: ignore
