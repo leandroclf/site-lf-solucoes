@@ -1,13 +1,13 @@
 {
-  "updatedAt": "2026-02-27T13:43:05.561369Z",
+  "updatedAt": "2026-02-28T14:05:47.266473+00:00",
   "program": {
-    "name": "Programa de Governança Multiagente + Entrega Comercial",
-    "objective": "Operar projetos com organização total, foco em receita, qualidade de entrega e mitigação de risco.",
+    "name": "Programa de Governan\u00e7a Multiagente + Entrega Comercial",
+    "objective": "Operar projetos com organiza\u00e7\u00e3o total, foco em receita, qualidade de entrega e mitiga\u00e7\u00e3o de risco.",
     "principles": [
-      "AUTO-first com segurança",
+      "AUTO-first com seguran\u00e7a",
       "Toda tarefa HUMAN com runbook",
-      "Decisão orientada por KPI (receita, qualidade, lead time)",
-      "Revisão contínua de equipe e skills"
+      "Decis\u00e3o orientada por KPI (receita, qualidade, lead time)",
+      "Revis\u00e3o cont\u00ednua de equipe e skills"
     ]
   },
   "projects": [
@@ -17,7 +17,7 @@
       "status": "Ativo"
     },
     {
-      "name": "Site LF Soluções + Dashboard Operacional",
+      "name": "Site LF Solu\u00e7\u00f5es + Dashboard Operacional",
       "repo": "https://github.com/leandroclf/site-lf-solucoes",
       "status": "Ativo",
       "publicUrl": "https://leandroclf.github.io/site-lf-solucoes/",
@@ -26,12 +26,12 @@
     {
       "name": "Vehicle Tracking Hardening",
       "repo": "https://github.com/leandroclf/vehicle-tracking",
-      "status": "Em manutenção"
+      "status": "Em manuten\u00e7\u00e3o"
     },
     {
       "name": "GitHub Automation Test",
       "repo": "https://github.com/leandroclf/lf-repo-autotest",
-      "status": "Concluído (validação)"
+      "status": "Conclu\u00eddo (valida\u00e7\u00e3o)"
     },
     {
       "name": "OpenAlex Enrichment MVP",
@@ -80,11 +80,11 @@
       "human-legal-specialist"
     ],
     "precedence": [
-      "Segurança/compliance",
-      "Negócio/receita",
-      "Viabilidade técnica/risco",
-      "Execução/entrega",
-      "Evolução de equipe"
+      "Seguran\u00e7a/compliance",
+      "Neg\u00f3cio/receita",
+      "Viabilidade t\u00e9cnica/risco",
+      "Execu\u00e7\u00e3o/entrega",
+      "Evolu\u00e7\u00e3o de equipe"
     ],
     "categories": {
       "orquestracao-governanca": [
@@ -135,17 +135,17 @@
     "masterJob": "Autopilot sequential delivery cycle",
     "daily": [
       "Autopilot sequencial: 24/7, a cada 30 min (UTC/BRT), executando pipeline completo em ordem",
-      "Watchdog de ociosidade: 24/7, a cada 20 min (UTC/BRT), com mini-ciclo quando necessário",
+      "Watchdog de ociosidade: 24/7, a cada 20 min (UTC/BRT), com mini-ciclo quando necess\u00e1rio",
       "Deploy/CI audit: 24/7, minuto 12 de cada hora (UTC/BRT)"
     ],
     "weekly": [
-      "Acoplado ao job principal: segunda-feira entre 12:00 e 14:59 UTC (09:00–11:59 BRT)"
+      "Acoplado ao job principal: segunda-feira entre 12:00 e 14:59 UTC (09:00\u201311:59 BRT)"
     ],
     "biweekly": [
-      "Acoplado ao job principal: revisão SLA quando completar janela >=14 dias desde última revisão"
+      "Acoplado ao job principal: revis\u00e3o SLA quando completar janela >=14 dias desde \u00faltima revis\u00e3o"
     ],
     "monthly": [
-      "Acoplado ao job principal: dia 1 entre 15:00 e 15:59 UTC (12:00–12:59 BRT)"
+      "Acoplado ao job principal: dia 1 entre 15:00 e 15:59 UTC (12:00\u201312:59 BRT)"
     ],
     "supportJobs": [
       "Daily specialist onboarding audit (22:15 UTC | 19:15 BRT)",
@@ -155,46 +155,46 @@
       "Weekly code evolution KPI audit (Seg 15:00 UTC | 12:00 BRT)"
     ],
     "legacyDisabledByDesign": [
-      "Todos os jobs individuais diários/semanais/quinzenais/mensais de governança"
+      "Todos os jobs individuais di\u00e1rios/semanais/quinzenais/mensais de governan\u00e7a"
     ],
     "activeJobCount": 8,
     "runtimePolicy": "24x7 continuous operation (no rest window)"
   },
   "handoffChecklist": [
-    "Abrir dashboard e validar semáforo + pendências HUMAN",
+    "Abrir dashboard e validar sem\u00e1foro + pend\u00eancias HUMAN",
     "Ler board.md e human-activities.md no workspace",
-    "Confirmar aprovações humanas pendentes",
-    "Executar tarefas AUTHORIZED e registrar evidências",
+    "Confirmar aprova\u00e7\u00f5es humanas pendentes",
+    "Executar tarefas AUTHORIZED e registrar evid\u00eancias",
     "Atualizar kanban/daily-summary no fim do ciclo",
-    "Validar deploy/CI pós-commit em deploy-status.md e acionar humano em caso de falha persistente"
+    "Validar deploy/CI p\u00f3s-commit em deploy-status.md e acionar humano em caso de falha persistente"
   ],
   "focus30d": {
-    "customer": "ISSUE-008 em progresso: ICP+JTBD template v1 publicado e funil em instrumentação",
-    "product": "Recuperação 48h ativa (ISSUE-025): meta 80/20 em PASS com execução GitFlow reforçada",
+    "customer": "ISSUE-008 em progresso: ICP+JTBD template v1 publicado e funil em instrumenta\u00e7\u00e3o",
+    "product": "Recupera\u00e7\u00e3o 48h ativa (ISSUE-025): meta 80/20 em PASS com execu\u00e7\u00e3o GitFlow refor\u00e7ada",
     "admin": "SLA administrativo por processo interno (ISSUE-010)",
     "accounting": "Baseline semanal MRR/CAC/LTV (ISSUE-011)",
-    "legal": "Matriz LGPD/licença por fonte crítica (ISSUE-012)"
+    "legal": "Matriz LGPD/licen\u00e7a por fonte cr\u00edtica (ISSUE-012)"
   },
   "recentAdvances": [
     {
       "at": "2026-02-25T18:31:02Z",
       "items": [
         "ISSUE-008: outreach script JTBD v1 publicado.",
-        "ISSUE-009: snapshot diário de cobertura de decisão publicado."
+        "ISSUE-009: snapshot di\u00e1rio de cobertura de decis\u00e3o publicado."
       ]
     },
     {
       "at": "2026-02-25T18:57:12Z",
       "items": [
-        "ISSUE-025 movida para IN PROGRESS com evidência de capacidade 80/20.",
+        "ISSUE-025 movida para IN PROGRESS com evid\u00eancia de capacidade 80/20.",
         "Pack GitFlow de branches/PR para issues 001/002/003/008/009 publicado."
       ]
     },
     {
       "at": "2026-02-25T19:01:10Z",
       "items": [
-        "ISSUE-001: checklist de prontidão de PR (GitFlow) publicado.",
-        "ISSUE-002: matriz de testes de matching publicada com gate de precisão."
+        "ISSUE-001: checklist de prontid\u00e3o de PR (GitFlow) publicado.",
+        "ISSUE-002: matriz de testes de matching publicada com gate de precis\u00e3o."
       ]
     },
     {
@@ -208,21 +208,21 @@
       "at": "2026-02-25T20:01:06Z",
       "items": [
         "ISSUE-001: template de benchmark de cobertura KPI publicado para PR readiness.",
-        "ISSUE-003: template de evidência de propostas piloto publicado."
+        "ISSUE-003: template de evid\u00eancia de propostas piloto publicado."
       ]
     },
     {
       "at": "2026-02-25T20:31:05Z",
       "items": [
-        "ISSUE-002: template de descrição de PR publicado (GitFlow + KPI).",
-        "ISSUE-008: outline de síntese semanal JTBD publicado."
+        "ISSUE-002: template de descri\u00e7\u00e3o de PR publicado (GitFlow + KPI).",
+        "ISSUE-008: outline de s\u00edntese semanal JTBD publicado."
       ]
     },
     {
       "at": "2026-02-25T21:01:04Z",
       "items": [
         "ISSUE-001: test checklist de PR publicado.",
-        "ISSUE-009: backlog closure de decisões de produto publicado."
+        "ISSUE-009: backlog closure de decis\u00f5es de produto publicado."
       ]
     },
     {
@@ -235,38 +235,38 @@
     {
       "at": "2026-02-25T23:02:06Z",
       "items": [
-        "Bundle de evidências KPI de produto consolidado para PRs (001/002/003/008/009).",
-        "Checklist de enforcement de decisão de produto publicado para ISSUE-009."
+        "Bundle de evid\u00eancias KPI de produto consolidado para PRs (001/002/003/008/009).",
+        "Checklist de enforcement de decis\u00e3o de produto publicado para ISSUE-009."
       ]
     },
     {
       "at": "2026-02-26T00:04:20Z",
       "items": [
-        "ISSUE-001: commit local 39d2d26 com cálculo de coverage + testes.",
-        "ISSUE-002: commit local f108abc com métricas de matching + testes.",
-        "Bloqueio persistente: push remoto falhou por SSH publickey (ação humana necessária)."
+        "ISSUE-001: commit local 39d2d26 com c\u00e1lculo de coverage + testes.",
+        "ISSUE-002: commit local f108abc com m\u00e9tricas de matching + testes.",
+        "Bloqueio persistente: push remoto falhou por SSH publickey (a\u00e7\u00e3o humana necess\u00e1ria)."
       ]
     },
     {
       "at": "2026-02-26T00:17:10Z",
       "items": [
-        "ISSUE-001/002: commits locais anteriores publicados em remoto com sucesso via SSH explícito.",
+        "ISSUE-001/002: commits locais anteriores publicados em remoto com sucesso via SSH expl\u00edcito.",
         "ISSUE-003: commit 9d5ff53 (risk score response + teste) publicado em branch feature.",
-        "PR links prontos para abertura/atualização em 001/002/003."
+        "PR links prontos para abertura/atualiza\u00e7\u00e3o em 001/002/003."
       ]
     },
     {
       "at": "2026-02-26T00:18:30Z",
       "items": [
-        "OpenAlex: commit e248d8c (ISSUE-016/021) push com GitFlow SSH explícito.",
-        "Wikidata: commit 3443f5f (ISSUE-002) push com GitFlow SSH explícito."
+        "OpenAlex: commit e248d8c (ISSUE-016/021) push com GitFlow SSH expl\u00edcito.",
+        "Wikidata: commit 3443f5f (ISSUE-002) push com GitFlow SSH expl\u00edcito."
       ]
     },
     {
       "at": "2026-02-26T00:22:40Z",
       "items": [
-        "OpenAlex: commit 99ab512 (código+teste) push em feature branch.",
-        "WorldBank: commit f745551 (código+teste) push em feature branch."
+        "OpenAlex: commit 99ab512 (c\u00f3digo+teste) push em feature branch.",
+        "WorldBank: commit f745551 (c\u00f3digo+teste) push em feature branch."
       ]
     },
     {

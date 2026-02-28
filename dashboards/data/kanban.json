@@ -1,15 +1,15 @@
 {
-  "updatedAt": "2026-02-27T13:43:05.558197Z",
+  "updatedAt": "2026-02-28T14:05:47.268268+00:00",
   "columns": [
     {
       "id": "to-review",
       "title": "TO REVIEW",
       "tasks": [
         {
-          "title": "[ISSUE-007] Hardening transversal de CI (anti-regressão de imports/PYTHONPATH)",
-          "description": "Prevenir recorrência de falhas em sequência via smoke local pré-push + check de path/import + padrão único de bootstrap de testes. Aceite: 5 CIs sucessivos por repositório, smoke documentado nos 3 READMEs e evidência consolidada em ops/multiagent/kpis/code-evolution.md.",
+          "title": "[ISSUE-007] Hardening transversal de CI (anti-regress\u00e3o de imports/PYTHONPATH)",
+          "description": "Prevenir recorr\u00eancia de falhas em sequ\u00eancia via smoke local pr\u00e9-push + check de path/import + padr\u00e3o \u00fanico de bootstrap de testes. Aceite: 5 CIs sucessivos por reposit\u00f3rio, smoke documentado nos 3 READMEs e evid\u00eancia consolidada em ops/multiagent/kpis/code-evolution.md.",
           "owner": "Infra-analyst + Builder-repo",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
           "status": "A revisar",
@@ -25,11 +25,11 @@
         },
         {
           "title": "[ISSUE-010] SLA administrativo por processo interno",
-          "description": "Mapear etapas administrativas e reduzir lead time de aprovação.",
+          "description": "Mapear etapas administrativas e reduzir lead time de aprova\u00e7\u00e3o.",
           "owner": "Orchestrator + Reviewer-delivery",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "A revisar",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [],
@@ -43,7 +43,7 @@
           "title": "[ISSUE-011] Baseline financeiro semanal (MRR/CAC/LTV)",
           "description": "Eliminar N/D no KPI financeiro com rotina semanal.",
           "owner": "Finance-ops + Leandro",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
           "status": "A revisar",
@@ -59,10 +59,10 @@
           ]
         },
         {
-          "title": "[ISSUE-012] Matriz jurídica/LGPD por fonte de dados crítica",
-          "description": "Consolidar base legal/finalidade/retenção para OSM/OpenAQ e demais fontes críticas.",
+          "title": "[ISSUE-012] Matriz jur\u00eddica/LGPD por fonte de dados cr\u00edtica",
+          "description": "Consolidar base legal/finalidade/reten\u00e7\u00e3o para OSM/OpenAQ e demais fontes cr\u00edticas.",
           "owner": "Validator-license + Human-legal-specialist",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
           "status": "A revisar",
@@ -78,29 +78,29 @@
           ]
         },
         {
-          "title": "[ISSUE-014] Otimização de custo/performance do pipeline de dados",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "title": "[ISSUE-014] Otimiza\u00e7\u00e3o de custo/performance do pipeline de dados",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente.",
           "owner": "sre-cost-specialist",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "A revisar",
           "categoryPrimary": "plataforma-infra-qualidade",
           "categorySupport": [
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "Custo por execução (-15%)",
+          "valueKpi": "Custo por execu\u00e7\u00e3o (-15%)",
           "ownerPrimary": "sre-cost-specialist",
           "ownerSupport": []
         },
         {
           "title": "[ISSUE-015] Contratos de qualidade de dados por fonte",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente.",
           "owner": "data-quality-steward",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "A revisar",
           "categoryPrimary": "plataforma-infra-qualidade",
           "categorySupport": [
@@ -113,11 +113,11 @@
         },
         {
           "title": "[ISSUE-017] UX do funil comercial no dashboard",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente.",
           "owner": "ux-ui-designer",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "A revisar",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [
@@ -130,11 +130,11 @@
         },
         {
           "title": "[ISSUE-018] Frontend de insight por ICP",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente.",
           "owner": "frontend-specialist",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "A revisar",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [
@@ -147,28 +147,28 @@
         },
         {
           "title": "[ISSUE-019] Arquitetura-alvo V1 dos 3 componentes",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente.",
           "owner": "solution-architect",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "A revisar",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "Redução de retrabalho técnico",
+          "valueKpi": "Redu\u00e7\u00e3o de retrabalho t\u00e9cnico",
           "ownerPrimary": "solution-architect",
           "ownerSupport": []
         },
         {
-          "title": "[ISSUE-020] Planejamento semanal de execução por valor",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente.",
+          "title": "[ISSUE-020] Planejamento semanal de execu\u00e7\u00e3o por valor",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente.",
           "owner": "planner-issues",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "A revisar",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [
@@ -187,9 +187,9 @@
       "tasks": [
         {
           "title": "[ISSUE-001] MVP de Enrichment B2B com OpenAlex",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%. Repo: https://github.com/leandroclf/lf-openalex-enrichment-mvp Último avanço: https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/6669ce9 | Evidência 19:00 UTC: issue-001-pr-readiness-checklist-2026-02-25.md | Evidência 20:00 UTC: issue-001-coverage-benchmark-template-2026-02-25.md | Evidência 21:00 UTC: issue-001-test-checklist-2026-02-25-2100.md | Evidência 00:15 UTC: commit 39d2d26 push em feature/issue-001-value-endpoint. | Evidência 00:16 UTC: commit e248d8c (ISSUE-016/021 hardening) push em feature branch. | Evidência 00:21 UTC: commit 99ab512 push em feature/issue-001-value-endpoint. | Evidência 01:00 UTC: commit f062c21 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evidência 01:30 UTC: commit bebb323 push em feature/issue-001-value-endpoint. | Evidência 02:30 UTC: commit ef516e4 push em feature/issue-001-value-endpoint. | Evidência 03:00 UTC: commit c24e1a6 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evidência 03:30 UTC: commit b0a2971 push em feature/issue-001-value-endpoint. | Evidência 04:00 UTC: commit 849fa7c push em feature/issue-001-value-endpoint. | Evidência 05:00 UTC: commit dff8300 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evidência 06:00 UTC: commit 92ba186 push em feature/issue-001-value-endpoint. | Evidência 07:00 UTC: commit 3540c65 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evidência 08:00 UTC: commit 1229962 push em feature/issue-001-value-endpoint. | Evidência 09:00 UTC: commit c047c6c (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evidência 10:00 UTC: commits d1ce215 e 2bb4bb7 (ISSUE-021 slot) push em feature/issue-001-value-endpoint. | Evidência 22:55 UTC: commit b8895a9 push em feature/issue-001-batch-api.",
+          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%. Repo: https://github.com/leandroclf/lf-openalex-enrichment-mvp \u00daltimo avan\u00e7o: https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/6669ce9 | Evid\u00eancia 19:00 UTC: issue-001-pr-readiness-checklist-2026-02-25.md | Evid\u00eancia 20:00 UTC: issue-001-coverage-benchmark-template-2026-02-25.md | Evid\u00eancia 21:00 UTC: issue-001-test-checklist-2026-02-25-2100.md | Evid\u00eancia 00:15 UTC: commit 39d2d26 push em feature/issue-001-value-endpoint. | Evid\u00eancia 00:16 UTC: commit e248d8c (ISSUE-016/021 hardening) push em feature branch. | Evid\u00eancia 00:21 UTC: commit 99ab512 push em feature/issue-001-value-endpoint. | Evid\u00eancia 01:00 UTC: commit f062c21 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 01:30 UTC: commit bebb323 push em feature/issue-001-value-endpoint. | Evid\u00eancia 02:30 UTC: commit ef516e4 push em feature/issue-001-value-endpoint. | Evid\u00eancia 03:00 UTC: commit c24e1a6 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 03:30 UTC: commit b0a2971 push em feature/issue-001-value-endpoint. | Evid\u00eancia 04:00 UTC: commit 849fa7c push em feature/issue-001-value-endpoint. | Evid\u00eancia 05:00 UTC: commit dff8300 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 06:00 UTC: commit 92ba186 push em feature/issue-001-value-endpoint. | Evid\u00eancia 07:00 UTC: commit 3540c65 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 08:00 UTC: commit 1229962 push em feature/issue-001-value-endpoint. | Evid\u00eancia 09:00 UTC: commit c047c6c (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 10:00 UTC: commits d1ce215 e 2bb4bb7 (ISSUE-021 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 22:55 UTC: commit b8895a9 push em feature/issue-001-batch-api.",
           "owner": "Builder-repo",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
           "priority": "Alta",
           "status": "Em desenvolvimento",
@@ -200,24 +200,24 @@
           "ownerSupport": []
         },
         {
-          "title": "[ISSUE-002] Grafo de entidades com Wikidata para normalização e matching",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de precisão de matching +25% no piloto. Repo: https://github.com/leandroclf/lf-wikidata-entity-graph Último avanço: https://github.com/leandroclf/lf-wikidata-entity-graph/commit/e96bdab | Evidência 19:00 UTC: issue-002-entity-matching-test-matrix-2026-02-25.md | Evidência 20:30 UTC: issue-002-pr-description-template-2026-02-25.md | Evidência 00:15 UTC: commit f108abc push em feature/issue-002-matching-metrics. | Evidência 00:16 UTC: commit 3443f5f push em feature branch. | Evidência 00:30 UTC: commit 92b36c4 push em feature/issue-002-matching-metrics. | Evidência 01:30 UTC: commit 83e4189 push em feature/issue-002-matching-metrics. | Evidência 02:00 UTC: commit e70124b (ISSUE-021 slot) push em feature/issue-002-matching-metrics. | Evidência 02:30 UTC: commit 2666bba push em feature/issue-002-matching-metrics. | Evidência 03:30 UTC: commit 8a5d55d push em feature/issue-002-matching-metrics. | Evidência 04:00 UTC: commit 7752bd5 push em feature/issue-002-matching-metrics. | Evidência 05:00 UTC: commit 64966e1 push em feature/issue-002-matching-metrics. | Evidência 06:00 UTC: commit b4cfd78 (ISSUE-021 slot CI hardening) push em feature/issue-002-matching-metrics. | Evidência 07:30 UTC: commit 34d0b60 push em feature/issue-002-matching-metrics. | Evidência 08:30 UTC: commit 58ac9d1 push em feature/issue-002-matching-metrics. | Evidência 09:30 UTC: commit 4d781c7 push em feature/issue-002-matching-metrics. | Evidência 10:30 UTC: commit 172360d push em feature/issue-002-matching-metrics. | Evidência 22:55 UTC: commit 4928067 push em feature/issue-002-entity-linking.",
+          "title": "[ISSUE-002] Grafo de entidades com Wikidata para normaliza\u00e7\u00e3o e matching",
+          "description": "Gate PASS (CC0) e aceite PASS com meta de precis\u00e3o de matching +25% no piloto. Repo: https://github.com/leandroclf/lf-wikidata-entity-graph \u00daltimo avan\u00e7o: https://github.com/leandroclf/lf-wikidata-entity-graph/commit/e96bdab | Evid\u00eancia 19:00 UTC: issue-002-entity-matching-test-matrix-2026-02-25.md | Evid\u00eancia 20:30 UTC: issue-002-pr-description-template-2026-02-25.md | Evid\u00eancia 00:15 UTC: commit f108abc push em feature/issue-002-matching-metrics. | Evid\u00eancia 00:16 UTC: commit 3443f5f push em feature branch. | Evid\u00eancia 00:30 UTC: commit 92b36c4 push em feature/issue-002-matching-metrics. | Evid\u00eancia 01:30 UTC: commit 83e4189 push em feature/issue-002-matching-metrics. | Evid\u00eancia 02:00 UTC: commit e70124b (ISSUE-021 slot) push em feature/issue-002-matching-metrics. | Evid\u00eancia 02:30 UTC: commit 2666bba push em feature/issue-002-matching-metrics. | Evid\u00eancia 03:30 UTC: commit 8a5d55d push em feature/issue-002-matching-metrics. | Evid\u00eancia 04:00 UTC: commit 7752bd5 push em feature/issue-002-matching-metrics. | Evid\u00eancia 05:00 UTC: commit 64966e1 push em feature/issue-002-matching-metrics. | Evid\u00eancia 06:00 UTC: commit b4cfd78 (ISSUE-021 slot CI hardening) push em feature/issue-002-matching-metrics. | Evid\u00eancia 07:30 UTC: commit 34d0b60 push em feature/issue-002-matching-metrics. | Evid\u00eancia 08:30 UTC: commit 58ac9d1 push em feature/issue-002-matching-metrics. | Evid\u00eancia 09:30 UTC: commit 4d781c7 push em feature/issue-002-matching-metrics. | Evid\u00eancia 10:30 UTC: commit 172360d push em feature/issue-002-matching-metrics. | Evid\u00eancia 22:55 UTC: commit 4928067 push em feature/issue-002-entity-linking.",
           "owner": "Architect-tech",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
           "priority": "Alta",
           "status": "Em desenvolvimento",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [],
-          "valueKpi": "+25% precisão de matching",
+          "valueKpi": "+25% precis\u00e3o de matching",
           "ownerPrimary": "Architect-tech",
           "ownerSupport": []
         },
         {
-          "title": "[ISSUE-003] Módulo de risco-país e pricing regional com World Bank",
-          "description": "Gate PASS (CC BY 4.0) e aceite PASS com score regional via API para 2 propostas piloto. Repo: https://github.com/leandroclf/lf-worldbank-risk-pricing Último avanço: https://github.com/leandroclf/lf-worldbank-risk-pricing/commit/3bda706 | Evidência 19:30 UTC: issue-003-risk-score-api-contract-v1.md | Evidência 20:00 UTC: issue-003-pilot-proposal-evidence-template-2026-02-25.md | Evidência 22:00 UTC: issue-003-api-pr-checklist-2026-02-25-2200.md | Evidência 00:15 UTC: commit 9d5ff53 push em feature/issue-003-pricing-metrics. | Evidência 00:21 UTC: commit f745551 push em feature/issue-003-pricing-metrics. | Evidência 00:30 UTC: commit cf03945 (ISSUE-021 hardening) push em feature/issue-003-pricing-metrics. | Evidência 01:00 UTC: commit 7132cba push em feature/issue-003-pricing-metrics. | Evidência 02:00 UTC: commit ac56687 push em feature/issue-003-pricing-metrics. | Evidência 03:00 UTC: commit 74296f7 push em feature/issue-003-pricing-metrics. | Evidência 04:30 UTC: commits e4a1c36 (ISSUE-003) e 8088613 (ISSUE-021 slot) push em feature/issue-003-pricing-metrics. | Evidência 05:30 UTC: commit fbdb52e (country risk band summary) push em feature/issue-003-pricing-metrics. | Evidência 07:00 UTC: commit b24cc49 push em feature/issue-003-pricing-metrics. | Evidência 07:30 UTC: commit 6c4f150 push em feature/issue-003-pricing-metrics. | Evidência 08:30 UTC: commit 04f3478 push em feature/issue-003-pricing-metrics. | Evidência 09:30 UTC: commit 9b8b5c1 push em feature/issue-003-pricing-metrics. | Evidência 10:30 UTC: commit ce6a06f push em feature/issue-003-pricing-metrics.",
+          "title": "[ISSUE-003] M\u00f3dulo de risco-pa\u00eds e pricing regional com World Bank",
+          "description": "Gate PASS (CC BY 4.0) e aceite PASS com score regional via API para 2 propostas piloto. Repo: https://github.com/leandroclf/lf-worldbank-risk-pricing \u00daltimo avan\u00e7o: https://github.com/leandroclf/lf-worldbank-risk-pricing/commit/3bda706 | Evid\u00eancia 19:30 UTC: issue-003-risk-score-api-contract-v1.md | Evid\u00eancia 20:00 UTC: issue-003-pilot-proposal-evidence-template-2026-02-25.md | Evid\u00eancia 22:00 UTC: issue-003-api-pr-checklist-2026-02-25-2200.md | Evid\u00eancia 00:15 UTC: commit 9d5ff53 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 00:21 UTC: commit f745551 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 00:30 UTC: commit cf03945 (ISSUE-021 hardening) push em feature/issue-003-pricing-metrics. | Evid\u00eancia 01:00 UTC: commit 7132cba push em feature/issue-003-pricing-metrics. | Evid\u00eancia 02:00 UTC: commit ac56687 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 03:00 UTC: commit 74296f7 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 04:30 UTC: commits e4a1c36 (ISSUE-003) e 8088613 (ISSUE-021 slot) push em feature/issue-003-pricing-metrics. | Evid\u00eancia 05:30 UTC: commit fbdb52e (country risk band summary) push em feature/issue-003-pricing-metrics. | Evid\u00eancia 07:00 UTC: commit b24cc49 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 07:30 UTC: commit 6c4f150 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 08:30 UTC: commit 04f3478 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 09:30 UTC: commit 9b8b5c1 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 10:30 UTC: commit ce6a06f push em feature/issue-003-pricing-metrics.",
           "owner": "Architect-tech",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
           "priority": "Alta",
           "status": "Em desenvolvimento",
@@ -228,10 +228,10 @@
           "ownerSupport": []
         },
         {
-          "title": "[ISSUE-005] Trilha jurídica de OpenStreetMap (ODbL) para produto comercial",
-          "description": "PASS CONDICIONAL: depende de parecer jurídico formal; runbook humano completo. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
+          "title": "[ISSUE-005] Trilha jur\u00eddica de OpenStreetMap (ODbL) para produto comercial",
+          "description": "PASS CONDICIONAL: depende de parecer jur\u00eddico formal; runbook humano completo. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
           "owner": "Reviewer-delivery + Human-legal-specialist",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
           "status": "Em progresso",
@@ -247,9 +247,9 @@
         },
         {
           "title": "[ISSUE-006] Trilha de compliance por fonte no OpenAQ",
-          "description": "PASS CONDICIONAL por fonte; aceite em 100% das fontes ativas com decisão documentada; runbook humano completo. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
+          "description": "PASS CONDICIONAL por fonte; aceite em 100% das fontes ativas com decis\u00e3o documentada; runbook humano completo. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
           "owner": "Validator-license + Human-legal-specialist",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "HUMAN",
           "priority": "Alta",
           "status": "Em progresso",
@@ -269,62 +269,62 @@
       "tasks": [
         {
           "title": "[ISSUE-008] Funil cliente + JTBD semanal por ICP",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relatório JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md | Evidência 17:30 UTC: ops/multiagent/research/2026-02-25-jtbd-interview-tracker.csv | Evidência 18:00 UTC: ops/multiagent/research/2026-02-25-jtbd-synthesis-template-v1.md | Evidência 18:30 UTC: ops/multiagent/research/2026-02-25-jtbd-outreach-script-v1.md | Evidência 20:30 UTC: 2026-02-25-jtbd-weekly-synthesis-outline.md | Evidência 22:00 UTC: 2026-02-25-jtbd-insight-to-feature-map.md",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: funil instrumentado + relat\u00f3rio JTBD + KPI por ICP em dashboard. | Micro-lote 2026-02-25 16:32 UTC executado com evid\u00eancias no workspace. | Evid\u00eancia 17:00 UTC: ops/multiagent/research/2026-02-25-jtbd-interviews-plan.md | Evid\u00eancia 17:30 UTC: ops/multiagent/research/2026-02-25-jtbd-interview-tracker.csv | Evid\u00eancia 18:00 UTC: ops/multiagent/research/2026-02-25-jtbd-synthesis-template-v1.md | Evid\u00eancia 18:30 UTC: ops/multiagent/research/2026-02-25-jtbd-outreach-script-v1.md | Evid\u00eancia 20:30 UTC: 2026-02-25-jtbd-weekly-synthesis-outline.md | Evid\u00eancia 22:00 UTC: 2026-02-25-jtbd-insight-to-feature-map.md",
           "owner": "Strategist-product + Growth-sales",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "Em progresso",
           "categoryPrimary": "produto-receita",
           "categorySupport": [],
-          "valueKpi": "Conversão por ICP no funil",
+          "valueKpi": "Convers\u00e3o por ICP no funil",
           "ownerPrimary": "Strategist-product",
           "ownerSupport": [
             "Growth-sales"
           ]
         },
         {
-          "title": "[ISSUE-009] Product accountability por responsável",
-          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evidências no workspace. | Evidência 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md | Evidência 17:30 UTC: ops/multiagent/delivery/product-decision-log-2026-W09.md | Evidência 18:00 UTC: ops/multiagent/kpis/product-gate-checklist-coverage-2026-W09.md | Evidência 18:30 UTC: ops/multiagent/kpis/product-decision-coverage-daily-2026-02-25-1830.md | Evidência 21:00 UTC: product-decision-backlog-closure-2026-02-25-2100.md | Evidência 23:01 UTC: issue-009-decision-enforcement-checklist-2026-02-25-2301.md",
+          "title": "[ISSUE-009] Product accountability por respons\u00e1vel",
+          "description": "Gate PASS com plano operacional em ops/multiagent/delivery/issue-008-009-operational-checklist.md. Aceite: scorecard semanal ativo + gate aplicado em 100% das novas issues. | Micro-lote 2026-02-25 16:32 UTC executado com evid\u00eancias no workspace. | Evid\u00eancia 17:00 UTC: ops/multiagent/kpis/product-accountability-baseline-2026-W09.md | Evid\u00eancia 17:30 UTC: ops/multiagent/delivery/product-decision-log-2026-W09.md | Evid\u00eancia 18:00 UTC: ops/multiagent/kpis/product-gate-checklist-coverage-2026-W09.md | Evid\u00eancia 18:30 UTC: ops/multiagent/kpis/product-decision-coverage-daily-2026-02-25-1830.md | Evid\u00eancia 21:00 UTC: product-decision-backlog-closure-2026-02-25-2100.md | Evid\u00eancia 23:01 UTC: issue-009-decision-enforcement-checklist-2026-02-25-2301.md",
           "owner": "Reviewer-delivery + Strategist-product",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "Em progresso",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [
             "produto-receita"
           ],
-          "valueKpi": "% issues com métrica de impacto",
+          "valueKpi": "% issues com m\u00e9trica de impacto",
           "ownerPrimary": "Reviewer-delivery",
           "ownerSupport": [
             "Strategist-product"
           ]
         },
         {
-          "title": "[ISSUE-013] Backlog de hipóteses de receita por ICP",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
+          "title": "[ISSUE-013] Backlog de hip\u00f3teses de receita por ICP",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente. | Lote de execu\u00e7\u00e3o: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
           "owner": "revenue-ops-specialist",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "Em progresso",
           "categoryPrimary": "produto-receita",
           "categorySupport": [
             "produto-receita",
             "engenharia-arquitetura"
           ],
-          "valueKpi": "Conversão SQL->Proposta (%)",
+          "valueKpi": "Convers\u00e3o SQL->Proposta (%)",
           "ownerPrimary": "revenue-ops-specialist",
           "ownerSupport": []
         },
         {
           "title": "[ISSUE-016] Endpoint backend de valor por proposta",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente. | Lote de execu\u00e7\u00e3o: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
           "owner": "backend-specialist",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "Em progresso",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [
@@ -336,12 +336,12 @@
           "ownerSupport": []
         },
         {
-          "title": "[ISSUE-021] Hardening CI/CD com smoke obrigatório pré-merge",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada. | Evidência 04:30 UTC: commit 8088613 (smoke check obrigatório no CI) push no repo WorldBank. | Evidência 05:30 UTC: commit 2191f2f (CI timeout hardening) push no repo WorldBank. | Evidência 08:00 UTC: commit f47b943 (pip cache no CI) push no repo WorldBank. | Evidência 09:00 UTC: commit 2a2a314 (pip cache + smoke hardening) push no repo Wikidata. | Evidência 10:00 UTC: commit 2bb4bb7 (smoke+timeout+cache) push no repo OpenAlex.",
+          "title": "[ISSUE-021] Hardening CI/CD com smoke obrigat\u00f3rio pr\u00e9-merge",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente. | Lote de execu\u00e7\u00e3o: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada. | Evid\u00eancia 04:30 UTC: commit 8088613 (smoke check obrigat\u00f3rio no CI) push no repo WorldBank. | Evid\u00eancia 05:30 UTC: commit 2191f2f (CI timeout hardening) push no repo WorldBank. | Evid\u00eancia 08:00 UTC: commit f47b943 (pip cache no CI) push no repo WorldBank. | Evid\u00eancia 09:00 UTC: commit 2a2a314 (pip cache + smoke hardening) push no repo Wikidata. | Evid\u00eancia 10:00 UTC: commit 2bb4bb7 (smoke+timeout+cache) push no repo OpenAlex.",
           "owner": "devops-ci-cd-specialist",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "Em progresso",
           "categoryPrimary": "plataforma-infra-qualidade",
           "categorySupport": [
@@ -352,12 +352,12 @@
           "ownerSupport": []
         },
         {
-          "title": "[ISSUE-022] Scout contínuo de datasets com potencial comercial",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar geração de valor ao cliente. | Lote de execução: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execução liberada.",
+          "title": "[ISSUE-022] Scout cont\u00ednuo de datasets com potencial comercial",
+          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente. | Lote de execu\u00e7\u00e3o: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
           "owner": "scout-datasets",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
-          "priority": "Média",
+          "priority": "M\u00e9dia",
           "status": "Em progresso",
           "categoryPrimary": "dados-compliance-juridico",
           "categorySupport": [
@@ -374,13 +374,13 @@
       "title": "VALIDATION",
       "tasks": [
         {
-          "title": "[ISSUE-004] Gate automático de compliance de licença (license_policy.yaml)",
-          "description": "Resultado da suíte PASS (12/12, 0 falsos negativos, 0 falsos positivos). Pendente aceite final de redução de tempo médio de autorização (>=20%) após 2 ciclos; baseline concluído (6.42h), ciclo 1 sem amostra concluída e decisão atual HOLD.",
+          "title": "[ISSUE-004] Gate autom\u00e1tico de compliance de licen\u00e7a (license_policy.yaml)",
+          "description": "Resultado da su\u00edte PASS (12/12, 0 falsos negativos, 0 falsos positivos). Pendente aceite final de redu\u00e7\u00e3o de tempo m\u00e9dio de autoriza\u00e7\u00e3o (>=20%) ap\u00f3s 2 ciclos; baseline conclu\u00eddo (6.42h), ciclo 1 sem amostra conclu\u00edda e decis\u00e3o atual HOLD.",
           "owner": "Validator-license + Builder-repo + Reviewer-delivery",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "Em validação",
+          "status": "Em valida\u00e7\u00e3o",
           "categoryPrimary": "dados-compliance-juridico",
           "categorySupport": [
             "engenharia-arquitetura",
@@ -400,13 +400,13 @@
       "title": "DONE",
       "tasks": [
         {
-          "title": "Revisão semanal de staffing e coerência operacional (W09)",
-          "description": "Inclusões recomendadas (revenue-ops-specialist, sre-cost-specialist, data-quality-steward) e ajuste de precedência aplicado.",
+          "title": "Revis\u00e3o semanal de staffing e coer\u00eancia operacional (W09)",
+          "description": "Inclus\u00f5es recomendadas (revenue-ops-specialist, sre-cost-specialist, data-quality-steward) e ajuste de preced\u00eancia aplicado.",
           "owner": "Team-evolution-governor",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
-          "priority": "Média",
-          "status": "Concluído",
+          "priority": "M\u00e9dia",
+          "status": "Conclu\u00eddo",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [],
           "valueKpi": "KPI definido no aceite da issue",
@@ -414,13 +414,13 @@
           "ownerSupport": []
         },
         {
-          "title": "Revisão quinzenal da meta SLA com base em dados reais",
+          "title": "Revis\u00e3o quinzenal da meta SLA com base em dados reais",
           "description": "Resultado: manter meta em 85% (cumprimento quinzenal HUMAN 100%, 5/5 no prazo).",
           "owner": "Reviewer-delivery + Operations-analytics-specialist",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "HUMAN",
-          "priority": "Média",
-          "status": "Concluído",
+          "priority": "M\u00e9dia",
+          "status": "Conclu\u00eddo",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [],
           "valueKpi": "KPI definido no aceite da issue",
@@ -430,13 +430,13 @@
           ]
         },
         {
-          "title": "Configuração de credenciais GitHub no Gateway",
-          "description": "Credenciais configuradas e operação estabilizada no gateway.",
+          "title": "Configura\u00e7\u00e3o de credenciais GitHub no Gateway",
+          "description": "Credenciais configuradas e opera\u00e7\u00e3o estabilizada no gateway.",
           "owner": "Reviewer-delivery",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "HUMAN",
-          "priority": "Média",
-          "status": "Concluído",
+          "priority": "M\u00e9dia",
+          "status": "Conclu\u00eddo",
           "categoryPrimary": "orquestracao-governanca",
           "categorySupport": [],
           "valueKpi": "KPI definido no aceite da issue",
@@ -444,13 +444,13 @@
           "ownerSupport": []
         },
         {
-          "title": "Criar repositório de teste automático para validar permissão GitHub API",
-          "description": "Repositório criado e validado com evidência pública: https://github.com/leandroclf/lf-repo-autotest",
+          "title": "Criar reposit\u00f3rio de teste autom\u00e1tico para validar permiss\u00e3o GitHub API",
+          "description": "Reposit\u00f3rio criado e validado com evid\u00eancia p\u00fablica: https://github.com/leandroclf/lf-repo-autotest",
           "owner": "Builder-repo",
-          "project": "Governança Multiagente",
+          "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
           "priority": "Alta",
-          "status": "Concluído",
+          "status": "Conclu\u00eddo",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [],
           "valueKpi": "KPI definido no aceite da issue",
@@ -458,13 +458,13 @@
           "ownerSupport": []
         },
         {
-          "title": "Dashboard operacional publicado e evoluído com filtros, semáforo e histórico",
-          "description": "Painel operacional entregue com evolução contínua de visualização e controle.",
+          "title": "Dashboard operacional publicado e evolu\u00eddo com filtros, sem\u00e1foro e hist\u00f3rico",
+          "description": "Painel operacional entregue com evolu\u00e7\u00e3o cont\u00ednua de visualiza\u00e7\u00e3o e controle.",
           "owner": "Architect-tech",
-          "project": "Site LF Soluções",
+          "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
-          "priority": "Média",
-          "status": "Concluído",
+          "priority": "M\u00e9dia",
+          "status": "Conclu\u00eddo",
           "categoryPrimary": "engenharia-arquitetura",
           "categorySupport": [],
           "valueKpi": "KPI definido no aceite da issue",

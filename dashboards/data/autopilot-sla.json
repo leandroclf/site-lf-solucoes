@@ -1,9 +1,9 @@
 {
-  "updatedAt": "2026-02-27T01:50:00Z",
+  "updatedAt": "2026-02-28T14:05:47.265345+00:00",
   "window": {
     "kind": "rolling-24h",
-    "start": "2026-02-26T01:50:00Z",
-    "end": "2026-02-27T01:50:00Z"
+    "start": "2026-02-27T01:50:00Z",
+    "end": "2026-02-28T01:50:00Z"
   },
   "job": {
     "name": "Autopilot sequential delivery cycle",
@@ -29,6 +29,6 @@
     ]
   },
   "notes": [
-    "No new cycle data found in autopilot-cycle-history.json for the last 24h rolling window (2026-02-26T01:50:00Z to 2026-02-27T01:50:00Z). Using previous valid KPI values."
+    "No new cycle data found in autopilot-cycle-history.json for the last 24h rolling window (2026-02-27T01:50:00Z to 2026-02-28T01:50:00Z). Using previous valid KPI values."
   ]
 }
