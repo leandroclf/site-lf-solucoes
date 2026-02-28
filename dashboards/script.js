@@ -1412,8 +1412,10 @@ function scheduleAutoRefresh() {
   }, AUTO_REFRESH_MS);
 }
 
-refreshAll();
-scheduleAutoRefresh();
+window.addEventListener('load', () => {
+  refreshAll();
+  scheduleAutoRefresh();
+});
 
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) refreshAll();
