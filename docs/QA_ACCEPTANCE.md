@@ -35,12 +35,16 @@ Validar em:
 - `http://localhost:8080/`
 - `http://localhost:8080/dashboards/`
 - `http://localhost:8080/sobre/nossa-equipe.html`
+- `http://localhost:8080/solucoes/automacao-processos.html`
+- `http://localhost:8080/solucoes/business-intelligence.html`
+- `http://localhost:8080/solucoes/ia-aplicada-servicos.html`
 - `http://localhost:8080/solucoes/whatsapp-automation.html`
 
 Checagens:
 
 - Menu principal igual em todas as paginas.
 - Link `Dashboards` abre na mesma aba.
+- Secao `#servicos` na home com 3 botoes `Saiba mais` ativos.
 - Dashboard sem botao `Voltar ao site`.
 - Atalhos do dashboard navegam para as secoes corretas.
 - Secao `Sobre` na home contem bloco de equipe operacional.

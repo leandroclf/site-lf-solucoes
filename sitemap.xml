@@ -13,6 +13,18 @@
     <priority>0.7</priority>
   </url>
   <url>
+    <loc>https://leandroclf.github.io/site-lf-solucoes/solucoes/automacao-processos.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leandroclf.github.io/site-lf-solucoes/solucoes/business-intelligence.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
+    <loc>https://leandroclf.github.io/site-lf-solucoes/solucoes/ia-aplicada-servicos.html</loc>
+    <priority>0.8</priority>
+  </url>
+  <url>
     <loc>https://leandroclf.github.io/site-lf-solucoes/solucoes/whatsapp-automation.html</loc>
     <priority>0.8</priority>
   </url>
