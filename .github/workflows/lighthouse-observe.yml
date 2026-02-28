@@ -24,7 +24,7 @@ jobs:
         run: npm install --no-save @lhci/cli@0.15.x
 
       - name: Collect Lighthouse data
-        run: npx lhci collect --config=.lighthouserc.collect.json
+        run: npx lhci collect --config=.lighthouserc.collect.json --outputDir=.lighthouseci
 
       - name: Assert (observation mode)
         run: npx lhci assert --config=.lighthouserc.observe.json

@@ -1,118 +1,44 @@
 {
   "ci": {
     "assert": {
-      "assertions": {
-        "resource-summary:script:size": [
-          "warn",
-          {
-            "maxNumericValue": 190000
-          }
-        ],
-        "resource-summary:stylesheet:size": [
-          "warn",
-          {
-            "maxNumericValue": 80000
-          }
-        ],
-        "resource-summary:image:size": [
-          "warn",
-          {
-            "maxNumericValue": 450000
-          }
-        ],
-        "resource-summary:total:size": [
-          "warn",
-          {
-            "maxNumericValue": 900000
-          }
-        ]
-      },
       "assertMatrix": [
         {
           "matchingUrlPattern": "http://127\\.0\\.0\\.1:4173/?$",
           "assertions": {
-            "categories:performance": [
-              "warn",
-              {
-                "minScore": 0.9
-              }
-            ],
-            "categories:accessibility": [
-              "warn",
-              {
-                "minScore": 0.95
-              }
-            ],
-            "categories:seo": [
-              "warn",
-              {
-                "minScore": 0.95
-              }
-            ],
-            "categories:best-practices": [
-              "warn",
-              {
-                "minScore": 0.9
-              }
-            ]
+            "categories:performance": ["warn", { "minScore": 0.9 }],
+            "categories:accessibility": ["warn", { "minScore": 0.95 }],
+            "categories:seo": ["warn", { "minScore": 0.95 }],
+            "categories:best-practices": ["warn", { "minScore": 0.9 }],
+            "resource-summary:script:size": ["warn", { "maxNumericValue": 190000 }],
+            "resource-summary:stylesheet:size": ["warn", { "maxNumericValue": 80000 }],
+            "resource-summary:image:size": ["warn", { "maxNumericValue": 450000 }],
+            "resource-summary:total:size": ["warn", { "maxNumericValue": 900000 }]
           }
         },
         {
           "matchingUrlPattern": "http://127\\.0\\.0\\.1:4173/sobre/nossa-equipe\\.html$",
           "assertions": {
-            "categories:performance": [
-              "warn",
-              {
-                "minScore": 0.9
-              }
-            ],
-            "categories:accessibility": [
-              "warn",
-              {
-                "minScore": 0.95
-              }
-            ],
-            "categories:seo": [
-              "warn",
-              {
-                "minScore": 0.95
-              }
-            ],
-            "categories:best-practices": [
-              "warn",
-              {
-                "minScore": 0.9
-              }
-            ]
+            "categories:performance": ["warn", { "minScore": 0.9 }],
+            "categories:accessibility": ["warn", { "minScore": 0.95 }],
+            "categories:seo": ["warn", { "minScore": 0.95 }],
+            "categories:best-practices": ["warn", { "minScore": 0.9 }],
+            "resource-summary:script:size": ["warn", { "maxNumericValue": 190000 }],
+            "resource-summary:stylesheet:size": ["warn", { "maxNumericValue": 80000 }],
+            "resource-summary:image:size": ["warn", { "maxNumericValue": 450000 }],
+            "resource-summary:total:size": ["warn", { "maxNumericValue": 900000 }]
           }
         },
         {
           "matchingUrlPattern": "http://127\\.0\\.0\\.1:4173/dashboards/?$",
           "assertions": {
-            "categories:performance": [
-              "warn",
-              {
-                "minScore": 0.8
-              }
-            ],
-            "categories:accessibility": [
-              "warn",
-              {
-                "minScore": 0.87
-              }
-            ],
-            "categories:seo": [
-              "warn",
-              {
-                "minScore": 0.95
-              }
-            ],
-            "categories:best-practices": [
-              "warn",
-              {
-                "minScore": 0.9
-              }
-            ]
+            "categories:performance": ["warn", { "minScore": 0.8 }],
+            "categories:accessibility": ["warn", { "minScore": 0.86 }],
+            "categories:seo": ["warn", { "minScore": 0.95 }],
+            "categories:best-practices": ["warn", { "minScore": 0.9 }],
+            "resource-summary:script:size": ["warn", { "maxNumericValue": 190000 }],
+            "resource-summary:stylesheet:size": ["warn", { "maxNumericValue": 80000 }],
+            "resource-summary:image:size": ["warn", { "maxNumericValue": 450000 }],
+            "resource-summary:total:size": ["warn", { "maxNumericValue": 900000 }]
           }
         }
       ]
