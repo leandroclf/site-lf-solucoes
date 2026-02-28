@@ -72,6 +72,7 @@
             <div class="hero-cta">
               <a class="btn btn-primary" href="#contato">Solicitar diagnóstico estratégico</a>
               <a class="btn btn-ghost" href="#servicos">Ver serviços</a>
+              <a class="btn btn-secondary" href="#diagnostico-roi">Testar diagnostico 60s</a>
             </div>
             <ul class="hero-kpis">
               <li><strong>+30%</strong> eficiência operacional</li>
@@ -219,6 +220,136 @@
             <div><strong>2. Priorização</strong><p>Plano de ação com foco no maior ROI.</p></div>
             <div><strong>3. Implementação</strong><p>Execução em ciclos curtos com validação contínua.</p></div>
             <div><strong>4. Evolução</strong><p>Ajustes, monitoramento e expansão das melhorias.</p></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-alt" id="diagnostico-roi">
+        <div class="container">
+          <span class="section-badge">Command Center</span>
+          <h2>Diagnostico rapido e simulacao executiva</h2>
+          <p class="section-copy">
+            Use os dois modulos para priorizar acao imediata: primeiro, mapeie gargalos
+            provaveis em 60 segundos; depois, estime potencial financeiro da melhoria.
+          </p>
+          <div class="interactive-grid">
+            <article class="card interactive-card">
+              <h3>Diagnostico 60s</h3>
+              <p class="section-copy">
+                Responda cinco perguntas para receber recomendacoes praticas de curto prazo.
+              </p>
+              <form id="diagnostic-form" class="form-grid" aria-label="Formulario de diagnostico rapido">
+                <div class="form-field">
+                  <label for="diag-setor">Setor principal</label>
+                  <select id="diag-setor" name="setor" required>
+                    <option value="">Selecione</option>
+                    <option value="servicos">Servicos</option>
+                    <option value="varejo">Varejo</option>
+                    <option value="saude">Saude</option>
+                    <option value="educacao">Educacao</option>
+                    <option value="industria">Industria</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="diag-objetivo">Objetivo prioritario</label>
+                  <select id="diag-objetivo" name="objetivo" required>
+                    <option value="">Selecione</option>
+                    <option value="reduzir-custos">Reduzir custo operacional</option>
+                    <option value="acelerar-vendas">Acelerar vendas</option>
+                    <option value="melhorar-atendimento">Melhorar atendimento</option>
+                    <option value="governanca-dados">Ganhar governanca de dados</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="diag-canal">Canal com maior volume</label>
+                  <select id="diag-canal" name="canal" required>
+                    <option value="">Selecione</option>
+                    <option value="whatsapp">WhatsApp</option>
+                    <option value="email">Email</option>
+                    <option value="telefone">Telefone</option>
+                    <option value="crm">CRM/Formulario</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="diag-maturidade">Maturidade de automacao</label>
+                  <select id="diag-maturidade" name="maturidade" required>
+                    <option value="">Selecione</option>
+                    <option value="baixa">Baixa (processos manuais)</option>
+                    <option value="media">Media (automacao parcial)</option>
+                    <option value="alta">Alta (fluxos integrados)</option>
+                  </select>
+                </div>
+                <div class="form-field">
+                  <label for="diag-dados">Confiabilidade dos dados</label>
+                  <select id="diag-dados" name="dados" required>
+                    <option value="">Selecione</option>
+                    <option value="baixa">Baixa</option>
+                    <option value="media">Media</option>
+                    <option value="alta">Alta</option>
+                  </select>
+                </div>
+                <div class="hero-cta">
+                  <button class="btn btn-primary" type="submit">Gerar diagnostico</button>
+                  <button id="diagnostic-reset" class="btn btn-ghost" type="button">Limpar</button>
+                </div>
+              </form>
+              <div id="diagnostic-result" class="result-panel" hidden>
+                <h4>Resultado do diagnostico</h4>
+                <div class="chip-row" id="diagnostic-tags"></div>
+                <ul id="diagnostic-gaps"></ul>
+                <ul id="diagnostic-actions"></ul>
+                <p class="result-meta" id="diagnostic-cta"></p>
+                <div class="hero-cta">
+                  <button id="diagnostic-report-btn" class="btn btn-secondary" type="button">
+                    Gerar mini-relatorio executivo
+                  </button>
+                </div>
+                <div id="diagnostic-report" class="report-box" hidden>
+                  <p id="diagnostic-report-text"></p>
+                </div>
+              </div>
+            </article>
+
+            <article class="card interactive-card">
+              <h3>Simulador ROI executivo</h3>
+              <p class="section-copy">
+                Simule impacto mensal estimado com faixas conservadora, provavel e agressiva.
+              </p>
+              <form id="roi-form" class="form-grid" aria-label="Formulario de simulador ROI">
+                <div class="form-field">
+                  <label for="roi-leads">Leads ou atendimentos por mes</label>
+                  <input id="roi-leads" name="leads" type="number" min="1" value="600" required />
+                </div>
+                <div class="form-field">
+                  <label for="roi-conversao">Taxa de conversao atual (%)</label>
+                  <input id="roi-conversao" name="conversao" type="number" min="0" max="100" step="0.1" value="12" required />
+                </div>
+                <div class="form-field">
+                  <label for="roi-ticket">Ticket medio (R$)</label>
+                  <input id="roi-ticket" name="ticket" type="number" min="1" value="240" required />
+                </div>
+                <div class="form-field">
+                  <label for="roi-retrabalho">Horas/mes de retrabalho</label>
+                  <input id="roi-retrabalho" name="retrabalho" type="number" min="0" value="90" required />
+                </div>
+                <div class="form-field">
+                  <label for="roi-custo-hora">Custo medio por hora (R$)</label>
+                  <input id="roi-custo-hora" name="custoHora" type="number" min="1" value="85" required />
+                </div>
+                <div class="hero-cta">
+                  <button class="btn btn-primary" type="submit">Calcular ROI</button>
+                  <button id="roi-reset" class="btn btn-ghost" type="button">Limpar</button>
+                </div>
+              </form>
+              <div id="roi-result" class="result-panel" hidden>
+                <h4>Faixas de impacto estimado (mensal)</h4>
+                <ul id="roi-ranges"></ul>
+                <p class="result-meta" id="roi-payback"></p>
+                <p class="disclaimer">
+                  Estimativa orientativa para priorizacao executiva. Nao representa promessa de resultado.
+                </p>
+              </div>
+            </article>
           </div>
         </div>
       </section>
