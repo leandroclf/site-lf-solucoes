@@ -3,7 +3,26 @@ window.__analyticsCache = window.__analyticsCache || {};
 const IS_MOBILE = window.matchMedia('(max-width: 768px)').matches;
 const SAVE_DATA = Boolean(navigator.connection && navigator.connection.saveData);
 const AUTO_REFRESH_MS = SAVE_DATA ? 900000 : (IS_MOBILE ? 600000 : 300000);
+const DATA_CACHE_TTL_MS = 60000;
+const DATA_CACHE = new Map();
 let autoRefreshTimer = null;
+let kanbanRenderToken = 0;
+
+function scheduleLowPriority(fn, delayMs = 0) {
+  if ('requestIdleCallback' in window) {
+    window.requestIdleCallback(() => fn(), { timeout: 1200 });
+    return;
+  }
+  window.setTimeout(fn, delayMs);
+}
+
+function debounce(fn, waitMs = 150) {
+  let timer = null;
+  return (...args) => {
+    if (timer) window.clearTimeout(timer);
+    timer = window.setTimeout(() => fn(...args), waitMs);
+  };
+}
 
 const yearEl = document.getElementById('year');
 if (yearEl) yearEl.textContent = new Date().getFullYear();
@@ -470,6 +489,13 @@ function applyViewMode(mode) {
     const show = val.includes(mode) || val.includes('executive operational');
     s.classList.toggle('view-hidden', !show);
   });
+
+  const execBtn = document.getElementById('view-executive');
+  const opBtn = document.getElementById('view-operational');
+  if (execBtn && opBtn) {
+    execBtn.setAttribute('aria-pressed', String(mode === 'executive'));
+    opBtn.setAttribute('aria-pressed', String(mode === 'operational'));
+  }
 }
 
 function updateMetrics(tasks) {
@@ -549,10 +575,7 @@ async function loadSemaphoreState() {
   if (!el) return;
 
   try {
-    const response = await fetch('./data/semaphore-state.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Falha ao carregar semaphore-state.json');
-
-    const state = await response.json();
+    const state = await fetchJson('./data/semaphore-state.json');
     const days = Number(state.consecutiveRed || 0);
     el.textContent = `Dias consecutivos em vermelho: ${days}`;
   } catch {
@@ -561,9 +584,7 @@ async function loadSemaphoreState() {
 
   if (!historyEl) return;
   try {
-    const response = await fetch('./data/semaphore-history.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Falha ao carregar semaphore-history.json');
-    const history = await response.json();
+    const history = await fetchJson('./data/semaphore-history.json');
     const days = (history.days || []).slice(-7).map((d) => ({
       date: d.date,
       status: String(d.status || 'green').toLowerCase(),
@@ -585,17 +606,75 @@ async function loadSemaphoreState() {
   }
 }
 
+function createTaskCard(task) {
+  const card = document.createElement('div');
+  card.className = 'task';
+
+  let runbookHtml = '';
+  if (task.mode === 'HUMAN') {
+    if (Array.isArray(task.runbookSteps) && task.runbookSteps.length > 0) {
+      runbookHtml = `
+        <details class="runbook">
+          <summary>Passo a passo (HUMAN)</summary>
+          <ol>${task.runbookSteps.map((s) => `<li>${s}</li>`).join('')}</ol>
+          ${Array.isArray(task.expectedEvidence) && task.expectedEvidence.length > 0 ? `<p class="task-meta"><strong>Evidências:</strong> ${task.expectedEvidence.join(' • ')}</p>` : '<p class="task-meta"><strong>Evidências:</strong> não informadas</p>'}
+        </details>
+      `;
+    } else {
+      runbookHtml = `
+        <div class="runbook-alert">
+          ⚠️ Runbook ausente — atividade HUMAN bloqueada até detalhar passo a passo e evidências.
+        </div>
+      `;
+    }
+  }
+
+  card.innerHTML = `
+    <p class="task-title">${task.title || '-'}</p>
+    <p class="task-desc">${task.description || ''}</p>
+    <p class="task-meta">Projeto: ${task.project || '-'} • Responsável: ${task.owner || '-'} • Modo: ${task.mode || '-'}</p>
+    <p class="task-meta">Status: ${task.status || '-'}</p>
+    <p class="priority ${priorityClass(task.priority)}">Prioridade: ${task.priority || 'Baixa'}</p>
+    ${runbookHtml}
+  `;
+  return card;
+}
+
+function appendTaskCardsIncremental(col, tasks, renderToken) {
+  const batchSize = 10;
+  let index = 0;
+
+  function appendBatch() {
+    if (renderToken !== kanbanRenderToken) return;
+    const fragment = document.createDocumentFragment();
+    const limit = Math.min(index + batchSize, tasks.length);
+    for (; index < limit; index += 1) {
+      fragment.appendChild(createTaskCard(tasks[index]));
+    }
+    col.appendChild(fragment);
+    if (index < tasks.length) {
+      window.requestAnimationFrame(appendBatch);
+    }
+  }
+
+  appendBatch();
+}
+
 function renderKanban(data) {
   const board = document.getElementById('kanban-board');
   const summary = document.getElementById('kanban-summary');
+  if (!board || !summary) return;
+
+  kanbanRenderToken += 1;
+  const currentRenderToken = kanbanRenderToken;
   board.innerHTML = '';
 
   let totalShown = 0;
   const shownTasks = [];
+  const boardFragment = document.createDocumentFragment();
 
   for (const column of data.columns || []) {
     const tasks = filterTasks(column.tasks || []);
-
     shownTasks.push(...tasks);
     totalShown += tasks.length;
 
@@ -611,46 +690,22 @@ function renderKanban(data) {
       empty.className = 'task-meta';
       empty.textContent = 'Sem itens no filtro atual.';
       col.appendChild(empty);
+      boardFragment.appendChild(col);
+      continue;
     }
 
-    for (const task of tasks) {
-      const card = document.createElement('div');
-      card.className = 'task';
-
-      let runbookHtml = '';
-      if (task.mode === 'HUMAN') {
-        if (Array.isArray(task.runbookSteps) && task.runbookSteps.length > 0) {
-          runbookHtml = `
-            <details class="runbook">
-              <summary>Passo a passo (HUMAN)</summary>
-              <ol>${task.runbookSteps.map((s) => `<li>${s}</li>`).join('')}</ol>
-              ${Array.isArray(task.expectedEvidence) && task.expectedEvidence.length > 0 ? `<p class="task-meta"><strong>Evidências:</strong> ${task.expectedEvidence.join(' • ')}</p>` : '<p class="task-meta"><strong>Evidências:</strong> não informadas</p>'}
-            </details>
-          `;
-        } else {
-          runbookHtml = `
-            <div class="runbook-alert">
-              ⚠️ Runbook ausente — atividade HUMAN bloqueada até detalhar passo a passo e evidências.
-            </div>
-          `;
-        }
-      }
-
-      card.innerHTML = `
-        <p class="task-title">${task.title || '-'}</p>
-        <p class="task-desc">${task.description || ''}</p>
-        <p class="task-meta">Projeto: ${task.project || '-'} • Responsável: ${task.owner || '-'} • Modo: ${task.mode || '-'}</p>
-        <p class="task-meta">Status: ${task.status || '-'}</p>
-        <p class="priority ${priorityClass(task.priority)}">Prioridade: ${task.priority || 'Baixa'}</p>
-        ${runbookHtml}
-      `;
-
-      col.appendChild(card);
+    if (tasks.length > 12) {
+      appendTaskCardsIncremental(col, tasks, currentRenderToken);
+    } else {
+      const taskFragment = document.createDocumentFragment();
+      tasks.forEach((task) => taskFragment.appendChild(createTaskCard(task)));
+      col.appendChild(taskFragment);
     }
 
-    board.appendChild(col);
+    boardFragment.appendChild(col);
   }
 
+  board.appendChild(boardFragment);
   summary.textContent = `Resumo: ${totalShown} atividade(s) visível(is) no filtro atual.`;
   renderCharts(shownTasks);
   updateMetrics(shownTasks);
@@ -682,7 +737,7 @@ function clearFilters() {
   document.getElementById('filter-mode').value = '';
   document.getElementById('filter-priority').value = '';
   document.getElementById('filter-search').value = '';
-  if (kanbanData) renderKanban(kanbanData);
+  renderCurrentKanban();
 }
 
 function downloadWeeklyReport() {
@@ -713,12 +768,30 @@ function downloadWeeklyReport() {
 }
 
 async function fetchJson(path) {
+  const now = Date.now();
+  const cached = DATA_CACHE.get(path);
+  if (cached && (now - cached.ts) < DATA_CACHE_TTL_MS) {
+    return cached.data;
+  }
+
   const response = await fetch(path, { cache: 'no-store' });
-  if (!response.ok) throw new Error('Falha ao carregar ${path}');
-  return response.json();
+  if (!response.ok) throw new Error(`Falha ao carregar ${path}`);
+  const data = await response.json();
+  DATA_CACHE.set(path, { ts: now, data });
+  return data;
 }
 
-async function refreshDecisionLayers(tasks) {
+function getAllKanbanTasks() {
+  return (kanbanData?.columns || []).flatMap((c) => c.tasks || []);
+}
+
+function renderCurrentKanban() {
+  if (!kanbanData) return;
+  renderKanban(kanbanData);
+}
+
+async function refreshDecisionLayers(tasks, options = {}) {
+  const deferAnalytics = options.deferAnalytics !== false;
   try {
     const [deployData, autopilotData, activitiesData] = await Promise.all([
       fetchJson('./data/deploy-status.json'),
@@ -729,7 +802,11 @@ async function refreshDecisionLayers(tasks) {
     const activities = activitiesData.activities || [];
     renderStrategicKpis(tasks, deployData, autopilotData, activities);
     renderOperationalAlerts(tasks, deployData);
-    renderAnalyticalLayer(tasks, activities);
+    if (deferAnalytics) {
+      scheduleLowPriority(() => renderAnalyticalLayer(tasks, activities), 150);
+    } else {
+      renderAnalyticalLayer(tasks, activities);
+    }
 
     const lu = document.getElementById('last-updated-global');
     if (lu) {
@@ -758,7 +835,7 @@ async function loadKanban() {
     }
 
     renderKanban(kanbanData);
-    await refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || []));
+    await refreshDecisionLayers(getAllKanbanTasks());
 
     if (kanbanData.updatedAt) {
       const dt = new Date(kanbanData.updatedAt);
@@ -774,13 +851,11 @@ async function loadKanban() {
 
 ['filter-owner', 'filter-project', 'filter-mode', 'filter-priority'].forEach((id) => {
   document.getElementById(id).addEventListener('change', () => {
-    if (kanbanData) renderKanban(kanbanData);
+    renderCurrentKanban();
   });
 });
 
-document.getElementById('filter-search').addEventListener('input', () => {
-  if (kanbanData) renderKanban(kanbanData);
-});
+document.getElementById('filter-search').addEventListener('input', debounce(renderCurrentKanban, 130));
 
 document.getElementById('clear-filters').addEventListener('click', clearFilters);
 
@@ -794,10 +869,10 @@ if (execBtn && opBtn) {
 
 const trendPeriodEl = document.getElementById('trend-period');
 const trendTeamEl = document.getElementById('trend-team');
-if (trendPeriodEl) trendTeamEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
-if (trendTeamEl) trendTeamEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
+if (trendPeriodEl) trendPeriodEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers(getAllKanbanTasks()); });
+if (trendTeamEl) trendTeamEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers(getAllKanbanTasks()); });
 const thresholdEl = document.getElementById('alert-threshold-hours');
-if (thresholdEl) thresholdEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers((kanbanData.columns || []).flatMap((c) => c.tasks || [])); });
+if (thresholdEl) thresholdEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers(getAllKanbanTasks()); });
 
 async function loadHandoff() {
   const target = document.getElementById('handoff-content');
@@ -805,9 +880,7 @@ async function loadHandoff() {
   if (!target || !updated) return;
 
   try {
-    const response = await fetch('./data/handoff.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Falha ao carregar handoff.json');
-    const data = await response.json();
+    const data = await fetchJson('./data/handoff.json');
 
     updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
 
@@ -997,13 +1070,10 @@ function computeHumanRisk(historyActivities) {
 async function loadOpsAnalytics() {
   const updated = document.getElementById('ops-analytics-updated');
   try {
-    const [opsRes, histRes] = await Promise.all([
-      fetch('./data/ops-analytics.json', { cache: 'no-store' }),
-      fetch('./data/activities-history.json', { cache: 'no-store' })
+    const [data, history] = await Promise.all([
+      fetchJson('./data/ops-analytics.json'),
+      fetchJson('./data/activities-history.json').catch(() => ({ activities: [] })),
     ]);
-    if (!opsRes.ok) throw new Error('Falha ao carregar ops-analytics.json');
-    const data = await opsRes.json();
-    const history = histRes.ok ? await histRes.json() : { activities: [] };
 
     if (updated) {
       updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
@@ -1052,9 +1122,7 @@ async function loadOpsAnalytics() {
 
 async function loadAutopilotSla() {
   try {
-    const response = await fetch('./data/autopilot-sla.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Falha ao carregar autopilot-sla.json');
-    const data = await response.json();
+    const data = await fetchJson('./data/autopilot-sla.json');
     const k = data.kpis || {};
 
     const completionEl = document.getElementById('autopilot-completion');
@@ -1093,9 +1161,7 @@ async function loadDeployStatus() {
   const listEl = document.getElementById('deploy-status-list');
   if (!listEl) return;
   try {
-    const response = await fetch('./data/deploy-status.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Falha ao carregar deploy-status.json');
-    const data = await response.json();
+    const data = await fetchJson('./data/deploy-status.json');
     if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
     if (aggregateEl) aggregateEl.textContent = `Semáforo agregado: ${String(data.aggregate?.status || 'n/d').toUpperCase()}`;
 
@@ -1111,7 +1177,7 @@ async function loadDeployStatus() {
     }).join('');
     if (!listEl.innerHTML) listEl.innerHTML = '<li>Sem dados de deploy no momento.</li>';
   } catch {
-    if (updatedEl) updated.textContent = 'Atualizado em: erro de leitura';
+    if (updatedEl) updatedEl.textContent = 'Atualizado em: erro de leitura';
     if (aggregateEl) aggregateEl.textContent = 'Semáforo agregado: erro';
     listEl.innerHTML = '<li>Não foi possível carregar status de deploy/CI.</li>';
   }
@@ -1123,9 +1189,7 @@ async function loadHumanDecisionSla() {
   if (!summaryEl || !listEl) return;
 
   try {
-    const response = await fetch('./data/kanban.json', { cache: 'no-store' });
-    if (!response.ok) throw new Error('Falha ao carregar kanban.json');
-    const data = await response.json();
+    const data = await fetchJson('./data/kanban.json');
 
     const items = [];
     for (const col of (data.columns || [])) {
@@ -1202,9 +1266,7 @@ async function loadDashboardFreshness() {
 
     for (const src of sources) {
       try {
-        const res = await fetch(src.path, { cache: 'no-store' });
-        if (!res.ok) throw new Error('falha HTTP');
-        const data = await res.json();
+        const data = await fetchJson(src.path);
         const updatedAt = data.updatedAt ? new Date(data.updatedAt).getTime() : null;
         const ageMin = updatedAt ? (now - updatedAt) / 60000 : null;
 
@@ -1302,14 +1364,19 @@ document.getElementById('download-handoff').addEventListener('click', downloadHa
 document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo (a cada ${Math.round(AUTO_REFRESH_MS / 60000)} min)`;
 
 function refreshAll() {
-  loadKanban();
-  loadSemaphoreState();
-  loadHandoff();
-  loadOpsAnalytics();
-  loadAutopilotSla();
-  loadDeployStatus();
-  loadHumanDecisionSla();
-  loadDashboardFreshness();
+  Promise.all([loadKanban(), loadSemaphoreState()]).catch(() => {});
+
+  scheduleLowPriority(() => {
+    loadDeployStatus();
+    loadAutopilotSla();
+  }, 120);
+
+  scheduleLowPriority(() => {
+    loadHandoff();
+    loadOpsAnalytics();
+    loadHumanDecisionSla();
+    loadDashboardFreshness();
+  }, 360);
 }
 
 function scheduleAutoRefresh() {

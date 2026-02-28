@@ -2,7 +2,7 @@
   --bg: #0b1220;
   --bg-soft: #111b2f;
   --text: #e5ecff;
-  --muted: #a7b5d1;
+  --muted: #c3d1ea;
   --primary: #35aef1;
   --primary-dark: #1f8ed1;
   --card: #121d33;
@@ -28,6 +28,32 @@ body {
   clip: rect(0, 0, 0, 0) !important;
   white-space: nowrap !important;
   border: 0 !important;
+}
+
+.skip-link {
+  position: absolute;
+  left: -9999px;
+  top: 0;
+  z-index: 200;
+  background: #ffffff;
+  color: #0b1220;
+  border-radius: 8px;
+  padding: 10px 12px;
+  font-weight: 700;
+  text-decoration: none;
+}
+
+.skip-link:focus-visible {
+  left: 12px;
+  top: 12px;
+}
+
+a:focus-visible,
+button:focus-visible,
+input:focus-visible,
+select:focus-visible {
+  outline: 3px solid #9bd6ff;
+  outline-offset: 2px;
 }
 
 .header {
@@ -265,7 +291,7 @@ li { margin: 6px 0; }
 .task-meta {
   margin: 0;
   font-size: .82rem;
-  color: #9ab4df;
+  color: #c7d8f8;
 }
 
 .runbook {

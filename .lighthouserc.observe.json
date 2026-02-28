@@ -31,8 +31,8 @@
         {
           "matchingUrlPattern": "http://127\\.0\\.0\\.1:4173/dashboards/?$",
           "assertions": {
-            "categories:performance": ["warn", { "minScore": 0.8 }],
-            "categories:accessibility": ["warn", { "minScore": 0.86 }],
+            "categories:performance": ["warn", { "minScore": 0.9 }],
+            "categories:accessibility": ["warn", { "minScore": 0.95 }],
             "categories:seo": ["warn", { "minScore": 0.95 }],
             "categories:best-practices": ["warn", { "minScore": 0.9 }],
             "resource-summary:script:size": ["warn", { "maxNumericValue": 190000 }],

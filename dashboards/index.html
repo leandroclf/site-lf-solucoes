@@ -17,6 +17,7 @@
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
+    <a class="skip-link" href="#main-content">Pular para o conteudo principal</a>
     <header class="header">
       <div class="nav-wrap">
         <a href="../index.html#inicio" class="brand" aria-label="LF Soluções">
@@ -32,7 +33,7 @@
           <a href="../index.html#mini-cases">Cases</a>
           <a href="../index.html#sobre">Sobre</a>
           <a href="../index.html#faq">FAQ</a>
-          <a href="./">Dashboards</a>
+          <a href="./" aria-current="page">Dashboards</a>
           <a href="../index.html#contato" class="btn btn-outline">Falar agora</a>
         </nav>
       </div>
@@ -50,7 +51,7 @@
       </div>
     </section>
 
-    <main class="dashboard-container">
+    <main id="main-content" class="dashboard-container">
       <h1 class="visually-hidden">Dashboard Operacional LF Solucoes</h1>
       <section class="card" id="painel-geral">
         <div class="section-head">
@@ -60,8 +61,8 @@
             <button id="view-operational" class="btn btn-secondary" type="button">Visão Operacional</button>
           </div>
         </div>
-        <p id="last-updated-global" class="task-meta">Última atualização: carregando...</p>
-        <p id="immediate-action-badge" class="task-meta">Ação imediata: avaliando...</p>
+        <p id="last-updated-global" class="task-meta" aria-live="polite">Última atualização: carregando...</p>
+        <p id="immediate-action-badge" class="task-meta" role="status" aria-live="polite">Ação imediata: avaliando...</p>
         <section class="grid metrics metrics-5">
           <article class="card kpi" id="kpi-jobs-ativos" title="Quantidade total de jobs ativos no cron">
             <h3>Total de Jobs Ativos</h3>
@@ -167,7 +168,7 @@
         <h2>Semáforo operacional</h2>
         <div class="traffic-wrap">
           <span id="traffic-dot" class="traffic-dot traffic-green" aria-label="Semáforo"></span>
-          <p id="traffic-label" class="big">Verde — Operação saudável</p>
+          <p id="traffic-label" class="big" role="status" aria-live="polite">Verde — Operação saudável</p>
         </div>
         <p id="traffic-reason" class="task-meta">Sem bloqueios críticos no filtro atual.</p>
         <p id="traffic-consecutive" class="task-meta">Dias consecutivos em vermelho: 0</p>
@@ -269,19 +270,19 @@
       <section class="card" id="deploy-ci">
         <h2>Deploy / CI Health</h2>
         <p id="deploy-status-updated" class="task-meta">Atualizado em: carregando...</p>
-        <p id="deploy-aggregate" class="task-meta">Semáforo agregado: —</p>
+        <p id="deploy-aggregate" class="task-meta" role="status" aria-live="polite">Semáforo agregado: —</p>
         <ul id="deploy-status-list" class="task-list"></ul>
       </section>
 
       <section class="card" id="freshness-card">
         <h2>Confiabilidade do Dashboard</h2>
-        <p id="freshness-summary" class="task-meta">Carregando...</p>
+        <p id="freshness-summary" class="task-meta" role="status" aria-live="polite">Carregando...</p>
         <ul id="freshness-list" class="task-list"></ul>
       </section>
 
       <section class="card" id="human-sla-card">
         <h2>SLA de decisões HUMAN (011/012)</h2>
-        <p id="human-sla-summary" class="task-meta">Carregando...</p>
+        <p id="human-sla-summary" class="task-meta" role="status" aria-live="polite">Carregando...</p>
         <ul id="human-sla-list" class="task-list"></ul>
       </section>
 
@@ -380,7 +381,7 @@
           <button id="clear-filters" class="btn btn-secondary" type="button">Limpar filtros</button>
         </div>
         <p id="kanban-updated-at" class="task-meta">Atualizado em: carregando...</p>
-        <p id="kanban-summary" class="task-meta">Resumo: carregando...</p>
+        <p id="kanban-summary" class="task-meta" role="status" aria-live="polite">Resumo: carregando...</p>
         <p id="kanban-autorefresh" class="task-meta">Auto-refresh: ativo (a cada 3 min)</p>
         <div id="kanban-board" class="kanban"></div>
         <div class="actions-row">
