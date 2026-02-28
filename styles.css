@@ -104,9 +104,22 @@ h2 { margin: 0 0 .8rem; font-size: clamp(1.6rem, 3vw, 2.2rem); }
 .grid { display: grid; gap: 1rem; }
 .grid-3 { grid-template-columns: repeat(3, minmax(0, 1fr)); }
 .grid-2 { grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.about-stack { display: grid; gap: 1rem; }
 .about-grid { display: grid; grid-template-columns: 1.2fr .8fr; gap: 1rem; }
 .about-list { list-style: none; padding: 0; margin: .8rem 0 0; }
 .about-list li { margin: .45rem 0; color: #c2d3f6; }
+.team-block { padding: 1.4rem; }
+.team-categories { display: grid; gap: 1rem; grid-template-columns: repeat(2, minmax(0, 1fr)); }
+.team-category {
+  border: 1px solid #2a3f6b;
+  border-radius: 12px;
+  padding: .9rem;
+  background: rgba(10, 20, 38, .65);
+}
+.team-category h4 { margin: 0 0 .65rem; color: #d4e3ff; font-size: 1rem; }
+.team-role-list { margin: 0; padding-left: 1.05rem; display: grid; gap: .55rem; }
+.team-role-list li { color: #bcd0f5; font-size: .93rem; }
+.team-role-list strong { color: #eff5ff; }
 
 .timeline { display: grid; gap: .9rem; }
 .timeline > div { border-left: 3px solid var(--primary); padding: .4rem .9rem; background: rgba(53,174,241,.08); border-radius: 8px; }
@@ -180,6 +193,7 @@ h2 { margin: 0 0 .8rem; font-size: clamp(1.6rem, 3vw, 2.2rem); }
   .grid-3 { grid-template-columns: 1fr; }
   .grid-2 { grid-template-columns: 1fr; }
   .about-grid { grid-template-columns: 1fr; }
+  .team-categories { grid-template-columns: 1fr; }
   .trust-grid { grid-template-columns: 1fr; }
 }
 

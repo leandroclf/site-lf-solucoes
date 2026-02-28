@@ -5,6 +5,36 @@ const SAVE_DATA = Boolean(navigator.connection && navigator.connection.saveData)
 const AUTO_REFRESH_MS = SAVE_DATA ? 900000 : (IS_MOBILE ? 600000 : 300000);
 let autoRefreshTimer = null;
 
+const yearEl = document.getElementById('year');
+if (yearEl) yearEl.textContent = new Date().getFullYear();
+
+const menuToggle = document.querySelector('.menu-toggle');
+const menu = document.getElementById('main-menu');
+if (menuToggle && menu) {
+  menuToggle.addEventListener('click', () => {
+    const isOpen = menu.classList.toggle('open');
+    menuToggle.setAttribute('aria-expanded', String(isOpen));
+  });
+
+  menu.querySelectorAll('a').forEach((link) => {
+    link.addEventListener('click', () => {
+      menu.classList.remove('open');
+      menuToggle.setAttribute('aria-expanded', 'false');
+    });
+  });
+}
+
+for (const link of document.querySelectorAll('a[href^="#"]')) {
+  link.addEventListener('click', (event) => {
+    const targetId = link.getAttribute('href');
+    if (!targetId || targetId === '#') return;
+    const target = document.querySelector(targetId);
+    if (!target) return;
+    event.preventDefault();
+    target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
+}
+
 function priorityClass(priority) {
   if (priority === 'Alta') return 'priority-high';
   if (priority === 'Média') return 'priority-medium';

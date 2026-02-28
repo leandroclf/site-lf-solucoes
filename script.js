@@ -9,7 +9,7 @@ if (menuToggle && menu) {
     menuToggle.setAttribute('aria-expanded', String(isOpen));
   });
 
-  menu.querySelectorAll('a[href^="#"]').forEach((link) => {
+  menu.querySelectorAll('a').forEach((link) => {
     link.addEventListener('click', () => {
       menu.classList.remove('open');
       menuToggle.setAttribute('aria-expanded', 'false');

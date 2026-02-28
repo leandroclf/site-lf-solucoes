@@ -4,16 +4,50 @@
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
     <title>LF Soluções | Dashboard Operacional</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
-    <header class="topbar">
-      <h1>Dashboard Operacional — LF Soluções</h1>
-      <a href="../index.html" class="btn">← Voltar ao site</a>
+    <header class="header">
+      <div class="nav-wrap">
+        <a href="../index.html#inicio" class="brand" aria-label="LF Soluções">
+          <span class="brand-mark">
+            <img src="../assets/logo-lf-oficial.jpg" alt="Logo LF Soluções" class="brand-logo" />
+          </span>
+          <span>LF Soluções</span>
+        </a>
+        <button class="menu-toggle" aria-label="Abrir menu" aria-expanded="false" aria-controls="main-menu">☰</button>
+        <nav id="main-menu" class="menu" aria-label="Menu principal">
+          <a href="../index.html#servicos">Serviços</a>
+          <a href="../index.html#solucoes-especializadas">Soluções</a>
+          <a href="../index.html#mini-cases">Cases</a>
+          <a href="../index.html#sobre">Sobre</a>
+          <a href="../index.html#faq">FAQ</a>
+          <a href="./">Dashboards</a>
+          <a href="../index.html#contato" class="btn btn-outline">Falar agora</a>
+        </nav>
+      </div>
     </header>
 
-    <main class="container">
-      <section class="card">
+    <section class="dashboard-shortcuts" aria-label="Atalhos do painel">
+      <div class="shortcut-wrap">
+        <a href="#painel-geral">Status geral</a>
+        <a href="#alertas-gargalos">Alertas</a>
+        <a href="#tendencias">Tendências</a>
+        <a href="#semaforo">Semáforo</a>
+        <a href="#deploy-ci">Deploy/CI</a>
+        <a href="#kanban">Kanban</a>
+        <a href="#handoff">Handoff</a>
+      </div>
+    </section>
+
+    <main class="dashboard-container">
+      <section class="card" id="painel-geral">
         <div class="section-head">
           <h2>Camada Estratégica — Status Geral</h2>
           <div class="view-switch">
@@ -57,7 +91,7 @@
         </section>
       </section>
 
-      <section class="card" data-view="operational">
+      <section class="card" id="alertas-gargalos" data-view="operational">
         <h2>Camada de Alertas e Gargalos</h2>
         <div class="mini-grid">
           <div class="card">
@@ -86,7 +120,7 @@
         </div>
       </section>
 
-      <section class="card" data-view="executive operational">
+      <section class="card" id="tendencias" data-view="executive operational">
         <h2>Camada Analítica (Tendências)</h2>
         <div class="filters">
           <label>
@@ -124,7 +158,7 @@
         </div>
       </section>
 
-      <section class="card" data-view="executive operational">
+      <section class="card" id="semaforo" data-view="executive operational">
         <h2>Semáforo operacional</h2>
         <div class="traffic-wrap">
           <span id="traffic-dot" class="traffic-dot traffic-green" aria-label="Semáforo"></span>
@@ -143,7 +177,7 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" id="sla-human">
         <h2>SLA HUMAN (v1)</h2>
         <p id="sla-weekly" class="task-meta">Cumprimento semanal: carregando...</p>
         <div id="sla-weekly-bars" class="bars"></div>
@@ -166,7 +200,7 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" id="analytics-human">
         <h2>Analytics avançado de atividades HUMAN</h2>
         <p id="ops-analytics-updated" class="task-meta">Atualizado em: carregando...</p>
         <div class="mini-grid">
@@ -227,7 +261,7 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" id="deploy-ci">
         <h2>Deploy / CI Health</h2>
         <p id="deploy-status-updated" class="task-meta">Atualizado em: carregando...</p>
         <p id="deploy-aggregate" class="task-meta">Semáforo agregado: —</p>
@@ -298,7 +332,7 @@
         </article>
       </section>
 
-      <section class="card">
+      <section class="card" id="kanban">
         <div class="section-head">
           <h2>Kanban de atividades</h2>
           <span class="badge">Visão consolidada para acompanhamento</span>
@@ -349,7 +383,7 @@
         </div>
       </section>
 
-      <section class="card">
+      <section class="card" id="handoff">
         <div class="section-head">
           <h2>Handoff para analista (contexto completo)</h2>
           <button id="download-handoff" class="btn btn-secondary" type="button">Baixar handoff (.txt)</button>
@@ -358,6 +392,12 @@
         <div id="handoff-content" class="handoff"></div>
       </section>
     </main>
+    <footer class="footer">
+      <div class="footer-row">
+        <span>© <span id="year"></span> LF Soluções. Todos os direitos reservados.</span>
+        <span>CNPJ: 29.274.997/0001-50</span>
+      </div>
+    </footer>
     <script src="./script.js" defer></script>
   </body>
 </html>
