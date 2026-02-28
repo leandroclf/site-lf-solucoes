@@ -155,7 +155,7 @@ section[id] { scroll-margin-top: 132px; }
 }
 
 .btn-secondary {
-  background: transparent;
+  background: #11213b;
   color: var(--text);
   border: 1px solid #4c7fa4;
   cursor: pointer;
@@ -440,6 +440,11 @@ li { margin: 6px 0; }
 
 .handoff h3 {
   margin: 0 0 6px;
+}
+
+.handoff a {
+  color: #9bd6ff;
+  text-decoration: underline;
 }
 
 .handoff ul {
