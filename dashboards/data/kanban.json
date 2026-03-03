@@ -186,48 +186,6 @@
       "title": "AUTHORIZED",
       "tasks": [
         {
-          "title": "[ISSUE-001] MVP de Enrichment B2B com OpenAlex",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de cobertura de atributos +20%. Repo: https://github.com/leandroclf/lf-openalex-enrichment-mvp \u00daltimo avan\u00e7o: https://github.com/leandroclf/lf-openalex-enrichment-mvp/commit/6669ce9 | Evid\u00eancia 19:00 UTC: issue-001-pr-readiness-checklist-2026-02-25.md | Evid\u00eancia 20:00 UTC: issue-001-coverage-benchmark-template-2026-02-25.md | Evid\u00eancia 21:00 UTC: issue-001-test-checklist-2026-02-25-2100.md | Evid\u00eancia 00:15 UTC: commit 39d2d26 push em feature/issue-001-value-endpoint. | Evid\u00eancia 00:16 UTC: commit e248d8c (ISSUE-016/021 hardening) push em feature branch. | Evid\u00eancia 00:21 UTC: commit 99ab512 push em feature/issue-001-value-endpoint. | Evid\u00eancia 01:00 UTC: commit f062c21 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 01:30 UTC: commit bebb323 push em feature/issue-001-value-endpoint. | Evid\u00eancia 02:30 UTC: commit ef516e4 push em feature/issue-001-value-endpoint. | Evid\u00eancia 03:00 UTC: commit c24e1a6 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 03:30 UTC: commit b0a2971 push em feature/issue-001-value-endpoint. | Evid\u00eancia 04:00 UTC: commit 849fa7c push em feature/issue-001-value-endpoint. | Evid\u00eancia 05:00 UTC: commit dff8300 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 06:00 UTC: commit 92ba186 push em feature/issue-001-value-endpoint. | Evid\u00eancia 07:00 UTC: commit 3540c65 (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 08:00 UTC: commit 1229962 push em feature/issue-001-value-endpoint. | Evid\u00eancia 09:00 UTC: commit c047c6c (ISSUE-016 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 10:00 UTC: commits d1ce215 e 2bb4bb7 (ISSUE-021 slot) push em feature/issue-001-value-endpoint. | Evid\u00eancia 22:55 UTC: commit b8895a9 push em feature/issue-001-batch-api.",
-          "owner": "Builder-repo",
-          "project": "Site LF Solu\u00e7\u00f5es",
-          "mode": "AUTO",
-          "priority": "Alta",
-          "status": "Em desenvolvimento",
-          "categoryPrimary": "engenharia-arquitetura",
-          "categorySupport": [],
-          "valueKpi": "+20% cobertura de atributos por lead",
-          "ownerPrimary": "Builder-repo",
-          "ownerSupport": []
-        },
-        {
-          "title": "[ISSUE-002] Grafo de entidades com Wikidata para normaliza\u00e7\u00e3o e matching",
-          "description": "Gate PASS (CC0) e aceite PASS com meta de precis\u00e3o de matching +25% no piloto. Repo: https://github.com/leandroclf/lf-wikidata-entity-graph \u00daltimo avan\u00e7o: https://github.com/leandroclf/lf-wikidata-entity-graph/commit/e96bdab | Evid\u00eancia 19:00 UTC: issue-002-entity-matching-test-matrix-2026-02-25.md | Evid\u00eancia 20:30 UTC: issue-002-pr-description-template-2026-02-25.md | Evid\u00eancia 00:15 UTC: commit f108abc push em feature/issue-002-matching-metrics. | Evid\u00eancia 00:16 UTC: commit 3443f5f push em feature branch. | Evid\u00eancia 00:30 UTC: commit 92b36c4 push em feature/issue-002-matching-metrics. | Evid\u00eancia 01:30 UTC: commit 83e4189 push em feature/issue-002-matching-metrics. | Evid\u00eancia 02:00 UTC: commit e70124b (ISSUE-021 slot) push em feature/issue-002-matching-metrics. | Evid\u00eancia 02:30 UTC: commit 2666bba push em feature/issue-002-matching-metrics. | Evid\u00eancia 03:30 UTC: commit 8a5d55d push em feature/issue-002-matching-metrics. | Evid\u00eancia 04:00 UTC: commit 7752bd5 push em feature/issue-002-matching-metrics. | Evid\u00eancia 05:00 UTC: commit 64966e1 push em feature/issue-002-matching-metrics. | Evid\u00eancia 06:00 UTC: commit b4cfd78 (ISSUE-021 slot CI hardening) push em feature/issue-002-matching-metrics. | Evid\u00eancia 07:30 UTC: commit 34d0b60 push em feature/issue-002-matching-metrics. | Evid\u00eancia 08:30 UTC: commit 58ac9d1 push em feature/issue-002-matching-metrics. | Evid\u00eancia 09:30 UTC: commit 4d781c7 push em feature/issue-002-matching-metrics. | Evid\u00eancia 10:30 UTC: commit 172360d push em feature/issue-002-matching-metrics. | Evid\u00eancia 22:55 UTC: commit 4928067 push em feature/issue-002-entity-linking.",
-          "owner": "Architect-tech",
-          "project": "Site LF Solu\u00e7\u00f5es",
-          "mode": "AUTO",
-          "priority": "Alta",
-          "status": "Em desenvolvimento",
-          "categoryPrimary": "engenharia-arquitetura",
-          "categorySupport": [],
-          "valueKpi": "+25% precis\u00e3o de matching",
-          "ownerPrimary": "Architect-tech",
-          "ownerSupport": []
-        },
-        {
-          "title": "[ISSUE-003] M\u00f3dulo de risco-pa\u00eds e pricing regional com World Bank",
-          "description": "Gate PASS (CC BY 4.0) e aceite PASS com score regional via API para 2 propostas piloto. Repo: https://github.com/leandroclf/lf-worldbank-risk-pricing \u00daltimo avan\u00e7o: https://github.com/leandroclf/lf-worldbank-risk-pricing/commit/3bda706 | Evid\u00eancia 19:30 UTC: issue-003-risk-score-api-contract-v1.md | Evid\u00eancia 20:00 UTC: issue-003-pilot-proposal-evidence-template-2026-02-25.md | Evid\u00eancia 22:00 UTC: issue-003-api-pr-checklist-2026-02-25-2200.md | Evid\u00eancia 00:15 UTC: commit 9d5ff53 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 00:21 UTC: commit f745551 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 00:30 UTC: commit cf03945 (ISSUE-021 hardening) push em feature/issue-003-pricing-metrics. | Evid\u00eancia 01:00 UTC: commit 7132cba push em feature/issue-003-pricing-metrics. | Evid\u00eancia 02:00 UTC: commit ac56687 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 03:00 UTC: commit 74296f7 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 04:30 UTC: commits e4a1c36 (ISSUE-003) e 8088613 (ISSUE-021 slot) push em feature/issue-003-pricing-metrics. | Evid\u00eancia 05:30 UTC: commit fbdb52e (country risk band summary) push em feature/issue-003-pricing-metrics. | Evid\u00eancia 07:00 UTC: commit b24cc49 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 07:30 UTC: commit 6c4f150 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 08:30 UTC: commit 04f3478 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 09:30 UTC: commit 9b8b5c1 push em feature/issue-003-pricing-metrics. | Evid\u00eancia 10:30 UTC: commit ce6a06f push em feature/issue-003-pricing-metrics.",
-          "owner": "Architect-tech",
-          "project": "Site LF Solu\u00e7\u00f5es",
-          "mode": "AUTO",
-          "priority": "Alta",
-          "status": "Em desenvolvimento",
-          "categoryPrimary": "engenharia-arquitetura",
-          "categorySupport": [],
-          "valueKpi": "2 propostas com score regional ativo",
-          "ownerPrimary": "Architect-tech",
-          "ownerSupport": []
-        },
-        {
           "title": "[ISSUE-005] Trilha jur\u00eddica de OpenStreetMap (ODbL) para produto comercial",
           "description": "PASS CONDICIONAL: depende de parecer jur\u00eddico formal; runbook humano completo. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
           "owner": "Reviewer-delivery + Human-legal-specialist",
@@ -469,6 +427,48 @@
           "categorySupport": [],
           "valueKpi": "KPI definido no aceite da issue",
           "ownerPrimary": "Architect-tech",
+          "ownerSupport": []
+        },
+        {
+          "title": "[ISSUE-001] MVP de Enrichment B2B com OpenAlex",
+          "description": "MVP entregue por Codex: commit 20cd165 (openalex).",
+          "owner": "Codex",
+          "project": "Site LF Solu\u00e7\u00f5es",
+          "mode": "AUTO",
+          "priority": "Alta",
+          "status": "Conclu\u00eddo por Codex",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [],
+          "valueKpi": "+20% cobertura de atributos por lead",
+          "ownerPrimary": "Codex",
+          "ownerSupport": []
+        },
+        {
+          "title": "[ISSUE-002] Grafo de entidades com Wikidata para normaliza\u00e7\u00e3o e matching",
+          "description": "MVP entregue por Codex: commit f456c18 (wikidata).",
+          "owner": "Codex",
+          "project": "Site LF Solu\u00e7\u00f5es",
+          "mode": "AUTO",
+          "priority": "Alta",
+          "status": "Conclu\u00eddo por Codex",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [],
+          "valueKpi": "+25% precis\u00e3o de matching",
+          "ownerPrimary": "Codex",
+          "ownerSupport": []
+        },
+        {
+          "title": "[ISSUE-003] M\u00f3dulo de risco-pa\u00eds e pricing regional com World Bank",
+          "description": "MVP entregue por Codex: commit 8ecd68d (worldbank).",
+          "owner": "Codex",
+          "project": "Site LF Solu\u00e7\u00f5es",
+          "mode": "AUTO",
+          "priority": "Alta",
+          "status": "Conclu\u00eddo por Codex",
+          "categoryPrimary": "engenharia-arquitetura",
+          "categorySupport": [],
+          "valueKpi": "2 propostas com score regional ativo",
+          "ownerPrimary": "Codex",
           "ownerSupport": []
         }
       ]
