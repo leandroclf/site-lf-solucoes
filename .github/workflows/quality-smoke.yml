@@ -8,9 +8,14 @@ on:
 permissions:
   contents: read
 
+concurrency:
+  group: quality-smoke-${{ github.ref }}
+  cancel-in-progress: true
+
 jobs:
   quality-smoke:
     runs-on: ubuntu-latest
+    timeout-minutes: 10
     steps:
       - name: Checkout
         uses: actions/checkout@v4
@@ -19,6 +24,7 @@ jobs:
         uses: actions/setup-python@v5
         with:
           python-version: "3.12"
+          cache: "pip"
 
       - name: Validate structure
         run: python3 scripts/validate_site_structure.py
