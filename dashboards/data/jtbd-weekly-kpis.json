@@ -1,0 +1,19 @@
+{
+  "updatedAt": "2026-03-05T02:16:10.228600+00:00",
+  "source": "dashboards/data/kanban.json",
+  "issue": "ISSUE-008",
+  "window": "weekly",
+  "kpis": {
+    "eligibleAutoTasks": 3,
+    "byCategory": {
+      "produto-receita": 2,
+      "engenharia-arquitetura": 1,
+      "outros": 0
+    },
+    "funnelAndJtbdCoveragePct": 100.0
+  },
+  "nextActions": [
+    "Atualizar síntese JTBD com entrevistas da semana",
+    "Revisar variação de conversão por ICP no próximo ciclo"
+  ]
+}
