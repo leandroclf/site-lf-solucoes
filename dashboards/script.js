@@ -1186,18 +1186,45 @@ async function loadDeployStatus() {
   if (!listEl) return;
   try {
     const data = await fetchJson('./data/deploy-status.json');
-    if (updatedEl) updatedEl.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
-    if (aggregateEl) aggregateEl.textContent = `Semáforo agregado: ${String(data.aggregate?.status || 'n/d').toUpperCase()}`;
+    const updatedAt = data.updatedAt || data.last_updated_utc || data.updated_at;
+    if (updatedEl && updatedAt) {
+      updatedEl.textContent = `Atualizado em: ${new Date(updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
+    }
 
-    listEl.innerHTML = (data.repos || []).map((r) => {
-      const concl = r.conclusion || r.status || 'n/d';
+    const aggregateStatus =
+      data.aggregate?.status ||
+      data.aggregate_semaphore ||
+      data.aggregateSemaphore ||
+      data.regressionWatchdog?.status ||
+      'n/d';
+    if (aggregateEl) aggregateEl.textContent = `Semáforo agregado: ${String(aggregateStatus).toUpperCase()}`;
+
+    const repoEntries = Array.isArray(data.repos)
+      ? data.repos
+      : data.repos && typeof data.repos === 'object'
+        ? Object.entries(data.repos).map(([repo, payload]) => ({ repo, ...payload }))
+        : data.repositories && typeof data.repositories === 'object'
+          ? Object.entries(data.repositories).map(([repo, payload]) => ({
+              repo,
+              conclusion: payload.latestRun?.conclusion || payload.latest_run?.conclusion || 'n/d',
+              status: payload.latestRun?.status || payload.latest_run?.status || 'n/d',
+              runUrl: payload.latestRun?.html_url || payload.latest_run?.html_url || '',
+              consecutiveFailures: payload.consecutiveFailures ?? payload.consecutive_failures ?? 0,
+            }))
+          : [];
+
+    listEl.innerHTML = repoEntries.map((r) => {
+      const repoName = r.repo || r.name || r.repository || 'n/d';
+      const concl = r.conclusion || r.latestRun?.conclusion || r.latest_run?.conclusion || r.status || 'n/d';
       const lower = String(concl).toLowerCase();
       const ok = lower === 'success';
-      const warn = ['failure','cancelled','timed_out'].includes(lower) || r.status === 'error';
-      const badge = r.consecutiveFailures ? '🔴' : (ok ? '🟢' : (warn ? '🟡' : '⚪'));
-      const run = r.runUrl ? `<a href="${r.runUrl}" target="_blank" rel="noreferrer">run</a>` : 'run n/d';
-      const extra = r.consecutiveFailures ? ' | 2 falhas seguidas' : '';
-      return `<li><strong>${badge} ${r.repo}</strong> — ${concl}${extra} (${run})</li>`;
+      const warn = ['failure', 'cancelled', 'timed_out'].includes(lower) || r.status === 'error';
+      const consecutive = Number(r.consecutiveFailures ?? r.consecutive_failures ?? 0) || 0;
+      const badge = consecutive ? '🔴' : (ok ? '🟢' : (warn ? '🟡' : '⚪'));
+      const runUrl = r.runUrl || r.latestRun?.html_url || r.latest_run?.html_url || '';
+      const run = runUrl ? `<a href="${runUrl}" target="_blank" rel="noreferrer">run</a>` : 'run n/d';
+      const extra = consecutive ? ` | ${consecutive} falhas seguidas` : '';
+      return `<li><strong>${badge} ${repoName}</strong> — ${concl}${extra} (${run})</li>`;
     }).join('');
     if (!listEl.innerHTML) listEl.innerHTML = '<li>Sem dados de deploy no momento.</li>';
   } catch {
