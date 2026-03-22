@@ -15,6 +15,7 @@ HTML_FILES = sorted(
     + list(ROOT.glob("solucoes/*.html"))
     + list(ROOT.glob("dashboards/*.html"))
 )
+JS_FILES = sorted(list(ROOT.glob("*.js")) + list(ROOT.glob("scripts/*.js")))
 
 
 def extract(pattern: str, text: str) -> list[str]:
@@ -51,11 +52,25 @@ def check_html(path: Path, text: str) -> list[str]:
     return errors
 
 
+def check_js(path: Path, text: str) -> list[str]:
+    rel = path.relative_to(ROOT)
+    errors: list[str] = []
+
+    if "G-XXXXXXXXXX" in text:
+        errors.append(f"{rel}: placeholder GA measurement id must not be committed")
+
+    return errors
+
+
 def main() -> int:
     errors: list[str] = []
     for html_file in HTML_FILES:
         text = html_file.read_text(encoding="utf-8")
         errors.extend(check_html(html_file, text))
+
+    for js_file in JS_FILES:
+        text = js_file.read_text(encoding="utf-8")
+        errors.extend(check_js(js_file, text))
 
     if errors:
         print("ERROR: quality smoke failed")

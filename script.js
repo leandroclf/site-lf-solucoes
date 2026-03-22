@@ -32,11 +32,13 @@ for (const link of document.querySelectorAll('a[href^="#"]')) {
 }
 
 // Tracking hook
-// Para usar GA4: inclua o snippet do gtag no <head> e defina seu Measurement ID.
-const GA_MEASUREMENT_ID = 'G-XXXXXXXXXX';
+// Para usar GA4: inclua o snippet do gtag no <head> e defina window.LFSiteConfig.gaMeasurementId.
+const siteConfig = window.LFSiteConfig || {};
+const GA_MEASUREMENT_ID = typeof siteConfig.gaMeasurementId === 'string' ? siteConfig.gaMeasurementId.trim() : '';
+const analyticsEnabled = GA_MEASUREMENT_ID.length > 0;
 
 function trackEvent(eventName, payload = {}) {
-  if (window.gtag && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX') {
+  if (analyticsEnabled && window.gtag) {
     window.gtag('event', eventName, payload);
   }
 }
@@ -49,7 +51,7 @@ window.LFSiteTrack = function LFSiteTrack(eventName, payload = {}) {
 };
 
 function trackCTA(label) {
-  if (window.gtag && GA_MEASUREMENT_ID !== 'G-XXXXXXXXXX') {
+  if (analyticsEnabled && window.gtag) {
     window.gtag('event', 'cta_click', {
       event_category: 'engagement',
       event_label: label,

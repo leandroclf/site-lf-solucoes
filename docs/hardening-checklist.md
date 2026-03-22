@@ -26,6 +26,8 @@
 
 - [ ] Deploy de Pages executado sem erro
 - [ ] Validacao estrutural (`validate_site_structure.py`) em OK
+- [ ] Nenhum placeholder de GA (`G-XXXXXXXXXX`) permanece no `script.js`
+- [ ] Analytics configurado apenas via `window.LFSiteConfig.gaMeasurementId`
 - [ ] Rollback simples: reverter ultimo commit em `main` se necessario
 
 ## Comandos de validacao final
