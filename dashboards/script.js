@@ -73,7 +73,7 @@ function formatBrtTimestamp(value) {
   if (!value) return null;
   const dt = new Date(value);
   if (Number.isNaN(dt.getTime())) return null;
-  return dt.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }) + ' BRT';
+  return dt.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
 }
 
 function renderCommitReference(url) {
@@ -1734,64 +1734,122 @@ async function loadHumanDecisionSla() {
   }
 }
 
+function freshnessStatusFromAge(ageMin) {
+  if (ageMin === null || Number.isNaN(ageMin)) return 'red';
+  if (ageMin > 240) return 'red';
+  if (ageMin > 90) return 'yellow';
+  return 'green';
+}
+
+function freshnessFactor(status) {
+  if (status === 'green') return 1;
+  if (status === 'yellow') return 0.5;
+  return 0;
+}
+
 async function loadDashboardFreshness() {
   const summaryEl = document.getElementById('freshness-summary');
   const listEl = document.getElementById('freshness-list');
-
+  const stampEl = document.getElementById('freshness-stamp');
+  const scoreEl = document.getElementById('freshness-score');
+  const criticalOkEl = document.getElementById('freshness-critical-ok');
+  const criticalAlertsEl = document.getElementById('freshness-critical-alerts');
+  const auxEl = document.getElementById('freshness-aux');
   const cardEl = document.getElementById('freshness-card');
   if (!summaryEl || !listEl) return;
 
+  const criticalSources = [
+    { label: 'Kanban', path: './data/kanban.json', weight: 35, detail: 'fila, prioridade e status de execução' },
+    { label: 'Autopilot SLA', path: './data/autopilot-sla.json', weight: 30, detail: 'cadência autônoma e intervenções' },
+    { label: 'Deploy status', path: './data/deploy-status.json', weight: 20, detail: 'saúde de CI/CD e watchdog' },
+    { label: 'Handoff', path: './data/handoff.json', weight: 15, detail: 'memória operacional e avanços recentes' },
+  ];
+  const auxiliarySources = [
+    { label: 'Metrics history', path: './data/metrics-history.json', detail: 'comparativos persistidos' },
+    { label: 'Repo progress', path: './data/product-code-progress.json', detail: 'sincronização dos repositórios' },
+  ];
   const sources = [
-    { label: 'Kanban', path: './data/kanban.json' },
-    { label: 'Handoff', path: './data/handoff.json' },
-    { label: 'Deploy status', path: './data/deploy-status.json' },
-    { label: 'Metrics history', path: './data/metrics-history.json' },
-    { label: 'Repo progress', path: './data/product-code-progress.json' },
-    { label: 'Autopilot SLA', path: './data/autopilot-sla.json' },
+    ...criticalSources.map((src) => ({ ...src, critical: true })),
+    ...auxiliarySources.map((src) => ({ ...src, critical: false, weight: 0 })),
   ];
 
   try {
     const now = Date.now();
-    const results = [];
-
-    for (const src of sources) {
+    const results = await Promise.all(sources.map(async (src) => {
       try {
         const data = await fetchJson(src.path);
         const updatedAtValue = extractUpdatedAt(data);
         const updatedAt = updatedAtValue ? new Date(updatedAtValue).getTime() : null;
         const ageMin = updatedAt ? (now - updatedAt) / 60000 : null;
-
-        let status = 'green';
-        if (ageMin === null || ageMin > 240) status = 'red';
-        else if (ageMin > 90) status = 'yellow';
-
-        results.push({ label: src.label, ageMin, status });
+        const status = freshnessStatusFromAge(ageMin);
+        const factor = src.critical ? freshnessFactor(status) : null;
+        return {
+          ...src,
+          updatedAt,
+          ageMin,
+          status,
+          factor,
+          scorePart: src.critical ? src.weight * factor : 0,
+        };
       } catch {
-        results.push({ label: src.label, ageMin: null, status: 'red' });
+        return {
+          ...src,
+          updatedAt: null,
+          ageMin: null,
+          status: 'red',
+          factor: src.critical ? 0 : null,
+          scorePart: 0,
+        };
       }
+    }));
+
+    const criticalResults = results.filter((r) => r.critical);
+    const auxiliaryResults = results.filter((r) => !r.critical);
+    const score = Math.max(0, Math.min(100, Math.round(criticalResults.reduce((sum, r) => sum + Number(r.scorePart || 0), 0))));
+    const criticalGreen = criticalResults.filter((r) => r.status === 'green').length;
+    const criticalYellow = criticalResults.filter((r) => r.status === 'yellow').length;
+    const criticalRed = criticalResults.filter((r) => r.status === 'red').length;
+    const auxGreen = auxiliaryResults.filter((r) => r.status === 'green').length;
+    const newestUpdatedAt = results.reduce((max, r) => {
+      if (typeof r.updatedAt === 'number' && (!max || r.updatedAt > max)) return r.updatedAt;
+      return max;
+    }, null);
+
+    if (stampEl) {
+      stampEl.textContent = newestUpdatedAt
+        ? `Atualizado em: ${formatBrtTimestamp(newestUpdatedAt)}`
+        : 'Atualizado em: n/d';
     }
+    if (scoreEl) scoreEl.textContent = `${score}%`;
+    if (criticalOkEl) criticalOkEl.textContent = `${criticalGreen}/${criticalResults.length}`;
+    if (criticalAlertsEl) criticalAlertsEl.textContent = `Alertas: ${criticalYellow + criticalRed}`;
+    if (auxEl) auxEl.textContent = `${auxGreen}/${auxiliaryResults.length}`;
 
-    const red = results.filter((r) => r.status === 'red').length;
-    const yellow = results.filter((r) => r.status === 'yellow').length;
-    const green = results.filter((r) => r.status === 'green').length;
-    const score = Math.max(0, Math.min(100, Math.round(((green + (yellow * 0.5)) / Math.max(results.length, 1)) * 100)));
+    summaryEl.textContent = `Score ponderado: ${score}% | Críticas verdes: ${criticalGreen}/${criticalResults.length} | Alertas críticos: ${criticalYellow + criticalRed} | Complementares verdes: ${auxGreen}/${auxiliaryResults.length}`;
 
-    summaryEl.textContent = `Confiabilidade: ${score}% | Fontes: ${results.length} | Red: ${red} | Yellow: ${yellow}`;
     listEl.innerHTML = results.map((r) => {
       const dot = r.status === 'red' ? '🔴' : (r.status === 'yellow' ? '🟡' : '🟢');
       const age = r.ageMin === null ? 'n/d' : `${r.ageMin.toFixed(1)} min`;
-      return `<li><strong>${dot} ${r.label}</strong> — idade: ${age}</li>`;
+      const weight = r.critical ? `peso ${r.weight}%` : 'complementar';
+      const contribution = r.critical ? ` | aporte ${Number(r.scorePart || 0).toFixed(1)} pts` : '';
+      const detail = r.detail ? ` | ${r.detail}` : '';
+      return `<li><strong>${dot} ${r.label}</strong> — ${weight}${contribution} | idade: ${age}${detail}</li>`;
     }).join('');
 
     if (cardEl) {
       cardEl.classList.remove('sla-green', 'sla-yellow', 'sla-red');
-      if (red > 0) cardEl.classList.add('sla-red');
-      else if (yellow > 0) cardEl.classList.add('sla-yellow');
+      if (criticalRed > 0 || score < 60) cardEl.classList.add('sla-red');
+      else if (criticalYellow > 0 || score < 85) cardEl.classList.add('sla-yellow');
       else cardEl.classList.add('sla-green');
     }
   } catch {
-    summaryEl.textContent = 'Erro ao calcular confiabilidade.';
-    listEl.innerHTML = '<li>Falha ao ler fontes de dados.</li>';
+    if (stampEl) stampEl.textContent = 'Atualizado em: erro de leitura';
+    if (scoreEl) scoreEl.textContent = '—';
+    if (criticalOkEl) criticalOkEl.textContent = '—';
+    if (criticalAlertsEl) criticalAlertsEl.textContent = 'Alertas: —';
+    if (auxEl) auxEl.textContent = '—';
+    summaryEl.textContent = 'Erro ao calcular confiabilidade ponderada.';
+    listEl.innerHTML = '<li>Falha ao ler fontes críticas e complementares.</li>';
     if (cardEl) {
       cardEl.classList.remove('sla-green', 'sla-yellow');
       cardEl.classList.add('sla-red');

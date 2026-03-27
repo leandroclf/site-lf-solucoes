@@ -44,6 +44,7 @@
         <a href="#deploy-ci">Deploy/CI</a>
         <a href="#repo-sync">Repo sync</a>
         <a href="#metrics-history">Histórico BI</a>
+        <a href="#freshness-card">Confiabilidade ponderada</a>
         <a href="#wave-monitor">Ondas ativas</a>
         <a href="#kanban">Kanban</a>
         <a href="#handoff">Handoff</a>
@@ -369,8 +370,28 @@
       </section>
 
       <section class="card" id="freshness-card">
-        <h2>Confiabilidade do Dashboard</h2>
+        <div class="section-head">
+          <h2>Confiabilidade ponderada por criticidade</h2>
+          <span id="freshness-stamp" class="badge">Atualizando...</span>
+        </div>
         <p id="freshness-summary" class="task-meta" role="status" aria-live="polite">Carregando...</p>
+        <div class="mini-grid" style="margin-top:10px;">
+          <div class="card">
+            <h3>Score ponderado</h3>
+            <p id="freshness-score" class="big">—</p>
+            <p class="task-meta">Kanban 35% · Autopilot 30% · Deploy 20% · Handoff 15%</p>
+          </div>
+          <div class="card">
+            <h3>Fontes críticas verdes</h3>
+            <p id="freshness-critical-ok" class="big">—</p>
+            <p id="freshness-critical-alerts" class="task-meta">Alertas: —</p>
+          </div>
+          <div class="card">
+            <h3>Fontes complementares verdes</h3>
+            <p id="freshness-aux" class="big">—</p>
+            <p class="task-meta">Metrics history + repo progress</p>
+          </div>
+        </div>
         <ul id="freshness-list" class="task-list"></ul>
       </section>
 
