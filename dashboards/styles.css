@@ -179,6 +179,18 @@ section[id] { scroll-margin-top: 132px; }
 .metrics-5 { grid-template-columns: repeat(5, minmax(0, 1fr)); }
 .two { grid-template-columns: repeat(2, minmax(0, 1fr)); }
 .view-switch { display:flex; gap:8px; }
+.dashboard-cta-row {
+  display: flex;
+  gap: 8px;
+  flex-wrap: wrap;
+  margin: 10px 0 6px;
+}
+
+.dashboard-cta-row .btn {
+  flex: 1 1 180px;
+  min-height: 44px;
+}
+
 .kpi.kpi-green { border-left: 5px solid #10b981; }
 .kpi.kpi-yellow { border-left: 5px solid #f59e0b; }
 .kpi.kpi-red { border-left: 5px solid #ef4444; }
@@ -270,6 +282,66 @@ section[id] { scroll-margin-top: 132px; }
 .icp-card a {
   justify-self: start;
 }
+
+.signal-panel {
+  display: grid;
+  gap: 10px;
+  border: 1px solid #2f4776;
+  border-radius: 12px;
+  background: #0f1a30;
+  padding: 12px;
+}
+
+.signal-family-list,
+.signal-event-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+.signal-family-list li,
+.signal-event-list li {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  padding: 8px 10px;
+  border: 1px solid #24406f;
+  border-radius: 10px;
+  background: #13213a;
+}
+
+.signal-family-list strong,
+.signal-event-list strong {
+  font-weight: 700;
+}
+
+.signal-family-active { color: #67e8a4; }
+.signal-family-idle { color: #fbbf24; }
+
+.signal-green {
+  color: #065f46;
+  background: #d1fae5;
+  border: 1px solid #a7f3d0;
+}
+
+.signal-yellow {
+  color: #92400e;
+  background: #fef3c7;
+  border: 1px solid #fde68a;
+}
+
+.signal-red {
+  color: #991b1b;
+  background: #fee2e2;
+  border: 1px solid #fecaca;
+}
+
+.goal-line { color: #fbbf24; }
+.goal-hit { color: #67e8a4; }
+.goal-miss { color: #fbbf24; }
 
 #alertas-gargalos { min-height: 560px; }
 #bottlenecks-list,
@@ -732,6 +804,8 @@ li { margin: 6px 0; }
   .heatmap-grid { grid-template-columns: repeat(2, minmax(120px,1fr)); }
   .funnel-cta-row { flex-direction: column; }
   .funnel-cta-row .btn { width: 100%; }
+  .dashboard-cta-row { flex-direction: column; }
+  .dashboard-cta-row .btn { width: 100%; }
   .wave-card-head { flex-direction: column; }
 
   .section-head { flex-direction: column; align-items: flex-start; }

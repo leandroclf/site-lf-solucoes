@@ -63,6 +63,13 @@
         </div>
         <p id="last-updated-global" class="task-meta" aria-live="polite">Última atualização: carregando...</p>
         <p id="immediate-action-badge" class="task-meta" role="status" aria-live="polite">Ação imediata: avaliando...</p>
+        <div class="dashboard-cta-row" aria-label="Ações imediatas do dashboard">
+          <a id="dashboard-immediate-cta" class="btn" href="#alertas-gargalos" data-dashboard-action="open-alerts" data-dashboard-family="cta">Abrir alertas críticos</a>
+          <a id="dashboard-secondary-cta" class="btn btn-secondary" href="#commercial-funnel" data-dashboard-action="open-funnel" data-dashboard-family="cta">Ver funil comercial</a>
+          <a id="dashboard-tertiary-cta" class="btn btn-secondary" href="#metrics-history" data-dashboard-action="open-history" data-dashboard-family="cta">Ver comparativos reais</a>
+          <a id="dashboard-quaternary-cta" class="btn btn-secondary" href="#kanban" data-dashboard-action="open-kanban" data-dashboard-family="cta">Abrir kanban</a>
+        </div>
+        <p id="dashboard-cta-guidance" class="task-meta">Carregando próxima ação...</p>
         <section class="grid metrics metrics-5">
           <article class="card kpi" id="kpi-jobs-ativos" title="Quantidade total de jobs ativos no cron">
             <h3>Total de Jobs Ativos</h3>
@@ -105,8 +112,8 @@
         <p id="commercial-funnel-summary" class="task-meta">Carregando leitura comercial...</p>
         <p id="commercial-funnel-meta" class="task-meta">Cobertura JTBD: n/d</p>
         <div class="funnel-cta-row">
-          <a id="commercial-funnel-primary-cta" class="btn" href="../index.html#diagnostico-roi">Abrir diagnostico 60s</a>
-          <a id="commercial-funnel-secondary-cta" class="btn btn-secondary" href="../index.html#solucoes-especializadas">Ver solucoes</a>
+          <a id="commercial-funnel-primary-cta" class="btn" href="../index.html#diagnostico-roi" data-dashboard-action="commercial-primary" data-dashboard-family="cta">Abrir diagnostico 60s</a>
+          <a id="commercial-funnel-secondary-cta" class="btn btn-secondary" href="../index.html#solucoes-especializadas" data-dashboard-action="commercial-secondary" data-dashboard-family="cta">Ver solucoes</a>
         </div>
         <div class="mini-grid">
           <div class="card funnel-subcard">
@@ -293,6 +300,38 @@
             <h3>Intervenção humana</h3>
             <p id="autopilot-human" class="big">—</p>
             <p id="autopilot-updated" class="task-meta">Atualizado em: —</p>
+          </div>
+        </div>
+        <div class="handoff-block signal-panel" id="dashboard-signals-panel" style="margin-top:10px;">
+          <div class="section-head">
+            <h3>Sinais rastreados</h3>
+            <span id="dashboard-signal-quality-badge" class="badge">Atualizando...</span>
+          </div>
+          <p id="dashboard-signal-summary" class="task-meta">Carregando sinais...</p>
+          <div class="mini-grid signal-metrics" style="margin-top:10px;">
+            <div class="card">
+              <h3>Cobertura ativa</h3>
+              <p id="dashboard-signal-quality" class="big">—</p>
+              <p id="dashboard-signal-events" class="task-meta">—</p>
+            </div>
+            <div class="card">
+              <h3>Família mais ativa</h3>
+              <p id="dashboard-signal-top" class="big">—</p>
+              <p id="dashboard-signal-last" class="task-meta">—</p>
+            </div>
+            <div class="card">
+              <h3>Recência</h3>
+              <p id="dashboard-signal-recency" class="big">—</p>
+              <p class="task-meta">Eventos persistidos localmente</p>
+            </div>
+          </div>
+          <div style="margin-top:10px;">
+            <p class="task-meta">Famílias ativas</p>
+            <ul id="dashboard-signal-families" class="signal-family-list"></ul>
+          </div>
+          <div style="margin-top:10px;">
+            <p class="task-meta">Últimos sinais</p>
+            <ul id="dashboard-signal-list" class="signal-event-list"></ul>
           </div>
         </div>
       </section>

@@ -52,6 +52,11 @@ for (const link of document.querySelectorAll('a[href^="#"]')) {
     if (!target) return;
     event.preventDefault();
     target.scrollIntoView({ behavior: 'smooth', block: 'start' });
+    if (!link.hasAttribute('data-dashboard-action')) {
+      trackDashboardSignal('navigation', targetId.replace('#', ''), {
+        label: link.textContent.trim(),
+      });
+    }
   });
 }
 
@@ -74,6 +79,126 @@ function formatBrtTimestamp(value) {
   const dt = new Date(value);
   if (Number.isNaN(dt.getTime())) return null;
   return dt.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' });
+}
+
+const DASHBOARD_SIGNAL_STORE = 'lf-dashboard-signals-v1';
+
+function loadDashboardSignals() {
+  try {
+    const raw = window.localStorage.getItem(DASHBOARD_SIGNAL_STORE);
+    const parsed = raw ? JSON.parse(raw) : [];
+    return Array.isArray(parsed) ? parsed : [];
+  } catch {
+    return [];
+  }
+}
+
+function saveDashboardSignals(events) {
+  try {
+    window.localStorage.setItem(DASHBOARD_SIGNAL_STORE, JSON.stringify((events || []).slice(-120)));
+  } catch {
+    // Storage is best-effort only.
+  }
+}
+
+function trackDashboardSignal(family, action, detail = {}) {
+  if (!family || !action) return;
+  const events = loadDashboardSignals();
+  events.push({
+    at: new Date().toISOString(),
+    family,
+    action,
+    detail,
+  });
+  saveDashboardSignals(events);
+}
+
+function getDashboardSignalCoverage() {
+  return [
+    { family: 'navigation', active: document.querySelectorAll('.dashboard-shortcuts a[href^="#"]').length > 0 },
+    { family: 'cta', active: document.querySelectorAll('[data-dashboard-action]').length > 0 },
+    { family: 'filter', active: Boolean(document.getElementById('filter-owner') && document.getElementById('filter-project') && document.getElementById('filter-mode') && document.getElementById('filter-priority')) },
+    { family: 'view', active: Boolean(document.getElementById('view-executive') && document.getElementById('view-operational')) },
+    { family: 'export', active: Boolean(document.getElementById('download-weekly-report') && document.getElementById('download-handoff')) },
+    { family: 'chart-goal', active: document.querySelectorAll('#tendencias .goal-line').length >= 5 },
+    { family: 'signal-panel', active: Boolean(document.getElementById('dashboard-signals-panel') && document.getElementById('dashboard-signal-list') && document.getElementById('dashboard-signal-families')) },
+  ];
+}
+
+function renderDashboardSignals() {
+  const qualityEl = document.getElementById('dashboard-signal-quality');
+  const summaryEl = document.getElementById('dashboard-signal-summary');
+  const eventsEl = document.getElementById('dashboard-signal-events');
+  const topEl = document.getElementById('dashboard-signal-top');
+  const lastEl = document.getElementById('dashboard-signal-last');
+  const recencyEl = document.getElementById('dashboard-signal-recency');
+  const badgeEl = document.getElementById('dashboard-signal-quality-badge');
+  const familiesEl = document.getElementById('dashboard-signal-families');
+  const listEl = document.getElementById('dashboard-signal-list');
+  if (!qualityEl || !summaryEl || !eventsEl || !topEl || !lastEl || !recencyEl || !badgeEl || !familiesEl || !listEl) return;
+
+  const coverage = getDashboardSignalCoverage();
+  const covered = coverage.filter((item) => item.active).length;
+  const coverageScore = Math.round((covered / Math.max(coverage.length, 1)) * 100);
+
+  const now = Date.now();
+  const events7d = loadDashboardSignals().filter((event) => {
+    const ts = new Date(event.at || '').getTime();
+    return Number.isFinite(ts) && ts >= (now - (7 * 24 * 36e5));
+  });
+  const counts = events7d.reduce((acc, event) => {
+    const key = String(event.family || 'unknown');
+    acc[key] = (acc[key] || 0) + 1;
+    return acc;
+  }, {});
+  const topAction = Object.entries(counts).sort((a, b) => b[1] - a[1])[0] || null;
+  const lastEvent = events7d[events7d.length - 1] || null;
+
+  qualityEl.textContent = `${coverageScore}%`;
+  summaryEl.textContent = `Cobertura ativa: ${covered}/${coverage.length} famílias de sinal`;
+  eventsEl.textContent = `${events7d.length}`;
+  topEl.textContent = topAction ? `Família mais ativa: ${topAction[0]} (${topAction[1]})` : 'Família mais ativa: n/d';
+  lastEl.textContent = lastEvent ? `Último sinal: ${lastEvent.family || 'signal'}/${lastEvent.action || 'n/d'}` : 'Último sinal: —';
+  recencyEl.textContent = lastEvent
+    ? `Recência: ${Math.round((now - new Date(lastEvent.at).getTime()) / 60000)} min`
+    : 'Recência: n/d';
+  badgeEl.className = 'badge';
+  if (coverageScore >= 90) {
+    badgeEl.classList.add('signal-green');
+    badgeEl.textContent = 'Cobertura forte';
+  } else if (coverageScore >= 60) {
+    badgeEl.classList.add('signal-yellow');
+    badgeEl.textContent = 'Cobertura parcial';
+  } else {
+    badgeEl.classList.add('signal-red');
+    badgeEl.textContent = 'Cobertura baixa';
+  }
+
+  familiesEl.innerHTML = coverage.map((item) => {
+    const status = item.active ? 'ativo' : 'pendente';
+    const statusClass = item.active ? 'signal-family-active' : 'signal-family-idle';
+    return `<li><strong>${item.family}</strong><span class="${statusClass}">${status}</span></li>`;
+  }).join('');
+
+  listEl.innerHTML = events7d.slice(-5).reverse().map((event) => {
+    const stamp = formatBrtTimestamp(event.at) || event.at || 'n/d';
+    const detail = event.detail?.label ? ` — ${event.detail.label}` : '';
+    return `<li><strong>${event.family || 'signal'}</strong> — ${event.action || 'n/d'}${detail} <span class="task-meta">${stamp}</span></li>`;
+  }).join('') || '<li class="task-meta">Sem sinais rastreados ainda.</li>';
+}
+
+function bindDashboardActionTracking() {
+  document.querySelectorAll('[data-dashboard-action]').forEach((el) => {
+    if (el.dataset.signalBound === 'true') return;
+    el.dataset.signalBound = 'true';
+    el.addEventListener('click', () => {
+      trackDashboardSignal(el.dataset.dashboardFamily || 'cta', el.dataset.dashboardAction || 'click', {
+        label: el.textContent.trim().replace(/\s+/g, ' '),
+        href: el.getAttribute('href') || null,
+      });
+      renderDashboardSignals();
+    });
+  });
 }
 
 function renderCommitReference(url) {
@@ -332,6 +457,10 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
   setKpiState('kpi-throughput', states.throughput);
 
   const badge = document.getElementById('immediate-action-badge');
+  const primaryCta = document.getElementById('dashboard-immediate-cta');
+  const secondaryCta = document.getElementById('dashboard-secondary-cta');
+  const tertiaryCta = document.getElementById('dashboard-tertiary-cta');
+  const ctaHint = document.getElementById('dashboard-cta-guidance');
   if (badge) {
     const vals = Object.values(states);
     const red = vals.filter((x) => x === 'red').length;
@@ -346,6 +475,32 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
     } else {
       badge.classList.add('badge-green');
       badge.textContent = 'Operação sob controle';
+    }
+
+    if (primaryCta && secondaryCta && tertiaryCta && ctaHint) {
+      const plan = red > 0
+        ? {
+            href: '#alertas-gargalos',
+            label: 'Abrir alertas críticos',
+            hint: 'Prioridade: zerar bloqueios e atrasos antes de expandir o restante do painel.',
+          }
+        : (yellow > 0
+          ? {
+              href: '#tendencias',
+              label: 'Revisar tendências',
+              hint: 'Prioridade: estabilizar os sinais amarelos e revisar as metas visuais.',
+            }
+          : {
+              href: '#commercial-funnel',
+              label: 'Acelerar funil comercial',
+              hint: 'Prioridade: explorar receita e manter a operação saudável.',
+            });
+
+      primaryCta.href = plan.href;
+      primaryCta.textContent = plan.label;
+      ctaHint.textContent = plan.hint;
+      secondaryCta.href = '#commercial-funnel';
+      tertiaryCta.href = '#metrics-history';
     }
   }
 
@@ -439,7 +594,7 @@ function renderOperationalAlerts(tasks, deployData) {
   }).join('');
 }
 
-function drawSparkline(containerId, values, suffix = '') {
+function drawSparkline(containerId, values, suffix = '', goal = null, goalLabel = '', goalDirection = 'gte') {
   const el = document.getElementById(containerId);
   if (!el) return;
   if (!values.length) {
@@ -457,7 +612,24 @@ function drawSparkline(containerId, values, suffix = '') {
   }).join(' ');
   const delta = values.length > 1 ? ((values[values.length - 1] - values[0]) / (Math.abs(values[0]) || 1)) * 100 : 0;
   const arrow = delta > 0 ? '↑' : (delta < 0 ? '↓' : '→');
-  el.innerHTML = `<svg width='100%' viewBox='0 0 ${w} ${h}'><polyline fill='none' stroke='#2563eb' stroke-width='3' points='${pts}'/></svg><p class='task-meta'>${arrow} ${Math.abs(delta).toFixed(1)}%${suffix}</p>`;
+  const latest = values[values.length - 1];
+
+  let goalSvg = '';
+  let goalNote = '';
+  if (Number.isFinite(goal)) {
+    const rawGoalY = h - (((goal - min) / range) * (h - 20) + 10);
+    const goalY = Math.max(10, Math.min(h - 10, rawGoalY));
+    const goalMet = goalDirection === 'lte' ? latest <= goal : latest >= goal;
+    const goalStroke = goalMet ? '#10b981' : '#f59e0b';
+    const goalFill = goalMet ? '#10b981' : '#fbbf24';
+    goalSvg = `
+      <line x1="10" y1="${goalY}" x2="${w - 10}" y2="${goalY}" stroke="${goalStroke}" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.9"></line>
+      <text x="${w - 12}" y="${Math.max(12, goalY - 4)}" text-anchor="end" fill="${goalFill}" font-size="10">${goalLabel || `Meta ${goal}`}</text>
+    `;
+    goalNote = `<p class="task-meta goal-line ${goalMet ? 'goal-hit' : 'goal-miss'}">${goalLabel || `Meta: ${goal}`} — ${goalMet ? 'meta atingida' : 'fora do alvo'}</p>`;
+  }
+
+  el.innerHTML = `<svg width='100%' viewBox='0 0 ${w} ${h}'>${goalSvg}<polyline fill='none' stroke='#2563eb' stroke-width='3' points='${pts}'/></svg><p class='task-meta'>${arrow} ${Math.abs(delta).toFixed(1)}%${suffix}</p>${goalNote}`;
 }
 
 function renderAnalyticalLayer(tasks, activities) {
@@ -497,11 +669,11 @@ function renderAnalyticalLayer(tasks, activities) {
     return Math.min(100, openDay * 15);
   });
 
-  drawSparkline('trend-volume', vol);
-  drawSparkline('trend-sla', sla, ' SLA');
-  drawSparkline('trend-tmr', tmr, ' TMR');
-  drawSparkline('trend-rework', rework, ' rework');
-  drawSparkline('trend-human-risk', humanRisk, ' risco');
+  drawSparkline('trend-volume', vol, ' atividades', 6, 'Meta visual: >= 6 atividades/dia', 'gte');
+  drawSparkline('trend-sla', sla, ' SLA', 95, 'Meta visual: >= 95%', 'gte');
+  drawSparkline('trend-tmr', tmr, ' TMR', 24, 'Meta visual: <= 24h', 'lte');
+  drawSparkline('trend-rework', rework, ' rework', 5, 'Meta visual: <= 5%', 'lte');
+  drawSparkline('trend-human-risk', humanRisk, ' risco', 40, 'Meta visual: <= 40', 'lte');
 
   const statuses = {
     aberto: filteredTasks.filter((t) => String(t.status).toLowerCase().includes('revisar') || String(t.status).toLowerCase().includes('autoriz')).length,
@@ -517,7 +689,7 @@ function renderAnalyticalLayer(tasks, activities) {
     { className: 'seg-human', percentage: pct(statuses.concluido, total), label: 'Concluído', value: statuses.concluido },
   ]);
   const lbl = document.getElementById('trend-status-label');
-  if (lbl) lbl.textContent = `Aberto ${statuses.aberto} • Andamento ${statuses.andamento} • Bloqueado ${statuses.bloqueado} • Concluído ${statuses.concluido}`;
+  if (lbl) lbl.textContent = `Aberto ${statuses.aberto} • Andamento ${statuses.andamento} • Bloqueado ${statuses.bloqueado} • Concluído ${statuses.concluido} • Meta: bloqueados = 0`;
 
   const outEl = document.getElementById('tmr-outliers');
   const out = (activities || [])
@@ -526,9 +698,10 @@ function renderAnalyticalLayer(tasks, activities) {
     .sort((a, b) => b.tmr - a.tmr)
     .slice(0, 5);
   if (outEl) outEl.innerHTML = out.map((o) => `<li><strong>${o.title}</strong> — ${o.tmr.toFixed(1)}h</li>`).join('') || '<li>Sem outliers relevantes.</li>';
+  renderDashboardSignals();
 }
 
-function applyViewMode(mode) {
+function applyViewMode(mode, recordSignal = false) {
   const sections = document.querySelectorAll('[data-view]');
   sections.forEach((s) => {
     const val = s.getAttribute('data-view') || '';
@@ -541,6 +714,11 @@ function applyViewMode(mode) {
   if (execBtn && opBtn) {
     execBtn.setAttribute('aria-pressed', String(mode === 'executive'));
     opBtn.setAttribute('aria-pressed', String(mode === 'operational'));
+  }
+
+  if (recordSignal) {
+    trackDashboardSignal('view', `toggle-${mode}`, { mode });
+    renderDashboardSignals();
   }
 }
 
@@ -1028,10 +1206,14 @@ function clearFilters() {
   document.getElementById('filter-mode').value = '';
   document.getElementById('filter-priority').value = '';
   document.getElementById('filter-search').value = '';
+  trackDashboardSignal('filter', 'clear-filters', { source: 'kanban' });
   renderCurrentKanban();
+  renderDashboardSignals();
 }
 
 function downloadWeeklyReport() {
+  trackDashboardSignal('export', 'weekly-report', { scope: 'kanban' });
+  renderDashboardSignals();
   if (!kanbanData) return;
   const lines = [];
   lines.push('LF Soluções - Resumo Semanal de Atividades');
@@ -1106,6 +1288,7 @@ async function refreshDecisionLayers(tasks, options = {}) {
       const ts = [autopilotData.updatedAt, deployData.updatedAt, activitiesData.updatedAt].filter(Boolean).sort().slice(-1)[0];
       lu.textContent = ts ? `Última atualização: ${new Date(ts).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT` : 'Última atualização: n/d';
     }
+    renderDashboardSignals();
   } catch {
     const lu = document.getElementById('last-updated-global');
     if (lu) lu.textContent = 'Última atualização: erro de leitura';
@@ -1149,28 +1332,47 @@ async function loadKanban(options = {}) {
 
 ['filter-owner', 'filter-project', 'filter-mode', 'filter-priority'].forEach((id) => {
   document.getElementById(id).addEventListener('change', () => {
+    trackDashboardSignal('filter', `kanban-${id}`, { value: document.getElementById(id).value });
     renderCurrentKanban();
+    renderDashboardSignals();
   });
 });
 
-document.getElementById('filter-search').addEventListener('input', debounce(renderCurrentKanban, 130));
+document.getElementById('filter-search').addEventListener('input', debounce(() => {
+  const search = document.getElementById('filter-search');
+  trackDashboardSignal('filter', 'kanban-search', { value: search ? search.value.trim().slice(0, 80) : '' });
+  renderCurrentKanban();
+  renderDashboardSignals();
+}, 130));
 
 document.getElementById('clear-filters').addEventListener('click', clearFilters);
 
 const execBtn = document.getElementById('view-executive');
 const opBtn = document.getElementById('view-operational');
 if (execBtn && opBtn) {
-  execBtn.addEventListener('click', () => applyViewMode('executive'));
-  opBtn.addEventListener('click', () => applyViewMode('operational'));
+  execBtn.addEventListener('click', () => applyViewMode('executive', true));
+  opBtn.addEventListener('click', () => applyViewMode('operational', true));
   applyViewMode('operational');
 }
 
 const trendPeriodEl = document.getElementById('trend-period');
 const trendTeamEl = document.getElementById('trend-team');
-if (trendPeriodEl) trendPeriodEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers(getAllKanbanTasks()); });
-if (trendTeamEl) trendTeamEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers(getAllKanbanTasks()); });
+if (trendPeriodEl) trendPeriodEl.addEventListener('change', () => {
+  trackDashboardSignal('filter', 'trend-period', { value: trendPeriodEl.value });
+  if (kanbanData) refreshDecisionLayers(getAllKanbanTasks());
+  renderDashboardSignals();
+});
+if (trendTeamEl) trendTeamEl.addEventListener('change', () => {
+  trackDashboardSignal('filter', 'trend-team', { value: trendTeamEl.value });
+  if (kanbanData) refreshDecisionLayers(getAllKanbanTasks());
+  renderDashboardSignals();
+});
 const thresholdEl = document.getElementById('alert-threshold-hours');
-if (thresholdEl) thresholdEl.addEventListener('change', () => { if (kanbanData) refreshDecisionLayers(getAllKanbanTasks()); });
+if (thresholdEl) thresholdEl.addEventListener('change', () => {
+  trackDashboardSignal('filter', 'alert-threshold-hours', { value: thresholdEl.value });
+  if (kanbanData) refreshDecisionLayers(getAllKanbanTasks());
+  renderDashboardSignals();
+});
 
 async function loadHandoff() {
   const target = document.getElementById('handoff-content');
@@ -1868,6 +2070,8 @@ async function loadMetricsHistory() {
 
 function downloadHandoff() {
   const data = window.__handoffData;
+  trackDashboardSignal('export', 'handoff', { scope: 'workspace' });
+  renderDashboardSignals();
   if (!data) return;
 
   const lines = [];
@@ -1929,6 +2133,7 @@ document.getElementById('download-handoff').addEventListener('click', downloadHa
 document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo (a cada ${Math.round(AUTO_REFRESH_MS / 60000)} min)`;
 
 function refreshAll() {
+  bindDashboardActionTracking();
   Promise.all([loadKanban({ renderBoard: false }), loadSemaphoreState()]).catch(() => {});
 
   scheduleLowPriority(() => {
@@ -1945,6 +2150,7 @@ function refreshAll() {
     loadHumanDecisionSla();
     loadMetricsHistory();
     loadDashboardFreshness();
+    renderDashboardSignals();
   }, 360);
 }
 
