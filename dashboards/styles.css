@@ -539,6 +539,80 @@ li { margin: 6px 0; }
   padding-left: 16px;
 }
 
+.wave-focus-callout {
+  margin: 0 0 12px;
+  border: 1px solid #2f4776;
+  border-radius: 10px;
+  padding: 10px;
+  background: #0f1a30;
+}
+
+.wave-focus-callout strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+.wave-monitor-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.wave-card {
+  border: 1px solid #2d4674;
+  background: #13213a;
+  border-radius: 12px;
+  padding: 10px;
+  display: grid;
+  gap: 8px;
+}
+
+.wave-focus {
+  border-left: 4px solid #35aef1;
+  background: linear-gradient(180deg, rgba(53,174,241,.14), #13213a);
+  box-shadow: 0 0 0 1px rgba(53,174,241,.12) inset;
+}
+
+.wave-card-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: flex-start;
+  flex-wrap: wrap;
+}
+
+.wave-card-title {
+  margin: 0 0 4px;
+  font-weight: 700;
+}
+
+.wave-card-meta {
+  display: flex;
+  flex-wrap: wrap;
+  gap: 6px;
+}
+
+.wave-pill {
+  display: inline-flex;
+  align-items: center;
+  min-height: 28px;
+  border-radius: 999px;
+  padding: 4px 8px;
+  border: 1px solid #3964aa;
+  color: #e1eeff;
+  background: #16335f;
+  font-size: .74rem;
+  font-weight: 600;
+}
+
+.wave-card-desc {
+  margin: 0;
+  color: #dbe8ff;
+  font-size: .88rem;
+}
+
 .footer {
   border-top: 1px solid rgba(255,255,255,0.06);
   padding: 1rem 0;
@@ -612,6 +686,7 @@ li { margin: 6px 0; }
   .heatmap-grid { grid-template-columns: repeat(2, minmax(120px,1fr)); }
   .funnel-cta-row { flex-direction: column; }
   .funnel-cta-row .btn { width: 100%; }
+  .wave-card-head { flex-direction: column; }
 
   .section-head { flex-direction: column; align-items: flex-start; }
   .view-switch { width: 100%; flex-wrap: wrap; }

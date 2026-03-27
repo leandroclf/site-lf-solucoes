@@ -17,11 +17,15 @@
    - Botão `Limpar filtros` para reset completo.
 3. **Consistência de governança**
    - Runbook obrigatório para HUMAN continua com alerta bloqueante.
+4. **Acompanhamento de ondas ativas**
+   - Painel `Ondas ativas e implementação` mostra waves em progresso e destaca `ISSUE-022` enquanto estiver sob monitoramento.
+   - A visão de `repo-sync` e `recentAdvances` agora torna o progresso dos repositórios visível no mesmo painel.
 
 ## Benefício esperado
 - Melhor navegabilidade mobile no site principal.
 - Menor atrito de operação no dashboard.
 - Visibilidade imediata de gargalos HUMAN e pendências sem runbook.
+- Leitura executiva mais clara da implementação em andamento, sem precisar abrir o board completo.
 
 ## Próxima evolução recomendada
 - Persistir filtros na URL (query params) para compartilhamento do estado do dashboard.

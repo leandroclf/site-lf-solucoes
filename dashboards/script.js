@@ -88,6 +88,28 @@ function renderCommitReference(url) {
   }
 }
 
+function extractIssueCode(text) {
+  const match = String(text || '').match(/\[(ISSUE-\d+)\]/);
+  return match ? match[1] : null;
+}
+
+function extractIssueNumber(text) {
+  const code = extractIssueCode(text);
+  if (!code) return Number.POSITIVE_INFINITY;
+  const numeric = Number(code.replace(/[^\d]/g, ''));
+  return Number.isFinite(numeric) ? numeric : Number.POSITIVE_INFINITY;
+}
+
+function isWaveActiveStatus(status) {
+  const normalized = normalize(status);
+  return normalized.includes('em progresso') || normalized.includes('em valida');
+}
+
+function isIssue022Wave(task) {
+  return /\[ISSUE-022\]/.test(String(task?.title || '')) ||
+    normalize(task?.description || '').includes('issue-022-dataset-scout-v1');
+}
+
 function getFilters() {
   return {
     owner: document.getElementById('filter-owner').value,
@@ -750,7 +772,80 @@ function renderKanbanSummaryOnly(data) {
   if (summary) summary.textContent = `Resumo: ${tasks.length} atividade(s) visível(is) no filtro atual.`;
   renderCharts(tasks);
   updateMetrics(tasks);
+  renderWaveMonitor(data);
   persistFiltersToURL();
+}
+
+function renderWaveMonitor(data) {
+  const summaryEl = document.getElementById('wave-monitor-summary');
+  const focusEl = document.getElementById('wave-monitor-focus');
+  const listEl = document.getElementById('wave-monitor-list');
+  const stampEl = document.getElementById('wave-monitor-stamp');
+  if (!summaryEl || !focusEl || !listEl || !stampEl) return;
+
+  const tasks = (data.columns || []).flatMap((col) => col.tasks || []);
+  const active = tasks.filter((task) => isWaveActiveStatus(task.status));
+  const progressCount = active.filter((task) => normalize(task.status).includes('em progresso')).length;
+  const validationCount = active.filter((task) => normalize(task.status).includes('em valida')).length;
+  const focus = active.find((task) => isIssue022Wave(task)) || null;
+
+  summaryEl.textContent = active.length
+    ? `Ondas ativas: ${active.length} | Em progresso: ${progressCount} | Em validação: ${validationCount}`
+    : 'Nenhuma wave ativa foi encontrada no kanban atual.';
+  focusEl.textContent = focus
+    ? `${extractIssueCode(focus.title) || 'ISSUE'} — ${focus.description || focus.title || 'Wave em foco'}`
+    : 'Nenhuma wave em foco específico no momento.';
+  stampEl.textContent = data.updatedAt
+    ? `Atualizado em: ${formatBrtTimestamp(data.updatedAt) || 'n/d'}`
+    : 'Atualizado em: n/d';
+
+  const sorted = [...active].sort((a, b) => {
+    const aFocus = isIssue022Wave(a) ? -1 : 0;
+    const bFocus = isIssue022Wave(b) ? -1 : 0;
+    if (aFocus !== bFocus) return aFocus - bFocus;
+    return extractIssueNumber(a.title) - extractIssueNumber(b.title);
+  });
+
+  window.__waveMonitorData = {
+    updatedAt: data.updatedAt || null,
+    activeCount: active.length,
+    progressCount,
+    validationCount,
+    focus: focus ? extractIssueCode(focus.title) : null,
+  };
+
+  if (!sorted.length) {
+    listEl.innerHTML = '<li class="task-meta">Nenhuma wave ativa para acompanhar.</li>';
+    return;
+  }
+
+  listEl.innerHTML = sorted.slice(0, 8).map((task) => {
+    const issueCode = extractIssueCode(task.title) || 'ISSUE';
+    const focusClass = isIssue022Wave(task) ? ' wave-focus' : '';
+    const statusLabel = normalize(task.status).includes('valida') ? 'EM VALIDAÇÃO' : 'EM PROGRESSO';
+    const owner = task.ownerPrimary || task.owner || '-';
+    const project = task.project || '-';
+    const kpi = task.valueKpi || 'n/d';
+    const description = task.description || 'Sem descrição disponível.';
+
+    return `
+      <li class="wave-card${focusClass}">
+        <div class="wave-card-head">
+          <div>
+            <p class="wave-card-title">${issueCode} · ${task.title || ''}</p>
+            <p class="task-meta">Projeto: ${project} · Owner: ${owner}</p>
+          </div>
+          <span class="wave-pill">${statusLabel}${isIssue022Wave(task) ? ' • MONITORADA' : ''}</span>
+        </div>
+        <div class="wave-card-meta">
+          <span class="wave-pill">KPI: ${kpi}</span>
+          <span class="wave-pill">Categoria: ${task.categoryPrimary || 'n/d'}</span>
+          <span class="wave-pill">Modo: ${task.mode || 'n/d'}</span>
+        </div>
+        <p class="wave-card-desc">${description}</p>
+      </li>
+    `;
+  }).join('');
 }
 
 function renderCommercialFunnel(data) {
@@ -984,6 +1079,7 @@ function getAllKanbanTasks() {
 function renderCurrentKanban() {
   if (!kanbanData) return;
   renderKanban(kanbanData);
+  renderWaveMonitor(kanbanData);
   kanbanBoardHydrated = true;
 }
 
