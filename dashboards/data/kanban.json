@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-27T13:13:05.823147+00:00",
+  "updatedAt": "2026-03-27T13:49:22.469916+00:00",
   "columns": [
     {
       "id": "to-review",
@@ -311,12 +311,12 @@
         },
         {
           "title": "[ISSUE-022] Scout cont\u00ednuo de datasets com potencial comercial",
-          "description": "Scout cont\u00ednuo de datasets com potencial comercial. Backlog can\u00f4nico publicado em issue-022-dataset-scout-activation-backlog-v1; wave issue-022-dataset-scout-v1 sob monitoramento.",
+          "description": "Scout cont\u00ednuo de datasets com potencial comercial. Backlog can\u00f4nico publicado em issue-022-dataset-scout-activation-backlog-v1; wave issue-022-dataset-scout-v1 conclu\u00edda ap\u00f3s valida\u00e7\u00e3o do pacote e do backlog can\u00f4nicos.",
           "owner": "scout-datasets",
           "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
           "priority": "M\u00e9dia",
-          "status": "Em progresso",
+          "status": "Conclu\u00eddo",
           "categoryPrimary": "dados-compliance-juridico",
           "categorySupport": [
             "produto-receita"
