@@ -1,7 +1,7 @@
 # Status de Deploy e CI
 
 Owner monitorado: `leandroclf`
-Atualizado em: `2026-03-27T13:10:03.134658+00:00`
+Atualizado em: `2026-03-27T13:12:58.338613+00:00`
 
 ## 🔴 `leandroclf/lf-openalex-enrichment-mvp`
 - Status: `completed`
@@ -30,14 +30,14 @@ Atualizado em: `2026-03-27T13:10:03.134658+00:00`
 - Logs: https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392/logs
 - Falhas consecutivas: 0
 
-## 🔴 `leandroclf/site-lf-solucoes`
+## 🟢 `leandroclf/site-lf-solucoes`
 - Status: `completed`
-- Conclusao: `failure`
-- Commit: `94c1d0f` - Add commercial funnel and ICP dashboard panel
-- Ultima execucao: 2026-03-27 02:00:31 UTC
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23627440896
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23627440896/logs
-- Falhas consecutivas: 2
+- Conclusao: `success`
+- Commit: `4a1aca5` - chore(dashboard): refresh deploy and progress snapshots
+- Ultima execucao: 2026-03-27 13:11:53 UTC
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23647843219
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23647843219/logs
+- Falhas consecutivas: 0
 
 ## 🟡 `leandroclf/openclaw-workspace`
 - Status: erro `no_runs`
