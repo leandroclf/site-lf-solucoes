@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-05T02:16:10.228600+00:00",
+  "updatedAt": "2026-03-27T13:09:03.987578+00:00",
   "source": "dashboards/data/kanban.json",
   "issue": "ISSUE-008",
   "window": "weekly",
@@ -11,54 +11,6 @@
       "outros": 0
     },
     "funnelAndJtbdCoveragePct": 100.0
-  },
-  "commercialFunnel": {
-    "summary": "Leitura comercial pronta para levar o analista do insight ao contato sem dispersao.",
-    "primaryCta": {
-      "label": "Abrir diagnostico 60s",
-      "href": "../index.html#diagnostico-roi"
-    },
-    "secondaryCta": {
-      "label": "Ver solucoes",
-      "href": "../index.html#solucoes-especializadas"
-    },
-    "stages": [
-      {
-        "label": "Descoberta",
-        "detail": "Identificar o ICP com dor mais clara e sinal de urgencia.",
-        "signal": "Alinhar a leitura do problema antes da proposta."
-      },
-      {
-        "label": "Qualificacao",
-        "detail": "Priorizar a oportunidade com base em JTBD, fit e volume.",
-        "signal": "Reduzir ruido e focar o tempo do analista."
-      },
-      {
-        "label": "Proposta",
-        "detail": "Encaminhar o proximo passo com CTA e contexto suficientes.",
-        "signal": "Encurtar o caminho ate contato e decisao."
-      }
-    ],
-    "icpInsights": [
-      {
-        "label": "Automacao de WhatsApp",
-        "summary": "ICP com alto volume de atendimento e follow-up manual.",
-        "ctaLabel": "Ver solucao",
-        "href": "../solucoes/whatsapp-automation.html"
-      },
-      {
-        "label": "Enrichment B2B",
-        "summary": "ICP com base de leads incompleta e baixa priorizacao.",
-        "ctaLabel": "Ver solucao",
-        "href": "../solucoes/openalex-enrichment.html"
-      },
-      {
-        "label": "BI executivo",
-        "summary": "ICP que precisa de previsibilidade e decisao por KPI.",
-        "ctaLabel": "Ver solucao",
-        "href": "../solucoes/business-intelligence.html"
-      }
-    ]
   },
   "nextActions": [
     "Atualizar síntese JTBD com entrevistas da semana",

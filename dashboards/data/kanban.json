@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-20T17:26:45.434564+00:00",
+  "updatedAt": "2026-03-27T13:10:10.314035+00:00",
   "columns": [
     {
       "id": "to-review",
@@ -261,7 +261,7 @@
         },
         {
           "title": "[ISSUE-013] Backlog de hip\u00f3teses de receita por ICP",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente. | Lote de execu\u00e7\u00e3o: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
+          "description": "Backlog de hip\u00f3teses de receita por ICP. C5 validado; pr\u00f3xima frente comercial consolidada em issue-013-saas-b2b-commercial-pilot.",
           "owner": "revenue-ops-specialist",
           "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
@@ -278,7 +278,7 @@
         },
         {
           "title": "[ISSUE-016] Endpoint backend de valor por proposta",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente. | Lote de execu\u00e7\u00e3o: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
+          "description": "Endpoint backend de valor por proposta. C5 validado; manter contrato, lat\u00eancia e rastreabilidade do endpoint.",
           "owner": "backend-specialist",
           "project": "Site LF Solu\u00e7\u00f5es",
           "mode": "AUTO",
@@ -295,7 +295,7 @@
         },
         {
           "title": "[ISSUE-021] Hardening CI/CD com smoke obrigat\u00f3rio pr\u00e9-merge",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente. | Lote de execu\u00e7\u00e3o: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada. | Evid\u00eancia 04:30 UTC: commit 8088613 (smoke check obrigat\u00f3rio no CI) push no repo WorldBank. | Evid\u00eancia 05:30 UTC: commit 2191f2f (CI timeout hardening) push no repo WorldBank. | Evid\u00eancia 08:00 UTC: commit f47b943 (pip cache no CI) push no repo WorldBank. | Evid\u00eancia 09:00 UTC: commit 2a2a314 (pip cache + smoke hardening) push no repo Wikidata. | Evid\u00eancia 10:00 UTC: commit 2bb4bb7 (smoke+timeout+cache) push no repo OpenAlex.",
+          "description": "Hardening CI/CD com smoke obrigat\u00f3rio pr\u00e9-merge. C5 validado; manter smoke e cache paths sob monitoramento.",
           "owner": "devops-ci-cd-specialist",
           "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",
@@ -311,7 +311,7 @@
         },
         {
           "title": "[ISSUE-022] Scout cont\u00ednuo de datasets com potencial comercial",
-          "description": "Tarefa criada para eliminar ociosidade e acelerar gera\u00e7\u00e3o de valor ao cliente. | Lote de execu\u00e7\u00e3o: ativado para evitar ociosidade por categoria. | Bloqueio: onboarding C4/C5 pendente (ISSUE-023). | onboarding C5 validado em 2026-02-25; execu\u00e7\u00e3o liberada.",
+          "description": "Scout cont\u00ednuo de datasets com potencial comercial. Backlog can\u00f4nico publicado em issue-022-dataset-scout-activation-backlog-v1; wave issue-022-dataset-scout-v1 sob monitoramento.",
           "owner": "scout-datasets",
           "project": "Governan\u00e7a Multiagente",
           "mode": "AUTO",

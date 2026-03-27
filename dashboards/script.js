@@ -65,6 +65,29 @@ function normalize(text) {
   return String(text || '').toLowerCase();
 }
 
+function extractUpdatedAt(data) {
+  return data?.updatedAt || data?.updated_at || data?.last_updated_utc || data?.last_updated || null;
+}
+
+function formatBrtTimestamp(value) {
+  if (!value) return null;
+  const dt = new Date(value);
+  if (Number.isNaN(dt.getTime())) return null;
+  return dt.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' }) + ' BRT';
+}
+
+function renderCommitReference(url) {
+  if (!url) return '';
+  try {
+    const parsed = new URL(url);
+    const sha = parsed.pathname.split('/').pop() || url;
+    const shortSha = sha.slice(0, 7);
+    return `<a href="${url}" target="_blank" rel="noreferrer"><code>${shortSha}</code></a>`;
+  } catch {
+    return `<a href="${url}" target="_blank" rel="noreferrer">commit</a>`;
+  }
+}
+
 function getFilters() {
   return {
     owner: document.getElementById('filter-owner').value,
@@ -1061,7 +1084,7 @@ async function loadHandoff() {
   try {
     const data = await fetchJson('./data/handoff.json');
 
-    updated.textContent = `Atualizado em: ${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
+    updated.textContent = `Atualizado em: ${formatBrtTimestamp(extractUpdatedAt(data)) || 'n/d'}`;
 
     const jobsMetric = document.getElementById('metric-jobs');
     if (jobsMetric) {
@@ -1069,7 +1092,11 @@ async function loadHandoff() {
       jobsMetric.textContent = String(n);
     }
 
-    const projects = (data.projects || []).map((p) => `<li><strong>${p.name}</strong> — ${p.status}${p.repo ? ` — <a href="${p.repo}" target="_blank" rel="noreferrer">repo</a>` : ''}</li>`).join('');
+    const projects = (data.projects || []).map((p) => {
+      const repoLink = p.repo ? ` — <a href="${p.repo}" target="_blank" rel="noreferrer">repo</a>` : '';
+      const latestCommit = p.latestCommit ? ` — último commit ${renderCommitReference(p.latestCommit)}` : '';
+      return `<li><strong>${p.name}</strong> — ${p.status}${repoLink}${latestCommit}</li>`;
+    }).join('');
     // const team = (data.team?.roles || []).map((r) => `<li>${r}</li>`).join(''); // REMOVED
     const categoriesObj = data.team?.categories || {};
     const categories = Object.keys(categoriesObj).length
@@ -1080,6 +1107,14 @@ async function loadHandoff() {
     const checklist = (data.handoffChecklist || []).map((x) => `<li>${x}</li>`).join('');
     const capability = data.team?.capabilityControl || {};
     const requiredFields = (capability.requiredTaskFields || []).map((f) => `<li>${f}</li>`).join('');
+    const recentAdvances = Array.isArray(data.recentAdvances) ? data.recentAdvances.slice(0, 4) : [];
+    const recentAdvancesHtml = recentAdvances.length
+      ? recentAdvances.map((entry) => {
+          const stamp = formatBrtTimestamp(entry.at) || entry.at || 'n/d';
+          const items = Array.isArray(entry.items) ? entry.items : [];
+          return `<li><strong>${stamp}</strong><ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul></li>`;
+        }).join('')
+      : '<li class="task-meta">Sem avanços recentes registrados.</li>';
 
     target.innerHTML = `
       <div class="handoff-block">
@@ -1115,12 +1150,61 @@ async function loadHandoff() {
         <h3>Checklist de transição</h3>
         <ul>${checklist}</ul>
       </div>
+      <div class="handoff-block">
+        <h3>Últimos avanços</h3>
+        <ul>${recentAdvancesHtml}</ul>
+      </div>
     `;
 
     window.__handoffData = data;
   } catch {
     updated.textContent = 'Atualizado em: erro de leitura';
     target.innerHTML = '<div class="handoff-block"><p class="task-meta">Não foi possível carregar o contexto de handoff.</p></div>';
+  }
+}
+
+async function loadRepoProgress() {
+  const summaryEl = document.getElementById('repo-sync-summary');
+  const listEl = document.getElementById('repo-sync-list');
+  const stampEl = document.getElementById('repo-sync-stamp');
+  if (!summaryEl || !listEl || !stampEl) return;
+
+  try {
+    const data = await fetchJson('./data/product-code-progress.json');
+    const repos = Array.isArray(data.repos) ? data.repos : [];
+    const okCount = repos.filter((r) => r.status === 'ok').length;
+    const staleCount = repos.filter((r) => r.status !== 'ok').length;
+    const ts = extractUpdatedAt(data);
+
+    summaryEl.textContent = `Repos monitorados: ${repos.length} | OK: ${okCount} | Com atraso: ${staleCount}`;
+    stampEl.textContent = ts ? `Atualizado em: ${formatBrtTimestamp(ts)}` : 'Atualizado em: n/d';
+
+    listEl.innerHTML = repos.map((repo) => {
+      const status = String(repo.status || 'n/d');
+      const badge = status === 'ok' ? '🟢' : (status === 'stale' ? '🟡' : '🔴');
+      const commit = repo.last_commit || {};
+      const shortSha = commit.sha ? commit.sha.slice(0, 7) : 'n/d';
+      const age = typeof commit.age_hours === 'number' ? `${commit.age_hours.toFixed(1)}h` : 'n/d';
+      const branch = repo.branch ? `branch ${repo.branch}` : 'branch n/d';
+      const commits48h = typeof repo.commits_48h === 'number' ? `${repo.commits_48h}/48h` : 'n/d';
+      const ahead = typeof repo.ahead_main === 'number' && typeof repo.behind_main === 'number'
+        ? `${repo.ahead_main}/${repo.behind_main}`
+        : 'n/d';
+      const worktree = typeof repo.worktree_changes === 'number'
+        ? (repo.worktree_changes === 0 ? 'clean' : `dirty:${repo.worktree_changes}`)
+        : 'n/d';
+      const prs = typeof repo.open_prs === 'number' ? `${repo.open_prs}` : 'n/d';
+      const subject = commit.subject || '';
+      return `<li><strong>${badge} ${repo.repo}</strong> — ${status} | ${branch} | <code>${shortSha}</code> ${subject} | age ${age} | 48h ${commits48h} | ahead/behind ${ahead} | PRs ${prs} | worktree ${worktree}</li>`;
+    }).join('');
+
+    if (!listEl.innerHTML) {
+      listEl.innerHTML = '<li>Sem dados de progresso dos repositórios.</li>';
+    }
+  } catch {
+    summaryEl.textContent = 'Erro ao carregar progresso dos repositórios.';
+    stampEl.textContent = 'Atualizado em: erro de leitura';
+    listEl.innerHTML = '<li>Não foi possível carregar o snapshot de repositórios.</li>';
   }
 }
 
@@ -1463,6 +1547,7 @@ async function loadDashboardFreshness() {
     { label: 'Kanban', path: './data/kanban.json' },
     { label: 'Handoff', path: './data/handoff.json' },
     { label: 'Deploy status', path: './data/deploy-status.json' },
+    { label: 'Repo progress', path: './data/product-code-progress.json' },
     { label: 'Autopilot SLA', path: './data/autopilot-sla.json' },
   ];
 
@@ -1473,7 +1558,8 @@ async function loadDashboardFreshness() {
     for (const src of sources) {
       try {
         const data = await fetchJson(src.path);
-        const updatedAt = data.updatedAt ? new Date(data.updatedAt).getTime() : null;
+        const updatedAtValue = extractUpdatedAt(data);
+        const updatedAt = updatedAtValue ? new Date(updatedAtValue).getTime() : null;
         const ageMin = updatedAt ? (now - updatedAt) / 60000 : null;
 
         let status = 'green';
@@ -1526,7 +1612,8 @@ function downloadHandoff() {
   lines.push('');
   lines.push('Projetos:');
   (data.projects || []).forEach((p) => {
-    lines.push(`- ${p.name} | Status: ${p.status} | Repo: ${p.repo || 'n/d'}`);
+    const commit = p.latestCommit ? ` | Commit: ${p.latestCommit}` : '';
+    lines.push(`- ${p.name} | Status: ${p.status} | Repo: ${p.repo || 'n/d'}${commit}`);
   });
   lines.push('');
   // lines.push('Equipe especialista:'); // REMOVED
@@ -1554,6 +1641,12 @@ function downloadHandoff() {
   lines.push('');
   lines.push('Checklist de handoff:');
   (data.handoffChecklist || []).forEach((r) => lines.push(`- ${r}`));
+  lines.push('');
+  lines.push('Últimos avanços:');
+  (data.recentAdvances || []).forEach((entry) => {
+    lines.push(`- ${entry.at || 'n/d'}`);
+    (entry.items || []).forEach((item) => lines.push(`  - ${item}`));
+  });
 
   const blob = new Blob([lines.join('\n')], { type: 'text/plain;charset=utf-8' });
   const url = URL.createObjectURL(blob);
@@ -1581,6 +1674,7 @@ function refreshAll() {
     renderCurrentKanban();
     loadCommercialFunnel();
     loadHandoff();
+    loadRepoProgress();
     loadOpsAnalytics();
     loadHumanDecisionSla();
     loadDashboardFreshness();

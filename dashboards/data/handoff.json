@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-20T17:26:45.433843+00:00",
+  "updatedAt": "2026-03-27T13:10:10.312889+00:00",
   "program": {
     "name": "Programa de Governan\u00e7a Multiagente + Entrega Comercial",
     "objective": "Operar projetos com organiza\u00e7\u00e3o total, foco em receita, qualidade de entrega e mitiga\u00e7\u00e3o de risco.",
@@ -14,14 +14,16 @@
     {
       "name": "OpenClaw Workspace Governance",
       "repo": "https://github.com/leandroclf/openclaw-workspace",
-      "status": "Ativo"
+      "status": "Ativo",
+      "latestCommit": "https://github.com/leandroclf/openclaw-workspace/commit/0553a5b4"
     },
     {
       "name": "Site LF Solu\u00e7\u00f5es + Dashboard Operacional",
       "repo": "https://github.com/leandroclf/site-lf-solucoes",
       "status": "Ativo",
       "publicUrl": "https://leandroclf.github.io/site-lf-solucoes/",
-      "dashboardUrl": "https://leandroclf.github.io/site-lf-solucoes/dashboards/"
+      "dashboardUrl": "https://leandroclf.github.io/site-lf-solucoes/dashboards/",
+      "latestCommit": "https://github.com/leandroclf/site-lf-solucoes/commit/94c1d0f"
     },
     {
       "name": "Vehicle Tracking Hardening",
@@ -65,8 +67,10 @@
       "growth-sales",
       "revenue-ops-specialist",
       "finance-ops",
+      "customer-success-specialist",
       "architect-tech",
       "solution-architect",
+      "applied-ai-engineer-specialist",
       "builder-repo",
       "backend-specialist",
       "frontend-specialist",
@@ -75,6 +79,8 @@
       "devops-ci-cd-specialist",
       "sre-cost-specialist",
       "data-quality-steward",
+      "data-engineer-specialist",
+      "appsec-cloudsec-specialist",
       "scout-datasets",
       "validator-license",
       "human-legal-specialist"
@@ -97,11 +103,13 @@
         "strategist-product",
         "growth-sales",
         "revenue-ops-specialist",
-        "finance-ops"
+        "finance-ops",
+        "customer-success-specialist"
       ],
       "engenharia-arquitetura": [
         "architect-tech",
         "solution-architect",
+        "applied-ai-engineer-specialist",
         "builder-repo",
         "backend-specialist",
         "frontend-specialist",
@@ -111,7 +119,9 @@
         "infra-analyst",
         "devops-ci-cd-specialist",
         "sre-cost-specialist",
-        "data-quality-steward"
+        "data-quality-steward",
+        "data-engineer-specialist",
+        "appsec-cloudsec-specialist"
       ],
       "dados-compliance-juridico": [
         "scout-datasets",
@@ -176,6 +186,19 @@
     "legal": "Matriz LGPD/licen\u00e7a por fonte cr\u00edtica (ISSUE-012)"
   },
   "recentAdvances": [
+    {
+      "at": "2026-03-27T13:06:20+00:00",
+      "items": [
+        "Dashboard operacional ganhou vis\u00e3o expl\u00edcita de sincroniza\u00e7\u00e3o dos reposit\u00f3rios e feed de avan\u00e7os recentes.",
+        "ISSUE-022 dataset scout foi reaberta como acompanhamento ativo com backlog can\u00f4nico e monitoramento de PLAN/REVIEW."
+      ]
+    },
+    {
+      "at": "2026-03-23T00:14:00Z",
+      "items": [
+        "ISSUE-029..032: nova wave de especialistas publicada com C5 consolidado e aloca\u00e7\u00e3o ativa."
+      ]
+    },
     {
       "at": "2026-02-25T18:31:02Z",
       "items": [

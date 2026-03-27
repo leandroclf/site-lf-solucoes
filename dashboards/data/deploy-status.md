@@ -1,43 +1,43 @@
 # Status de Deploy e CI
 
 Owner monitorado: `leandroclf`
-Atualizado em: `2026-03-20T17:17:15.674110+00:00`
+Atualizado em: `2026-03-27T13:10:03.134658+00:00`
 
-## 🟢 `leandroclf/lf-openalex-enrichment-mvp`
+## 🔴 `leandroclf/lf-openalex-enrichment-mvp`
 - Status: `completed`
-- Conclusao: `success`
-- Commit: `369350f` - feat(issue-001): add openalex enrichment workflow
-- Ultima execucao: 2026-03-11 12:13:43 UTC
-- Run: https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22952005878
-- Logs: https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22952005878/logs
-- Falhas consecutivas: 0
+- Conclusao: `failure`
+- Commit: `dab462e` - fix(openalex): clarify coverage metrics
+- Ultima execucao: 2026-03-22 22:41:53 UTC
+- Run: https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23414269805
+- Logs: https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23414269805/logs
+- Falhas consecutivas: 1
 
 ## 🟢 `leandroclf/lf-wikidata-entity-graph`
 - Status: `completed`
 - Conclusao: `success`
-- Commit: `408f6f8` - feat(issue-002): build entity graph payload
-- Ultima execucao: 2026-03-11 12:24:39 UTC
-- Run: https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/22952421242
-- Logs: https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/22952421242/logs
+- Commit: `2f974a5` - Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- Ultima execucao: 2026-03-22 23:06:35 UTC
+- Run: https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/23414716429
+- Logs: https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/23414716429/logs
 - Falhas consecutivas: 0
 
 ## 🟢 `leandroclf/lf-worldbank-risk-pricing`
 - Status: `completed`
 - Conclusao: `success`
-- Commit: `2712599` - test(issue-003): make pytest run from clean checkout
-- Ultima execucao: 2026-03-11 12:31:27 UTC
-- Run: https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/22952687772
-- Logs: https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/22952687772/logs
+- Commit: `a73bb75` - feat(worldbank): add telemetry and contract governance
+- Ultima execucao: 2026-03-27 02:00:34 UTC
+- Run: https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392
+- Logs: https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392/logs
 - Falhas consecutivas: 0
 
-## 🟢 `leandroclf/site-lf-solucoes`
+## 🔴 `leandroclf/site-lf-solucoes`
 - Status: `completed`
-- Conclusao: `success`
-- Commit: `81d6f8d` - docs(issue-008): add JTBD funnel reference
-- Ultima execucao: 2026-03-11 13:07:37 UTC
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/22954094007
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22954094007/logs
-- Falhas consecutivas: 0
+- Conclusao: `failure`
+- Commit: `94c1d0f` - Add commercial funnel and ICP dashboard panel
+- Ultima execucao: 2026-03-27 02:00:31 UTC
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23627440896
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23627440896/logs
+- Falhas consecutivas: 2
 
 ## 🟡 `leandroclf/openclaw-workspace`
 - Status: erro `no_runs`

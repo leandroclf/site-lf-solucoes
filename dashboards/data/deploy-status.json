@@ -1,38 +1,38 @@
 {
-  "last_updated_utc": "2026-03-20T17:17:15.674110+00:00",
+  "last_updated_utc": "2026-03-27T13:10:03.134658+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 22952005878,
+        "id": 23414269805,
         "status": "completed",
-        "conclusion": "success",
-        "commitSha": "369350fed4cba6d0cf0743dae27ff1ac66446e8d",
-        "commitMessage": "feat(issue-001): add openalex enrichment workflow",
-        "html_url": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22952005878",
-        "logs_url": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/22952005878/logs",
-        "run_number": 18,
-        "created_at": "2026-03-11T12:13:43Z",
-        "updated_at": "2026-03-11T12:14:00Z"
+        "conclusion": "failure",
+        "commitSha": "dab462ef2e94a66427ef47ecd7e827462e548d43",
+        "commitMessage": "fix(openalex): clarify coverage metrics",
+        "html_url": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23414269805",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23414269805/logs",
+        "run_number": 2,
+        "created_at": "2026-03-22T22:41:53Z",
+        "updated_at": "2026-03-22T22:42:04Z"
       },
       "error": null,
-      "consecutiveFailures": 0,
-      "aggregatedStatus": "green"
+      "consecutiveFailures": 1,
+      "aggregatedStatus": "red"
     },
     "lf-wikidata-entity-graph": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 22952421242,
+        "id": 23414716429,
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "408f6f832e4690812ab94acd39b534ef1c127494",
-        "commitMessage": "feat(issue-002): build entity graph payload",
-        "html_url": "https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/22952421242",
-        "logs_url": "https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/22952421242/logs",
-        "run_number": 20,
-        "created_at": "2026-03-11T12:24:39Z",
-        "updated_at": "2026-03-11T12:24:53Z"
+        "commitSha": "2f974a5c01f30071ea93a859fe0fe1f5d7d9ef90",
+        "commitMessage": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
+        "html_url": "https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/23414716429",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/23414716429/logs",
+        "run_number": 13,
+        "created_at": "2026-03-22T23:06:35Z",
+        "updated_at": "2026-03-22T23:06:43Z"
       },
       "error": null,
       "consecutiveFailures": 0,
@@ -41,16 +41,16 @@
     "lf-worldbank-risk-pricing": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 22952687772,
+        "id": 23627442392,
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "27125999630ec291500689bb8d52336823b76237",
-        "commitMessage": "test(issue-003): make pytest run from clean checkout",
-        "html_url": "https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/22952687772",
-        "logs_url": "https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/22952687772/logs",
-        "run_number": 20,
-        "created_at": "2026-03-11T12:31:27Z",
-        "updated_at": "2026-03-11T12:31:41Z"
+        "commitSha": "a73bb756c12f2371e2988f651b9c8e20848f57d7",
+        "commitMessage": "feat(worldbank): add telemetry and contract governance",
+        "html_url": "https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392/logs",
+        "run_number": 22,
+        "created_at": "2026-03-27T02:00:34Z",
+        "updated_at": "2026-03-27T02:00:55Z"
       },
       "error": null,
       "consecutiveFailures": 0,
@@ -59,20 +59,20 @@
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 22954094007,
+        "id": 23627440896,
         "status": "completed",
-        "conclusion": "success",
-        "commitSha": "81d6f8d66351d7e20660a753395b2794a4acbdf8",
-        "commitMessage": "docs(issue-008): add JTBD funnel reference",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/22954094007",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/22954094007/logs",
-        "run_number": 148,
-        "created_at": "2026-03-11T13:07:37Z",
-        "updated_at": "2026-03-11T13:07:59Z"
+        "conclusion": "failure",
+        "commitSha": "94c1d0f9ec6c38037aec7cba58f5864b56c03a2c",
+        "commitMessage": "Add commercial funnel and ICP dashboard panel",
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23627440896",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23627440896/logs",
+        "run_number": 51,
+        "created_at": "2026-03-27T02:00:31Z",
+        "updated_at": "2026-03-27T02:00:39Z"
       },
       "error": null,
-      "consecutiveFailures": 0,
-      "aggregatedStatus": "green"
+      "consecutiveFailures": 2,
+      "aggregatedStatus": "red"
     },
     "openclaw-workspace": {
       "owner": "leandroclf",
@@ -86,9 +86,9 @@
     }
   },
   "regressionWatchdog": {
-    "status": "red",
-    "findings": 1,
+    "status": "green",
+    "findings": 0,
     "report": "ops/multiagent/delivery/ci-regression-watchdog.json"
   },
-  "updatedAt": "2026-03-20T17:26:45.432670+00:00"
+  "updatedAt": "2026-03-27T13:10:10.312301+00:00"
 }
