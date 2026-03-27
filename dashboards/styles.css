@@ -560,6 +560,39 @@ li { margin: 6px 0; }
   gap: 10px;
 }
 
+.metrics-history-list {
+  list-style: none;
+  margin: 12px 0 0;
+  padding: 0;
+  display: grid;
+  gap: 10px;
+}
+
+.metrics-history-item {
+  border: 1px solid #24406f;
+  border-radius: 12px;
+  background: rgba(15, 26, 48, 0.7);
+  padding: 10px 12px;
+}
+
+.metrics-history-head {
+  display: flex;
+  justify-content: space-between;
+  gap: 10px;
+  align-items: center;
+  margin-bottom: 6px;
+}
+
+.metrics-history-bar {
+  margin-top: 8px;
+  height: 12px;
+}
+
+.metrics-history-bar > span {
+  display: block;
+  height: 100%;
+}
+
 .wave-card {
   border: 1px solid #2d4674;
   background: #13213a;

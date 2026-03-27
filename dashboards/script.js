@@ -1337,6 +1337,108 @@ function renderSlaWeeklyBars(weekStats, targetPct) {
   }
 }
 
+function renderMetricsHistory(data) {
+  const summaryEl = document.getElementById('metrics-history-summary');
+  const listEl = document.getElementById('metrics-history-list');
+  const stampEl = document.getElementById('metrics-history-stamp');
+  const openEl = document.getElementById('metrics-history-open');
+  const openDeltaEl = document.getElementById('metrics-history-open-delta');
+  const completedEl = document.getElementById('metrics-history-completed');
+  const completedDeltaEl = document.getElementById('metrics-history-completed-delta');
+  const greenEl = document.getElementById('metrics-history-green');
+  const greenDeltaEl = document.getElementById('metrics-history-green-delta');
+  const alertsEl = document.getElementById('metrics-history-alerts');
+  const alertsDeltaEl = document.getElementById('metrics-history-alerts-delta');
+  const healthEl = document.getElementById('metrics-history-health');
+  const humanOpenEl = document.getElementById('metrics-history-human-open');
+  const humanOpenDeltaEl = document.getElementById('metrics-history-human-open-delta');
+
+  const snapshots = Array.isArray(data?.snapshots) ? data.snapshots : [];
+  if (stampEl) {
+    stampEl.textContent = data?.updatedAt
+      ? `${new Date(data.updatedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`
+      : 'n/d';
+  }
+
+  if (!snapshots.length) {
+    if (summaryEl) summaryEl.textContent = 'Sem histórico persistido ainda.';
+    if (listEl) listEl.innerHTML = '<li>Sem snapshots disponíveis.</li>';
+    if (openEl) openEl.textContent = '—';
+    if (completedEl) completedEl.textContent = '—';
+    if (greenEl) greenEl.textContent = '—';
+    if (alertsEl) alertsEl.textContent = '—';
+    if (healthEl) healthEl.textContent = '—';
+    if (humanOpenEl) humanOpenEl.textContent = '—';
+    return;
+  }
+
+  const latest = snapshots[0];
+  const previous = snapshots[1] || null;
+  const board = latest.board || {};
+  const deploy = latest.deploy || {};
+  const alertRepos = Number(deploy.yellowRepos || 0) + Number(deploy.redRepos || 0);
+
+  if (summaryEl) {
+    summaryEl.textContent = `Snapshot atual: ${Number(board.openIssues || 0)} abertas | ${Number(board.completedIssues || 0)} concluídas | ${Number(deploy.greenRepos || 0)} verdes | ${alertRepos} em alerta`;
+  }
+
+  if (openEl) openEl.textContent = String(Number(board.openIssues || 0));
+  if (completedEl) completedEl.textContent = String(Number(board.completedIssues || 0));
+  if (greenEl) greenEl.textContent = String(Number(deploy.greenRepos || 0));
+  if (alertsEl) alertsEl.textContent = String(alertRepos);
+  if (healthEl) healthEl.textContent = `${Number(deploy.healthPct || 0).toFixed(1)}%`;
+  if (humanOpenEl) humanOpenEl.textContent = String(Number(board.humanOpenIssues || 0));
+
+  const prevBoard = previous?.board || {};
+  const prevDeploy = previous?.deploy || {};
+  const prevAlertRepos = Number(prevDeploy.yellowRepos || 0) + Number(prevDeploy.redRepos || 0);
+
+  if (openDeltaEl) openDeltaEl.textContent = previous ? `Δ ${Number(board.openIssues || 0) - Number(prevBoard.openIssues || 0)}` : 'Δ baseline';
+  if (completedDeltaEl) completedDeltaEl.textContent = previous ? `Δ ${Number(board.completedIssues || 0) - Number(prevBoard.completedIssues || 0)}` : 'Δ baseline';
+  if (greenDeltaEl) greenDeltaEl.textContent = previous ? `Δ ${Number(deploy.greenRepos || 0) - Number(prevDeploy.greenRepos || 0)}` : 'Δ baseline';
+  if (alertsDeltaEl) alertsDeltaEl.textContent = previous ? `Δ ${alertRepos - prevAlertRepos}` : 'Δ baseline';
+  if (humanOpenDeltaEl) humanOpenDeltaEl.textContent = previous ? `Δ ${Number(board.humanOpenIssues || 0) - Number(prevBoard.humanOpenIssues || 0)}` : 'Δ baseline';
+
+  if (listEl) {
+    listEl.innerHTML = snapshots.slice(0, 5).map((snapshot, index) => {
+      const boardSnap = snapshot.board || {};
+      const deploySnap = snapshot.deploy || {};
+      const nextSnap = snapshots[index + 1] || null;
+      const open = Number(boardSnap.openIssues || 0);
+      const completed = Number(boardSnap.completedIssues || 0);
+      const green = Number(deploySnap.greenRepos || 0);
+      const red = Number(deploySnap.redRepos || 0);
+      const humanOpen = Number(boardSnap.humanOpenIssues || 0);
+      const deltaOpen = nextSnap ? open - Number(nextSnap.board?.openIssues || 0) : 0;
+      const deltaCompleted = nextSnap ? completed - Number(nextSnap.board?.completedIssues || 0) : 0;
+      const deltaGreen = nextSnap ? green - Number(nextSnap.deploy?.greenRepos || 0) : 0;
+      const deltaRed = nextSnap ? red - Number(nextSnap.deploy?.redRepos || 0) : 0;
+      const captured = snapshot.capturedAt
+        ? new Date(snapshot.capturedAt).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })
+        : 'n/d';
+      return `
+        <li class="metrics-history-item">
+          <div class="metrics-history-head">
+            <strong>${captured}</strong>
+            <span class="badge">${snapshot.commit || 'WORKTREE'}</span>
+          </div>
+          <p class="task-meta">
+            Abertas: ${open} (${deltaOpen >= 0 ? '+' : ''}${deltaOpen}) |
+            Concluídas: ${completed} (${deltaCompleted >= 0 ? '+' : ''}${deltaCompleted}) |
+            Verdes: ${green} (${deltaGreen >= 0 ? '+' : ''}${deltaGreen}) |
+            Vermelhos: ${red} (${deltaRed >= 0 ? '+' : ''}${deltaRed}) |
+            HUMAN open: ${humanOpen}
+          </p>
+          <div class="stacked-bar metrics-history-bar" aria-hidden="true">
+            <span class="seg-trend-green" style="width:${Math.min(100, Math.max(0, Number(boardSnap.completionPct || 0)))}%"></span>
+            <span class="seg-trend-yellow" style="width:${Math.max(0, 100 - Math.min(100, Math.max(0, Number(boardSnap.completionPct || 0))))}%"></span>
+          </div>
+        </li>
+      `;
+    }).join('');
+  }
+}
+
 function computeSlaFromHistory(historyActivities, targetPct) {
   const doneHuman = (historyActivities || []).filter((a) => a.mode === 'HUMAN' && a.status === 'done' && a.createdAt && a.completedAt);
   const weekStats = {};
@@ -1643,6 +1745,7 @@ async function loadDashboardFreshness() {
     { label: 'Kanban', path: './data/kanban.json' },
     { label: 'Handoff', path: './data/handoff.json' },
     { label: 'Deploy status', path: './data/deploy-status.json' },
+    { label: 'Metrics history', path: './data/metrics-history.json' },
     { label: 'Repo progress', path: './data/product-code-progress.json' },
     { label: 'Autopilot SLA', path: './data/autopilot-sla.json' },
   ];
@@ -1693,6 +1796,15 @@ async function loadDashboardFreshness() {
       cardEl.classList.remove('sla-green', 'sla-yellow');
       cardEl.classList.add('sla-red');
     }
+  }
+}
+
+async function loadMetricsHistory() {
+  try {
+    const data = await fetchJson('./data/metrics-history.json');
+    renderMetricsHistory(data);
+  } catch {
+    renderMetricsHistory({ snapshots: [] });
   }
 }
 
@@ -1773,6 +1885,7 @@ function refreshAll() {
     loadRepoProgress();
     loadOpsAnalytics();
     loadHumanDecisionSla();
+    loadMetricsHistory();
     loadDashboardFreshness();
   }, 360);
 }

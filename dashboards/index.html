@@ -43,6 +43,7 @@
         <a href="#semaforo">Semáforo</a>
         <a href="#deploy-ci">Deploy/CI</a>
         <a href="#repo-sync">Repo sync</a>
+        <a href="#metrics-history">Histórico BI</a>
         <a href="#wave-monitor">Ondas ativas</a>
         <a href="#kanban">Kanban</a>
         <a href="#handoff">Handoff</a>
@@ -309,6 +310,49 @@
         </div>
         <p id="repo-sync-summary" class="task-meta">Carregando progresso dos repositórios...</p>
         <ul id="repo-sync-list" class="task-list"></ul>
+      </section>
+
+      <section class="card" id="metrics-history">
+        <div class="section-head">
+          <h2>Comparativos reais</h2>
+          <span id="metrics-history-stamp" class="badge">Atualizando...</span>
+        </div>
+        <p id="metrics-history-summary" class="task-meta">Carregando histórico persistido...</p>
+        <div class="mini-grid metrics-history-grid">
+          <div class="card">
+            <h3>Issues abertas</h3>
+            <p id="metrics-history-open" class="big">—</p>
+            <p id="metrics-history-open-delta" class="task-meta">Δ vs snapshot anterior</p>
+          </div>
+          <div class="card">
+            <h3>Issues concluídas</h3>
+            <p id="metrics-history-completed" class="big">—</p>
+            <p id="metrics-history-completed-delta" class="task-meta">Δ vs snapshot anterior</p>
+          </div>
+          <div class="card">
+            <h3>Repos verdes</h3>
+            <p id="metrics-history-green" class="big">—</p>
+            <p id="metrics-history-green-delta" class="task-meta">Δ vs snapshot anterior</p>
+          </div>
+        </div>
+        <div class="mini-grid" style="margin-top:10px;">
+          <div class="card">
+            <h3>Repos em alerta</h3>
+            <p id="metrics-history-alerts" class="big">—</p>
+            <p id="metrics-history-alerts-delta" class="task-meta">Amarelos + vermelhos</p>
+          </div>
+          <div class="card">
+            <h3>Saúde agregada</h3>
+            <p id="metrics-history-health" class="big">—</p>
+            <p class="task-meta">Média ponderada do snapshot atual</p>
+          </div>
+          <div class="card">
+            <h3>Human open</h3>
+            <p id="metrics-history-human-open" class="big">—</p>
+            <p id="metrics-history-human-open-delta" class="task-meta">Pendências HUMAN abertas</p>
+          </div>
+        </div>
+        <ul id="metrics-history-list" class="metrics-history-list"></ul>
       </section>
 
       <section class="card" id="wave-monitor">

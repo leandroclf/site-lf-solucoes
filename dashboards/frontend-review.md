@@ -20,6 +20,9 @@
 4. **Acompanhamento de ondas ativas**
    - Painel `Ondas ativas e implementação` mostra waves em progresso e destaca `ISSUE-022` enquanto estiver sob monitoramento.
    - A visão de `repo-sync` e `recentAdvances` agora torna o progresso dos repositórios visível no mesmo painel.
+5. **Comparativos reais persistidos**
+   - `metrics-history.json` passa a guardar snapshots históricos do board e do deploy status.
+   - O painel `Comparativos reais` mostra abertura, conclusão, saúde dos repositórios e a tendência entre snapshots.
 
 ## Benefício esperado
 - Melhor navegabilidade mobile no site principal.
@@ -31,3 +34,4 @@
 - Persistir filtros na URL (query params) para compartilhamento do estado do dashboard.
 - Modo impressão/relatório para status semanal.
 - Refresh automático (polling leve) do `kanban.json` a cada 2-5 min.
+- Persistir comparativos semanais do `metrics-history.json` com retenção maior e exportação semanal.
