@@ -730,6 +730,161 @@ function renderKanbanSummaryOnly(data) {
   persistFiltersToURL();
 }
 
+function renderCommercialFunnel(data) {
+  const summaryEl = document.getElementById('commercial-funnel-summary');
+  const metaEl = document.getElementById('commercial-funnel-meta');
+  const stampEl = document.getElementById('commercial-funnel-stamp');
+  const stagesEl = document.getElementById('commercial-funnel-stages');
+  const actionsEl = document.getElementById('commercial-funnel-actions');
+  const insightsEl = document.getElementById('icp-insights-list');
+  const primaryCta = document.getElementById('commercial-funnel-primary-cta');
+  const secondaryCta = document.getElementById('commercial-funnel-secondary-cta');
+  if (!summaryEl || !metaEl || !stagesEl || !actionsEl || !insightsEl) return;
+
+  const funnel = data?.commercialFunnel || {};
+  const kpis = data?.kpis || {};
+  const coverage = Number(kpis.funnelAndJtbdCoveragePct || 0);
+  const eligibleAutoTasks = Number(kpis.eligibleAutoTasks || 0);
+
+  const formatStamp = (value) => {
+    if (!value) return 'Atualizado em: n/d';
+    const dt = new Date(value);
+    return Number.isNaN(dt.getTime())
+      ? 'Atualizado em: n/d'
+      : `Atualizado em: ${dt.toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT`;
+  };
+
+  summaryEl.textContent = funnel.summary || 'Carregando leitura comercial...';
+  metaEl.textContent = `Cobertura JTBD: ${coverage.toFixed(0)}% • Ações automáticas elegíveis: ${eligibleAutoTasks}`;
+  if (stampEl) stampEl.textContent = formatStamp(data?.updatedAt);
+
+  const primary = funnel.primaryCta || {};
+  const secondary = funnel.secondaryCta || {};
+  if (primaryCta) {
+    primaryCta.href = primary.href || '../index.html#diagnostico-roi';
+    primaryCta.textContent = primary.label || 'Abrir diagnostico 60s';
+  }
+  if (secondaryCta) {
+    secondaryCta.href = secondary.href || '../index.html#solucoes-especializadas';
+    secondaryCta.textContent = secondary.label || 'Ver solucoes';
+  }
+
+  const stages = Array.isArray(funnel.stages) && funnel.stages.length > 0
+    ? funnel.stages
+    : [
+        {
+          label: 'Descoberta',
+          detail: 'Identificar o ICP com dor mais clara e sinal de urgencia.',
+          signal: 'Alinhar a leitura do problema antes da proposta.',
+        },
+        {
+          label: 'Qualificacao',
+          detail: 'Priorizar a oportunidade com base em JTBD, fit e volume.',
+          signal: 'Reduzir ruido e focar o tempo do analista.',
+        },
+        {
+          label: 'Proposta',
+          detail: 'Encaminhar o proximo passo com CTA e contexto suficientes.',
+          signal: 'Encurtar o caminho ate contato e decisao.',
+        },
+      ];
+
+  stagesEl.innerHTML = '';
+  stages.forEach((stage) => {
+    const item = document.createElement('li');
+    const title = document.createElement('strong');
+    title.textContent = stage.label || 'Etapa';
+    item.appendChild(title);
+
+    if (stage.detail) {
+      const detail = document.createElement('span');
+      detail.textContent = stage.detail;
+      item.appendChild(detail);
+    }
+
+    const signal = document.createElement('span');
+    signal.className = 'funnel-stage-signal';
+    signal.textContent = stage.signal || 'Sem sinal adicional.';
+    item.appendChild(signal);
+    stagesEl.appendChild(item);
+  });
+
+  const nextActions = Array.isArray(data?.nextActions) && data.nextActions.length > 0
+    ? data.nextActions
+    : [
+        'Atualizar sintese JTBD com as entrevistas da semana.',
+        'Revisar a variacao de conversao por ICP no proximo ciclo.',
+      ];
+
+  actionsEl.innerHTML = '';
+  nextActions.forEach((action) => {
+    const item = document.createElement('li');
+    item.textContent = action;
+    actionsEl.appendChild(item);
+  });
+
+  const icpInsights = Array.isArray(funnel.icpInsights) && funnel.icpInsights.length > 0
+    ? funnel.icpInsights
+    : [
+        {
+          label: 'Automacao de WhatsApp',
+          summary: 'ICP com alto volume de atendimento e follow-up manual.',
+          ctaLabel: 'Ver solucao',
+          href: '../solucoes/whatsapp-automation.html',
+        },
+        {
+          label: 'Enrichment B2B',
+          summary: 'ICP com base de leads incompleta e baixa priorizacao.',
+          ctaLabel: 'Ver solucao',
+          href: '../solucoes/openalex-enrichment.html',
+        },
+        {
+          label: 'BI executivo',
+          summary: 'ICP que precisa de previsibilidade e decisao por KPI.',
+          ctaLabel: 'Ver solucao',
+          href: '../solucoes/business-intelligence.html',
+        },
+      ];
+
+  insightsEl.innerHTML = '';
+  icpInsights.forEach((insight) => {
+    const card = document.createElement('article');
+    card.className = 'icp-card';
+
+    const title = document.createElement('h4');
+    title.textContent = insight.label || 'ICP';
+    card.appendChild(title);
+
+    const summary = document.createElement('p');
+    summary.textContent = insight.summary || '';
+    card.appendChild(summary);
+
+    const link = document.createElement('a');
+    link.className = 'btn btn-secondary';
+    link.href = insight.href || '../index.html#contato';
+    link.textContent = insight.ctaLabel || 'Ver detalhe';
+    card.appendChild(link);
+
+    insightsEl.appendChild(card);
+  });
+}
+
+async function loadCommercialFunnel() {
+  const summaryEl = document.getElementById('commercial-funnel-summary');
+  const metaEl = document.getElementById('commercial-funnel-meta');
+  const stampEl = document.getElementById('commercial-funnel-stamp');
+
+  try {
+    const data = await fetchJson('./data/jtbd-weekly-kpis.json');
+    renderCommercialFunnel(data);
+  } catch {
+    renderCommercialFunnel({});
+    if (summaryEl) summaryEl.textContent = 'Nao foi possivel carregar a leitura comercial.';
+    if (metaEl) metaEl.textContent = 'Cobertura JTBD: n/d';
+    if (stampEl) stampEl.textContent = 'Atualizado em: erro de leitura';
+  }
+}
+
 function populateSelect(data, selectId, valueSelector) {
   const select = document.getElementById(selectId);
   const values = new Set();
@@ -1424,6 +1579,7 @@ function refreshAll() {
 
   scheduleLowPriority(() => {
     renderCurrentKanban();
+    loadCommercialFunnel();
     loadHandoff();
     loadOpsAnalytics();
     loadHumanDecisionSla();

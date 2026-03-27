@@ -8,6 +8,7 @@
       name="description"
       content="Painel operacional da LF Solucoes com visao executiva de SLA, deploy, produtividade e acompanhamento de iniciativas."
     />
+    <link rel="icon" type="image/svg+xml" href="../assets/logo-lf.svg" />
     <link rel="stylesheet" href="./styles.css" />
   </head>
   <body>
@@ -36,6 +37,7 @@
     <section class="dashboard-shortcuts" aria-label="Atalhos do painel">
       <div class="shortcut-wrap">
         <a href="#painel-geral">Status geral</a>
+        <a href="#commercial-funnel">Funil comercial</a>
         <a href="#alertas-gargalos">Alertas</a>
         <a href="#tendencias">Tendências</a>
         <a href="#semaforo">Semáforo</a>
@@ -89,6 +91,33 @@
             <p class="task-meta" id="metric-throughput-var">Variação: n/d</p>
           </article>
         </section>
+      </section>
+
+      <section class="card funnel-panel" id="commercial-funnel" data-view="executive operational">
+        <div class="section-head">
+          <h2>Funil comercial e insight por ICP</h2>
+          <span id="commercial-funnel-stamp" class="badge">Atualizando...</span>
+        </div>
+        <p id="commercial-funnel-summary" class="task-meta">Carregando leitura comercial...</p>
+        <p id="commercial-funnel-meta" class="task-meta">Cobertura JTBD: n/d</p>
+        <div class="funnel-cta-row">
+          <a id="commercial-funnel-primary-cta" class="btn" href="../index.html#diagnostico-roi">Abrir diagnostico 60s</a>
+          <a id="commercial-funnel-secondary-cta" class="btn btn-secondary" href="../index.html#solucoes-especializadas">Ver solucoes</a>
+        </div>
+        <div class="mini-grid">
+          <div class="card funnel-subcard">
+            <h3>Etapas do funil</h3>
+            <ul id="commercial-funnel-stages" class="funnel-list"></ul>
+          </div>
+          <div class="card funnel-subcard">
+            <h3>ICP em foco</h3>
+            <div id="icp-insights-list" class="icp-stack"></div>
+          </div>
+          <div class="card funnel-subcard">
+            <h3>Próximas ações</h3>
+            <ul id="commercial-funnel-actions" class="funnel-list"></ul>
+          </div>
+        </div>
       </section>
 
       <section class="card" id="alertas-gargalos" data-view="operational">
