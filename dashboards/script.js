@@ -122,7 +122,7 @@ function getDashboardSignalCoverage() {
     { family: 'export', active: Boolean(document.getElementById('download-weekly-report') && document.getElementById('download-handoff')) },
     { family: 'chart-goal', active: document.querySelectorAll('#tendencias .goal-line').length >= 5 },
     { family: 'signal-panel', active: Boolean(document.getElementById('dashboard-signals-panel') && document.getElementById('dashboard-signal-list') && document.getElementById('dashboard-signal-families')) },
-    { family: 'autonomy-panel', active: Boolean(document.getElementById('autonomy-supervisor') && document.getElementById('autonomy-candidates') && document.getElementById('autonomy-alerts')) },
+    { family: 'autonomy-panel', active: Boolean(document.getElementById('autonomy-supervisor') && document.getElementById('autonomy-actions') && document.getElementById('autonomy-candidates') && document.getElementById('autonomy-alerts')) },
   ];
 }
 
@@ -525,9 +525,10 @@ function renderAutonomyState(data) {
   const signalMetaEl = document.getElementById('autonomy-signal-meta');
   const healthEl = document.getElementById('autonomy-health');
   const healthMetaEl = document.getElementById('autonomy-health-meta');
+  const actionsEl = document.getElementById('autonomy-actions');
   const candidatesEl = document.getElementById('autonomy-candidates');
   const alertsEl = document.getElementById('autonomy-alerts');
-  if (!stampEl || !summaryEl || !actionEl || !actionMetaEl || !signalEl || !signalMetaEl || !healthEl || !healthMetaEl || !candidatesEl || !alertsEl) return;
+  if (!stampEl || !summaryEl || !actionEl || !actionMetaEl || !signalEl || !signalMetaEl || !healthEl || !healthMetaEl || !actionsEl || !candidatesEl || !alertsEl) return;
 
   window.__autonomyData = data || {};
 
@@ -539,7 +540,27 @@ function renderAutonomyState(data) {
   signalEl.textContent = data?.overallStatusLabel || 'Autonomia ativa';
   signalMetaEl.textContent = `AUTO ativo: ${data?.stats?.activeAuto ?? 0} | prontos: ${data?.stats?.readyAuto ?? 0} | planejados: ${data?.stats?.plannedAuto ?? 0}`;
   healthEl.textContent = `${Number(data?.autonomyScore || 0)}%`;
-  healthMetaEl.textContent = `Bloqueios: ${data?.stats?.blockers ?? 0} | Repos em alerta: ${Number(data?.stats?.yellowRepos || 0) + Number(data?.stats?.redRepos || 0)}`;
+  healthMetaEl.textContent = `Bloqueios: ${data?.stats?.blockers ?? 0} | Fila: ${data?.stats?.actionQueue ?? 0} | Repos em alerta: ${Number(data?.stats?.yellowRepos || 0) + Number(data?.stats?.redRepos || 0)}`;
+
+  const actions = Array.isArray(data?.recommendedActions) ? data.recommendedActions.slice(0, 5) : [];
+  actionsEl.innerHTML = '';
+  if (actions.length) {
+    for (const item of actions) {
+      const li = document.createElement('li');
+      const strong = document.createElement('strong');
+      strong.textContent = item.label || item.kind || 'Ação';
+      const span = document.createElement('span');
+      span.className = 'task-meta';
+      span.textContent = `${item.kind || 'n/d'} | ${item.reason || 'sem motivo registrado'}`;
+      li.append(strong, ' — ', span);
+      actionsEl.appendChild(li);
+    }
+  } else {
+    const li = document.createElement('li');
+    li.className = 'task-meta';
+    li.textContent = 'Nenhuma ação sugerida no momento.';
+    actionsEl.appendChild(li);
+  }
 
   const candidates = Array.isArray(data?.rankedCandidates) ? data.rankedCandidates.slice(0, 5) : [];
   candidatesEl.innerHTML = '';
