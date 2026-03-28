@@ -1,35 +1,42 @@
 {
-  "updatedAt": "2026-03-28T18:39:03.628633+00:00",
-  "overallStatus": "yellow",
-  "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
-  "autonomyScore": 75,
-  "summary": "4 a\u00e7\u00e3o(\u00f5es) sugerida(s); pr\u00f3ximo passo: Continuar monitorando ISSUE-007.",
+  "updatedAt": "2026-03-28T21:48:49.152569+00:00",
+  "overallStatus": "red",
+  "overallStatusLabel": "Autonomia bloqueada",
+  "autonomyScore": 57,
+  "summary": "5 a\u00e7\u00e3o(\u00f5es) sugerida(s); pr\u00f3ximo passo: Destravar bloqueio.",
   "recommendedNextAction": {
-    "kind": "monitor-ci-gate",
-    "label": "Continuar monitorando ISSUE-007",
-    "ctaLabel": "Continuar monitorando ISSUE-007",
-    "reason": "Gate 5/5 por repo cr\u00edtico: lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 1/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
-    "issueId": "ISSUE-007",
-    "target": 5,
-    "summary": "lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 1/5",
-    "nextRepo": "lf-openalex-enrichment-mvp",
-    "href": "#deploy-ci",
-    "priority": 1,
+    "kind": "recover-blocker",
+    "label": "Destravar bloqueio",
+    "ctaLabel": "Destravar bloqueio",
+    "reason": "site-lf-solucoes em vermelho",
+    "source": "deploy-status.json",
+    "href": "#alertas-gargalos",
+    "priority": 0,
     "order": 0
   },
   "recommendedActions": [
     {
+      "kind": "recover-blocker",
+      "label": "Destravar bloqueio",
+      "ctaLabel": "Destravar bloqueio",
+      "reason": "site-lf-solucoes em vermelho",
+      "source": "deploy-status.json",
+      "href": "#alertas-gargalos",
+      "priority": 0,
+      "order": 0
+    },
+    {
       "kind": "monitor-ci-gate",
       "label": "Continuar monitorando ISSUE-007",
       "ctaLabel": "Continuar monitorando ISSUE-007",
-      "reason": "Gate 5/5 por repo cr\u00edtico: lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 1/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
+      "reason": "Gate 5/5 por repo cr\u00edtico: lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
       "issueId": "ISSUE-007",
       "target": 5,
-      "summary": "lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 1/5",
+      "summary": "lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 0/5",
       "nextRepo": "lf-openalex-enrichment-mvp",
       "href": "#deploy-ci",
       "priority": 1,
-      "order": 0
+      "order": 1
     },
     {
       "kind": "continue-wave",
@@ -45,7 +52,7 @@
       "status": "IN PROGRESS (remediation pack publicado; latest CI green; 5/5 gate ainda n\u00e3o satisfeito)",
       "href": "#autonomy-supervisor",
       "priority": 4,
-      "order": 1
+      "order": 2
     },
     {
       "kind": "continue-wave",
@@ -61,17 +68,17 @@
       "status": "IN PROGRESS (pipeline completo; D3-D7 replanejados)",
       "href": "#autonomy-supervisor",
       "priority": 4,
-      "order": 2
+      "order": 3
     },
     {
       "kind": "refresh-stale-repo",
       "label": "Revisar lf-wikidata-entity-graph",
       "ctaLabel": "Revisar lf-wikidata-entity-graph",
-      "reason": "Repo estagnado h\u00e1 139.5h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
+      "reason": "Repo estagnado h\u00e1 142.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
       "repo": "lf-wikidata-entity-graph",
       "href": "#repo-sync",
       "priority": 7,
-      "order": 3
+      "order": 4
     }
   ],
   "stats": {
@@ -79,13 +86,13 @@
     "activeAuto": 2,
     "readyAuto": 0,
     "plannedAuto": 0,
-    "blockers": 0,
+    "blockers": 1,
     "governanceAlerts": 1,
-    "actionQueue": 4,
+    "actionQueue": 5,
     "staleRepos": 1,
-    "greenRepos": 5,
+    "greenRepos": 4,
     "yellowRepos": 0,
-    "redRepos": 0
+    "redRepos": 1
   },
   "governance": {
     "baselineReady": true,
@@ -669,10 +676,10 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-03-28T18:39:01.291628+00:00",
-      "greenRepos": 5,
+      "updatedAt": "2026-03-28T21:48:45.114797+00:00",
+      "greenRepos": 4,
       "yellowRepos": 0,
-      "redRepos": 0,
+      "redRepos": 1,
       "regressionWatchdog": {
         "status": "green",
         "findings": 0,
@@ -682,7 +689,7 @@
     "ciGate": {
       "target": 5,
       "complete": false,
-      "summary": "lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 1/5",
+      "summary": "lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 0/5",
       "repos": [
         {
           "repo": "lf-openalex-enrichment-mvp",
@@ -707,10 +714,10 @@
         },
         {
           "repo": "site-lf-solucoes",
-          "successes": 1,
-          "remaining": 4,
+          "successes": 0,
+          "remaining": 5,
           "complete": false,
-          "status": "green"
+          "status": "red"
         }
       ],
       "nextRepo": "lf-openalex-enrichment-mvp"
@@ -757,13 +764,19 @@
       "reason": "Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales)"
     }
   ],
-  "blockers": [],
+  "blockers": [
+    {
+      "source": "deploy-status.json",
+      "severity": "high",
+      "details": "site-lf-solucoes em vermelho"
+    }
+  ],
   "warnings": [],
   "advisories": [
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 139.5,
+      "ageHours": 142.7,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     }
   ],
