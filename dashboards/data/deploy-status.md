@@ -1,16 +1,17 @@
 # Status de Deploy e CI
 
 Owner monitorado: `leandroclf`
-Atualizado em: `2026-03-27T13:12:58.338613+00:00`
+Atualizado em: `2026-03-28T12:47:32.926083+00:00`
 
-## 🔴 `leandroclf/lf-openalex-enrichment-mvp`
+## 🟢 `leandroclf/lf-openalex-enrichment-mvp`
 - Status: `completed`
-- Conclusao: `failure`
-- Commit: `dab462e` - fix(openalex): clarify coverage metrics
-- Ultima execucao: 2026-03-22 22:41:53 UTC
-- Run: https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23414269805
-- Logs: https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23414269805/logs
-- Falhas consecutivas: 1
+- Conclusao: `success`
+- Commit: `5086ef3` - fix(openalex): normalize shim file endings
+- Ultima execucao: 2026-03-27 17:09:34 UTC
+- Run: https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23658339063
+- Logs: https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23658339063/logs
+- Falhas consecutivas: 0
+- Sucessos consecutivos: 3
 
 ## 🟢 `leandroclf/lf-wikidata-entity-graph`
 - Status: `completed`
@@ -20,6 +21,7 @@ Atualizado em: `2026-03-27T13:12:58.338613+00:00`
 - Run: https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/23414716429
 - Logs: https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/23414716429/logs
 - Falhas consecutivas: 0
+- Sucessos consecutivos: 1
 
 ## 🟢 `leandroclf/lf-worldbank-risk-pricing`
 - Status: `completed`
@@ -29,18 +31,19 @@ Atualizado em: `2026-03-27T13:12:58.338613+00:00`
 - Run: https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392
 - Logs: https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392/logs
 - Falhas consecutivas: 0
+- Sucessos consecutivos: 1
 
 ## 🟢 `leandroclf/site-lf-solucoes`
 - Status: `completed`
 - Conclusao: `success`
-- Commit: `4a1aca5` - chore(dashboard): refresh deploy and progress snapshots
-- Ultima execucao: 2026-03-27 13:11:53 UTC
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23647843219
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23647843219/logs
+- Commit: `493ff12` - chore(dashboard): reconcile autonomy snapshots
+- Ultima execucao: 2026-03-28 12:26:04 UTC
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23685180614
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23685180614/logs
 - Falhas consecutivas: 0
+- Sucessos consecutivos: 1
 
 ## 🟢 `leandroclf/openclaw-workspace`
-- Status: informativo `no_runs`
-- Detalhes: `Workspace root sem workflows GitHub Actions configurados.`
-- Endpoint: `n/a`
+- Nenhuma execução encontrada.
 - Falhas consecutivas: 0
+- Sucessos consecutivos: 0

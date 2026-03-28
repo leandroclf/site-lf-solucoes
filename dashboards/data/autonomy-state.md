@@ -1,8 +1,8 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-03-28T12:24:15.979009Z`
+Atualizado em: `2026-03-28T12:47:58.353101Z`
 Status: `Autonomia em atenção`
-Score de autonomia: `77`
+Score de autonomia: `74`
 
 ## Próxima ação
 - `Revisar lf-openalex-enrichment-mvp`
@@ -11,25 +11,23 @@ Score de autonomia: `77`
 
 ## Sinais
 - Issues AUTO elegíveis: `40`
-- AUTO em progresso: `3`
+- AUTO em progresso: `2`
 - AUTO autorizadas: `0`
 - AUTO planejadas: `0`
 - Repos verdes: `5`
 - Repos em alerta: `0`
 - Bloqueios: `0`
-- Fila de ações: `5`
+- Fila de ações: `4`
 
 ## Próximos 5 passos
 - `Revisar lf-openalex-enrichment-mvp` — Repo estagnado há 115.8h: fix(openalex): clarify coverage metrics | tipo: `refresh-stale-repo`
 - `Revisar lf-wikidata-entity-graph` — Repo estagnado há 113.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
-- `Continuar wave ISSUE-009` — Manter a wave ativa: ISSUE-009 (reviewer-delivery + strategist-product) | tipo: `continue-wave`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
 - `ISSUE-008` Funil cliente + JTBD semanal por ICP — in_progress | owner: strategist-product + growth-sales | repo: n/d
-- `ISSUE-009` Product accountability por responsável — in_progress | owner: reviewer-delivery + strategist-product | repo: n/d
 
 ## Bloqueios
 - nenhum

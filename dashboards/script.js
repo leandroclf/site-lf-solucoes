@@ -1958,6 +1958,7 @@ async function loadDeployStatus() {
               status: payload.latestRun?.status || payload.latest_run?.status || 'n/d',
               runUrl: payload.latestRun?.html_url || payload.latest_run?.html_url || '',
               consecutiveFailures: payload.consecutiveFailures ?? payload.consecutive_failures ?? 0,
+              consecutiveSuccesses: payload.consecutiveSuccesses ?? payload.consecutive_successes ?? 0,
             }))
           : [];
 
@@ -1968,10 +1969,13 @@ async function loadDeployStatus() {
       const ok = lower === 'success';
       const warn = ['failure', 'cancelled', 'timed_out'].includes(lower) || r.status === 'error';
       const consecutive = Number(r.consecutiveFailures ?? r.consecutive_failures ?? 0) || 0;
-      const badge = consecutive ? '🔴' : (ok ? '🟢' : (warn ? '🟡' : '⚪'));
+      const successStreak = Number(r.consecutiveSuccesses ?? r.consecutive_successes ?? 0) || 0;
+      const badge = consecutive ? '🔴' : (ok ? (successStreak >= 5 ? '🎯' : '🟢') : (warn ? '🟡' : '⚪'));
       const runUrl = r.runUrl || r.latestRun?.html_url || r.latest_run?.html_url || '';
       const run = runUrl ? `<a href="${runUrl}" target="_blank" rel="noreferrer">run</a>` : 'run n/d';
-      const extra = consecutive ? ` | ${consecutive} falhas seguidas` : '';
+      const extra = consecutive
+        ? ` | ${consecutive} falhas seguidas`
+        : (successStreak ? ` | ${successStreak} sucessos seguidos` : '');
       return `<li><strong>${badge} ${repoName}</strong> — ${concl}${extra} (${run})</li>`;
     }).join('');
     if (!listEl.innerHTML) listEl.innerHTML = '<li>Sem dados de deploy no momento.</li>';

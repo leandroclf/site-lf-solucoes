@@ -1,24 +1,25 @@
 {
-  "last_updated_utc": "2026-03-28T12:23:50Z",
+  "last_updated_utc": "2026-03-28T12:47:32.926083+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23414269805,
+        "id": 23658339063,
         "status": "completed",
-        "conclusion": "failure",
-        "commitSha": "dab462ef2e94a66427ef47ecd7e827462e548d43",
-        "commitMessage": "fix(openalex): clarify coverage metrics",
-        "html_url": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23414269805",
-        "logs_url": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23414269805/logs",
-        "run_number": 2,
-        "created_at": "2026-03-22T22:41:53Z",
-        "updated_at": "2026-03-22T22:42:04Z"
+        "conclusion": "success",
+        "commitSha": "5086ef3ff53051a97c035097360060004a90b2db",
+        "commitMessage": "fix(openalex): normalize shim file endings",
+        "html_url": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23658339063",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23658339063/logs",
+        "run_number": 3,
+        "created_at": "2026-03-27T17:09:34Z",
+        "updated_at": "2026-03-27T17:09:46Z"
       },
       "error": null,
-      "consecutiveFailures": 1,
-      "aggregatedStatus": "red"
+      "consecutiveFailures": 0,
+      "consecutiveSuccesses": 3,
+      "aggregatedStatus": "green"
     },
     "lf-wikidata-entity-graph": {
       "owner": "leandroclf",
@@ -35,7 +36,9 @@
         "updated_at": "2026-03-22T23:06:43Z"
       },
       "error": null,
+      "note": "Cached snapshot used because GitHub API fallback returned an error.",
       "consecutiveFailures": 0,
+      "consecutiveSuccesses": 1,
       "aggregatedStatus": "green"
     },
     "lf-worldbank-risk-pricing": {
@@ -53,25 +56,28 @@
         "updated_at": "2026-03-27T02:00:55Z"
       },
       "error": null,
+      "note": "Cached snapshot used because GitHub API fallback returned an error.",
       "consecutiveFailures": 0,
+      "consecutiveSuccesses": 1,
       "aggregatedStatus": "green"
     },
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23647843219,
+        "id": 23685180614,
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "4a1aca5caba4822f2062653fd9a2394bfe9ee872",
-        "commitMessage": "chore(dashboard): refresh deploy and progress snapshots",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23647843219",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23647843219/logs",
-        "run_number": 52,
-        "created_at": "2026-03-27T13:11:53Z",
-        "updated_at": "2026-03-27T13:12:01Z"
+        "commitSha": "493ff128379b7d573f502b2f4068f007e3a54794",
+        "commitMessage": "chore(dashboard): reconcile autonomy snapshots",
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23685180614",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23685180614/logs",
+        "run_number": 62,
+        "created_at": "2026-03-28T12:26:04Z",
+        "updated_at": "2026-03-28T12:26:12Z"
       },
       "error": null,
       "consecutiveFailures": 0,
+      "consecutiveSuccesses": 1,
       "aggregatedStatus": "green"
     },
     "openclaw-workspace": {
@@ -80,6 +86,7 @@
       "error": null,
       "note": "Workspace root sem workflows GitHub Actions configurados.",
       "consecutiveFailures": 0,
+      "consecutiveSuccesses": 0,
       "aggregatedStatus": "green"
     }
   },
@@ -88,5 +95,5 @@
     "findings": 0,
     "report": "ops/multiagent/delivery/ci-regression-watchdog.json"
   },
-  "updatedAt": "2026-03-28T12:24:16.206960+00:00"
+  "updatedAt": "2026-03-28T12:47:58.533652+00:00"
 }
