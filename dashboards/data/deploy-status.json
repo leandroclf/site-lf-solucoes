@@ -1,5 +1,5 @@
 {
-  "last_updated_utc": "2026-03-28T12:47:32.926083+00:00",
+  "last_updated_utc": "2026-03-28T13:39:41.459591+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
@@ -64,20 +64,20 @@
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23685180614,
+        "id": 23686234934,
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "493ff128379b7d573f502b2f4068f007e3a54794",
-        "commitMessage": "chore(dashboard): reconcile autonomy snapshots",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23685180614",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23685180614/logs",
-        "run_number": 62,
-        "created_at": "2026-03-28T12:26:04Z",
-        "updated_at": "2026-03-28T12:26:12Z"
+        "commitSha": "7febd8e08923e497105f3539ed04bbbd2516c981",
+        "commitMessage": "feat(dashboard): expose governance and ci gate monitoring",
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23686234934",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23686234934/logs",
+        "run_number": 165,
+        "created_at": "2026-03-28T13:28:45Z",
+        "updated_at": "2026-03-28T13:29:05Z"
       },
       "error": null,
       "consecutiveFailures": 0,
-      "consecutiveSuccesses": 1,
+      "consecutiveSuccesses": 2,
       "aggregatedStatus": "green"
     },
     "openclaw-workspace": {
@@ -95,5 +95,5 @@
     "findings": 0,
     "report": "ops/multiagent/delivery/ci-regression-watchdog.json"
   },
-  "updatedAt": "2026-03-28T13:27:20.226090+00:00"
+  "updatedAt": "2026-03-28T13:39:46.163396+00:00"
 }

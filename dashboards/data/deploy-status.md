@@ -1,7 +1,7 @@
 # Status de Deploy e CI
 
 Owner monitorado: `leandroclf`
-Atualizado em: `2026-03-28T12:47:32.926083+00:00`
+Atualizado em: `2026-03-28T13:39:41.459591+00:00`
 
 ## 🟢 `leandroclf/lf-openalex-enrichment-mvp`
 - Status: `completed`
@@ -36,12 +36,12 @@ Atualizado em: `2026-03-28T12:47:32.926083+00:00`
 ## 🟢 `leandroclf/site-lf-solucoes`
 - Status: `completed`
 - Conclusao: `success`
-- Commit: `493ff12` - chore(dashboard): reconcile autonomy snapshots
-- Ultima execucao: 2026-03-28 12:26:04 UTC
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23685180614
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23685180614/logs
+- Commit: `7febd8e` - feat(dashboard): expose governance and ci gate monitoring
+- Ultima execucao: 2026-03-28 13:28:45 UTC
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23686234934
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23686234934/logs
 - Falhas consecutivas: 0
-- Sucessos consecutivos: 1
+- Sucessos consecutivos: 2
 
 ## 🟢 `leandroclf/openclaw-workspace`
 - Nenhuma execução encontrada.
