@@ -44,6 +44,7 @@
         <a href="#deploy-ci">Deploy/CI</a>
         <a href="#repo-sync">Repo sync</a>
         <a href="#metrics-history">Histórico BI</a>
+        <a href="#autonomy-supervisor">Autonomia</a>
         <a href="#freshness-card">Confiabilidade ponderada</a>
         <a href="#wave-monitor">Ondas ativas</a>
         <a href="#kanban">Kanban</a>
@@ -350,6 +351,39 @@
         </div>
         <p id="repo-sync-summary" class="task-meta">Carregando progresso dos repositórios...</p>
         <ul id="repo-sync-list" class="task-list"></ul>
+      </section>
+
+      <section class="card" id="autonomy-supervisor">
+        <div class="section-head">
+          <h2>Autonomia e próximo passo</h2>
+          <span id="autonomy-stamp" class="badge">Atualizando...</span>
+        </div>
+        <p id="autonomy-summary" class="task-meta">Carregando recomendação autônoma...</p>
+        <div class="mini-grid">
+          <div class="card">
+            <h3>Próxima ação</h3>
+            <p id="autonomy-action" class="big">—</p>
+            <p id="autonomy-action-meta" class="task-meta">—</p>
+          </div>
+          <div class="card">
+            <h3>Tipo de sinal</h3>
+            <p id="autonomy-signal" class="big">—</p>
+            <p id="autonomy-signal-meta" class="task-meta">—</p>
+          </div>
+          <div class="card">
+            <h3>Saúde da autonomia</h3>
+            <p id="autonomy-health" class="big">—</p>
+            <p id="autonomy-health-meta" class="task-meta">—</p>
+          </div>
+        </div>
+        <div class="handoff-block" style="margin-top:10px;">
+          <h3>Candidatos priorizados</h3>
+          <ul id="autonomy-candidates" class="task-list"></ul>
+        </div>
+        <div class="handoff-block" style="margin-top:10px;">
+          <h3>Alertas e bloqueios</h3>
+          <ul id="autonomy-alerts" class="task-list"></ul>
+        </div>
       </section>
 
       <section class="card" id="metrics-history">

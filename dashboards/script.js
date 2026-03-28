@@ -122,6 +122,7 @@ function getDashboardSignalCoverage() {
     { family: 'export', active: Boolean(document.getElementById('download-weekly-report') && document.getElementById('download-handoff')) },
     { family: 'chart-goal', active: document.querySelectorAll('#tendencias .goal-line').length >= 5 },
     { family: 'signal-panel', active: Boolean(document.getElementById('dashboard-signals-panel') && document.getElementById('dashboard-signal-list') && document.getElementById('dashboard-signal-families')) },
+    { family: 'autonomy-panel', active: Boolean(document.getElementById('autonomy-supervisor') && document.getElementById('autonomy-candidates') && document.getElementById('autonomy-alerts')) },
   ];
 }
 
@@ -504,8 +505,92 @@ function renderStrategicKpis(tasks, deployData, autopilotData, activities) {
     }
   }
 
+  const autonomyAction = window.__autonomyData?.recommendedNextAction;
+  if (autonomyAction && primaryCta && ctaHint) {
+    primaryCta.href = autonomyAction.href || '#autonomy-supervisor';
+    primaryCta.textContent = autonomyAction.ctaLabel || autonomyAction.label || 'Abrir autonomia';
+    ctaHint.textContent = autonomyAction.reason || ctaHint.textContent || 'Acompanhamento autônomo ativo.';
+  }
+
   window.__analyticsCache.prevDayJobs = totalJobs;
   window.__analyticsCache.prevDayDelayed = delayedJobs;
+}
+
+function renderAutonomyState(data) {
+  const stampEl = document.getElementById('autonomy-stamp');
+  const summaryEl = document.getElementById('autonomy-summary');
+  const actionEl = document.getElementById('autonomy-action');
+  const actionMetaEl = document.getElementById('autonomy-action-meta');
+  const signalEl = document.getElementById('autonomy-signal');
+  const signalMetaEl = document.getElementById('autonomy-signal-meta');
+  const healthEl = document.getElementById('autonomy-health');
+  const healthMetaEl = document.getElementById('autonomy-health-meta');
+  const candidatesEl = document.getElementById('autonomy-candidates');
+  const alertsEl = document.getElementById('autonomy-alerts');
+  if (!stampEl || !summaryEl || !actionEl || !actionMetaEl || !signalEl || !signalMetaEl || !healthEl || !healthMetaEl || !candidatesEl || !alertsEl) return;
+
+  window.__autonomyData = data || {};
+
+  const updated = data?.updatedAt ? formatBrtTimestamp(data.updatedAt) : null;
+  stampEl.textContent = updated ? `Atualizado em: ${updated}` : 'Atualizado em: n/d';
+  summaryEl.textContent = data?.summary || 'Sem recomendação autônoma disponível.';
+  actionEl.textContent = data?.recommendedNextAction?.label || 'Monitorar autonomia';
+  actionMetaEl.textContent = data?.recommendedNextAction?.reason || 'Sem motivo registrado.';
+  signalEl.textContent = data?.overallStatusLabel || 'Autonomia ativa';
+  signalMetaEl.textContent = `AUTO ativo: ${data?.stats?.activeAuto ?? 0} | prontos: ${data?.stats?.readyAuto ?? 0} | planejados: ${data?.stats?.plannedAuto ?? 0}`;
+  healthEl.textContent = `${Number(data?.autonomyScore || 0)}%`;
+  healthMetaEl.textContent = `Bloqueios: ${data?.stats?.blockers ?? 0} | Repos em alerta: ${Number(data?.stats?.yellowRepos || 0) + Number(data?.stats?.redRepos || 0)}`;
+
+  const candidates = Array.isArray(data?.rankedCandidates) ? data.rankedCandidates.slice(0, 5) : [];
+  candidatesEl.innerHTML = '';
+  if (candidates.length) {
+    for (const item of candidates) {
+      const li = document.createElement('li');
+      const strong = document.createElement('strong');
+      strong.textContent = item.issueId || 'ISSUE';
+      const span = document.createElement('span');
+      span.className = 'task-meta';
+      const repo = item.repo ? ` • repo: ${item.repo}` : '';
+      const owner = item.owner ? ` • owner: ${item.owner}` : '';
+      li.append(strong, ` — ${item.title || 'sem título'} `, span);
+      span.textContent = `${item.statusKind || 'n/d'}${owner}${repo}`;
+      candidatesEl.appendChild(li);
+    }
+  } else {
+    const li = document.createElement('li');
+    li.className = 'task-meta';
+    li.textContent = 'Nenhum candidato AUTO elegível.';
+    candidatesEl.appendChild(li);
+  }
+
+  alertsEl.innerHTML = '';
+  for (const blocker of Array.isArray(data?.blockers) ? data.blockers.slice(0, 5) : []) {
+    const li = document.createElement('li');
+    const strong = document.createElement('strong');
+    strong.textContent = 'BLOCKER';
+    li.append(strong, ` — ${blocker.source || 'n/d'}: ${blocker.details || 'n/d'}`);
+    alertsEl.appendChild(li);
+  }
+  for (const warning of Array.isArray(data?.warnings) ? data.warnings.slice(0, 5) : []) {
+    const li = document.createElement('li');
+    const strong = document.createElement('strong');
+    strong.textContent = 'ALERTA';
+    li.append(strong, ` — ${warning.source || 'n/d'}: ${warning.details || 'n/d'}`);
+    alertsEl.appendChild(li);
+  }
+  for (const advisory of Array.isArray(data?.advisories) ? data.advisories.slice(0, 5) : []) {
+    const li = document.createElement('li');
+    const strong = document.createElement('strong');
+    strong.textContent = 'REPO';
+    li.append(strong, ` — ${advisory.repo || 'n/d'}: ${advisory.status || 'n/d'} (${advisory.ageHours ?? 'n/d'}h)`);
+    alertsEl.appendChild(li);
+  }
+  if (!alertsEl.children.length) {
+    const li = document.createElement('li');
+    li.className = 'task-meta';
+    li.textContent = 'Nenhum alerta ou bloqueio ativo.';
+    alertsEl.appendChild(li);
+  }
 }
 
 function renderOperationalAlerts(tasks, deployData) {
@@ -1268,13 +1353,15 @@ function renderCurrentKanban() {
 async function refreshDecisionLayers(tasks, options = {}) {
   const deferAnalytics = options.deferAnalytics !== false;
   try {
-    const [deployData, autopilotData, activitiesData] = await Promise.all([
+    const [deployData, autopilotData, autonomyData, activitiesData] = await Promise.all([
       fetchJson('./data/deploy-status.json'),
       fetchJson('./data/autopilot-sla.json'),
+      fetchJson('./data/autonomy-state.json').catch(() => ({})),
       fetchJson('./data/activities-history.json'),
     ]);
 
     const activities = activitiesData.activities || [];
+    renderAutonomyState(autonomyData);
     renderStrategicKpis(tasks, deployData, autopilotData, activities);
     renderOperationalAlerts(tasks, deployData);
     if (deferAnalytics) {
@@ -1285,13 +1372,14 @@ async function refreshDecisionLayers(tasks, options = {}) {
 
     const lu = document.getElementById('last-updated-global');
     if (lu) {
-      const ts = [autopilotData.updatedAt, deployData.updatedAt, activitiesData.updatedAt].filter(Boolean).sort().slice(-1)[0];
+      const ts = [autopilotData.updatedAt, deployData.updatedAt, autonomyData.updatedAt, activitiesData.updatedAt].filter(Boolean).sort().slice(-1)[0];
       lu.textContent = ts ? `Última atualização: ${new Date(ts).toLocaleString('pt-BR', { timeZone: 'America/Sao_Paulo' })} BRT` : 'Última atualização: n/d';
     }
     renderDashboardSignals();
   } catch {
     const lu = document.getElementById('last-updated-global');
     if (lu) lu.textContent = 'Última atualização: erro de leitura';
+    renderAutonomyState({});
   }
 }
 
