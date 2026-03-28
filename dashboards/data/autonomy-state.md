@@ -1,30 +1,30 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-03-28T12:20:32.937551Z`
+Atualizado em: `2026-03-28T12:24:15.979009Z`
 Status: `Autonomia em atenção`
-Score de autonomia: `74`
+Score de autonomia: `77`
 
 ## Próxima ação
-- `Reconciliar openclaw-workspace`
-- Motivo: openclaw-workspace em amarelo
-- Tipo: `reconcile-warning`
+- `Revisar lf-openalex-enrichment-mvp`
+- Motivo: Repo estagnado há 115.8h: fix(openalex): clarify coverage metrics
+- Tipo: `refresh-stale-repo`
 
 ## Sinais
 - Issues AUTO elegíveis: `40`
 - AUTO em progresso: `3`
 - AUTO autorizadas: `0`
 - AUTO planejadas: `0`
-- Repos verdes: `4`
-- Repos em alerta: `1`
+- Repos verdes: `5`
+- Repos em alerta: `0`
 - Bloqueios: `0`
 - Fila de ações: `5`
 
 ## Próximos 5 passos
-- `Reconciliar openclaw-workspace` — openclaw-workspace em amarelo | tipo: `reconcile-warning`
 - `Revisar lf-openalex-enrichment-mvp` — Repo estagnado há 115.8h: fix(openalex): clarify coverage metrics | tipo: `refresh-stale-repo`
 - `Revisar lf-wikidata-entity-graph` — Repo estagnado há 113.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
+- `Continuar wave ISSUE-009` — Manter a wave ativa: ISSUE-009 (reviewer-delivery + strategist-product) | tipo: `continue-wave`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -34,11 +34,8 @@ Score de autonomia: `74`
 ## Bloqueios
 - nenhum
 
-## Alertas amarelos
-- `deploy-status.json` — openclaw-workspace em amarelo
-
 ## Alertas de saúde
-- Deploy green/yellow/red: 4/1/0
+- Deploy green/yellow/red: 5/0/0
 - Autopilot SLA: 96.67%
 - Intervenções humanas: 1
 - Semáforo: green (consecutiveRed=0)

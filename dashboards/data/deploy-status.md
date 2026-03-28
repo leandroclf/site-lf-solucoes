@@ -39,8 +39,8 @@ Atualizado em: `2026-03-27T13:12:58.338613+00:00`
 - Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23647843219/logs
 - Falhas consecutivas: 0
 
-## 🟡 `leandroclf/openclaw-workspace`
-- Status: erro `no_runs`
-- Detalhes: `No workflow runs found.`
+## 🟢 `leandroclf/openclaw-workspace`
+- Status: informativo `no_runs`
+- Detalhes: `Workspace root sem workflows GitHub Actions configurados.`
 - Endpoint: `n/a`
 - Falhas consecutivas: 0
