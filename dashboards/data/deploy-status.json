@@ -1,5 +1,5 @@
 {
-  "last_updated_utc": "2026-03-28T13:47:10.006871+00:00",
+  "last_updated_utc": "2026-03-28T18:39:01.291628+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
@@ -64,16 +64,16 @@
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23686443798,
+        "id": 23691684032,
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "ecd28ffbf510224004581ec18ba2f2b321adf3e6",
+        "commitSha": "a70c8cda796d528002d416e5af4d0968c7f3b665",
         "commitMessage": "docs(dashboard): refresh autonomy snapshots",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23686443798",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23686443798/logs",
-        "run_number": 65,
-        "created_at": "2026-03-28T13:41:06Z",
-        "updated_at": "2026-03-28T13:41:14Z"
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23691684032",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23691684032/logs",
+        "run_number": 167,
+        "created_at": "2026-03-28T18:35:34Z",
+        "updated_at": "2026-03-28T18:35:56Z"
       },
       "error": null,
       "consecutiveFailures": 0,
@@ -95,5 +95,5 @@
     "findings": 0,
     "report": "ops/multiagent/delivery/ci-regression-watchdog.json"
   },
-  "updatedAt": "2026-03-28T13:47:12.502321+00:00"
+  "updatedAt": "2026-03-28T18:39:03.627858+00:00"
 }
