@@ -1,29 +1,59 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-03-28T12:47:58.353101Z`
+Atualizado em: `2026-03-28T13:27:20.010150Z`
 Status: `Autonomia em atenção`
-Score de autonomia: `74`
+Score de autonomia: `71`
 
 ## Próxima ação
-- `Revisar lf-openalex-enrichment-mvp`
-- Motivo: Repo estagnado há 115.8h: fix(openalex): clarify coverage metrics
-- Tipo: `refresh-stale-repo`
+- `Continuar monitorando ISSUE-007`
+- Motivo: Gate 5/5 por repo crítico: lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 1/5 (próximo repo: lf-openalex-enrichment-mvp).
+- Tipo: `monitor-ci-gate`
 
 ## Sinais
 - Issues AUTO elegíveis: `40`
 - AUTO em progresso: `2`
 - AUTO autorizadas: `0`
 - AUTO planejadas: `0`
+- Alertas de governança: `1`
 - Repos verdes: `5`
 - Repos em alerta: `0`
 - Bloqueios: `0`
-- Fila de ações: `4`
+- Fila de ações: `5`
+
+## Governança
+- Baseline pronta: `True`
+- Delta anterior disponível: `False`
+- Issues no board: `40`
+- Coverage de packet: `22.2`%
+- Novas issues: `0`
+- Issues atualizadas: `0`
+- Artifacts rastreados: `35`
+
+### Novas/Atualizadas
+- baseline inicial estabelecida; nenhuma issue nova ou alterada no snapshot atual.
+
+### Packets pendentes
+- nenhum packet pendente no snapshot atual.
+
+### Artifacts recentes
+- nenhum artifact recente detectado.
+
+## CI gate ISSUE-007
+- Target: `5/5` por repo crítico
+- Completo: `False`
+- Resumo: `lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 1/5`
+- Próximo repo: `lf-openalex-enrichment-mvp`
+- `lf-openalex-enrichment-mvp`: `3/5` restante `2`
+- `lf-wikidata-entity-graph`: `1/5` restante `4`
+- `lf-worldbank-risk-pricing`: `1/5` restante `4`
+- `site-lf-solucoes`: `1/5` restante `4`
 
 ## Próximos 5 passos
-- `Revisar lf-openalex-enrichment-mvp` — Repo estagnado há 115.8h: fix(openalex): clarify coverage metrics | tipo: `refresh-stale-repo`
-- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 113.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
+- `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-openalex-enrichment-mvp 3/5, lf-wikidata-entity-graph 1/5, lf-worldbank-risk-pricing 1/5, site-lf-solucoes 1/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
+- `Revisar lf-openalex-enrichment-mvp` — Repo estagnado há 115.8h: fix(openalex): clarify coverage metrics | tipo: `refresh-stale-repo`
+- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 113.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d

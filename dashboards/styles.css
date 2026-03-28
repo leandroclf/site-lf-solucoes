@@ -292,6 +292,31 @@ section[id] { scroll-margin-top: 132px; }
   padding: 12px;
 }
 
+#autonomy-supervisor .task-list {
+  list-style: none;
+  margin: 0;
+  padding: 0;
+  display: grid;
+  gap: 8px;
+}
+
+#autonomy-supervisor .task-list li {
+  margin: 0;
+  padding: 8px 10px;
+  border: 1px solid #24406f;
+  border-radius: 10px;
+  background: #13213a;
+}
+
+#autonomy-supervisor .task-list strong {
+  display: block;
+  margin-bottom: 4px;
+}
+
+#autonomy-supervisor .task-list .task-meta {
+  color: #bcd0f6;
+}
+
 .signal-family-list,
 .signal-event-list {
   list-style: none;

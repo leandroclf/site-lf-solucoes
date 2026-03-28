@@ -123,6 +123,7 @@ function getDashboardSignalCoverage() {
     { family: 'chart-goal', active: document.querySelectorAll('#tendencias .goal-line').length >= 5 },
     { family: 'signal-panel', active: Boolean(document.getElementById('dashboard-signals-panel') && document.getElementById('dashboard-signal-list') && document.getElementById('dashboard-signal-families')) },
     { family: 'autonomy-panel', active: Boolean(document.getElementById('autonomy-supervisor') && document.getElementById('autonomy-actions') && document.getElementById('autonomy-candidates') && document.getElementById('autonomy-alerts')) },
+    { family: 'governance-panel', active: Boolean(document.getElementById('autonomy-governance') && document.getElementById('autonomy-ci-gate')) },
   ];
 }
 
@@ -528,9 +529,13 @@ function renderAutonomyState(data) {
   const actionsEl = document.getElementById('autonomy-actions');
   const candidatesEl = document.getElementById('autonomy-candidates');
   const alertsEl = document.getElementById('autonomy-alerts');
-  if (!stampEl || !summaryEl || !actionEl || !actionMetaEl || !signalEl || !signalMetaEl || !healthEl || !healthMetaEl || !actionsEl || !candidatesEl || !alertsEl) return;
+  const governanceEl = document.getElementById('autonomy-governance');
+  const ciGateEl = document.getElementById('autonomy-ci-gate');
+  if (!stampEl || !summaryEl || !actionEl || !actionMetaEl || !signalEl || !signalMetaEl || !healthEl || !healthMetaEl || !actionsEl || !candidatesEl || !alertsEl || !governanceEl || !ciGateEl) return;
 
   window.__autonomyData = data || {};
+  const governance = data?.governance || {};
+  const ciGate = data?.signals?.ciGate || {};
 
   const updated = data?.updatedAt ? formatBrtTimestamp(data.updatedAt) : null;
   stampEl.textContent = updated ? `Atualizado em: ${updated}` : 'Atualizado em: n/d';
@@ -538,9 +543,9 @@ function renderAutonomyState(data) {
   actionEl.textContent = data?.recommendedNextAction?.label || 'Monitorar autonomia';
   actionMetaEl.textContent = data?.recommendedNextAction?.reason || 'Sem motivo registrado.';
   signalEl.textContent = data?.overallStatusLabel || 'Autonomia ativa';
-  signalMetaEl.textContent = `AUTO ativo: ${data?.stats?.activeAuto ?? 0} | prontos: ${data?.stats?.readyAuto ?? 0} | planejados: ${data?.stats?.plannedAuto ?? 0}`;
+  signalMetaEl.textContent = `AUTO ativo: ${data?.stats?.activeAuto ?? 0} | prontos: ${data?.stats?.readyAuto ?? 0} | planejados: ${data?.stats?.plannedAuto ?? 0} | CI gate ISSUE-007: ${ciGate?.summary || 'n/d'}`;
   healthEl.textContent = `${Number(data?.autonomyScore || 0)}%`;
-  healthMetaEl.textContent = `Bloqueios: ${data?.stats?.blockers ?? 0} | Fila: ${data?.stats?.actionQueue ?? 0} | Repos em alerta: ${Number(data?.stats?.yellowRepos || 0) + Number(data?.stats?.redRepos || 0)}`;
+  healthMetaEl.textContent = `Bloqueios: ${data?.stats?.blockers ?? 0} | Fila: ${data?.stats?.actionQueue ?? 0} | Governança: ${governance?.newIssueIds?.length ?? 0} novas / ${governance?.packetNeeds?.length ?? 0} packets | Repos em alerta: ${Number(data?.stats?.yellowRepos || 0) + Number(data?.stats?.redRepos || 0)}`;
 
   const actions = Array.isArray(data?.recommendedActions) ? data.recommendedActions.slice(0, 5) : [];
   actionsEl.innerHTML = '';
@@ -611,6 +616,63 @@ function renderAutonomyState(data) {
     li.className = 'task-meta';
     li.textContent = 'Nenhum alerta ou bloqueio ativo.';
     alertsEl.appendChild(li);
+  }
+
+  governanceEl.innerHTML = '';
+  const governanceItems = [
+    ...(Array.isArray(governance?.newIssues) ? governance.newIssues.map((item) => ({
+      label: `NOVA ${item.issueId || 'ISSUE'}`,
+      meta: `${item.title || 'sem título'} | ${item.statusKind || 'n/d'} | owner: ${item.owner || 'n/d'}`,
+    })) : []),
+    ...(Array.isArray(governance?.updatedIssues) ? governance.updatedIssues.map((item) => ({
+      label: `ATUALIZADA ${item.issueId || 'ISSUE'}`,
+      meta: `${item.title || 'sem título'} | ${item.statusKind || 'n/d'} | owner: ${item.owner || 'n/d'}`,
+    })) : []),
+    ...(Array.isArray(governance?.packetNeeds) ? governance.packetNeeds.map((item) => ({
+      label: `PACKET ${item.issueId || 'ISSUE'}`,
+      meta: item.reason || 'Packet pendente',
+    })) : []),
+  ];
+  if (governanceItems.length) {
+    governanceItems.slice(0, 5).forEach((item) => {
+      const li = document.createElement('li');
+      const strong = document.createElement('strong');
+      strong.textContent = item.label;
+      const span = document.createElement('span');
+      span.className = 'task-meta';
+      span.textContent = item.meta;
+      li.append(strong, document.createTextNode(' — '), span);
+      governanceEl.appendChild(li);
+    });
+  } else {
+    const li = document.createElement('li');
+    li.className = 'task-meta';
+    li.textContent = governance?.baselineReady ? 'Sem novas issues ou packets pendentes.' : 'Baseline de governança ainda não estabelecida.';
+    governanceEl.appendChild(li);
+  }
+
+  ciGateEl.innerHTML = '';
+  const ciRepos = Array.isArray(ciGate?.repos) ? ciGate.repos : [];
+  if (ciRepos.length) {
+    ciRepos.slice(0, 5).forEach((repo) => {
+      const li = document.createElement('li');
+      const strong = document.createElement('strong');
+      strong.textContent = repo.repo || 'repo';
+      const span = document.createElement('span');
+      span.className = 'task-meta';
+      span.textContent = `${repo.successes ?? 0}/${ciGate.target || 5} success | restante ${repo.remaining ?? 0}`;
+      li.append(strong, document.createTextNode(' — '), span);
+      ciGateEl.appendChild(li);
+    });
+    const summaryLi = document.createElement('li');
+    summaryLi.className = 'task-meta';
+    summaryLi.textContent = `Gate completo: ${ciGate.complete ? 'sim' : 'não'} | próximo repo: ${ciGate.nextRepo || 'n/d'}`;
+    ciGateEl.appendChild(summaryLi);
+  } else {
+    const li = document.createElement('li');
+    li.className = 'task-meta';
+    li.textContent = 'CI gate indisponível.';
+    ciGateEl.appendChild(li);
   }
 }
 
