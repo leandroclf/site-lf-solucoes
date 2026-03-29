@@ -2333,7 +2333,7 @@ document.getElementById('kanban-autorefresh').textContent = `Auto-refresh: ativo
 
 function refreshAll() {
   bindDashboardActionTracking();
-  Promise.all([loadKanban({ renderBoard: false }), loadSemaphoreState()]).catch(() => {});
+  Promise.all([loadKanban({ renderBoard: false }), loadSemaphoreState(), loadCommercialFunnel()]).catch(() => {});
 
   scheduleLowPriority(() => {
     loadDeployStatus();
@@ -2361,10 +2361,16 @@ function scheduleAutoRefresh() {
   }, AUTO_REFRESH_MS);
 }
 
-window.addEventListener('load', () => {
+function bootDashboard() {
   refreshAll();
   scheduleAutoRefresh();
-});
+}
+
+if (document.readyState === 'loading') {
+  document.addEventListener('DOMContentLoaded', bootDashboard, { once: true });
+} else {
+  bootDashboard();
+}
 
 document.addEventListener('visibilitychange', () => {
   if (!document.hidden) refreshAll();

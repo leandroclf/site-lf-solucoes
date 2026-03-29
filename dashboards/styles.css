@@ -208,6 +208,14 @@ section[id] { scroll-margin-top: 132px; }
   background: linear-gradient(180deg, rgba(53,174,241,.10), #101a2d);
 }
 
+#commercial-funnel {
+  min-height: 700px;
+}
+
+.funnel-panel .mini-grid {
+  align-items: stretch;
+}
+
 .funnel-cta-row {
   display: flex;
   gap: 8px;
@@ -220,6 +228,10 @@ section[id] { scroll-margin-top: 132px; }
   flex-direction: column;
   gap: 8px;
   min-height: 100%;
+}
+
+.funnel-panel .funnel-subcard {
+  min-height: 260px;
 }
 
 .funnel-list {
@@ -368,12 +380,23 @@ section[id] { scroll-margin-top: 132px; }
 .goal-hit { color: #67e8a4; }
 .goal-miss { color: #fbbf24; }
 
-#alertas-gargalos { min-height: 560px; }
+#alertas-gargalos { min-height: 760px; }
 #bottlenecks-list,
 #sla-violations-list,
 #blocked-by-type { min-height: 110px; }
 #critical-jobs-bars,
 #heatmap-categories { min-height: 120px; }
+
+@media (max-width: 900px) {
+  #commercial-funnel,
+  #alertas-gargalos {
+    min-height: auto;
+  }
+
+  .funnel-panel .funnel-subcard {
+    min-height: auto;
+  }
+}
 
 .card {
   border: 1px solid var(--line);
