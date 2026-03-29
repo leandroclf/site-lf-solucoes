@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-29T12:17:11.682392+00:00",
+  "updatedAt": "2026-03-29T17:47:22.580183+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 68,
@@ -78,7 +78,7 @@
       "kind": "refresh-stale-repo",
       "label": "Revisar lf-wikidata-entity-graph",
       "ctaLabel": "Revisar lf-wikidata-entity-graph",
-      "reason": "Repo estagnado h\u00e1 156.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
+      "reason": "Repo estagnado h\u00e1 157.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
       "repo": "lf-wikidata-entity-graph",
       "href": "#repo-sync",
       "priority": 7,
@@ -671,16 +671,114 @@
     "newIssues": [],
     "updatedIssues": [],
     "packetNeeds": [],
-    "packetCoveragePct": 22.2,
+    "packetCoveragePct": 44.4,
     "artifactIssueCount": 35,
-    "recentArtifacts": [],
+    "recentArtifacts": [
+      {
+        "issueId": "ISSUE-008",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-008-009-jtbd-accountability-reconciliation-v1.md",
+          "ops/multiagent/delivery/issue-008-009-operational-checklist.md",
+          "ops/multiagent/delivery/issue-008-jtbd-interview-plan-2026-02-25.md",
+          "ops/multiagent/delivery/issue-008-progress-2026-02-27-1242.md",
+          "ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md",
+          "ops/multiagent/delivery/issue-013-revenue-hypotheses-backlog-v1.md",
+          "ops/multiagent/delivery/issue-013-revenue-hypotheses-pack-v1.md",
+          "issues/ISSUE-008.md",
+          "issues/ISSUE-009-D7-preliminary-decisions-W09.md",
+          "issues/ISSUE-009-D7-weekly-decision-template.md",
+          "issues/ISSUE-009.md"
+        ],
+        "latestArtifactAt": "2026-03-29 12:08 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      },
+      {
+        "issueId": "ISSUE-009",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-008-009-jtbd-accountability-reconciliation-v1.md",
+          "ops/multiagent/delivery/issue-008-009-operational-checklist.md",
+          "ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md",
+          "ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md",
+          "issues/ISSUE-009-D7-preliminary-decisions-W09.md",
+          "issues/ISSUE-009-D7-weekly-decision-template.md",
+          "issues/ISSUE-009.md"
+        ],
+        "latestArtifactAt": "2026-03-29 12:08 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      },
+      {
+        "issueId": "ISSUE-013",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-008-progress-2026-02-27-1242.md",
+          "ops/multiagent/delivery/issue-013-revenue-hypotheses-backlog-v1.md",
+          "ops/multiagent/delivery/issue-013-revenue-hypotheses-pack-v1.md",
+          "ops/multiagent/delivery/issue-013-saas-b2b-commercial-pilot-closeout-v1.md",
+          "ops/multiagent/delivery/issue-013-saas-b2b-commercial-pilot-pack-v1.md",
+          "ops/multiagent/delivery/issue-013-saas-b2b-commercial-pilot-scorecard-v1.md",
+          "ops/multiagent/delivery/issue-013-saas-b2b-commercial-pilot-v1.md",
+          "issues/ISSUE-008.md"
+        ],
+        "latestArtifactAt": "2026-03-29 12:08 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      },
+      {
+        "issueId": "ISSUE-025",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-025-productivity-recovery-closeout-v1.md"
+        ],
+        "latestArtifactAt": "2026-03-29 12:08 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      },
+      {
+        "issueId": "ISSUE-004",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md",
+          "ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md",
+          "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
+        ],
+        "latestArtifactAt": "2026-03-29 12:08 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      },
+      {
+        "issueId": "ISSUE-007",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-007-ci-hardening-remediation-pack-v1.md"
+        ],
+        "latestArtifactAt": "2026-03-29 12:08 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      },
+      {
+        "issueId": "ISSUE-010",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-010-administrative-sla-process-map-v1.md"
+        ],
+        "latestArtifactAt": "2026-03-29 12:08 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      },
+      {
+        "issueId": "ISSUE-011",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md"
+        ],
+        "latestArtifactAt": "2026-03-29 12:08 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      }
+    ],
     "orphanArtifactIssueIds": [
       "ISSUE-038"
     ]
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-03-29T11:47:14.518124+00:00",
+      "updatedAt": "2026-03-29T12:17:13.987656+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -781,13 +879,13 @@
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 156.7,
+      "ageHours": 157.2,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 57.8,
+      "ageHours": 58.3,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],
