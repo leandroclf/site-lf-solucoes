@@ -1,11 +1,12 @@
 {
-  "last_updated_utc": "2026-03-29T02:17:19.564095+00:00",
+  "last_updated_utc": "2026-03-29T02:47:06.844991+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
       "owner": "leandroclf",
       "latestRun": {
         "id": 23658339063,
+        "workflowName": "CI Pipeline",
         "status": "completed",
         "conclusion": "success",
         "commitSha": "5086ef3ff53051a97c035097360060004a90b2db",
@@ -19,7 +20,11 @@
       "error": null,
       "consecutiveFailures": 0,
       "consecutiveSuccesses": 3,
-      "aggregatedStatus": "green"
+      "aggregatedStatus": "green",
+      "requiredWorkflows": [],
+      "requiredWorkflowRuns": [],
+      "requiredWorkflowFailureCount": 0,
+      "requiredWorkflowSuccessCount": 0
     },
     "lf-wikidata-entity-graph": {
       "owner": "leandroclf",
@@ -39,7 +44,11 @@
       "note": "Cached snapshot used because GitHub API fallback returned an error.",
       "consecutiveFailures": 0,
       "consecutiveSuccesses": 1,
-      "aggregatedStatus": "green"
+      "aggregatedStatus": "green",
+      "requiredWorkflows": [],
+      "requiredWorkflowRuns": [],
+      "requiredWorkflowFailureCount": 0,
+      "requiredWorkflowSuccessCount": 0
     },
     "lf-worldbank-risk-pricing": {
       "owner": "leandroclf",
@@ -59,26 +68,94 @@
       "note": "Cached snapshot used because GitHub API fallback returned an error.",
       "consecutiveFailures": 0,
       "consecutiveSuccesses": 1,
-      "aggregatedStatus": "green"
+      "aggregatedStatus": "green",
+      "requiredWorkflows": [],
+      "requiredWorkflowRuns": [],
+      "requiredWorkflowFailureCount": 0,
+      "requiredWorkflowSuccessCount": 0
     },
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23695078774,
+        "id": 23699656541,
+        "workflowName": "Quality Smoke",
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "e8e42601134a3ca89827a62b1fd8c85322dea218",
-        "commitMessage": "docs(dashboard): refresh autonomy snapshots",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23695078774",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23695078774/logs",
-        "run_number": 68,
-        "created_at": "2026-03-28T21:49:50Z",
-        "updated_at": "2026-03-28T21:49:59Z"
+        "commitSha": "6cfb884b8c265a456e6c9092c6635fc6ffa8c4b0",
+        "commitMessage": "docs(site): sync dashboard snapshots",
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23699656541",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23699656541/logs",
+        "run_number": 72,
+        "created_at": "2026-03-29T02:35:51Z",
+        "updated_at": "2026-03-29T02:36:00Z"
       },
       "error": null,
       "consecutiveFailures": 0,
-      "consecutiveSuccesses": 1,
-      "aggregatedStatus": "green"
+      "consecutiveSuccesses": 3,
+      "aggregatedStatus": "green",
+      "requiredWorkflows": [
+        "Quality Smoke",
+        "Lighthouse CI",
+        "Deploy static site to GitHub Pages"
+      ],
+      "requiredWorkflowRuns": [
+        {
+          "workflowName": "Quality Smoke",
+          "latestRun": {
+            "id": 23699656541,
+            "workflowName": "Quality Smoke",
+            "status": "completed",
+            "conclusion": "success",
+            "commitSha": "6cfb884b8c265a456e6c9092c6635fc6ffa8c4b0",
+            "commitMessage": "docs(site): sync dashboard snapshots",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23699656541",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23699656541/logs",
+            "run_number": 72,
+            "created_at": "2026-03-29T02:35:51Z",
+            "updated_at": "2026-03-29T02:36:00Z"
+          },
+          "aggregatedStatus": "green",
+          "missing": false
+        },
+        {
+          "workflowName": "Lighthouse CI",
+          "latestRun": {
+            "id": 23699656550,
+            "workflowName": "Lighthouse CI",
+            "status": "completed",
+            "conclusion": "success",
+            "commitSha": "6cfb884b8c265a456e6c9092c6635fc6ffa8c4b0",
+            "commitMessage": "docs(site): sync dashboard snapshots",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23699656550",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23699656550/logs",
+            "run_number": 73,
+            "created_at": "2026-03-29T02:35:51Z",
+            "updated_at": "2026-03-29T02:37:24Z"
+          },
+          "aggregatedStatus": "green",
+          "missing": false
+        },
+        {
+          "workflowName": "Deploy static site to GitHub Pages",
+          "latestRun": {
+            "id": 23699656549,
+            "workflowName": "Deploy static site to GitHub Pages",
+            "status": "completed",
+            "conclusion": "success",
+            "commitSha": "6cfb884b8c265a456e6c9092c6635fc6ffa8c4b0",
+            "commitMessage": "docs(site): sync dashboard snapshots",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23699656549",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23699656549/logs",
+            "run_number": 173,
+            "created_at": "2026-03-29T02:35:51Z",
+            "updated_at": "2026-03-29T02:36:05Z"
+          },
+          "aggregatedStatus": "green",
+          "missing": false
+        }
+      ],
+      "requiredWorkflowFailureCount": 0,
+      "requiredWorkflowSuccessCount": 3
     },
     "openclaw-workspace": {
       "owner": "leandroclf",
@@ -95,5 +172,5 @@
     "findings": 0,
     "report": "ops/multiagent/delivery/ci-regression-watchdog.json"
   },
-  "updatedAt": "2026-03-29T02:35:16.379798+00:00"
+  "updatedAt": "2026-03-29T02:59:04.108217+00:00"
 }

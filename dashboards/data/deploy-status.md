@@ -1,7 +1,7 @@
 # Status de Deploy e CI
 
 Owner monitorado: `leandroclf`
-Atualizado em: `2026-03-29T02:17:19.564095+00:00`
+Atualizado em: `2026-03-29T02:47:06.844991+00:00`
 
 ## 🟢 `leandroclf/lf-openalex-enrichment-mvp`
 - Status: `completed`
@@ -36,12 +36,16 @@ Atualizado em: `2026-03-29T02:17:19.564095+00:00`
 ## 🟢 `leandroclf/site-lf-solucoes`
 - Status: `completed`
 - Conclusao: `success`
-- Commit: `e8e4260` - docs(dashboard): refresh autonomy snapshots
-- Ultima execucao: 2026-03-28 21:49:50 UTC
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23695078774
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23695078774/logs
-- Falhas consecutivas: 0
-- Sucessos consecutivos: 1
+- Commit: `6cfb884` - docs(site): sync dashboard snapshots
+- Ultima execucao: 2026-03-29 02:35:51 UTC
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23699656541
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23699656541/logs
+- Workflows obrigatorios:
+  - `Quality Smoke`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23699656541
+  - `Lighthouse CI`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23699656550
+  - `Deploy static site to GitHub Pages`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/23699656549
+- Falhas do conjunto: 0
+- Sucessos do conjunto: 3
 
 ## 🟢 `leandroclf/openclaw-workspace`
 - Nenhuma execução encontrada.
