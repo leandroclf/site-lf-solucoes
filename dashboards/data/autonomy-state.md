@@ -1,8 +1,8 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-03-29T12:17:21.297865Z`
+Atualizado em: `2026-03-29T17:47:35.563477Z`
 Status: `Autonomia em atenção`
-Score de autonomia: `68`
+Score de autonomia: `64`
 
 ## Próxima ação
 - `Continuar monitorando ISSUE-007`
@@ -36,11 +36,7 @@ Score de autonomia: `68`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- `ISSUE-008` — ops/multiagent/delivery/issue-008-009-jtbd-accountability-reconciliation-v1.md, ops/multiagent/delivery/issue-008-009-operational-checklist.md, ops/multiagent/delivery/issue-008-jtbd-interview-plan-2026-02-25.md, ops/multiagent/delivery/issue-008-progress-2026-02-27-1242.md, ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md, ops/multiagent/delivery/issue-013-revenue-hypotheses-backlog-v1.md, ops/multiagent/delivery/issue-013-revenue-hypotheses-pack-v1.md, issues/ISSUE-008.md, issues/ISSUE-009-D7-preliminary-decisions-W09.md, issues/ISSUE-009-D7-weekly-decision-template.md, issues/ISSUE-009.md | packet=True | board=True | 2026-03-29 12:08 UTC
-- `ISSUE-009` — ops/multiagent/delivery/issue-008-009-jtbd-accountability-reconciliation-v1.md, ops/multiagent/delivery/issue-008-009-operational-checklist.md, ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md, ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md, issues/ISSUE-009-D7-preliminary-decisions-W09.md, issues/ISSUE-009-D7-weekly-decision-template.md, issues/ISSUE-009.md | packet=True | board=True | 2026-03-29 12:08 UTC
-- `ISSUE-013` — ops/multiagent/delivery/issue-008-progress-2026-02-27-1242.md, ops/multiagent/delivery/issue-013-revenue-hypotheses-backlog-v1.md, ops/multiagent/delivery/issue-013-revenue-hypotheses-pack-v1.md, ops/multiagent/delivery/issue-013-saas-b2b-commercial-pilot-closeout-v1.md, ops/multiagent/delivery/issue-013-saas-b2b-commercial-pilot-pack-v1.md, ops/multiagent/delivery/issue-013-saas-b2b-commercial-pilot-scorecard-v1.md, ops/multiagent/delivery/issue-013-saas-b2b-commercial-pilot-v1.md, issues/ISSUE-008.md | packet=True | board=True | 2026-03-29 12:08 UTC
-- `ISSUE-025` — ops/multiagent/delivery/issue-025-productivity-recovery-closeout-v1.md | packet=True | board=True | 2026-03-29 12:08 UTC
-- `ISSUE-004` — ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md, ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-03-29 12:08 UTC
+- nenhum artifact recente detectado.
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
@@ -57,7 +53,7 @@ Score de autonomia: `68`
 - `Reconciliar site-lf-solucoes` — site-lf-solucoes em amarelo | tipo: `reconcile-warning`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
-- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 157.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
+- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 162.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -76,8 +72,9 @@ Score de autonomia: `68`
 - Semáforo: green (consecutiveRed=0)
 
 ## Repos estagnados
-- `lf-wikidata-entity-graph` — stale | age 157.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 58.3h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 48.6h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 162.7h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 63.8h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
