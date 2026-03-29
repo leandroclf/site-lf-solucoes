@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-03-29T03:01:55.921193+00:00",
+  "updatedAt": "2026-03-29T10:44:38.121264+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 71,
@@ -67,7 +67,7 @@
       "kind": "refresh-stale-repo",
       "label": "Revisar lf-wikidata-entity-graph",
       "ctaLabel": "Revisar lf-wikidata-entity-graph",
-      "reason": "Repo estagnado h\u00e1 147.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
+      "reason": "Repo estagnado h\u00e1 148.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
       "repo": "lf-wikidata-entity-graph",
       "href": "#repo-sync",
       "priority": 7,
@@ -77,7 +77,7 @@
       "kind": "refresh-stale-repo",
       "label": "Revisar lf-worldbank-risk-pricing",
       "ctaLabel": "Revisar lf-worldbank-risk-pricing",
-      "reason": "Repo estagnado h\u00e1 48.8h: feat(worldbank): add telemetry and contract governance",
+      "reason": "Repo estagnado h\u00e1 49.3h: feat(worldbank): add telemetry and contract governance",
       "repo": "lf-worldbank-risk-pricing",
       "href": "#repo-sync",
       "priority": 7,
@@ -679,7 +679,7 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-03-29T03:01:45.199713+00:00",
+      "updatedAt": "2026-03-29T10:44:27.268735+00:00",
       "greenRepos": 5,
       "yellowRepos": 0,
       "redRepos": 0,
@@ -773,13 +773,13 @@
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 147.7,
+      "ageHours": 148.2,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 48.8,
+      "ageHours": 49.3,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],
