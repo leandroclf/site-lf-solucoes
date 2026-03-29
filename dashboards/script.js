@@ -70,6 +70,16 @@ function normalize(text) {
   return String(text || '').toLowerCase();
 }
 
+function escapeHtml(text) {
+  return String(text || '').replace(/[&<>"']/g, (ch) => ({
+    '&': '&amp;',
+    '<': '&lt;',
+    '>': '&gt;',
+    '"': '&quot;',
+    "'": '&#39;',
+  }[ch]));
+}
+
 function extractUpdatedAt(data) {
   return data?.updatedAt || data?.updated_at || data?.last_updated_utc || data?.last_updated || null;
 }
@@ -2018,27 +2028,41 @@ async function loadDeployStatus() {
               repo,
               conclusion: payload.latestRun?.conclusion || payload.latest_run?.conclusion || 'n/d',
               status: payload.latestRun?.status || payload.latest_run?.status || 'n/d',
+              aggregatedStatus: payload.aggregatedStatus || payload.aggregateStatus || payload.latestRun?.conclusion || payload.latest_run?.conclusion || 'n/d',
               runUrl: payload.latestRun?.html_url || payload.latest_run?.html_url || '',
               consecutiveFailures: payload.consecutiveFailures ?? payload.consecutive_failures ?? 0,
               consecutiveSuccesses: payload.consecutiveSuccesses ?? payload.consecutive_successes ?? 0,
+              requiredWorkflowRuns: payload.requiredWorkflowRuns || payload.required_workflow_runs || [],
+              requiredWorkflows: payload.requiredWorkflows || payload.required_workflows || [],
             }))
           : [];
 
     listEl.innerHTML = repoEntries.map((r) => {
       const repoName = r.repo || r.name || r.repository || 'n/d';
-      const concl = r.conclusion || r.latestRun?.conclusion || r.latest_run?.conclusion || r.status || 'n/d';
-      const lower = String(concl).toLowerCase();
-      const ok = lower === 'success';
-      const warn = ['failure', 'cancelled', 'timed_out'].includes(lower) || r.status === 'error';
+      const aggregated = r.aggregatedStatus || r.conclusion || r.latestRun?.conclusion || r.latest_run?.conclusion || r.status || 'n/d';
+      const lower = String(aggregated).toLowerCase();
+      const ok = lower === 'green' || lower === 'success';
+      const warn = ['failure', 'cancelled', 'timed_out', 'yellow'].includes(lower) || r.status === 'error';
+      const red = lower === 'red' || ['failure', 'cancelled', 'timed_out'].includes(lower);
       const consecutive = Number(r.consecutiveFailures ?? r.consecutive_failures ?? 0) || 0;
       const successStreak = Number(r.consecutiveSuccesses ?? r.consecutive_successes ?? 0) || 0;
-      const badge = consecutive ? '🔴' : (ok ? (successStreak >= 5 ? '🎯' : '🟢') : (warn ? '🟡' : '⚪'));
-      const runUrl = r.runUrl || r.latestRun?.html_url || r.latest_run?.html_url || '';
+      const badge = red ? '🔴' : (ok ? (successStreak >= 5 ? '🎯' : '🟢') : (warn ? '🟡' : '⚪'));
+      const requiredRuns = Array.isArray(r.requiredWorkflowRuns) ? r.requiredWorkflowRuns : [];
+      const workflowSummary = requiredRuns.length
+        ? requiredRuns.map((item) => {
+            const wfLatest = item.latestRun || {};
+            const wfStatus = item.aggregatedStatus || wfLatest.conclusion || wfLatest.status || 'n/d';
+            return `${escapeHtml(item.workflowName || 'workflow')}: ${escapeHtml(wfStatus)}`;
+          }).join(' • ')
+        : '';
+      const failedWorkflow = requiredRuns.find((item) => String(item.aggregatedStatus || '').toLowerCase() === 'red' && item.latestRun);
+      const runUrl = failedWorkflow?.latestRun?.html_url || r.runUrl || r.latestRun?.html_url || r.latest_run?.html_url || '';
       const run = runUrl ? `<a href="${runUrl}" target="_blank" rel="noreferrer">run</a>` : 'run n/d';
       const extra = consecutive
         ? ` | ${consecutive} falhas seguidas`
         : (successStreak ? ` | ${successStreak} sucessos seguidos` : '');
-      return `<li><strong>${badge} ${repoName}</strong> — ${concl}${extra} (${run})</li>`;
+      const detailLine = workflowSummary ? ` <div class="task-meta">Workflows: ${workflowSummary}</div>` : '';
+      return `<li><strong>${badge} ${repoName}</strong> — ${escapeHtml(aggregated)}${extra} (${run})${detailLine}</li>`;
     }).join('');
     if (!listEl.innerHTML) listEl.innerHTML = '<li>Sem dados de deploy no momento.</li>';
   } catch {

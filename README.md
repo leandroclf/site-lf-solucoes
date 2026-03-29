@@ -54,6 +54,7 @@ python3 scripts/collect_perf_baseline.py
 
 - Workflow: `.github/workflows/lighthouse-observe.yml`
 - Workflow adicional: `.github/workflows/quality-smoke.yml`
+- Monitor de saúde: `Lighthouse CI`, `Quality Smoke` e `Deploy static site to GitHub Pages` são tratados como sinais obrigatórios no snapshot operacional.
 - Configs:
   - `.lighthouserc.collect.json`
   - `.lighthouserc.observe.json`
