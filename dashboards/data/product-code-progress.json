@@ -1,20 +1,18 @@
 {
-  "updated_at": "2026-04-01T00:47:07.839557+00:00",
+  "updated_at": "2026-04-01T01:17:07.130997+00:00",
   "owner": "leandroclf",
   "repos": [
     {
       "repo": "lf-openalex-enrichment-mvp",
       "path": "/home/leandro/openclaw-workspace/projects/lf-openalex-enrichment-mvp",
       "status": "stale",
-      "errors": [
-        "fetch failed: fatal: unable to access 'https://github.com/leandroclf/lf-openalex-enrichment-mvp.git/': Could not resolve host: github.com"
-      ],
+      "errors": [],
       "branch": "main",
       "last_commit": {
         "sha": "5086ef3ff53051a97c035097360060004a90b2db",
         "date": "2026-03-27T14:09:12-03:00",
         "subject": "fix(openalex): normalize shim file endings",
-        "age_hours": 103.6
+        "age_hours": 104.1
       },
       "commits_48h": 0,
       "ahead_main": 0,
@@ -26,15 +24,13 @@
       "repo": "lf-wikidata-entity-graph",
       "path": "/home/leandro/openclaw-workspace/projects/lf-wikidata-entity-graph",
       "status": "stale",
-      "errors": [
-        "fetch failed: fatal: unable to access 'https://github.com/leandroclf/lf-wikidata-entity-graph.git/': Could not resolve host: github.com"
-      ],
+      "errors": [],
       "branch": "main",
       "last_commit": {
         "sha": "2f974a5c01f30071ea93a859fe0fe1f5d7d9ef90",
         "date": "2026-03-22T20:06:32-03:00",
         "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
-        "age_hours": 217.7
+        "age_hours": 218.2
       },
       "commits_48h": 0,
       "ahead_main": 0,
@@ -46,15 +42,13 @@
       "repo": "lf-worldbank-risk-pricing",
       "path": "/home/leandro/openclaw-workspace/projects/lf-worldbank-risk-pricing",
       "status": "stale",
-      "errors": [
-        "fetch failed: fatal: unable to access 'https://github.com/leandroclf/lf-worldbank-risk-pricing.git/': Could not resolve host: github.com"
-      ],
+      "errors": [],
       "branch": "main",
       "last_commit": {
         "sha": "a73bb756c12f2371e2988f651b9c8e20848f57d7",
         "date": "2026-03-26T23:00:27-03:00",
         "subject": "feat(worldbank): add telemetry and contract governance",
-        "age_hours": 118.8
+        "age_hours": 119.3
       },
       "commits_48h": 0,
       "ahead_main": 0,
@@ -63,5 +57,5 @@
       "open_prs": 0
     }
   ],
-  "updatedAt": "2026-04-01T00:47:39.029981+00:00"
+  "updatedAt": "2026-04-01T01:17:10.156128+00:00"
 }
