@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-01T07:47:11.949392+00:00",
+  "updatedAt": "2026-04-01T08:17:14.206773+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 64,
@@ -78,7 +78,7 @@
       "kind": "refresh-stale-repo",
       "label": "Revisar lf-wikidata-entity-graph",
       "ctaLabel": "Revisar lf-wikidata-entity-graph",
-      "reason": "Repo estagnado h\u00e1 224.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
+      "reason": "Repo estagnado h\u00e1 224.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
       "repo": "lf-wikidata-entity-graph",
       "href": "#repo-sync",
       "priority": 7,
@@ -680,7 +680,7 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-01T07:17:15.280080+00:00",
+      "updatedAt": "2026-04-01T07:47:14.393998+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -781,19 +781,19 @@
     {
       "repo": "lf-openalex-enrichment-mvp",
       "status": "stale",
-      "ageHours": 110.1,
+      "ageHours": 110.6,
       "subject": "fix(openalex): normalize shim file endings"
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 224.2,
+      "ageHours": 224.7,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 125.3,
+      "ageHours": 125.8,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],
