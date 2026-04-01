@@ -1,5 +1,5 @@
 {
-  "last_updated_utc": "2026-04-01T15:17:15.737746+00:00",
+  "last_updated_utc": "2026-04-01T19:47:14.965856+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
@@ -77,17 +77,17 @@
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23856095452,
+        "id": 23867598512,
         "workflowName": "Quality Smoke",
         "status": "in_progress",
         "conclusion": null,
-        "commitSha": "a82dedcffe2d6c5279823869fc08afbb25dac559",
+        "commitSha": "2d12e763de9bcbb76b11b07a92772da6ce3b8dcf",
         "commitMessage": "chore(dashboard): sync data - automated update",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23856095452",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23856095452/logs",
-        "run_number": 148,
-        "created_at": "2026-04-01T15:17:17Z",
-        "updated_at": "2026-04-01T15:17:22Z"
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23867598512",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23867598512/logs",
+        "run_number": 149,
+        "created_at": "2026-04-01T19:47:17Z",
+        "updated_at": "2026-04-01T19:47:20Z"
       },
       "error": null,
       "consecutiveFailures": 0,
@@ -102,17 +102,17 @@
         {
           "workflowName": "Quality Smoke",
           "latestRun": {
-            "id": 23856095452,
+            "id": 23867598512,
             "workflowName": "Quality Smoke",
             "status": "in_progress",
             "conclusion": null,
-            "commitSha": "a82dedcffe2d6c5279823869fc08afbb25dac559",
+            "commitSha": "2d12e763de9bcbb76b11b07a92772da6ce3b8dcf",
             "commitMessage": "chore(dashboard): sync data - automated update",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23856095452",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23856095452/logs",
-            "run_number": 148,
-            "created_at": "2026-04-01T15:17:17Z",
-            "updated_at": "2026-04-01T15:17:22Z"
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23867598512",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23867598512/logs",
+            "run_number": 149,
+            "created_at": "2026-04-01T19:47:17Z",
+            "updated_at": "2026-04-01T19:47:20Z"
           },
           "aggregatedStatus": "yellow",
           "missing": false
@@ -120,17 +120,17 @@
         {
           "workflowName": "Lighthouse CI",
           "latestRun": {
-            "id": 23856095407,
+            "id": 23867598567,
             "workflowName": "Lighthouse CI",
-            "status": "in_progress",
+            "status": "queued",
             "conclusion": null,
-            "commitSha": "a82dedcffe2d6c5279823869fc08afbb25dac559",
+            "commitSha": "2d12e763de9bcbb76b11b07a92772da6ce3b8dcf",
             "commitMessage": "chore(dashboard): sync data - automated update",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23856095407",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23856095407/logs",
-            "run_number": 149,
-            "created_at": "2026-04-01T15:17:17Z",
-            "updated_at": "2026-04-01T15:17:22Z"
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23867598567",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23867598567/logs",
+            "run_number": 150,
+            "created_at": "2026-04-01T19:47:17Z",
+            "updated_at": "2026-04-01T19:47:17Z"
           },
           "aggregatedStatus": "yellow",
           "missing": false
@@ -138,17 +138,17 @@
         {
           "workflowName": "Deploy static site to GitHub Pages",
           "latestRun": {
-            "id": 23856095457,
+            "id": 23867598525,
             "workflowName": "Deploy static site to GitHub Pages",
-            "status": "queued",
+            "status": "in_progress",
             "conclusion": null,
-            "commitSha": "a82dedcffe2d6c5279823869fc08afbb25dac559",
+            "commitSha": "2d12e763de9bcbb76b11b07a92772da6ce3b8dcf",
             "commitMessage": "chore(dashboard): sync data - automated update",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23856095457",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23856095457/logs",
-            "run_number": 249,
-            "created_at": "2026-04-01T15:17:17Z",
-            "updated_at": "2026-04-01T15:17:22Z"
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/23867598525",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/23867598525/logs",
+            "run_number": 250,
+            "created_at": "2026-04-01T19:47:17Z",
+            "updated_at": "2026-04-01T19:47:21Z"
           },
           "aggregatedStatus": "yellow",
           "missing": false
@@ -178,5 +178,5 @@
     "status": "yellow",
     "rule": "repos + ci-regression-watchdog"
   },
-  "updatedAt": "2026-04-01T19:47:12.341286+00:00"
+  "updatedAt": "2026-04-01T20:17:13.765304+00:00"
 }
