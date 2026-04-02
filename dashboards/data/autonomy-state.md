@@ -1,6 +1,6 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-02T11:17:21.056387Z`
+Atualizado em: `2026-04-02T11:47:20.034123Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `64`
 
@@ -53,7 +53,7 @@ Score de autonomia: `64`
 - `Reconciliar site-lf-solucoes` — site-lf-solucoes em amarelo | tipo: `reconcile-warning`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
-- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 252.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
+- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 252.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -72,9 +72,9 @@ Score de autonomia: `64`
 - Semáforo: green (consecutiveRed=0)
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 138.1h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 252.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 153.3h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 138.6h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 252.7h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 153.8h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
