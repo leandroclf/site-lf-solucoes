@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-04T17:47:17.182279+00:00",
+  "updatedAt": "2026-04-04T18:17:14.967263+00:00",
   "source": "git-history + worktree snapshot",
   "snapshots": [
     {
       "commit": "WORKTREE",
-      "capturedAt": "2026-04-04T17:47:15.413770+00:00",
+      "capturedAt": "2026-04-04T18:17:14.316009+00:00",
       "board": {
         "totalIssues": 40,
         "openIssues": 9,
