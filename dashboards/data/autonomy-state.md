@@ -1,6 +1,6 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T05:09:29.947132Z`
+Atualizado em: `2026-04-05T05:10:12.951234Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `64`
 
@@ -72,7 +72,7 @@ Score de autonomia: `64`
 ## Repos estagnados
 - `lf-openalex-enrichment-mvp` — stale | age 204.0h | fix(openalex): normalize shim file endings
 - `lf-wikidata-entity-graph` — stale | age 318.0h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 219.1h | feat(worldbank): add telemetry and contract governance
+- `lf-worldbank-risk-pricing` — stale | age 219.2h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
