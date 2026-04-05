@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-05T09:47:10.092877+00:00",
+  "updatedAt": "2026-04-05T10:17:10.154357+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 61,
@@ -679,7 +679,7 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-05T09:17:13.898181+00:00",
+      "updatedAt": "2026-04-05T09:47:12.770027+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -739,12 +739,12 @@
       "path": "/home/leandro/openclaw/data/finance/ledger.csv",
       "exists": false,
       "changeType": "initial_missing",
-      "observedAt": "2026-04-05T09:00:01.447633+00:00",
+      "observedAt": "2026-04-05T09:30:01.948735+00:00",
       "lastChangeAt": "2026-04-05T04:16:57.648537+00:00",
       "lastAlertAt": null,
       "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
       "discovery": {
-        "observedAt": "2026-04-05T09:00:01.466943+00:00",
+        "observedAt": "2026-04-05T09:30:01.965864+00:00",
         "searchRoots": [
           "/home/leandro/openclaw/data/finance",
           "/home/leandro/openclaw/data",
@@ -831,19 +831,19 @@
     {
       "repo": "lf-openalex-enrichment-mvp",
       "status": "stale",
-      "ageHours": 208.1,
+      "ageHours": 208.6,
       "subject": "fix(openalex): normalize shim file endings"
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 322.2,
+      "ageHours": 322.7,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 223.3,
+      "ageHours": 223.8,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],
