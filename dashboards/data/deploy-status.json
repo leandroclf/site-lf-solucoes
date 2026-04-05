@@ -1,5 +1,5 @@
 {
-  "last_updated_utc": "2026-04-05T14:36:56.532021+00:00",
+  "last_updated_utc": "2026-04-05T14:40:12.694940+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
@@ -15,7 +15,7 @@
         "logs_url": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23658339063/logs",
         "run_number": 3,
         "created_at": "2026-03-27T17:09:34Z",
-        "updated_at": "2026-03-27T17:09:46Z"
+        "updated_at": "2026-04-05T14:39:39Z"
       },
       "error": null,
       "consecutiveFailures": 0,
@@ -77,17 +77,17 @@
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 24003659159,
+        "id": 24003694865,
         "workflowName": "Quality Smoke",
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "ffde55c700179784042a65d84eca4882f833c0e5",
-        "commitMessage": "chore(dashboard): sync green deploy state",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003659159",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003659159/logs",
-        "run_number": 261,
-        "created_at": "2026-04-05T14:35:13Z",
-        "updated_at": "2026-04-05T14:35:20Z"
+        "commitSha": "3a49ffdd12a3f51eb0ebc333c5fb98578c8b4aa2",
+        "commitMessage": "chore(dashboard): sync lighthouse green state",
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003694865",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003694865/logs",
+        "run_number": 262,
+        "created_at": "2026-04-05T14:37:16Z",
+        "updated_at": "2026-04-05T14:37:28Z"
       },
       "error": null,
       "consecutiveFailures": 0,
@@ -102,17 +102,17 @@
         {
           "workflowName": "Quality Smoke",
           "latestRun": {
-            "id": 24003659159,
+            "id": 24003694865,
             "workflowName": "Quality Smoke",
             "status": "completed",
             "conclusion": "success",
-            "commitSha": "ffde55c700179784042a65d84eca4882f833c0e5",
-            "commitMessage": "chore(dashboard): sync green deploy state",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003659159",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003659159/logs",
-            "run_number": 261,
-            "created_at": "2026-04-05T14:35:13Z",
-            "updated_at": "2026-04-05T14:35:20Z"
+            "commitSha": "3a49ffdd12a3f51eb0ebc333c5fb98578c8b4aa2",
+            "commitMessage": "chore(dashboard): sync lighthouse green state",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003694865",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003694865/logs",
+            "run_number": 262,
+            "created_at": "2026-04-05T14:37:16Z",
+            "updated_at": "2026-04-05T14:37:28Z"
           },
           "aggregatedStatus": "green",
           "missing": false
@@ -120,17 +120,17 @@
         {
           "workflowName": "Lighthouse CI",
           "latestRun": {
-            "id": 24003659151,
+            "id": 24003694858,
             "workflowName": "Lighthouse CI",
             "status": "completed",
             "conclusion": "success",
-            "commitSha": "ffde55c700179784042a65d84eca4882f833c0e5",
-            "commitMessage": "chore(dashboard): sync green deploy state",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003659151",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003659151/logs",
-            "run_number": 262,
-            "created_at": "2026-04-05T14:35:13Z",
-            "updated_at": "2026-04-05T14:36:50Z"
+            "commitSha": "3a49ffdd12a3f51eb0ebc333c5fb98578c8b4aa2",
+            "commitMessage": "chore(dashboard): sync lighthouse green state",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003694858",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003694858/logs",
+            "run_number": 263,
+            "created_at": "2026-04-05T14:37:16Z",
+            "updated_at": "2026-04-05T14:38:57Z"
           },
           "aggregatedStatus": "green",
           "missing": false
@@ -138,17 +138,17 @@
         {
           "workflowName": "Deploy static site to GitHub Pages",
           "latestRun": {
-            "id": 24003659145,
+            "id": 24003694841,
             "workflowName": "Deploy static site to GitHub Pages",
             "status": "completed",
             "conclusion": "success",
-            "commitSha": "ffde55c700179784042a65d84eca4882f833c0e5",
-            "commitMessage": "chore(dashboard): sync green deploy state",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003659145",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003659145/logs",
-            "run_number": 362,
-            "created_at": "2026-04-05T14:35:12Z",
-            "updated_at": "2026-04-05T14:35:27Z"
+            "commitSha": "3a49ffdd12a3f51eb0ebc333c5fb98578c8b4aa2",
+            "commitMessage": "chore(dashboard): sync lighthouse green state",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003694841",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003694841/logs",
+            "run_number": 363,
+            "created_at": "2026-04-05T14:37:15Z",
+            "updated_at": "2026-04-05T14:37:31Z"
           },
           "aggregatedStatus": "green",
           "missing": false
@@ -178,5 +178,5 @@
     "status": "green",
     "rule": "repos + ci-regression-watchdog"
   },
-  "updatedAt": "2026-04-05T14:39:48.951996+00:00"
+  "updatedAt": "2026-04-05T14:47:19.762751+00:00"
 }
