@@ -1,6 +1,6 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T14:30:09.989058Z`
+Atualizado em: `2026-04-05T14:31:42.231597Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `61`
 
@@ -36,8 +36,7 @@ Score de autonomia: `61`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-05 14:28 UTC
-- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-05 14:28 UTC
+- nenhum artifact recente detectado.
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
@@ -71,7 +70,7 @@ Score de autonomia: `61`
 - Autopilot SLA: 96.67%
 - Intervenções humanas: 1
 - Semáforo: green (consecutiveRed=0)
-- Ledger export watchdog: stable | exists=True | /home/leandro/openclaw/data/finance/ledger.csv | sugestão=/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx | candidatos=1
+- Ledger export watchdog: stable | exists=True | /home/leandro/openclaw/data/finance/ledger.csv | sugestão=/home/leandro/openclaw/data/finance/ledger.csv | candidatos=3
 - Finance autowire: wired_and_published | candidatos=1 | sugestão=/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx
 
 ## Repos estagnados
