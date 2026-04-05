@@ -1,8 +1,8 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T14:20:02.713881Z`
+Atualizado em: `2026-04-05T14:30:09.989058Z`
 Status: `Autonomia em atenção`
-Score de autonomia: `58`
+Score de autonomia: `61`
 
 ## Próxima ação
 - `Continuar monitorando ISSUE-007`
@@ -14,7 +14,7 @@ Score de autonomia: `58`
 - AUTO em progresso: `2`
 - AUTO autorizadas: `0`
 - AUTO planejadas: `0`
-- Alertas de governança: `3`
+- Alertas de governança: `2`
 - Repos verdes: `4`
 - Repos em alerta: `1`
 - Bloqueios: `0`
@@ -36,7 +36,8 @@ Score de autonomia: `58`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- nenhum artifact recente detectado.
+- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-05 14:28 UTC
+- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-05 14:28 UTC
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
@@ -51,9 +52,9 @@ Score de autonomia: `58`
 ## Próximos 5 passos
 - `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
 - `Reconciliar site-lf-solucoes` — site-lf-solucoes em amarelo | tipo: `reconcile-warning`
-- `Revisar caminhos do export financeiro` — Nenhuma fonte provável descoberta nos roots padrão; informe o caminho real ou amplie OPENCLAW_LEDGER_EXPORT_SEARCH_PATHS. | tipo: `discover-ledger-export`
-- `Finance export autowire aguardando fonte` — Nenhum export financeiro real foi encontrado ainda; o cron segue descobrindo e mantendo o watchdog atualizado. | tipo: `finance-export-autowire`
+- `Finance export autowire em execução` — Status atual: wired_and_published | candidatos: 1 | tipo: `finance-export-autowire`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
+- `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -70,8 +71,8 @@ Score de autonomia: `58`
 - Autopilot SLA: 96.67%
 - Intervenções humanas: 1
 - Semáforo: green (consecutiveRed=0)
-- Ledger export watchdog: initial_missing | exists=False | /home/leandro/openclaw/data/finance/ledger.csv | sugestão=n/d | candidatos=0
-- Finance autowire: waiting_for_source | candidatos=0 | sugestão=n/d
+- Ledger export watchdog: stable | exists=True | /home/leandro/openclaw/data/finance/ledger.csv | sugestão=/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx | candidatos=1
+- Finance autowire: wired_and_published | candidatos=1 | sugestão=/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx
 
 ## Repos estagnados
 - `lf-openalex-enrichment-mvp` — stale | age 213.1h | fix(openalex): normalize shim file endings
