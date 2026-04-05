@@ -1,12 +1,12 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T05:10:12.951234Z`
+Atualizado em: `2026-04-05T05:17:31.480039Z`
 Status: `Autonomia em atenção`
-Score de autonomia: `64`
+Score de autonomia: `61`
 
 ## Próxima ação
 - `Continuar monitorando ISSUE-007`
-- Motivo: Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5 (próximo repo: lf-openalex-enrichment-mvp).
+- Motivo: Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp).
 - Tipo: `monitor-ci-gate`
 
 ## Sinais
@@ -15,8 +15,8 @@ Score de autonomia: `64`
 - AUTO autorizadas: `0`
 - AUTO planejadas: `0`
 - Alertas de governança: `2`
-- Repos verdes: `5`
-- Repos em alerta: `0`
+- Repos verdes: `4`
+- Repos em alerta: `1`
 - Bloqueios: `0`
 - Fila de ações: `5`
 
@@ -41,19 +41,19 @@ Score de autonomia: `64`
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
 - Completo: `False`
-- Resumo: `lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5`
+- Resumo: `lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5`
 - Próximo repo: `lf-openalex-enrichment-mvp`
 - `lf-wikidata-entity-graph`: `19/5` restante `0`
 - `lf-worldbank-risk-pricing`: `9/5` restante `0`
 - `lf-openalex-enrichment-mvp`: `3/5` restante `2`
-- `site-lf-solucoes`: `3/5` restante `2`
+- `site-lf-solucoes`: `0/5` restante `5`
 
 ## Próximos 5 passos
-- `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
+- `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
+- `Reconciliar site-lf-solucoes` — site-lf-solucoes em amarelo | tipo: `reconcile-warning`
 - `Revisar caminhos do export financeiro` — Nenhuma fonte provável descoberta nos roots padrão; informe o caminho real ou amplie OPENCLAW_LEDGER_EXPORT_SEARCH_PATHS. | tipo: `discover-ledger-export`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
-- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 318.0h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -62,17 +62,20 @@ Score de autonomia: `64`
 ## Bloqueios
 - nenhum
 
+## Alertas amarelos
+- `deploy-status.json` — site-lf-solucoes em amarelo
+
 ## Alertas de saúde
-- Deploy green/yellow/red: 5/0/0
+- Deploy green/yellow/red: 4/1/0
 - Autopilot SLA: 96.67%
 - Intervenções humanas: 1
 - Semáforo: green (consecutiveRed=0)
 - Ledger export watchdog: initial_missing | exists=False | /home/leandro/openclaw/data/finance/ledger.csv | sugestão=n/d | candidatos=0
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 204.0h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 318.0h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 219.2h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 204.1h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 318.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 219.3h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
