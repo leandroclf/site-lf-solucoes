@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-05T11:17:29.862239+00:00",
+  "updatedAt": "2026-04-05T11:47:08.983826+00:00",
   "source": "git-history + worktree snapshot",
   "snapshots": [
     {
       "commit": "WORKTREE",
-      "capturedAt": "2026-04-05T11:17:29.637851+00:00",
+      "capturedAt": "2026-04-05T11:47:08.715890+00:00",
       "board": {
         "totalIssues": 40,
         "openIssues": 9,
@@ -64,31 +64,6 @@
         "humanOpenIssues": 5,
         "humanCompletedIssues": 1,
         "completionPct": 55.0
-      },
-      "deploy": {
-        "totalRepos": 5,
-        "greenRepos": 4,
-        "yellowRepos": 0,
-        "redRepos": 1,
-        "unknownRepos": 0,
-        "consecutiveFailuresTotal": 1,
-        "maxConsecutiveFailures": 1,
-        "healthPct": 80.0,
-        "watchdog": "green"
-      }
-    },
-    {
-      "commit": "4846a2ade1de178e8c300baa50e219a51f31b4d9",
-      "capturedAt": "2026-03-28T09:25:50-03:00",
-      "board": {
-        "totalIssues": 40,
-        "openIssues": 10,
-        "activeIssues": 10,
-        "reviewIssues": 4,
-        "completedIssues": 21,
-        "humanOpenIssues": 5,
-        "humanCompletedIssues": 1,
-        "completionPct": 52.5
       },
       "deploy": {
         "totalRepos": 5,
