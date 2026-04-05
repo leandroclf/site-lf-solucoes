@@ -1,6 +1,6 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T09:47:28.813235Z`
+Atualizado em: `2026-04-05T10:17:29.835459Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `61`
 
@@ -36,7 +36,8 @@ Score de autonomia: `61`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- nenhum artifact recente detectado.
+- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-05 10:15 UTC
+- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-05 10:15 UTC
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
@@ -73,9 +74,9 @@ Score de autonomia: `61`
 - Ledger export watchdog: initial_missing | exists=False | /home/leandro/openclaw/data/finance/ledger.csv | sugestão=n/d | candidatos=0
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 208.6h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 322.7h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 223.8h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 209.1h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 323.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 224.3h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
