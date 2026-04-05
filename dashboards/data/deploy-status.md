@@ -1,8 +1,8 @@
 # Status de Deploy e CI
 
 Owner monitorado: `leandroclf`
-Atualizado em: `2026-04-05T14:17:13.873036+00:00`
-Semáforo agregado: `yellow`
+Atualizado em: `2026-04-05T14:34:42.604142+00:00`
+Semáforo agregado: `green`
 
 ## 🟢 `leandroclf/lf-openalex-enrichment-mvp`
 - Status: `completed`
@@ -34,19 +34,19 @@ Semáforo agregado: `yellow`
 - Falhas consecutivas: 0
 - Sucessos consecutivos: 9
 
-## 🟡 `leandroclf/site-lf-solucoes`
-- Status: `in_progress`
-- Conclusao: `None`
-- Commit: `ec81cdd` - feat(dashboard): surface finance autowire signal
-- Ultima execucao: 2026-04-05 14:17:14 UTC
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003351934
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003351934/logs
+## 🟢 `leandroclf/site-lf-solucoes`
+- Status: `completed`
+- Conclusao: `success`
+- Commit: `b7649ef` - chore(dashboard): sync workbook-ledger autonomy state
+- Ultima execucao: 2026-04-05 14:32:31 UTC
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003612489
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003612489/logs
 - Workflows obrigatorios:
-  - `Quality Smoke`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003351934
-  - `Lighthouse CI`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003351931
-  - `Deploy static site to GitHub Pages`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003351937
+  - `Quality Smoke`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003612489
+  - `Lighthouse CI`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003612487
+  - `Deploy static site to GitHub Pages`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003612488
 - Falhas do conjunto: 0
-- Sucessos do conjunto: 0
+- Sucessos do conjunto: 3
 
 ## 🟢 `leandroclf/openclaw-workspace`
 - Nenhuma execução encontrada.

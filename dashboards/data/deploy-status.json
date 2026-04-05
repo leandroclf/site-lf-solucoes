@@ -1,5 +1,5 @@
 {
-  "last_updated_utc": "2026-04-05T14:17:13.873036+00:00",
+  "last_updated_utc": "2026-04-05T14:34:42.604142+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
@@ -77,22 +77,22 @@
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 24003351934,
+        "id": 24003612489,
         "workflowName": "Quality Smoke",
-        "status": "in_progress",
-        "conclusion": null,
-        "commitSha": "ec81cdd7573322ddb93048dec0f52debd470ec43",
-        "commitMessage": "feat(dashboard): surface finance autowire signal",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003351934",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003351934/logs",
-        "run_number": 255,
-        "created_at": "2026-04-05T14:17:14Z",
-        "updated_at": "2026-04-05T14:17:16Z"
+        "status": "completed",
+        "conclusion": "success",
+        "commitSha": "b7649efbfd54ac12258daa67832fa36350570ca4",
+        "commitMessage": "chore(dashboard): sync workbook-ledger autonomy state",
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003612489",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003612489/logs",
+        "run_number": 260,
+        "created_at": "2026-04-05T14:32:31Z",
+        "updated_at": "2026-04-05T14:32:42Z"
       },
       "error": null,
       "consecutiveFailures": 0,
-      "consecutiveSuccesses": 0,
-      "aggregatedStatus": "yellow",
+      "consecutiveSuccesses": 3,
+      "aggregatedStatus": "green",
       "requiredWorkflows": [
         "Quality Smoke",
         "Lighthouse CI",
@@ -102,60 +102,60 @@
         {
           "workflowName": "Quality Smoke",
           "latestRun": {
-            "id": 24003351934,
+            "id": 24003612489,
             "workflowName": "Quality Smoke",
-            "status": "in_progress",
-            "conclusion": null,
-            "commitSha": "ec81cdd7573322ddb93048dec0f52debd470ec43",
-            "commitMessage": "feat(dashboard): surface finance autowire signal",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003351934",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003351934/logs",
-            "run_number": 255,
-            "created_at": "2026-04-05T14:17:14Z",
-            "updated_at": "2026-04-05T14:17:16Z"
+            "status": "completed",
+            "conclusion": "success",
+            "commitSha": "b7649efbfd54ac12258daa67832fa36350570ca4",
+            "commitMessage": "chore(dashboard): sync workbook-ledger autonomy state",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003612489",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003612489/logs",
+            "run_number": 260,
+            "created_at": "2026-04-05T14:32:31Z",
+            "updated_at": "2026-04-05T14:32:42Z"
           },
-          "aggregatedStatus": "yellow",
+          "aggregatedStatus": "green",
           "missing": false
         },
         {
           "workflowName": "Lighthouse CI",
           "latestRun": {
-            "id": 24003351931,
+            "id": 24003612487,
             "workflowName": "Lighthouse CI",
-            "status": "in_progress",
-            "conclusion": null,
-            "commitSha": "ec81cdd7573322ddb93048dec0f52debd470ec43",
-            "commitMessage": "feat(dashboard): surface finance autowire signal",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003351931",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003351931/logs",
-            "run_number": 256,
-            "created_at": "2026-04-05T14:17:14Z",
-            "updated_at": "2026-04-05T14:17:18Z"
+            "status": "completed",
+            "conclusion": "success",
+            "commitSha": "b7649efbfd54ac12258daa67832fa36350570ca4",
+            "commitMessage": "chore(dashboard): sync workbook-ledger autonomy state",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003612487",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003612487/logs",
+            "run_number": 261,
+            "created_at": "2026-04-05T14:32:31Z",
+            "updated_at": "2026-04-05T14:34:12Z"
           },
-          "aggregatedStatus": "yellow",
+          "aggregatedStatus": "green",
           "missing": false
         },
         {
           "workflowName": "Deploy static site to GitHub Pages",
           "latestRun": {
-            "id": 24003351937,
+            "id": 24003612488,
             "workflowName": "Deploy static site to GitHub Pages",
-            "status": "queued",
-            "conclusion": null,
-            "commitSha": "ec81cdd7573322ddb93048dec0f52debd470ec43",
-            "commitMessage": "feat(dashboard): surface finance autowire signal",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003351937",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003351937/logs",
-            "run_number": 356,
-            "created_at": "2026-04-05T14:17:14Z",
-            "updated_at": "2026-04-05T14:17:16Z"
+            "status": "completed",
+            "conclusion": "success",
+            "commitSha": "b7649efbfd54ac12258daa67832fa36350570ca4",
+            "commitMessage": "chore(dashboard): sync workbook-ledger autonomy state",
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003612488",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003612488/logs",
+            "run_number": 361,
+            "created_at": "2026-04-05T14:32:31Z",
+            "updated_at": "2026-04-05T14:32:46Z"
           },
-          "aggregatedStatus": "yellow",
+          "aggregatedStatus": "green",
           "missing": false
         }
       ],
       "requiredWorkflowFailureCount": 0,
-      "requiredWorkflowSuccessCount": 0
+      "requiredWorkflowSuccessCount": 3
     },
     "openclaw-workspace": {
       "owner": "leandroclf",
@@ -175,8 +175,8 @@
     "report": "ops/multiagent/delivery/ci-regression-watchdog.json"
   },
   "aggregate": {
-    "status": "yellow",
+    "status": "green",
     "rule": "repos + ci-regression-watchdog"
   },
-  "updatedAt": "2026-04-05T14:31:42.568817+00:00"
+  "updatedAt": "2026-04-05T14:35:01.505648+00:00"
 }

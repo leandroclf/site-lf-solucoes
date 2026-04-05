@@ -1,17 +1,17 @@
 {
-  "updatedAt": "2026-04-05T14:31:42.570110+00:00",
+  "updatedAt": "2026-04-05T14:35:01.506425+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
-  "autonomyScore": 61,
+  "autonomyScore": 64,
   "summary": "5 a\u00e7\u00e3o(\u00f5es) sugerida(s); pr\u00f3ximo passo: Continuar monitorando ISSUE-007.",
   "recommendedNextAction": {
     "kind": "monitor-ci-gate",
     "label": "Continuar monitorando ISSUE-007",
     "ctaLabel": "Continuar monitorando ISSUE-007",
-    "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
+    "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
     "issueId": "ISSUE-007",
     "target": 5,
-    "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+    "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5",
     "nextRepo": "lf-openalex-enrichment-mvp",
     "href": "#deploy-ci",
     "priority": 1,
@@ -22,31 +22,20 @@
       "kind": "monitor-ci-gate",
       "label": "Continuar monitorando ISSUE-007",
       "ctaLabel": "Continuar monitorando ISSUE-007",
-      "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
+      "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
       "issueId": "ISSUE-007",
       "target": 5,
-      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5",
       "nextRepo": "lf-openalex-enrichment-mvp",
       "href": "#deploy-ci",
       "priority": 1,
       "order": 0
     },
     {
-      "kind": "reconcile-warning",
-      "label": "Reconciliar site-lf-solucoes",
-      "ctaLabel": "Reconciliar site-lf-solucoes",
-      "reason": "site-lf-solucoes em amarelo",
-      "repo": "site-lf-solucoes",
-      "source": "deploy-status.json",
-      "href": "#repo-sync",
-      "priority": 1,
-      "order": 2
-    },
-    {
       "kind": "finance-export-autowire",
       "label": "Finance export autowire em execu\u00e7\u00e3o",
       "ctaLabel": "Finance export autowire em execu\u00e7\u00e3o",
-      "reason": "Status atual: wired_and_published | candidatos: 1",
+      "reason": "Status atual: dry_run_candidate | candidatos: 3",
       "href": "#autonomy-supervisor",
       "priority": 3,
       "order": 1
@@ -65,7 +54,7 @@
       "status": "IN PROGRESS (remediation pack publicado; latest CI green; 5/5 gate ainda n\u00e3o satisfeito)",
       "href": "#autonomy-supervisor",
       "priority": 4,
-      "order": 3
+      "order": 2
     },
     {
       "kind": "continue-wave",
@@ -81,6 +70,16 @@
       "status": "IN PROGRESS (pipeline completo; D3-D7 replanejados)",
       "href": "#autonomy-supervisor",
       "priority": 4,
+      "order": 3
+    },
+    {
+      "kind": "refresh-stale-repo",
+      "label": "Revisar lf-wikidata-entity-graph",
+      "ctaLabel": "Revisar lf-wikidata-entity-graph",
+      "reason": "Repo estagnado h\u00e1 327.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
+      "repo": "lf-wikidata-entity-graph",
+      "href": "#repo-sync",
+      "priority": 7,
       "order": 4
     }
   ],
@@ -93,8 +92,8 @@
     "governanceAlerts": 2,
     "actionQueue": 5,
     "staleRepos": 3,
-    "greenRepos": 4,
-    "yellowRepos": 1,
+    "greenRepos": 5,
+    "yellowRepos": 0,
     "redRepos": 0
   },
   "governance": {
@@ -679,9 +678,9 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-05T14:17:13.873036+00:00",
-      "greenRepos": 4,
-      "yellowRepos": 1,
+      "updatedAt": "2026-04-05T14:34:42.604142+00:00",
+      "greenRepos": 5,
+      "yellowRepos": 0,
       "redRepos": 0,
       "regressionWatchdog": {
         "status": "green",
@@ -692,7 +691,7 @@
     "ciGate": {
       "target": 5,
       "complete": false,
-      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5",
       "repos": [
         {
           "repo": "lf-wikidata-entity-graph",
@@ -717,10 +716,10 @@
         },
         {
           "repo": "site-lf-solucoes",
-          "successes": 0,
-          "remaining": 5,
+          "successes": 3,
+          "remaining": 2,
           "complete": false,
-          "status": "yellow"
+          "status": "green"
         }
       ],
       "nextRepo": "lf-openalex-enrichment-mvp"
@@ -848,166 +847,98 @@
         ]
       },
       "autowire": {
-        "status": "wired_and_published",
-        "observedAt": "2026-04-05T14:28:07.458770+00:00",
-        "candidateCount": 1,
+        "status": "dry_run_candidate",
+        "observedAt": "2026-04-05T14:32:04.320996+00:00",
+        "candidateCount": 3,
         "recommendedSource": {
-          "path": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
-          "score": 49,
+          "path": "/home/leandro/openclaw/data/finance/ledger.csv",
+          "score": 193,
           "reasons": [
-            "supported format .xlsx",
+            "canonical finance export path",
+            "supported format .csv",
+            "name matches ledger",
             "path matches finance",
-            "older snapshot"
+            "updated in the last 24h"
           ],
-          "size": 11828,
-          "mtime": "2024-06-21T00:35:45+00:00",
-          "mtimeEpoch": 1718930145.0,
-          "suffix": ".xlsx"
+          "size": 2372,
+          "mtime": "2026-04-05T14:28:02.748678+00:00",
+          "mtimeEpoch": 1775399282.748678,
+          "suffix": ".csv"
         }
       }
     },
     "financeAutowire": {
-      "observedAt": "2026-04-05T14:28:07.458770+00:00",
-      "status": "wired_and_published",
-      "dryRun": false,
+      "observedAt": "2026-04-05T14:32:04.320996+00:00",
+      "status": "dry_run_candidate",
+      "dryRun": true,
       "canonicalLedger": "/home/leandro/openclaw/data/finance/ledger.csv",
-      "candidateCount": 1,
+      "candidateCount": 3,
       "recommendedSource": {
-        "path": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
-        "score": 49,
+        "path": "/home/leandro/openclaw/data/finance/ledger.csv",
+        "score": 193,
         "reasons": [
-          "supported format .xlsx",
+          "canonical finance export path",
+          "supported format .csv",
+          "name matches ledger",
           "path matches finance",
-          "older snapshot"
+          "updated in the last 24h"
         ],
-        "size": 11828,
-        "mtime": "2024-06-21T00:35:45+00:00",
-        "mtimeEpoch": 1718930145.0,
-        "suffix": ".xlsx"
+        "size": 2372,
+        "mtime": "2026-04-05T14:28:02.748678+00:00",
+        "mtimeEpoch": 1775399282.748678,
+        "suffix": ".csv"
       },
       "searchRoots": [
+        "/home/leandro/openclaw/data/finance",
+        "/home/leandro/openclaw/data",
+        "/home/leandro/openclaw",
+        "/home/leandro/OneDrive",
+        "/home/leandro/OneDrive/Documents",
+        "/home/leandro/OneDrive/Downloads",
+        "/home/leandro/Downloads",
+        "/home/leandro/Documents",
+        "/home/leandro/Desktop",
+        "/home/leandro/finance",
+        "/home/leandro/Finance",
+        "/home/leandro/clawd",
+        "/home/leandro/openclaw-workspace",
+        "/home/leandro/Projects",
+        "/home/leandro/Workspace",
+        "/home/leandro/Work",
+        "/home/leandro/repos",
+        "/home/leandro/src",
+        "/home/leandro/code",
+        "/home/leandro/dev",
+        "/mnt/c/Users/leandro/Downloads",
+        "/mnt/c/Users/leandro/Documents",
+        "/mnt/c/Users/leandro/Desktop",
+        "/mnt/c/Users/leandro/OneDrive",
+        "/mnt/c/Users/leandro/OneDrive/Documents",
+        "/mnt/c/Users/leandro/OneDrive/Downloads",
+        "/mnt/c/Users/leandro/Projects",
+        "/mnt/c/Users/leandro/Workspace",
+        "/mnt/c/Users/leandro/Work",
+        "/mnt/c/Users/leandro/repos",
+        "/mnt/c/Users/leandro/src",
+        "/mnt/c/Users/leandro/code",
+        "/mnt/c/Users/leandro/dev",
+        "/mnt/c/Users/Public/Downloads",
+        "/mnt/d/OneDrive",
+        "/mnt/d/OneDrive/Documents",
+        "/mnt/d/OneDrive/Downloads",
+        "/mnt/d/OneDrive/Financeiro",
+        "/mnt/d/OneDrive/YukZ Tech",
         "/mnt/d/OneDrive/YukZ Tech/Financeiro"
       ],
       "actions": [
-        "wired_and_published"
+        "dry_run_candidate"
       ],
-      "install": {
-        "returncode": 0,
-        "stdout": "/home/leandro/openclaw/data/finance/ledger.csv\n27\nConverted XLSX finance export to canonical CSV: /home/leandro/openclaw/data/finance/ledger.csv",
-        "stderr": ""
-      },
-      "capture": {
-        "returncode": 0,
-        "stdout": "finance_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md\nlegal_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md\nAgente: workflow-runner\nSkill: n/a (execu\u00e7\u00e3o direta)\nWorkflow: weekly finance/legal capture\nledger_export: /home/leandro/openclaw/data/finance/ledger.csv\ncommit: da651d26",
-        "stderr": "",
-        "commit": "da651d26"
-      },
+      "install": null,
+      "capture": null,
       "watchdog": {
-        "status": "stable",
-        "changeType": "stable",
-        "ledgerExport": {
-          "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-          "exists": true,
-          "observedAt": "2026-04-05T14:28:06.211993+00:00",
-          "size": 2372,
-          "mtime": "2026-04-05T14:28:02.748678+00:00",
-          "sha256": "f884ec625f4ebef085e83f9e29a492b99c775f25fa745b72ef3f71b97c0d4945"
-        },
-        "discovery": {
-          "observedAt": "2026-04-05T14:28:06.216111+00:00",
-          "searchRoots": [
-            "/mnt/d/OneDrive/YukZ Tech/Financeiro"
-          ],
-          "maxDepth": 5,
-          "limit": 8,
-          "candidateCount": 1,
-          "candidates": [
-            {
-              "path": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
-              "score": 49,
-              "reasons": [
-                "supported format .xlsx",
-                "path matches finance",
-                "older snapshot"
-              ],
-              "size": 11828,
-              "mtime": "2024-06-21T00:35:45+00:00",
-              "mtimeEpoch": 1718930145.0,
-              "suffix": ".xlsx"
-            }
-          ],
-          "recommendedSource": {
-            "path": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
-            "score": 49,
-            "reasons": [
-              "supported format .xlsx",
-              "path matches finance",
-              "older snapshot"
-            ],
-            "size": 11828,
-            "mtime": "2024-06-21T00:35:45+00:00",
-            "mtimeEpoch": 1718930145.0,
-            "suffix": ".xlsx"
-          }
-        },
-        "previousState": {
-          "observedAt": "2026-04-05T14:28:02.852786+00:00",
-          "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-          "exists": true,
-          "size": 2372,
-          "mtime": "2026-04-05T14:28:02.748678+00:00",
-          "sha256": "f884ec625f4ebef085e83f9e29a492b99c775f25fa745b72ef3f71b97c0d4945",
-          "lastChangeType": "appeared",
-          "lastChangeAt": "2026-04-05T14:28:02.852786+00:00",
-          "lastAlertAt": null,
-          "discovery": {
-            "observedAt": "2026-04-05T14:28:02.857245+00:00",
-            "searchRoots": [
-              "/mnt/d/OneDrive/YukZ Tech/Financeiro"
-            ],
-            "maxDepth": 5,
-            "limit": 8,
-            "candidateCount": 1,
-            "candidates": [
-              {
-                "path": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
-                "score": 49,
-                "reasons": [
-                  "supported format .xlsx",
-                  "path matches finance",
-                  "older snapshot"
-                ],
-                "size": 11828,
-                "mtime": "2024-06-21T00:35:45+00:00",
-                "mtimeEpoch": 1718930145.0,
-                "suffix": ".xlsx"
-              }
-            ],
-            "recommendedSource": {
-              "path": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
-              "score": 49,
-              "reasons": [
-                "supported format .xlsx",
-                "path matches finance",
-                "older snapshot"
-              ],
-              "size": 11828,
-              "mtime": "2024-06-21T00:35:45+00:00",
-              "mtimeEpoch": 1718930145.0,
-              "suffix": ".xlsx"
-            }
-          }
-        },
-        "alert": {
-          "sent": false,
-          "reason": "stable"
-        },
-        "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
-        "observedAt": "2026-04-05T14:28:06.211993+00:00",
-        "dryRun": false,
-        "returncode": 0
+        "status": "dry_run"
       },
-      "candidatePath": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
+      "candidatePath": "/home/leandro/openclaw/data/finance/ledger.csv",
       "stateFile": "/home/leandro/openclaw/runtime/agentos/finance-export-autowire.json"
     },
     "handoff": {
@@ -1043,14 +974,7 @@
     }
   ],
   "blockers": [],
-  "warnings": [
-    {
-      "source": "deploy-status.json",
-      "severity": "medium",
-      "repo": "site-lf-solucoes",
-      "details": "site-lf-solucoes em amarelo"
-    }
-  ],
+  "warnings": [],
   "advisories": [
     {
       "repo": "lf-openalex-enrichment-mvp",
