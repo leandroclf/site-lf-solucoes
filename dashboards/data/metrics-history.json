@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-05T03:47:20.111097+00:00",
+  "updatedAt": "2026-04-05T04:17:11.150547+00:00",
   "source": "git-history + worktree snapshot",
   "snapshots": [
     {
       "commit": "WORKTREE",
-      "capturedAt": "2026-04-05T03:47:19.155348+00:00",
+      "capturedAt": "2026-04-05T04:17:10.866988+00:00",
       "board": {
         "totalIssues": 40,
         "openIssues": 9,
@@ -28,8 +28,8 @@
       }
     },
     {
-      "commit": "28cc3e9f3b13d50effe5a5689e378bade6e794c4",
-      "capturedAt": "2026-03-29T17:57:38-03:00",
+      "commit": "20f4fcb87a8873f8212692f7330482d8aeacaff9",
+      "capturedAt": "2026-04-05T01:01:49-03:00",
       "board": {
         "totalIssues": 40,
         "openIssues": 9,
@@ -114,56 +114,6 @@
         "humanOpenIssues": 5,
         "humanCompletedIssues": 1,
         "completionPct": 52.5
-      },
-      "deploy": {
-        "totalRepos": 5,
-        "greenRepos": 3,
-        "yellowRepos": 1,
-        "redRepos": 1,
-        "unknownRepos": 0,
-        "consecutiveFailuresTotal": 1,
-        "maxConsecutiveFailures": 1,
-        "healthPct": 70.0,
-        "watchdog": "green"
-      }
-    },
-    {
-      "commit": "ee61415ea54e6518aff10387875d36e03463096b",
-      "capturedAt": "2026-03-27T13:44:06-03:00",
-      "board": {
-        "totalIssues": 40,
-        "openIssues": 11,
-        "activeIssues": 11,
-        "reviewIssues": 3,
-        "completedIssues": 16,
-        "humanOpenIssues": 5,
-        "humanCompletedIssues": 1,
-        "completionPct": 40.0
-      },
-      "deploy": {
-        "totalRepos": 5,
-        "greenRepos": 3,
-        "yellowRepos": 1,
-        "redRepos": 1,
-        "unknownRepos": 0,
-        "consecutiveFailuresTotal": 1,
-        "maxConsecutiveFailures": 1,
-        "healthPct": 70.0,
-        "watchdog": "green"
-      }
-    },
-    {
-      "commit": "295d288fb7671377cdbb44d32de850147f7e1762",
-      "capturedAt": "2026-03-27T13:08:55-03:00",
-      "board": {
-        "totalIssues": 40,
-        "openIssues": 11,
-        "activeIssues": 11,
-        "reviewIssues": 0,
-        "completedIssues": 11,
-        "humanOpenIssues": 5,
-        "humanCompletedIssues": 1,
-        "completionPct": 27.5
       },
       "deploy": {
         "totalRepos": 5,
