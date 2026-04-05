@@ -547,6 +547,8 @@ function renderAutonomyState(data) {
   const governance = data?.governance || {};
   const ciGate = data?.signals?.ciGate || {};
   const ledger = data?.signals?.ledgerExport || {};
+  const ledgerSuggestedSource = ledger?.discovery?.recommendedSource?.path || null;
+  const ledgerCandidateCount = Number(ledger?.discovery?.candidateCount || 0);
 
   const updated = data?.updatedAt ? formatBrtTimestamp(data.updatedAt) : null;
   stampEl.textContent = updated ? `Atualizado em: ${updated}` : 'Atualizado em: n/d';
@@ -554,9 +556,9 @@ function renderAutonomyState(data) {
   actionEl.textContent = data?.recommendedNextAction?.label || 'Monitorar autonomia';
   actionMetaEl.textContent = data?.recommendedNextAction?.reason || 'Sem motivo registrado.';
   signalEl.textContent = data?.overallStatusLabel || 'Autonomia ativa';
-  signalMetaEl.textContent = `AUTO ativo: ${data?.stats?.activeAuto ?? 0} | prontos: ${data?.stats?.readyAuto ?? 0} | planejados: ${data?.stats?.plannedAuto ?? 0} | CI gate ISSUE-007: ${ciGate?.summary || 'n/d'} | ledger: ${ledger?.changeType || 'n/d'}`;
+  signalMetaEl.textContent = `AUTO ativo: ${data?.stats?.activeAuto ?? 0} | prontos: ${data?.stats?.readyAuto ?? 0} | planejados: ${data?.stats?.plannedAuto ?? 0} | CI gate ISSUE-007: ${ciGate?.summary || 'n/d'} | ledger: ${ledger?.changeType || 'n/d'}${ledgerSuggestedSource ? ` | sugestão: ${ledgerSuggestedSource}` : ''}`;
   healthEl.textContent = `${Number(data?.autonomyScore || 0)}%`;
-  healthMetaEl.textContent = `Bloqueios: ${data?.stats?.blockers ?? 0} | Fila: ${data?.stats?.actionQueue ?? 0} | Governança: ${governance?.newIssueIds?.length ?? 0} novas / ${governance?.packetNeeds?.length ?? 0} packets | Repos em alerta: ${Number(data?.stats?.yellowRepos || 0) + Number(data?.stats?.redRepos || 0)} | Ledger: ${ledger?.exists ? 'presente' : 'ausente'}`;
+  healthMetaEl.textContent = `Bloqueios: ${data?.stats?.blockers ?? 0} | Fila: ${data?.stats?.actionQueue ?? 0} | Governança: ${governance?.newIssueIds?.length ?? 0} novas / ${governance?.packetNeeds?.length ?? 0} packets | Repos em alerta: ${Number(data?.stats?.yellowRepos || 0) + Number(data?.stats?.redRepos || 0)} | Ledger: ${ledger?.exists ? 'presente' : 'ausente'}${ledgerSuggestedSource ? ` | Sugestão: ${ledgerSuggestedSource}` : ''}${ledgerCandidateCount ? ` | Candidatos: ${ledgerCandidateCount}` : ''}`;
 
   const actions = Array.isArray(data?.recommendedActions) ? data.recommendedActions.slice(0, 5) : [];
   actionsEl.innerHTML = '';
