@@ -1,6 +1,6 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T03:47:34.360504Z`
+Atualizado em: `2026-04-05T04:19:30.753222Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `64`
 
@@ -53,7 +53,7 @@ Score de autonomia: `64`
 - `Reconciliar site-lf-solucoes` — site-lf-solucoes em amarelo | tipo: `reconcile-warning`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
-- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 316.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
+- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 317.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -70,11 +70,12 @@ Score de autonomia: `64`
 - Autopilot SLA: 96.67%
 - Intervenções humanas: 1
 - Semáforo: green (consecutiveRed=0)
+- Ledger export watchdog: initial_missing | exists=False | /home/leandro/openclaw/data/finance/ledger.csv
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 202.6h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 316.7h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 217.8h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 203.1h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 317.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 218.3h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
