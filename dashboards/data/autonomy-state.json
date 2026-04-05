@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-05T00:47:32.863453+00:00",
+  "updatedAt": "2026-04-05T01:17:19.712885+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 64,
@@ -8,10 +8,10 @@
     "kind": "monitor-ci-gate",
     "label": "Continuar monitorando ISSUE-007",
     "ctaLabel": "Continuar monitorando ISSUE-007",
-    "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
+    "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 1/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
     "issueId": "ISSUE-007",
     "target": 5,
-    "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+    "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 1/5",
     "nextRepo": "lf-openalex-enrichment-mvp",
     "href": "#deploy-ci",
     "priority": 1,
@@ -22,10 +22,10 @@
       "kind": "monitor-ci-gate",
       "label": "Continuar monitorando ISSUE-007",
       "ctaLabel": "Continuar monitorando ISSUE-007",
-      "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
+      "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 1/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
       "issueId": "ISSUE-007",
       "target": 5,
-      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 1/5",
       "nextRepo": "lf-openalex-enrichment-mvp",
       "href": "#deploy-ci",
       "priority": 1,
@@ -78,7 +78,7 @@
       "kind": "refresh-stale-repo",
       "label": "Revisar lf-wikidata-entity-graph",
       "ctaLabel": "Revisar lf-wikidata-entity-graph",
-      "reason": "Repo estagnado h\u00e1 313.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
+      "reason": "Repo estagnado h\u00e1 313.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
       "repo": "lf-wikidata-entity-graph",
       "href": "#repo-sync",
       "priority": 7,
@@ -673,44 +673,14 @@
     "packetNeeds": [],
     "packetCoveragePct": 44.4,
     "artifactIssueCount": 35,
-    "recentArtifacts": [
-      {
-        "issueId": "ISSUE-004",
-        "artifactPaths": [
-          "ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md",
-          "ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md",
-          "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
-        ],
-        "latestArtifactAt": "2026-04-05 00:08 UTC",
-        "hasTaskPacket": true,
-        "boardLinked": true
-      },
-      {
-        "issueId": "ISSUE-012",
-        "artifactPaths": [
-          "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
-        ],
-        "latestArtifactAt": "2026-04-05 00:08 UTC",
-        "hasTaskPacket": true,
-        "boardLinked": true
-      },
-      {
-        "issueId": "ISSUE-011",
-        "artifactPaths": [
-          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md"
-        ],
-        "latestArtifactAt": "2026-04-05 00:08 UTC",
-        "hasTaskPacket": true,
-        "boardLinked": true
-      }
-    ],
+    "recentArtifacts": [],
     "orphanArtifactIssueIds": [
       "ISSUE-038"
     ]
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-05T00:17:28.030317+00:00",
+      "updatedAt": "2026-04-05T00:47:35.556092+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -723,7 +693,7 @@
     "ciGate": {
       "target": 5,
       "complete": false,
-      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 1/5",
       "repos": [
         {
           "repo": "lf-wikidata-entity-graph",
@@ -748,8 +718,8 @@
         },
         {
           "repo": "site-lf-solucoes",
-          "successes": 0,
-          "remaining": 5,
+          "successes": 1,
+          "remaining": 4,
           "complete": false,
           "status": "yellow"
         }
@@ -811,19 +781,19 @@
     {
       "repo": "lf-openalex-enrichment-mvp",
       "status": "stale",
-      "ageHours": 199.1,
+      "ageHours": 199.6,
       "subject": "fix(openalex): normalize shim file endings"
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 313.2,
+      "ageHours": 313.7,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 214.3,
+      "ageHours": 214.8,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],

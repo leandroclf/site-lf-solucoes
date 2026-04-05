@@ -1,12 +1,12 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T00:17:36.560810Z`
+Atualizado em: `2026-04-05T00:47:49.169371Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `64`
 
 ## Próxima ação
 - `Continuar monitorando ISSUE-007`
-- Motivo: Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp).
+- Motivo: Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 1/5 (próximo repo: lf-openalex-enrichment-mvp).
 - Tipo: `monitor-ci-gate`
 
 ## Sinais
@@ -36,26 +36,24 @@ Score de autonomia: `64`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- `ISSUE-004` — ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md, ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-05 00:08 UTC
-- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-05 00:08 UTC
-- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md | packet=True | board=True | 2026-04-05 00:08 UTC
+- nenhum artifact recente detectado.
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
 - Completo: `False`
-- Resumo: `lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5`
+- Resumo: `lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 1/5`
 - Próximo repo: `lf-openalex-enrichment-mvp`
 - `lf-wikidata-entity-graph`: `19/5` restante `0`
 - `lf-worldbank-risk-pricing`: `9/5` restante `0`
 - `lf-openalex-enrichment-mvp`: `3/5` restante `2`
-- `site-lf-solucoes`: `0/5` restante `5`
+- `site-lf-solucoes`: `1/5` restante `4`
 
 ## Próximos 5 passos
-- `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
+- `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 1/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
 - `Reconciliar site-lf-solucoes` — site-lf-solucoes em amarelo | tipo: `reconcile-warning`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
-- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 313.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
+- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 313.7h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -74,9 +72,9 @@ Score de autonomia: `64`
 - Semáforo: green (consecutiveRed=0)
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 199.1h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 313.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 214.3h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 199.6h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 313.7h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 214.8h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
