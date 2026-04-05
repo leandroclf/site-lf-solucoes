@@ -1,8 +1,8 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T13:17:28.008130Z`
+Atualizado em: `2026-04-05T14:16:32.286997Z`
 Status: `Autonomia em atenção`
-Score de autonomia: `61`
+Score de autonomia: `58`
 
 ## Próxima ação
 - `Continuar monitorando ISSUE-007`
@@ -14,7 +14,7 @@ Score de autonomia: `61`
 - AUTO em progresso: `2`
 - AUTO autorizadas: `0`
 - AUTO planejadas: `0`
-- Alertas de governança: `2`
+- Alertas de governança: `3`
 - Repos verdes: `4`
 - Repos em alerta: `1`
 - Bloqueios: `0`
@@ -52,8 +52,8 @@ Score de autonomia: `61`
 - `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
 - `Reconciliar site-lf-solucoes` — site-lf-solucoes em amarelo | tipo: `reconcile-warning`
 - `Revisar caminhos do export financeiro` — Nenhuma fonte provável descoberta nos roots padrão; informe o caminho real ou amplie OPENCLAW_LEDGER_EXPORT_SEARCH_PATHS. | tipo: `discover-ledger-export`
+- `Finance export autowire aguardando fonte` — Nenhum export financeiro real foi encontrado ainda; o cron segue descobrindo e mantendo o watchdog atualizado. | tipo: `finance-export-autowire`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
-- `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -71,11 +71,12 @@ Score de autonomia: `61`
 - Intervenções humanas: 1
 - Semáforo: green (consecutiveRed=0)
 - Ledger export watchdog: initial_missing | exists=False | /home/leandro/openclaw/data/finance/ledger.csv | sugestão=n/d | candidatos=0
+- Finance autowire: waiting_for_source | candidatos=0 | sugestão=n/d
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 212.1h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 326.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 227.3h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 212.6h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 326.7h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 227.8h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator

@@ -1,8 +1,8 @@
 {
-  "updatedAt": "2026-04-05T13:47:09.382614+00:00",
+  "updatedAt": "2026-04-05T14:17:11.445074+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
-  "autonomyScore": 61,
+  "autonomyScore": 58,
   "summary": "5 a\u00e7\u00e3o(\u00f5es) sugerida(s); pr\u00f3ximo passo: Continuar monitorando ISSUE-007.",
   "recommendedNextAction": {
     "kind": "monitor-ci-gate",
@@ -40,7 +40,7 @@
       "source": "deploy-status.json",
       "href": "#repo-sync",
       "priority": 1,
-      "order": 2
+      "order": 3
     },
     {
       "kind": "discover-ledger-export",
@@ -50,6 +50,15 @@
       "href": "#autonomy-supervisor",
       "priority": 3,
       "order": 1
+    },
+    {
+      "kind": "finance-export-autowire",
+      "label": "Finance export autowire aguardando fonte",
+      "ctaLabel": "Finance export autowire aguardando fonte",
+      "reason": "Nenhum export financeiro real foi encontrado ainda; o cron segue descobrindo e mantendo o watchdog atualizado.",
+      "href": "#autonomy-supervisor",
+      "priority": 4,
+      "order": 2
     },
     {
       "kind": "continue-wave",
@@ -65,22 +74,6 @@
       "status": "IN PROGRESS (remediation pack publicado; latest CI green; 5/5 gate ainda n\u00e3o satisfeito)",
       "href": "#autonomy-supervisor",
       "priority": 4,
-      "order": 3
-    },
-    {
-      "kind": "continue-wave",
-      "label": "Continuar wave ISSUE-008",
-      "ctaLabel": "Continuar wave ISSUE-008",
-      "reason": "Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales)",
-      "issueId": "ISSUE-008",
-      "title": "Funil cliente + JTBD semanal por ICP",
-      "owner": "strategist-product + growth-sales",
-      "repo": null,
-      "branch": null,
-      "executionMode": "AUTO",
-      "status": "IN PROGRESS (pipeline completo; D3-D7 replanejados)",
-      "href": "#autonomy-supervisor",
-      "priority": 4,
       "order": 4
     }
   ],
@@ -90,7 +83,7 @@
     "readyAuto": 0,
     "plannedAuto": 0,
     "blockers": 0,
-    "governanceAlerts": 2,
+    "governanceAlerts": 3,
     "actionQueue": 5,
     "staleRepos": 3,
     "greenRepos": 4,
@@ -679,7 +672,7 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-05T13:17:11.843673+00:00",
+      "updatedAt": "2026-04-05T13:47:11.993382+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -739,12 +732,12 @@
       "path": "/home/leandro/openclaw/data/finance/ledger.csv",
       "exists": false,
       "changeType": "initial_missing",
-      "observedAt": "2026-04-05T13:05:02.257372+00:00",
+      "observedAt": "2026-04-05T14:05:01.217171+00:00",
       "lastChangeAt": "2026-04-05T04:16:57.648537+00:00",
       "lastAlertAt": null,
       "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
       "discovery": {
-        "observedAt": "2026-04-05T13:05:02.272057+00:00",
+        "observedAt": "2026-04-05T14:05:01.230306+00:00",
         "searchRoots": [
           "/home/leandro/openclaw/data/finance",
           "/home/leandro/openclaw/data",
@@ -784,7 +777,179 @@
         "candidateCount": 0,
         "recommendedSource": {},
         "candidates": []
+      },
+      "autowire": {
+        "status": "waiting_for_source",
+        "observedAt": "2026-04-05T14:05:01.367658+00:00",
+        "candidateCount": 0,
+        "recommendedSource": null
       }
+    },
+    "financeAutowire": {
+      "observedAt": "2026-04-05T14:05:01.367658+00:00",
+      "status": "waiting_for_source",
+      "dryRun": false,
+      "canonicalLedger": "/home/leandro/openclaw/data/finance/ledger.csv",
+      "candidateCount": 0,
+      "recommendedSource": null,
+      "searchRoots": [
+        "/home/leandro/openclaw/data/finance",
+        "/home/leandro/openclaw/data",
+        "/home/leandro/openclaw",
+        "/home/leandro/OneDrive",
+        "/home/leandro/OneDrive/Documents",
+        "/home/leandro/OneDrive/Downloads",
+        "/home/leandro/Downloads",
+        "/home/leandro/Documents",
+        "/home/leandro/Desktop",
+        "/home/leandro/finance",
+        "/home/leandro/Finance",
+        "/home/leandro/clawd",
+        "/home/leandro/openclaw-workspace",
+        "/home/leandro/Projects",
+        "/home/leandro/Workspace",
+        "/home/leandro/Work",
+        "/home/leandro/repos",
+        "/home/leandro/src",
+        "/home/leandro/code",
+        "/home/leandro/dev",
+        "/mnt/c/Users/leandro/Downloads",
+        "/mnt/c/Users/leandro/Documents",
+        "/mnt/c/Users/leandro/Desktop",
+        "/mnt/c/Users/leandro/OneDrive",
+        "/mnt/c/Users/leandro/OneDrive/Documents",
+        "/mnt/c/Users/leandro/OneDrive/Downloads",
+        "/mnt/c/Users/leandro/Projects",
+        "/mnt/c/Users/leandro/Workspace",
+        "/mnt/c/Users/leandro/Work",
+        "/mnt/c/Users/leandro/repos",
+        "/mnt/c/Users/leandro/src",
+        "/mnt/c/Users/leandro/code",
+        "/mnt/c/Users/leandro/dev",
+        "/mnt/c/Users/Public/Downloads"
+      ],
+      "actions": [
+        "waiting_for_source"
+      ],
+      "install": null,
+      "capture": null,
+      "watchdog": {
+        "status": "stable",
+        "changeType": "initial_missing",
+        "ledgerExport": {
+          "path": "/home/leandro/openclaw/data/finance/ledger.csv",
+          "exists": false,
+          "observedAt": "2026-04-05T14:05:01.217171+00:00"
+        },
+        "discovery": {
+          "observedAt": "2026-04-05T14:05:01.230306+00:00",
+          "searchRoots": [
+            "/home/leandro/openclaw/data/finance",
+            "/home/leandro/openclaw/data",
+            "/home/leandro/openclaw",
+            "/home/leandro/OneDrive",
+            "/home/leandro/OneDrive/Documents",
+            "/home/leandro/OneDrive/Downloads",
+            "/home/leandro/Downloads",
+            "/home/leandro/Documents",
+            "/home/leandro/Desktop",
+            "/home/leandro/finance",
+            "/home/leandro/Finance",
+            "/home/leandro/clawd",
+            "/home/leandro/openclaw-workspace",
+            "/home/leandro/Projects",
+            "/home/leandro/Workspace",
+            "/home/leandro/Work",
+            "/home/leandro/repos",
+            "/home/leandro/src",
+            "/home/leandro/code",
+            "/home/leandro/dev",
+            "/mnt/c/Users/leandro/Downloads",
+            "/mnt/c/Users/leandro/Documents",
+            "/mnt/c/Users/leandro/Desktop",
+            "/mnt/c/Users/leandro/OneDrive",
+            "/mnt/c/Users/leandro/OneDrive/Documents",
+            "/mnt/c/Users/leandro/OneDrive/Downloads",
+            "/mnt/c/Users/leandro/Projects",
+            "/mnt/c/Users/leandro/Workspace",
+            "/mnt/c/Users/leandro/Work",
+            "/mnt/c/Users/leandro/repos",
+            "/mnt/c/Users/leandro/src",
+            "/mnt/c/Users/leandro/code",
+            "/mnt/c/Users/leandro/dev",
+            "/mnt/c/Users/Public/Downloads"
+          ],
+          "maxDepth": 3,
+          "limit": 8,
+          "candidateCount": 0,
+          "candidates": [],
+          "recommendedSource": null
+        },
+        "previousState": {
+          "observedAt": "2026-04-05T14:00:01.185649+00:00",
+          "path": "/home/leandro/openclaw/data/finance/ledger.csv",
+          "exists": false,
+          "size": null,
+          "mtime": null,
+          "sha256": null,
+          "lastChangeType": "initial_missing",
+          "lastChangeAt": "2026-04-05T04:16:57.648537+00:00",
+          "lastAlertAt": null,
+          "discovery": {
+            "observedAt": "2026-04-05T14:00:01.210118+00:00",
+            "searchRoots": [
+              "/home/leandro/openclaw/data/finance",
+              "/home/leandro/openclaw/data",
+              "/home/leandro/openclaw",
+              "/home/leandro/OneDrive",
+              "/home/leandro/OneDrive/Documents",
+              "/home/leandro/OneDrive/Downloads",
+              "/home/leandro/Downloads",
+              "/home/leandro/Documents",
+              "/home/leandro/Desktop",
+              "/home/leandro/finance",
+              "/home/leandro/Finance",
+              "/home/leandro/clawd",
+              "/home/leandro/openclaw-workspace",
+              "/home/leandro/Projects",
+              "/home/leandro/Workspace",
+              "/home/leandro/Work",
+              "/home/leandro/repos",
+              "/home/leandro/src",
+              "/home/leandro/code",
+              "/home/leandro/dev",
+              "/mnt/c/Users/leandro/Downloads",
+              "/mnt/c/Users/leandro/Documents",
+              "/mnt/c/Users/leandro/Desktop",
+              "/mnt/c/Users/leandro/OneDrive",
+              "/mnt/c/Users/leandro/OneDrive/Documents",
+              "/mnt/c/Users/leandro/OneDrive/Downloads",
+              "/mnt/c/Users/leandro/Projects",
+              "/mnt/c/Users/leandro/Workspace",
+              "/mnt/c/Users/leandro/Work",
+              "/mnt/c/Users/leandro/repos",
+              "/mnt/c/Users/leandro/src",
+              "/mnt/c/Users/leandro/code",
+              "/mnt/c/Users/leandro/dev",
+              "/mnt/c/Users/Public/Downloads"
+            ],
+            "maxDepth": 3,
+            "limit": 8,
+            "candidateCount": 0,
+            "candidates": [],
+            "recommendedSource": null
+          }
+        },
+        "alert": {
+          "sent": false,
+          "reason": "stable"
+        },
+        "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
+        "observedAt": "2026-04-05T14:05:01.217171+00:00",
+        "dryRun": false,
+        "returncode": 0
+      },
+      "stateFile": "/home/leandro/openclaw/runtime/agentos/finance-export-autowire.json"
     },
     "handoff": {
       "recentAdvanceCount": 25
@@ -831,19 +996,19 @@
     {
       "repo": "lf-openalex-enrichment-mvp",
       "status": "stale",
-      "ageHours": 212.1,
+      "ageHours": 212.6,
       "subject": "fix(openalex): normalize shim file endings"
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 326.2,
+      "ageHours": 326.7,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 227.3,
+      "ageHours": 227.8,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],
