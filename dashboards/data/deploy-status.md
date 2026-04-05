@@ -1,8 +1,8 @@
 # Status de Deploy e CI
 
 Owner monitorado: `leandroclf`
-Atualizado em: `2026-04-05T14:40:12.694940+00:00`
-Semáforo agregado: `green`
+Atualizado em: `2026-04-05T14:47:22.216929+00:00`
+Semáforo agregado: `yellow`
 
 ## 🟢 `leandroclf/lf-openalex-enrichment-mvp`
 - Status: `completed`
@@ -34,19 +34,19 @@ Semáforo agregado: `green`
 - Falhas consecutivas: 0
 - Sucessos consecutivos: 9
 
-## 🟢 `leandroclf/site-lf-solucoes`
+## 🟡 `leandroclf/site-lf-solucoes`
 - Status: `completed`
 - Conclusao: `success`
-- Commit: `3a49ffd` - chore(dashboard): sync lighthouse green state
-- Ultima execucao: 2026-04-05 14:37:16 UTC
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003694865
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003694865/logs
+- Commit: `d7dced7` - chore(dashboard): sync data - automated update
+- Ultima execucao: 2026-04-05 14:47:22 UTC
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003866172
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24003866172/logs
 - Workflows obrigatorios:
-  - `Quality Smoke`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003694865
-  - `Lighthouse CI`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003694858
-  - `Deploy static site to GitHub Pages`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003694841
+  - `Quality Smoke`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003866172
+  - `Lighthouse CI`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003866180
+  - `Deploy static site to GitHub Pages`: `green` | conclusão `success` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24003866177
 - Falhas do conjunto: 0
-- Sucessos do conjunto: 3
+- Sucessos do conjunto: 2
 
 ## 🟢 `leandroclf/openclaw-workspace`
 - Nenhuma execução encontrada.
