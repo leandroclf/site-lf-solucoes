@@ -1,6 +1,6 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T14:35:01.168381Z`
+Atualizado em: `2026-04-05T14:37:06.377880Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `64`
 
@@ -36,7 +36,8 @@ Score de autonomia: `64`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- nenhum artifact recente detectado.
+- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-05 14:35 UTC
+- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-05 14:35 UTC
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
@@ -50,7 +51,7 @@ Score de autonomia: `64`
 
 ## Próximos 5 passos
 - `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 3/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
-- `Finance export autowire em execução` — Status atual: dry_run_candidate | candidatos: 3 | tipo: `finance-export-autowire`
+- `Finance export autowire em execução` — Status atual: wired_and_published | candidatos: 3 | tipo: `finance-export-autowire`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
 - `Revisar lf-wikidata-entity-graph` — Repo estagnado há 327.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
@@ -68,7 +69,7 @@ Score de autonomia: `64`
 - Intervenções humanas: 1
 - Semáforo: green (consecutiveRed=0)
 - Ledger export watchdog: stable | exists=True | /home/leandro/openclaw/data/finance/ledger.csv | sugestão=/home/leandro/openclaw/data/finance/ledger.csv | candidatos=3
-- Finance autowire: dry_run_candidate | candidatos=3 | sugestão=/home/leandro/openclaw/data/finance/ledger.csv
+- Finance autowire: wired_and_published | candidatos=3 | sugestão=/home/leandro/openclaw/data/finance/ledger.csv
 
 ## Repos estagnados
 - `lf-openalex-enrichment-mvp` — stale | age 213.1h | fix(openalex): normalize shim file endings
