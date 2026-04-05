@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-05T14:18:26.902950+00:00",
+  "updatedAt": "2026-04-05T14:20:03.099961+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 58,
@@ -732,12 +732,12 @@
       "path": "/home/leandro/openclaw/data/finance/ledger.csv",
       "exists": false,
       "changeType": "initial_missing",
-      "observedAt": "2026-04-05T14:05:01.217171+00:00",
+      "observedAt": "2026-04-05T14:19:37.094173+00:00",
       "lastChangeAt": "2026-04-05T04:16:57.648537+00:00",
       "lastAlertAt": null,
       "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
       "discovery": {
-        "observedAt": "2026-04-05T14:05:01.230306+00:00",
+        "observedAt": "2026-04-05T14:19:37.110163+00:00",
         "searchRoots": [
           "/home/leandro/openclaw/data/finance",
           "/home/leandro/openclaw/data",
@@ -780,13 +780,13 @@
       },
       "autowire": {
         "status": "waiting_for_source",
-        "observedAt": "2026-04-05T14:05:01.367658+00:00",
+        "observedAt": "2026-04-05T14:19:38.104050+00:00",
         "candidateCount": 0,
         "recommendedSource": null
       }
     },
     "financeAutowire": {
-      "observedAt": "2026-04-05T14:05:01.367658+00:00",
+      "observedAt": "2026-04-05T14:19:38.104050+00:00",
       "status": "waiting_for_source",
       "dryRun": false,
       "canonicalLedger": "/home/leandro/openclaw/data/finance/ledger.csv",
@@ -839,10 +839,10 @@
         "ledgerExport": {
           "path": "/home/leandro/openclaw/data/finance/ledger.csv",
           "exists": false,
-          "observedAt": "2026-04-05T14:05:01.217171+00:00"
+          "observedAt": "2026-04-05T14:19:37.094173+00:00"
         },
         "discovery": {
-          "observedAt": "2026-04-05T14:05:01.230306+00:00",
+          "observedAt": "2026-04-05T14:19:37.110163+00:00",
           "searchRoots": [
             "/home/leandro/openclaw/data/finance",
             "/home/leandro/openclaw/data",
@@ -879,14 +879,14 @@
             "/mnt/c/Users/leandro/dev",
             "/mnt/c/Users/Public/Downloads"
           ],
-          "maxDepth": 3,
+          "maxDepth": 5,
           "limit": 8,
           "candidateCount": 0,
           "candidates": [],
           "recommendedSource": null
         },
         "previousState": {
-          "observedAt": "2026-04-05T14:00:01.185649+00:00",
+          "observedAt": "2026-04-05T14:19:01.242278+00:00",
           "path": "/home/leandro/openclaw/data/finance/ledger.csv",
           "exists": false,
           "size": null,
@@ -896,7 +896,7 @@
           "lastChangeAt": "2026-04-05T04:16:57.648537+00:00",
           "lastAlertAt": null,
           "discovery": {
-            "observedAt": "2026-04-05T14:00:01.210118+00:00",
+            "observedAt": "2026-04-05T14:19:01.262321+00:00",
             "searchRoots": [
               "/home/leandro/openclaw/data/finance",
               "/home/leandro/openclaw/data",
@@ -945,7 +945,7 @@
           "reason": "stable"
         },
         "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
-        "observedAt": "2026-04-05T14:05:01.217171+00:00",
+        "observedAt": "2026-04-05T14:19:37.094173+00:00",
         "dryRun": false,
         "returncode": 0
       },
