@@ -1,6 +1,6 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T14:37:06.377880Z`
+Atualizado em: `2026-04-05T14:39:48.624544Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `64`
 
@@ -36,8 +36,7 @@ Score de autonomia: `64`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-05 14:35 UTC
-- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-05 14:35 UTC
+- nenhum artifact recente detectado.
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
@@ -54,7 +53,7 @@ Score de autonomia: `64`
 - `Finance export autowire em execução` — Status atual: wired_and_published | candidatos: 3 | tipo: `finance-export-autowire`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
 - `Continuar wave ISSUE-008` — Manter a wave ativa: ISSUE-008 (strategist-product + growth-sales) | tipo: `continue-wave`
-- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 327.2h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
+- `Revisar lf-wikidata-entity-graph` — Repo estagnado há 327.5h: Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o | tipo: `refresh-stale-repo`
 
 ## Candidatos priorizados
 - `ISSUE-007` Hardening transversal de CI (anti-regressão de imports/PYTHONPATH) — in_progress | owner: infra-analyst + builder-repo | repo: n/d
@@ -72,9 +71,9 @@ Score de autonomia: `64`
 - Finance autowire: wired_and_published | candidatos=3 | sugestão=/home/leandro/openclaw/data/finance/ledger.csv
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 213.1h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 327.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 228.3h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 213.5h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 327.5h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 228.6h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
