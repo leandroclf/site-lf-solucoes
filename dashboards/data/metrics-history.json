@@ -1,10 +1,10 @@
 {
-  "updatedAt": "2026-04-05T23:47:09.764058+00:00",
+  "updatedAt": "2026-04-06T12:47:11.936244+00:00",
   "source": "git-history + worktree snapshot",
   "snapshots": [
     {
       "commit": "WORKTREE",
-      "capturedAt": "2026-04-05T23:47:09.541297+00:00",
+      "capturedAt": "2026-04-06T12:47:11.689637+00:00",
       "board": {
         "totalIssues": 40,
         "openIssues": 9,
@@ -28,8 +28,8 @@
       }
     },
     {
-      "commit": "452805b17c7d9ad5fdb251a48e4d4f7751824454",
-      "capturedAt": "2026-04-05T19:41:27-03:00",
+      "commit": "1cb0fb59d2dd8af6932eee7eaff490861cd32389",
+      "capturedAt": "2026-04-06T09:33:14-03:00",
       "board": {
         "totalIssues": 40,
         "openIssues": 9,

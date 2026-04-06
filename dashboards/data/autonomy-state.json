@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-05T23:47:09.761991+00:00",
+  "updatedAt": "2026-04-06T12:47:11.934358+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 61,
@@ -680,7 +680,7 @@
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md",
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md"
         ],
-        "latestArtifactAt": "2026-04-05 23:06 UTC",
+        "latestArtifactAt": "2026-04-05 23:35 UTC",
         "hasTaskPacket": true,
         "boardLinked": true
       },
@@ -691,7 +691,7 @@
           "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md",
           "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
         ],
-        "latestArtifactAt": "2026-04-05 23:06 UTC",
+        "latestArtifactAt": "2026-04-05 23:35 UTC",
         "hasTaskPacket": true,
         "boardLinked": true
       }
@@ -702,7 +702,7 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-05T23:17:12.152573+00:00",
+      "updatedAt": "2026-04-05T23:47:12.741160+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -762,12 +762,12 @@
       "path": "/home/leandro/openclaw/data/finance/ledger.csv",
       "exists": true,
       "changeType": "stable",
-      "observedAt": "2026-04-05T23:00:01.245561+00:00",
+      "observedAt": "2026-04-05T23:30:01.426181+00:00",
       "lastChangeAt": "2026-04-05T14:28:02.852786+00:00",
       "lastAlertAt": null,
       "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
       "discovery": {
-        "observedAt": "2026-04-05T23:00:01.270744+00:00",
+        "observedAt": "2026-04-05T23:30:01.453560+00:00",
         "searchRoots": [
           "/home/leandro/openclaw/data/finance",
           "/home/leandro/openclaw/data",
@@ -872,7 +872,7 @@
       },
       "autowire": {
         "status": "capture_failed",
-        "observedAt": "2026-04-05T23:06:04.942276+00:00",
+        "observedAt": "2026-04-05T23:35:51.424565+00:00",
         "candidateCount": 3,
         "recommendedSource": {
           "path": "/home/leandro/openclaw/data/finance/ledger.csv",
@@ -892,7 +892,7 @@
       }
     },
     "financeAutowire": {
-      "observedAt": "2026-04-05T23:06:04.942276+00:00",
+      "observedAt": "2026-04-05T23:35:51.424565+00:00",
       "status": "capture_failed",
       "dryRun": false,
       "canonicalLedger": "/home/leandro/openclaw/data/finance/ledger.csv",
@@ -959,7 +959,7 @@
       "capture": {
         "returncode": 1,
         "stdout": "finance_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md\nlegal_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md",
-        "stderr": "On branch main\nYour branch is up to date with 'origin/main'.\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n  (commit or discard the untracked or modified content in submodules)\n\tmodified:   dashboards/data/deploy-status.json\n\tmodified:   dashboards/data/deploy-status.md\n\tmodified:   dashboards/data/metrics-history.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.md\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.json\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.md\n\tmodified:   ops/multiagent/delivery/daily-summary.md\n\tmodified:   ops/multiagent/delivery/deploy-status.json\n\tmodified:   ops/multiagent/delivery/deploy-status.md\n\tmodified:   ops/multiagent/delivery/ops-lint-report.md\n\tmodified:   ops/multiagent/delivery/product-code-progress.json\n\tmodified:   ops/multiagent/delivery/product-code-progress.md\n\tmodified:   projects/site-lf-solucoes (modified content)\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
+        "stderr": "On branch main\nYour branch is up to date with 'origin/main'.\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n  (commit or discard the untracked or modified content in submodules)\n\tmodified:   dashboards/data/deploy-status.json\n\tmodified:   dashboards/data/deploy-status.md\n\tmodified:   dashboards/data/metrics-history.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.md\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.json\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.md\n\tmodified:   ops/multiagent/delivery/daily-summary.md\n\tmodified:   ops/multiagent/delivery/deploy-status.json\n\tmodified:   ops/multiagent/delivery/deploy-status.md\n\tmodified:   ops/multiagent/delivery/ops-lint-report.md\n\tmodified:   ops/multiagent/delivery/product-code-progress.json\n\tmodified:   ops/multiagent/delivery/product-code-progress.md\n\tmodified:   ops/multiagent/delivery/watchdog-monitor.json\n\tmodified:   ops/multiagent/delivery/watchdog-monitor.md\n\tmodified:   projects/site-lf-solucoes (modified content)\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
         "commit": null
       },
       "watchdog": {
@@ -1012,19 +1012,19 @@
     {
       "repo": "lf-openalex-enrichment-mvp",
       "status": "stale",
-      "ageHours": 222.1,
+      "ageHours": 222.6,
       "subject": "fix(openalex): normalize shim file endings"
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 336.2,
+      "ageHours": 336.7,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 237.3,
+      "ageHours": 237.8,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],
