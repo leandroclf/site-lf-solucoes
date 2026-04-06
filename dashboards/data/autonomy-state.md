@@ -1,6 +1,6 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-05T23:47:30.037872Z`
+Atualizado em: `2026-04-06T12:47:30.488617Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `61`
 
@@ -36,8 +36,9 @@ Score de autonomia: `61`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-05 23:35 UTC
-- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-05 23:35 UTC
+- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-06.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-06 12:35 UTC
+- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-06.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-06 12:35 UTC
+- `ISSUE-004` — ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md, ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-06 12:33 UTC
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
@@ -75,9 +76,9 @@ Score de autonomia: `61`
 - Finance autowire: capture_failed | candidatos=3 | sugestão=/home/leandro/openclaw/data/finance/ledger.csv
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 222.6h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 336.7h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 237.8h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 235.6h | fix(openalex): normalize shim file endings
+- `lf-wikidata-entity-graph` — stale | age 349.7h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
+- `lf-worldbank-risk-pricing` — stale | age 250.8h | feat(worldbank): add telemetry and contract governance
 
 ---
 Agente: reviewer-delivery + orchestrator
