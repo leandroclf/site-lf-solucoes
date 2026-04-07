@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-07T20:17:09.098577+00:00",
+  "updatedAt": "2026-04-07T20:47:09.707013+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 61,
@@ -682,7 +682,7 @@
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md",
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md"
         ],
-        "latestArtifactAt": "2026-04-07 19:35 UTC",
+        "latestArtifactAt": "2026-04-07 20:05 UTC",
         "hasTaskPacket": true,
         "boardLinked": true
       },
@@ -695,7 +695,7 @@
           "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md",
           "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
         ],
-        "latestArtifactAt": "2026-04-07 19:35 UTC",
+        "latestArtifactAt": "2026-04-07 20:05 UTC",
         "hasTaskPacket": true,
         "boardLinked": true
       }
@@ -706,7 +706,7 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-07T19:47:12.991392+00:00",
+      "updatedAt": "2026-04-07T20:17:11.927248+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -766,12 +766,12 @@
       "path": "/home/leandro/openclaw/data/finance/ledger.csv",
       "exists": true,
       "changeType": "stable",
-      "observedAt": "2026-04-07T19:30:01.801621+00:00",
+      "observedAt": "2026-04-07T20:00:01.713986+00:00",
       "lastChangeAt": "2026-04-05T14:28:02.852786+00:00",
       "lastAlertAt": null,
       "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
       "discovery": {
-        "observedAt": "2026-04-07T19:30:01.857759+00:00",
+        "observedAt": "2026-04-07T20:00:01.753102+00:00",
         "searchRoots": [
           "/home/leandro/openclaw/data/finance",
           "/home/leandro/openclaw/data",
@@ -876,7 +876,7 @@
       },
       "autowire": {
         "status": "capture_failed",
-        "observedAt": "2026-04-07T19:35:48.435811+00:00",
+        "observedAt": "2026-04-07T20:05:48.403355+00:00",
         "candidateCount": 3,
         "recommendedSource": {
           "path": "/home/leandro/openclaw/data/finance/ledger.csv",
@@ -896,7 +896,7 @@
       }
     },
     "financeAutowire": {
-      "observedAt": "2026-04-07T19:35:48.435811+00:00",
+      "observedAt": "2026-04-07T20:05:48.403355+00:00",
       "status": "capture_failed",
       "dryRun": false,
       "canonicalLedger": "/home/leandro/openclaw/data/finance/ledger.csv",
@@ -1016,19 +1016,19 @@
     {
       "repo": "lf-openalex-enrichment-mvp",
       "status": "stale",
-      "ageHours": 266.6,
+      "ageHours": 267.1,
       "subject": "fix(openalex): normalize shim file endings"
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 380.7,
+      "ageHours": 381.2,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 281.8,
+      "ageHours": 282.3,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],
