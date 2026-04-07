@@ -1,7 +1,7 @@
 # Status de Deploy e CI
 
 Owner monitorado: `leandroclf`
-Atualizado em: `2026-04-07T18:17:16.977102+00:00`
+Atualizado em: `2026-04-07T18:47:17.285132+00:00`
 Semáforo agregado: `yellow`
 
 ## 🟢 `leandroclf/lf-openalex-enrichment-mvp`
@@ -35,16 +35,16 @@ Semáforo agregado: `yellow`
 - Sucessos consecutivos: 9
 
 ## 🟡 `leandroclf/site-lf-solucoes`
-- Status: `queued`
+- Status: `in_progress`
 - Conclusao: `None`
-- Commit: `c0641d3` - chore(dashboard): sync data - automated update
-- Ultima execucao: 2026-04-07 18:17:19 UTC
-- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24097246184
-- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24097246184/logs
+- Commit: `cfc3379` - chore(dashboard): sync data - automated update
+- Ultima execucao: 2026-04-07 18:47:18 UTC
+- Run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24098568591
+- Logs: https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24098568591/logs
 - Workflows obrigatorios:
-  - `Quality Smoke`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24097246184
-  - `Lighthouse CI`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24097246219
-  - `Deploy static site to GitHub Pages`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24097246180
+  - `Quality Smoke`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24098568591
+  - `Lighthouse CI`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24098568594
+  - `Deploy static site to GitHub Pages`: `yellow` | conclusão `None` | run: https://github.com/leandroclf/site-lf-solucoes/actions/runs/24098568610
 - Falhas do conjunto: 0
 - Sucessos do conjunto: 0
 
