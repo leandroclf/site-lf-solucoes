@@ -1,5 +1,5 @@
 {
-  "updated_at": "2026-04-08T04:17:08.040342+00:00",
+  "updated_at": "2026-04-08T04:47:07.969675+00:00",
   "owner": "leandroclf",
   "repos": [
     {
@@ -12,7 +12,7 @@
         "sha": "5086ef3ff53051a97c035097360060004a90b2db",
         "date": "2026-03-27T14:09:12-03:00",
         "subject": "fix(openalex): normalize shim file endings",
-        "age_hours": 275.1
+        "age_hours": 275.6
       },
       "commits_48h": 0,
       "ahead_main": 0,
@@ -30,7 +30,7 @@
         "sha": "2f974a5c01f30071ea93a859fe0fe1f5d7d9ef90",
         "date": "2026-03-22T20:06:32-03:00",
         "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
-        "age_hours": 389.2
+        "age_hours": 389.7
       },
       "commits_48h": 0,
       "ahead_main": 0,
@@ -48,7 +48,7 @@
         "sha": "a73bb756c12f2371e2988f651b9c8e20848f57d7",
         "date": "2026-03-26T23:00:27-03:00",
         "subject": "feat(worldbank): add telemetry and contract governance",
-        "age_hours": 290.3
+        "age_hours": 290.8
       },
       "commits_48h": 0,
       "ahead_main": 0,
@@ -57,5 +57,5 @@
       "open_prs": 0
     }
   ],
-  "updatedAt": "2026-04-08T04:17:11.143707+00:00"
+  "updatedAt": "2026-04-08T04:47:10.987223+00:00"
 }
