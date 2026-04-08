@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-08T03:47:12.070348+00:00",
+  "updatedAt": "2026-04-08T04:17:11.139380+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 61,
@@ -46,7 +46,7 @@
       "kind": "finance-export-autowire",
       "label": "Finance export autowire em execu\u00e7\u00e3o",
       "ctaLabel": "Finance export autowire em execu\u00e7\u00e3o",
-      "reason": "Status atual: wired_and_published | candidatos: 3",
+      "reason": "Status atual: capture_failed | candidatos: 3",
       "href": "#autonomy-supervisor",
       "priority": 3,
       "order": 1
@@ -674,17 +674,6 @@
     "artifactIssueCount": 35,
     "recentArtifacts": [
       {
-        "issueId": "ISSUE-004",
-        "artifactPaths": [
-          "ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md",
-          "ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md",
-          "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
-        ],
-        "latestArtifactAt": "2026-04-08 03:05 UTC",
-        "hasTaskPacket": true,
-        "boardLinked": true
-      },
-      {
         "issueId": "ISSUE-011",
         "artifactPaths": [
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md",
@@ -694,7 +683,7 @@
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md",
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md"
         ],
-        "latestArtifactAt": "2026-04-08 03:05 UTC",
+        "latestArtifactAt": "2026-04-08 03:35 UTC",
         "hasTaskPacket": true,
         "boardLinked": true
       },
@@ -708,7 +697,7 @@
           "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md",
           "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
         ],
-        "latestArtifactAt": "2026-04-08 03:05 UTC",
+        "latestArtifactAt": "2026-04-08 03:35 UTC",
         "hasTaskPacket": true,
         "boardLinked": true
       }
@@ -719,7 +708,7 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-08T03:17:12.485182+00:00",
+      "updatedAt": "2026-04-08T03:47:14.511749+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -779,12 +768,12 @@
       "path": "/home/leandro/openclaw/data/finance/ledger.csv",
       "exists": true,
       "changeType": "stable",
-      "observedAt": "2026-04-08T03:05:50.907745+00:00",
+      "observedAt": "2026-04-08T03:30:02.506592+00:00",
       "lastChangeAt": "2026-04-05T14:28:02.852786+00:00",
       "lastAlertAt": null,
       "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
       "discovery": {
-        "observedAt": "2026-04-08T03:05:50.929245+00:00",
+        "observedAt": "2026-04-08T03:30:02.530478+00:00",
         "searchRoots": [
           "/home/leandro/openclaw/data/finance",
           "/home/leandro/openclaw/data",
@@ -888,8 +877,8 @@
         ]
       },
       "autowire": {
-        "status": "wired_and_published",
-        "observedAt": "2026-04-08T03:06:38.174242+00:00",
+        "status": "capture_failed",
+        "observedAt": "2026-04-08T03:35:50.544302+00:00",
         "candidateCount": 3,
         "recommendedSource": {
           "path": "/home/leandro/openclaw/data/finance/ledger.csv",
@@ -909,8 +898,8 @@
       }
     },
     "financeAutowire": {
-      "observedAt": "2026-04-08T03:06:38.174242+00:00",
-      "status": "wired_and_published",
+      "observedAt": "2026-04-08T03:35:50.544302+00:00",
+      "status": "capture_failed",
       "dryRun": false,
       "canonicalLedger": "/home/leandro/openclaw/data/finance/ledger.csv",
       "candidateCount": 3,
@@ -971,261 +960,18 @@
         "/mnt/d/OneDrive/YukZ Tech",
         "/mnt/d/OneDrive/YukZ Tech/Financeiro"
       ],
-      "actions": [
-        "wired_and_published"
-      ],
+      "actions": [],
       "install": null,
       "capture": {
-        "returncode": 0,
-        "stdout": "finance_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-08.md\nlegal_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-08.md\nsync=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md\nsync=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md\nsync=/home/leandro/openclaw-workspace/ops/multiagent/delivery/board.md\nsync=/home/leandro/openclaw-workspace/ops/multiagent/delivery/board.md\nsync=/home/leandro/openclaw-workspace/ops/multiagent/delivery/human-activities.md\nsync=/home/leandro/openclaw-workspace/ops/multiagent/delivery/human-activities.md\nsync=/home/leandro/openclaw-workspace/ops/multiagent/kpis/revenue.md\nAgente: workflow-runner\nSkill: n/a (execu\u00e7\u00e3o direta)\nWorkflow: weekly finance/legal capture\nledger_export: /home/leandro/openclaw/data/finance/ledger.csv\ncommit: a923c1c3",
-        "stderr": "",
-        "commit": "a923c1c3"
+        "returncode": 1,
+        "stdout": "finance_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-08.md\nlegal_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-08.md",
+        "stderr": "On branch main\nYour branch is up to date with 'origin/main'.\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n  (commit or discard the untracked or modified content in submodules)\n\tmodified:   dashboards/data/deploy-status.json\n\tmodified:   dashboards/data/deploy-status.md\n\tmodified:   dashboards/data/metrics-history.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.md\n\tmodified:   ops/multiagent/delivery/autopilot-sla.json\n\tmodified:   ops/multiagent/delivery/autopilot-sla.md\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.json\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.md\n\tmodified:   ops/multiagent/delivery/daily-summary.md\n\tmodified:   ops/multiagent/delivery/deploy-status.json\n\tmodified:   ops/multiagent/delivery/deploy-status.md\n\tmodified:   ops/multiagent/delivery/ops-lint-report.md\n\tmodified:   ops/multiagent/delivery/product-code-progress.json\n\tmodified:   ops/multiagent/delivery/product-code-progress.md\n\tmodified:   ops/multiagent/delivery/watchdog-monitor.json\n\tmodified:   ops/multiagent/delivery/watchdog-monitor.md\n\tmodified:   projects/site-lf-solucoes (modified content)\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
+        "commit": null
       },
       "watchdog": {
-        "status": "stable",
-        "changeType": "stable",
-        "ledgerExport": {
-          "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-          "exists": true,
-          "observedAt": "2026-04-08T03:05:50.907745+00:00",
-          "size": 2372,
-          "mtime": "2026-04-05T14:28:02.748678+00:00",
-          "sha256": "f884ec625f4ebef085e83f9e29a492b99c775f25fa745b72ef3f71b97c0d4945"
-        },
-        "discovery": {
-          "observedAt": "2026-04-08T03:05:50.929245+00:00",
-          "searchRoots": [
-            "/home/leandro/openclaw/data/finance",
-            "/home/leandro/openclaw/data",
-            "/home/leandro/openclaw",
-            "/home/leandro/OneDrive",
-            "/home/leandro/OneDrive/Documents",
-            "/home/leandro/OneDrive/Downloads",
-            "/home/leandro/Downloads",
-            "/home/leandro/Documents",
-            "/home/leandro/Desktop",
-            "/home/leandro/finance",
-            "/home/leandro/Finance",
-            "/home/leandro/clawd",
-            "/home/leandro/openclaw-workspace",
-            "/home/leandro/Projects",
-            "/home/leandro/Workspace",
-            "/home/leandro/Work",
-            "/home/leandro/repos",
-            "/home/leandro/src",
-            "/home/leandro/code",
-            "/home/leandro/dev",
-            "/mnt/c/Users/leandro/Downloads",
-            "/mnt/c/Users/leandro/Documents",
-            "/mnt/c/Users/leandro/Desktop",
-            "/mnt/c/Users/leandro/OneDrive",
-            "/mnt/c/Users/leandro/OneDrive/Documents",
-            "/mnt/c/Users/leandro/OneDrive/Downloads",
-            "/mnt/c/Users/leandro/Projects",
-            "/mnt/c/Users/leandro/Workspace",
-            "/mnt/c/Users/leandro/Work",
-            "/mnt/c/Users/leandro/repos",
-            "/mnt/c/Users/leandro/src",
-            "/mnt/c/Users/leandro/code",
-            "/mnt/c/Users/leandro/dev",
-            "/mnt/c/Users/Public/Downloads",
-            "/mnt/d/OneDrive",
-            "/mnt/d/OneDrive/Documents",
-            "/mnt/d/OneDrive/Downloads",
-            "/mnt/d/OneDrive/Financeiro",
-            "/mnt/d/OneDrive/YukZ Tech",
-            "/mnt/d/OneDrive/YukZ Tech/Financeiro"
-          ],
-          "maxDepth": 5,
-          "limit": 8,
-          "candidateCount": 3,
-          "candidates": [
-            {
-              "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-              "score": 188,
-              "reasons": [
-                "canonical finance export path",
-                "supported format .csv",
-                "name matches ledger",
-                "path matches finance",
-                "updated in the last 3 days"
-              ],
-              "size": 2372,
-              "mtime": "2026-04-05T14:28:02.748678+00:00",
-              "mtimeEpoch": 1775399282.748678,
-              "suffix": ".csv"
-            },
-            {
-              "path": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
-              "score": 49,
-              "reasons": [
-                "supported format .xlsx",
-                "path matches finance",
-                "older snapshot"
-              ],
-              "size": 11828,
-              "mtime": "2024-06-21T00:35:45+00:00",
-              "mtimeEpoch": 1718930145.0,
-              "suffix": ".xlsx"
-            },
-            {
-              "path": "/mnt/d/OneDrive/Documentos/LF Solu\u00e7\u00f5es/Financeiro/Notas Fiscais/2022/Planilha Informa\u00e7\u00f5es Notas Fiscais.xlsx",
-              "score": 49,
-              "reasons": [
-                "supported format .xlsx",
-                "path matches finance",
-                "older snapshot"
-              ],
-              "size": 10149,
-              "mtime": "2022-11-01T11:54:34+00:00",
-              "mtimeEpoch": 1667303674.0,
-              "suffix": ".xlsx"
-            }
-          ],
-          "recommendedSource": {
-            "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-            "score": 188,
-            "reasons": [
-              "canonical finance export path",
-              "supported format .csv",
-              "name matches ledger",
-              "path matches finance",
-              "updated in the last 3 days"
-            ],
-            "size": 2372,
-            "mtime": "2026-04-05T14:28:02.748678+00:00",
-            "mtimeEpoch": 1775399282.748678,
-            "suffix": ".csv"
-          }
-        },
-        "previousState": {
-          "observedAt": "2026-04-08T03:00:02.302536+00:00",
-          "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-          "exists": true,
-          "size": 2372,
-          "mtime": "2026-04-05T14:28:02.748678+00:00",
-          "sha256": "f884ec625f4ebef085e83f9e29a492b99c775f25fa745b72ef3f71b97c0d4945",
-          "lastChangeType": "stable",
-          "lastChangeAt": "2026-04-05T14:28:02.852786+00:00",
-          "lastAlertAt": null,
-          "discovery": {
-            "observedAt": "2026-04-08T03:00:02.339913+00:00",
-            "searchRoots": [
-              "/home/leandro/openclaw/data/finance",
-              "/home/leandro/openclaw/data",
-              "/home/leandro/openclaw",
-              "/home/leandro/OneDrive",
-              "/home/leandro/OneDrive/Documents",
-              "/home/leandro/OneDrive/Downloads",
-              "/home/leandro/Downloads",
-              "/home/leandro/Documents",
-              "/home/leandro/Desktop",
-              "/home/leandro/finance",
-              "/home/leandro/Finance",
-              "/home/leandro/clawd",
-              "/home/leandro/openclaw-workspace",
-              "/home/leandro/Projects",
-              "/home/leandro/Workspace",
-              "/home/leandro/Work",
-              "/home/leandro/repos",
-              "/home/leandro/src",
-              "/home/leandro/code",
-              "/home/leandro/dev",
-              "/mnt/c/Users/leandro/Downloads",
-              "/mnt/c/Users/leandro/Documents",
-              "/mnt/c/Users/leandro/Desktop",
-              "/mnt/c/Users/leandro/OneDrive",
-              "/mnt/c/Users/leandro/OneDrive/Documents",
-              "/mnt/c/Users/leandro/OneDrive/Downloads",
-              "/mnt/c/Users/leandro/Projects",
-              "/mnt/c/Users/leandro/Workspace",
-              "/mnt/c/Users/leandro/Work",
-              "/mnt/c/Users/leandro/repos",
-              "/mnt/c/Users/leandro/src",
-              "/mnt/c/Users/leandro/code",
-              "/mnt/c/Users/leandro/dev",
-              "/mnt/c/Users/Public/Downloads",
-              "/mnt/d/OneDrive",
-              "/mnt/d/OneDrive/Documents",
-              "/mnt/d/OneDrive/Downloads",
-              "/mnt/d/OneDrive/Financeiro",
-              "/mnt/d/OneDrive/YukZ Tech",
-              "/mnt/d/OneDrive/YukZ Tech/Financeiro"
-            ],
-            "maxDepth": 5,
-            "limit": 8,
-            "candidateCount": 3,
-            "candidates": [
-              {
-                "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-                "score": 188,
-                "reasons": [
-                  "canonical finance export path",
-                  "supported format .csv",
-                  "name matches ledger",
-                  "path matches finance",
-                  "updated in the last 3 days"
-                ],
-                "size": 2372,
-                "mtime": "2026-04-05T14:28:02.748678+00:00",
-                "mtimeEpoch": 1775399282.748678,
-                "suffix": ".csv"
-              },
-              {
-                "path": "/mnt/d/OneDrive/YukZ Tech/Financeiro/Controle.xlsx",
-                "score": 49,
-                "reasons": [
-                  "supported format .xlsx",
-                  "path matches finance",
-                  "older snapshot"
-                ],
-                "size": 11828,
-                "mtime": "2024-06-21T00:35:45+00:00",
-                "mtimeEpoch": 1718930145.0,
-                "suffix": ".xlsx"
-              },
-              {
-                "path": "/mnt/d/OneDrive/Documentos/LF Solu\u00e7\u00f5es/Financeiro/Notas Fiscais/2022/Planilha Informa\u00e7\u00f5es Notas Fiscais.xlsx",
-                "score": 49,
-                "reasons": [
-                  "supported format .xlsx",
-                  "path matches finance",
-                  "older snapshot"
-                ],
-                "size": 10149,
-                "mtime": "2022-11-01T11:54:34+00:00",
-                "mtimeEpoch": 1667303674.0,
-                "suffix": ".xlsx"
-              }
-            ],
-            "recommendedSource": {
-              "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-              "score": 188,
-              "reasons": [
-                "canonical finance export path",
-                "supported format .csv",
-                "name matches ledger",
-                "path matches finance",
-                "updated in the last 3 days"
-              ],
-              "size": 2372,
-              "mtime": "2026-04-05T14:28:02.748678+00:00",
-              "mtimeEpoch": 1775399282.748678,
-              "suffix": ".csv"
-            }
-          }
-        },
-        "alert": {
-          "sent": false,
-          "reason": "stable"
-        },
-        "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
-        "observedAt": "2026-04-08T03:05:50.907745+00:00",
-        "dryRun": false,
-        "returncode": 0
+        "status": "capture_failed"
       },
-      "candidatePath": "/home/leandro/openclaw/data/finance/ledger.csv",
-      "stateFile": "/home/leandro/openclaw/runtime/agentos/finance-export-autowire.json"
+      "candidatePath": "/home/leandro/openclaw/data/finance/ledger.csv"
     },
     "handoff": {
       "recentAdvanceCount": 25
@@ -1272,19 +1018,19 @@
     {
       "repo": "lf-openalex-enrichment-mvp",
       "status": "stale",
-      "ageHours": 274.1,
+      "ageHours": 274.6,
       "subject": "fix(openalex): normalize shim file endings"
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 388.2,
+      "ageHours": 388.7,
       "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 289.3,
+      "ageHours": 289.8,
       "subject": "feat(worldbank): add telemetry and contract governance"
     }
   ],
