@@ -7,6 +7,8 @@
   --primary-dark: #1f8ed1;
   --card: #121d33;
   --line: #233252;
+  --success: #34d399;
+  --warning: #fbbf24;
   --radius-sm: 10px;
   --radius-md: 14px;
   --radius-lg: 18px;
@@ -24,6 +26,27 @@
 
 * { box-sizing: border-box; }
 html, body { margin: 0; padding: 0; }
+
+.skip-link {
+  position: absolute;
+  top: -100%;
+  left: 1rem;
+  z-index: 100;
+  padding: .5rem 1rem;
+  background: var(--primary);
+  color: var(--bg);
+  font-weight: 700;
+  border-radius: var(--radius-sm);
+  text-decoration: none;
+  transition: top .2s;
+}
+.skip-link:focus { top: 1rem; }
+
+:focus-visible {
+  outline: 2px solid var(--primary);
+  outline-offset: 2px;
+  border-radius: 3px;
+}
 body {
   font-family: Inter, system-ui, -apple-system, Segoe UI, Roboto, Arial, sans-serif;
   background: linear-gradient(180deg, var(--bg), #090f1c 40%, var(--bg));
@@ -90,8 +113,16 @@ h1 span { color: var(--primary); }
 .hero-card p, .card p { color: var(--muted); }
 .hero-card ul { list-style: none; padding: 0; margin: 1rem 0 0; }
 .hero-card li { margin: .45rem 0; color: #c2d3f6; }
-.card:hover { transform: translateY(-2px); border-color: rgba(53,174,241,.45); }
-.icon-card h3 { font-size: 1.1rem; }
+.card:hover { transform: translateY(-3px); border-color: rgba(53,174,241,.55); box-shadow: 0 8px 24px rgba(53,174,241,.1); }
+.icon-card h3 { font-size: 1.1rem; display: flex; align-items: center; gap: .45rem; }
+.icon-card h3 svg { flex-shrink: 0; color: var(--primary); }
+
+.testimonial-card { display: flex; flex-direction: column; justify-content: space-between; }
+.testimonial-card blockquote { margin: 0 0 1rem; padding: 0; }
+.testimonial-card blockquote p { color: var(--text); font-style: italic; line-height: 1.7; }
+.testimonial-card footer { display: flex; flex-direction: column; gap: .2rem; }
+.testimonial-card footer strong { color: var(--primary); font-size: var(--text-sm); }
+.testimonial-card footer span { color: var(--muted); font-size: .85rem; }
 
 .section { padding: 4rem 0; }
 .section-alt { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
