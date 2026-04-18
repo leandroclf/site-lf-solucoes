@@ -34,6 +34,7 @@
     />
     <link rel="stylesheet" href="./styles.css" />
     <link rel="canonical" href="https://lfsolucoes.com.br" />
+    <script defer data-domain="lfsolucoes.com.br" src="https://plausible.io/js/script.js"></script>
   </head>
   <body>
     <a href="#inicio" class="skip-link">Pular para o conteúdo principal</a>
@@ -575,5 +576,37 @@
       }
     </script>
     <script src="./script.js" defer></script>
+    <script>
+      // Plausible custom event tracking
+      document.addEventListener('DOMContentLoaded', function () {
+        // Track diagnostic form submission
+        var diagForm = document.getElementById('diagnostic-form');
+        if (diagForm) {
+          diagForm.addEventListener('submit', function () {
+            if (typeof plausible !== 'undefined') plausible('DiagnosticFormSubmit');
+          });
+        }
+        // Track ROI form submission
+        var roiForm = document.getElementById('roi-form');
+        if (roiForm) {
+          roiForm.addEventListener('submit', function () {
+            if (typeof plausible !== 'undefined') plausible('ROISimulatorSubmit');
+          });
+        }
+        // Track WhatsApp clicks
+        document.querySelectorAll('a[href*="wa.me"]').forEach(function (el) {
+          el.addEventListener('click', function () {
+            if (typeof plausible !== 'undefined') plausible('WhatsAppClick');
+          });
+        });
+        // Track primary CTA clicks
+        document.querySelectorAll('.btn-primary').forEach(function (el) {
+          el.addEventListener('click', function () {
+            var label = el.textContent.trim().slice(0, 40);
+            if (typeof plausible !== 'undefined') plausible('CTAClick', { props: { label: label } });
+          });
+        });
+      });
+    </script>
   </body>
 </html>
