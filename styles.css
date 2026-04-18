@@ -118,12 +118,6 @@ h1 span { color: var(--primary); }
 .icon-card h3 { font-size: 1.1rem; display: flex; align-items: center; gap: .45rem; }
 .icon-card h3 svg { flex-shrink: 0; color: var(--primary); }
 
-.testimonial-card { display: flex; flex-direction: column; justify-content: space-between; }
-.testimonial-card blockquote { margin: 0 0 1rem; padding: 0; }
-.testimonial-card blockquote p { color: var(--text); font-style: italic; line-height: 1.7; }
-.testimonial-card footer { display: flex; flex-direction: column; gap: .2rem; }
-.testimonial-card footer strong { color: var(--primary); font-size: var(--text-sm); }
-.testimonial-card footer span { color: var(--muted); font-size: .85rem; }
 
 .section { padding: 4rem 0; }
 .section-alt { background: rgba(255,255,255,0.02); border-top: 1px solid rgba(255,255,255,0.05); border-bottom: 1px solid rgba(255,255,255,0.05); }
