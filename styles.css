@@ -112,7 +112,8 @@ h1 span { color: var(--primary); }
 .hero-card h3, .card h3 { margin: .2rem 0 .5rem; }
 .hero-card p, .card p { color: var(--muted); }
 .hero-card ul { list-style: none; padding: 0; margin: 1rem 0 0; }
-.hero-card li { margin: .45rem 0; color: #c2d3f6; }
+.hero-card li { margin: .45rem 0; color: #c2d3f6; display: flex; align-items: center; gap: .4rem; }
+.hero-card li svg { color: var(--success); flex-shrink: 0; }
 .card:hover { transform: translateY(-3px); border-color: rgba(53,174,241,.55); box-shadow: 0 8px 24px rgba(53,174,241,.1); }
 .icon-card h3 { font-size: 1.1rem; display: flex; align-items: center; gap: .45rem; }
 .icon-card h3 svg { flex-shrink: 0; color: var(--primary); }
