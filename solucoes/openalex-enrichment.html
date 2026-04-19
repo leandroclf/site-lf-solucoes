@@ -218,72 +218,13 @@
       </section>
 
       <section class="section" id="demo">
-  <div class="container">
-    <h2>Calcule Coverage de Leads ao Vivo</h2>
-    <p class="section-copy">Insira dados de leads e veja instantaneamente a cobertura de atributos e banda de valor.</p>
-    <article class="card interactive-card">
-      <div class="form-grid">
-        <div class="form-field"><label for="demo-company">Empresa</label><input id="demo-company" type="text" placeholder="Ex: Acme Corp" /></div>
-        <div class="form-field"><label for="demo-domain">Domínio</label><input id="demo-domain" type="text" placeholder="Ex: acme.com" /></div>
-        <div class="form-field"><label for="demo-email">E-mail</label><input id="demo-email" type="text" placeholder="Ex: contato@acme.com" /></div>
-        <div class="form-field"><label for="demo-industry">Indústria</label><input id="demo-industry" type="text" placeholder="Ex: Tecnologia" /></div>
-        <div class="form-field"><label for="demo-employees">Funcionários</label><input id="demo-employees" type="number" placeholder="Ex: 150" /></div>
-      </div>
-      <div class="hero-cta" style="margin-top:1rem">
-        <button class="btn btn-primary" onclick="calcCoverage()">Calcular Coverage</button>
-        <button class="btn btn-ghost" onclick="fillExample()">Carregar Exemplo</button>
-      </div>
-      <div id="coverage-result" class="result-panel" hidden>
-        <h4>Resultado de Enriquecimento</h4>
-        <div class="chip-row" id="coverage-chips"></div>
-        <p id="coverage-meta"></p>
-      </div>
-    </article>
-  </div>
-</section>
-<script>
-const OA_API = 'https://lf-openalex-enrichment-mvp.onrender.com';
-const FIELDS = ['demo-company','demo-domain','demo-email','demo-industry','demo-employees'];
-const LABELS = ['Empresa','Domínio','E-mail','Indústria','Funcionários'];
-function calcCoverage() {
-  const btn = document.querySelector('[onclick="calcCoverage()"]');
-  btn.textContent = 'Analisando...'; btn.disabled = true;
-  const lead = {
-    company: document.getElementById('demo-company').value.trim(),
-    domain: document.getElementById('demo-domain').value.trim(),
-    email: document.getElementById('demo-email').value.trim(),
-    industry: document.getElementById('demo-industry').value.trim(),
-    employees: document.getElementById('demo-employees').value.trim(),
-  };
-  fetch(OA_API + '/v1/value-score', {
-    method: 'POST',
-    headers: {'Content-Type':'application/json'},
-    body: JSON.stringify({accountId: lead.company || 'demo', score: Object.values(lead).filter(Boolean).length * 20})
-  }).then(r => r.json()).catch(() => null).then(data => {
-    const filled = FIELDS.filter(f => document.getElementById(f).value.trim()).length;
-    const coverage = (filled / FIELDS.length * 100).toFixed(0);
-    const band = data?.band || (coverage >= 80 ? 'High' : coverage >= 50 ? 'Medium' : 'Low');
-    const color = band === 'High' ? 'var(--success)' : band === 'Medium' ? 'var(--primary)' : 'var(--warning)';
-    const source = data?.band ? 'API' : 'local';
-    document.getElementById('coverage-chips').innerHTML = FIELDS.map((f,i) => {
-      const ok = document.getElementById(f).value.trim();
-      return `<span style="background:${ok?'rgba(52,211,153,.15)':'rgba(251,191,36,.1)'};color:${ok?'var(--success)':'var(--warning)'};border:1px solid ${ok?'var(--success)':'var(--warning)'};padding:.25rem .6rem;border-radius:8px;font-size:.85rem">${LABELS[i]}: ${ok?'✓':'✗'}</span>`;
-    }).join(' ');
-    document.getElementById('coverage-meta').innerHTML =
-      `Cobertura: <strong>${coverage}%</strong> · Banda: <strong style="color:${color}">${band}</strong> · Prioridade: <strong>${filled<3?'Alta':filled<5?'Média':'Baixa'}</strong> <span style="font-size:.75rem;color:var(--muted)">(via ${source})</span>`;
-    document.getElementById('coverage-result').hidden = false;
-    btn.textContent = 'Calcular Coverage'; btn.disabled = false;
-  });
-}
-function fillExample() {
-  document.getElementById('demo-company').value = 'Acme Corp';
-  document.getElementById('demo-domain').value = 'acme.com';
-  document.getElementById('demo-email').value = '';
-  document.getElementById('demo-industry').value = 'Tecnologia';
-  document.getElementById('demo-employees').value = '';
-  calcCoverage();
-}
-</script>
+        <div class="container">
+          <h2>API Sandbox — Teste ao Vivo</h2>
+          <p class="section-copy">Selecione um endpoint, edite os parâmetros e dispare requisições reais contra a API de produção.</p>
+          <div id="oa-sandbox"></div>
+        </div>
+      </section>
+
 
       <section class="section cta">
         <div class="container cta-box">
@@ -390,5 +331,43 @@ function fillExample() {
     </footer>
 
     <script src="../script.js" defer></script>
+  
+    <script type="module">
+      import { ApiSandbox } from '../scripts/api-sandbox.js';
+      new ApiSandbox(document.getElementById('oa-sandbox'), {
+        baseUrl: 'https://lf-openalex-enrichment-mvp.onrender.com',
+        endpoints: [
+          {
+            id: 'health', method: 'GET', label: 'Health Check', path: '/health',
+          },
+          {
+            id: 'sample', method: 'GET', label: 'Sample Payload', path: '/sample',
+          },
+          {
+            id: 'enrich', method: 'POST', label: 'Enrich Leads', path: '/enrich',
+            body: {
+              leads: [
+                { company: 'Acme Corp', domain: 'acme.com', industry: 'Tecnologia', employees: 150 },
+                { company: 'Beta Ltd', domain: 'betaltd.com', industry: 'Saúde' }
+              ]
+            }
+          },
+          {
+            id: 'value-score', method: 'POST', label: 'Value Score', path: '/v1/value-score',
+            body: { accountId: 'acme-001', score: 80 }
+          },
+          {
+            id: 'prioritize', method: 'POST', label: 'Prioritize Leads', path: '/v1/leads/prioritize',
+            body: {
+              leads: [
+                { id: 'l1', company: 'Acme Corp', coverage: 0.4 },
+                { id: 'l2', company: 'Beta Ltd', coverage: 0.85 },
+                { id: 'l3', company: 'Gamma SA', coverage: 0.2 }
+              ]
+            }
+          }
+        ]
+      });
+    </script>
   </body>
 </html>

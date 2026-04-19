@@ -221,77 +221,11 @@
 
       <section class="section" id="demo">
         <div class="container">
-          <h2>Experimente: Entity Matching ao Vivo</h2>
-          <p class="section-copy">Teste o algoritmo de similaridade Jaccard diretamente no seu navegador — o mesmo usado no backend.</p>
-          <div class="grid grid-2">
-            <article class="card">
-              <h3>Calcular Similaridade</h3>
-              <div class="form-grid">
-                <div class="form-field">
-                  <label for="ent-a">Entidade A</label>
-                  <input id="ent-a" type="text" value="International Business Machines" />
-                </div>
-                <div class="form-field">
-                  <label for="ent-b">Entidade B</label>
-                  <input id="ent-b" type="text" value="IBM Corporation" />
-                </div>
-                <div class="hero-cta">
-                  <button class="btn btn-primary" onclick="calcSimilarity()">Calcular</button>
-                  <button class="btn btn-ghost" onclick="document.getElementById('sim-result').hidden=true">Limpar</button>
-                </div>
-              </div>
-              <div id="sim-result" class="result-panel" hidden>
-                <h4>Resultado</h4>
-                <p id="sim-output"></p>
-              </div>
-            </article>
-            <article class="card">
-              <h3>Pipeline de Exemplo</h3>
-              <p class="section-copy">Resultado de um pipeline completo com 4 entidades:</p>
-              <ul style="list-style:none;padding:0;margin:0">
-                <li style="padding:.4rem 0;border-bottom:1px solid var(--line)"><strong>IBM</strong> → Q37156 <span style="color:var(--success)">● 0.900</span></li>
-                <li style="padding:.4rem 0;border-bottom:1px solid var(--line)"><strong>Apple Inc</strong> → Q312 <span style="color:var(--success)">● 0.900</span></li>
-                <li style="padding:.4rem 0;border-bottom:1px solid var(--line)"><strong>Petrobras</strong> → Q133925 <span style="color:var(--success)">● 0.870</span></li>
-                <li style="padding:.4rem 0"><strong>OpenAI</strong> → Q55611589 <span style="color:var(--success)">● 0.870</span></li>
-              </ul>
-              <p class="result-meta" style="margin-top:.8rem">4 entidades · 4 vinculadas · link_rate: 1.0</p>
-            </article>
-          </div>
+          <h2>API Sandbox — Teste ao Vivo</h2>
+          <p class="section-copy">Selecione um endpoint, edite os parâmetros e dispare requisições reais contra a API de produção.</p>
+          <div id="wd-sandbox"></div>
         </div>
       </section>
-      <script>
-      const WD_API = 'https://lf-wikidata-entity-graph.onrender.com';
-      function calcSimilarity() {
-        const nameA = document.getElementById('ent-a').value.trim();
-        const nameB = document.getElementById('ent-b').value.trim();
-        const btn = document.querySelector('[onclick="calcSimilarity()"]');
-        btn.textContent = 'Consultando...'; btn.disabled = true;
-
-        fetch(WD_API + '/v1/entities/match', {
-          method: 'POST',
-          headers: {'Content-Type':'application/json'},
-          body: JSON.stringify({name: nameA, candidates: [{label: nameB, id: 'Q_demo'}], confidence_threshold: 0.7})
-        }).then(r => r.json()).catch(() => null).then(data => {
-          let score, match, source;
-          if (data && typeof data.score === 'number') {
-            score = data.score.toFixed(4); match = data.matched; source = 'API';
-          } else {
-            const a = nameA.toLowerCase().split(/\s+/), b = nameB.toLowerCase().split(/\s+/);
-            const setA = new Set(a), setB = new Set(b);
-            const inter = [...setA].filter(x => setB.has(x)).length;
-            const union = new Set([...setA,...setB]).size;
-            score = union ? (inter/union).toFixed(4) : '0.0000';
-            match = parseFloat(score) >= 0.7; source = 'local';
-          }
-          document.getElementById('sim-output').innerHTML =
-            'Similaridade: <strong>' + score + '</strong> · Threshold: 0.7 · Decisão: <strong style="color:' +
-            (match ? 'var(--success)' : 'var(--warning)') + '">' + (match ? 'MATCH ✓' : 'SEM MATCH ✗') +
-            '</strong> <span style="font-size:.75rem;color:var(--muted)">(via ' + source + ')</span>';
-          document.getElementById('sim-result').hidden = false;
-          btn.textContent = 'Verificar Match'; btn.disabled = false;
-        });
-      }
-      </script>
 
       <section class="section cta">
         <div class="container cta-box">
@@ -393,5 +327,44 @@
     </footer>
 
     <script src="../script.js" defer></script>
+  
+    <script type="module">
+      import { ApiSandbox } from '../scripts/api-sandbox.js';
+      new ApiSandbox(document.getElementById('wd-sandbox'), {
+        baseUrl: 'https://lf-wikidata-entity-graph.onrender.com',
+        endpoints: [
+          {
+            id: 'health', method: 'GET', label: 'Health Check', path: '/health',
+          },
+          {
+            id: 'sample', method: 'GET', label: 'Sample Payload', path: '/sample',
+          },
+          {
+            id: 'metrics', method: 'GET', label: 'Metrics', path: '/v1/entities/metrics',
+          },
+          {
+            id: 'match', method: 'POST', label: 'Entity Match', path: '/v1/entities/match',
+            body: {
+              entity_name: 'Apple Inc',
+              candidates: [
+                { label: 'Apple Inc.', id: 'Q312', score: 0.95 },
+                { label: 'Apple Records', id: 'Q193704', score: 0.3 }
+              ],
+              confidence_threshold: 0.7
+            }
+          },
+          {
+            id: 'pipeline', method: 'POST', label: 'Pipeline Batch', path: '/v1/entities/pipeline',
+            body: {
+              records: [
+                { id: 'r1', name: 'Microsoft Corporation', source: 'crm' },
+                { id: 'r2', name: 'Google LLC', source: 'crm' }
+              ],
+              confidence_threshold: 0.7
+            }
+          }
+        ]
+      });
+    </script>
   </body>
 </html>
