@@ -535,6 +535,22 @@
             </a>
             <a class="btn btn-outline" href="mailto:leandroclf@hotmail.com">leandroclf@hotmail.com</a>
           </div>
+
+          <div class="contact-form-wrap" style="margin-top:2rem;">
+            <p style="text-align:center; color:var(--muted); margin-bottom:1rem;">Prefere e-mail? Deixe sua mensagem:</p>
+            <!-- TODO: substituir xpwzgkqd pelo seu form ID do Formspree -->
+            <form action="https://formspree.io/f/xpwzgkqd" method="POST" class="contact-form" id="contact-form">
+              <div class="form-row">
+                <input type="text" name="nome" placeholder="Seu nome" required class="form-input" />
+                <input type="email" name="email" placeholder="Seu e-mail" required class="form-input" />
+              </div>
+              <input type="text" name="empresa" placeholder="Empresa (opcional)" class="form-input" />
+              <textarea name="mensagem" placeholder="Como podemos ajudar sua empresa?" rows="4" required class="form-input"></textarea>
+              <button type="submit" class="btn btn-secondary" style="width:100%">Enviar mensagem</button>
+              <p class="form-success" id="form-success" hidden style="color:var(--success); text-align:center; margin-top:1rem;">&#10003; Mensagem enviada! Retornaremos em até 24h.</p>
+            </form>
+          </div>
+
           <p class="legal-note">
             LF Soluções — CNPJ: 29.274.997/0001-50
           </p>
@@ -613,6 +629,25 @@
         "url": "https://lfsolucoes.etc.br"
       }
     </script>
+    <script>
+  (function() {
+    var form = document.getElementById('contact-form');
+    if (!form) return;
+    form.addEventListener('submit', function(e) {
+      e.preventDefault();
+      fetch(form.action, {
+        method: 'POST',
+        body: new FormData(form),
+        headers: { 'Accept': 'application/json' }
+      }).then(function(r) {
+        if (r.ok) {
+          form.reset();
+          document.getElementById('form-success').hidden = false;
+        }
+      });
+    });
+  })();
+</script>
     <script src="./script.js" defer></script>
     <script>
       // Plausible custom event tracking
