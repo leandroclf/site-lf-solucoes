@@ -294,6 +294,75 @@ function fillExample() {
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="https://wa.me/5561992491132?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20demonstração" target="_blank" rel="noopener noreferrer">Solicitar Demonstração</a>
+      <section class="section section-alt" id="integracao">
+        <div class="container">
+          <h2>Integração Sistêmica</h2>
+          <p class="section-copy">API REST pronta para integrar com qualquer sistema. Documentação OpenAPI e coleção Postman disponíveis no repositório.</p>
+          <div class="grid grid-2" style="margin-bottom:2rem">
+            <a class="card" href="https://github.com/leandroclf/lf-openalex-enrichment-mvp/blob/main/docs/openapi.yaml" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:flex;align-items:flex-start;gap:.75rem">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="flex-shrink:0;color:var(--primary)"><path d="M14 2H6a2 2 0 0 0-2 2v16a2 2 0 0 0 2 2h12a2 2 0 0 0 2-2V8z"/><polyline points="14 2 14 8 20 8"/><line x1="16" y1="13" x2="8" y2="13"/><line x1="16" y1="17" x2="8" y2="17"/><polyline points="10 9 9 9 8 9"/></svg>
+              <div>
+                <strong style="color:var(--text)">OpenAPI 3.0 (Swagger)</strong>
+                <p style="font-size:.85rem;color:var(--muted);margin-top:.2rem">Especificação completa de todos os endpoints, schemas e exemplos de integração.</p>
+              </div>
+            </a>
+            <a class="card" href="https://github.com/leandroclf/lf-openalex-enrichment-mvp/blob/main/docs/postman_collection.json" target="_blank" rel="noopener noreferrer" style="text-decoration:none;display:flex;align-items:flex-start;gap:.75rem">
+              <svg width="24" height="24" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true" style="flex-shrink:0;color:var(--primary)"><circle cx="12" cy="12" r="10"/><polyline points="12 6 12 12 16 14"/></svg>
+              <div>
+                <strong style="color:var(--text)">Postman Collection</strong>
+                <p style="font-size:.85rem;color:var(--muted);margin-top:.2rem">Coleção pronta para importar no Postman com todas as requisições e exemplos.</p>
+              </div>
+            </a>
+          </div>
+          <h3 style="margin-bottom:1rem;font-size:1rem;color:var(--muted)">Endpoints disponíveis</h3>
+          <div class="card" style="padding:0;overflow:hidden">
+            <table style="width:100%;border-collapse:collapse;font-size:.875rem">
+              <thead>
+                <tr style="border-bottom:1px solid var(--line)">
+                  <th style="padding:.6rem 1rem;text-align:left;color:var(--muted);font-weight:600;width:80px">Método</th>
+                  <th style="padding:.6rem 1rem;text-align:left;color:var(--muted);font-weight:600">Endpoint</th>
+                  <th style="padding:.6rem 1rem;text-align:left;color:var(--muted);font-weight:600">Descrição</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr style="border-bottom:1px solid rgba(35,50,82,.5)">
+                  <td style="padding:.5rem 1rem"><span style="background:rgba(255,255,255,.05);color:#34d399;font-family:monospace;font-size:.75rem;padding:.15rem .4rem;border-radius:4px;font-weight:700">GET</span></td>
+                  <td style="padding:.5rem 1rem;font-family:monospace;font-size:.8rem;color:var(--text)">/health</td>
+                  <td style="padding:.5rem 1rem;color:var(--muted)">Status da API</td>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(35,50,82,.5)">
+                  <td style="padding:.5rem 1rem"><span style="background:rgba(255,255,255,.05);color:#34d399;font-family:monospace;font-size:.75rem;padding:.15rem .4rem;border-radius:4px;font-weight:700">GET</span></td>
+                  <td style="padding:.5rem 1rem;font-family:monospace;font-size:.8rem;color:var(--text)">/sample</td>
+                  <td style="padding:.5rem 1rem;color:var(--muted)">Payload de exemplo</td>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(35,50,82,.5)">
+                  <td style="padding:.5rem 1rem"><span style="background:rgba(255,255,255,.05);color:#35aef1;font-family:monospace;font-size:.75rem;padding:.15rem .4rem;border-radius:4px;font-weight:700">POST</span></td>
+                  <td style="padding:.5rem 1rem;font-family:monospace;font-size:.8rem;color:var(--text)">/enrich</td>
+                  <td style="padding:.5rem 1rem;color:var(--muted)">Enriquecer batch de leads</td>
+                </tr>
+                <tr style="border-bottom:1px solid rgba(35,50,82,.5)">
+                  <td style="padding:.5rem 1rem"><span style="background:rgba(255,255,255,.05);color:#35aef1;font-family:monospace;font-size:.75rem;padding:.15rem .4rem;border-radius:4px;font-weight:700">POST</span></td>
+                  <td style="padding:.5rem 1rem;font-family:monospace;font-size:.8rem;color:var(--text)">/v1/value-score</td>
+                  <td style="padding:.5rem 1rem;color:var(--muted)">Calcular value score de conta</td>
+                </tr>
+                <tr style="">
+                  <td style="padding:.5rem 1rem"><span style="background:rgba(255,255,255,.05);color:#35aef1;font-family:monospace;font-size:.75rem;padding:.15rem .4rem;border-radius:4px;font-weight:700">POST</span></td>
+                  <td style="padding:.5rem 1rem;font-family:monospace;font-size:.8rem;color:var(--text)">/v1/leads/prioritize</td>
+                  <td style="padding:.5rem 1rem;color:var(--muted)">Priorizar leads por enrichment gap</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+          <div style="margin-top:1.5rem;background:rgba(0,0,0,.2);border-radius:10px;padding:1rem">
+            <p style="font-size:.8rem;color:var(--muted);margin-bottom:.5rem">Exemplo rápido (curl):</p>
+            <code style="font-size:.8rem;color:var(--primary);font-family:monospace">curl https://lf-openalex-enrichment-mvp.onrender.com/health</code>
+          </div>
+          <p style="margin-top:1rem;font-size:.85rem;color:var(--muted)">
+            Base URL de produção: <a href="https://lf-openalex-enrichment-mvp.onrender.com" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">https://lf-openalex-enrichment-mvp.onrender.com</a>
+          </p>
+        </div>
+      </section>
+
             <a class="btn btn-outline" href="https://wa.me/5561992491132" target="_blank" rel="noopener noreferrer"
               >WhatsApp: (61) 99249-1132</a
             >
