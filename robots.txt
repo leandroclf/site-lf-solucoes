@@ -1,4 +1,3 @@
 User-agent: *
 Allow: /
-
-Sitemap: https://leandroclf.github.io/site-lf-solucoes/sitemap.xml
+Sitemap: https://lfsolucoes.etc.br/sitemap.xml
