@@ -254,23 +254,39 @@
         </div>
       </section>
       <script>
+      const WB_API = 'https://lf-worldbank-risk-pricing.onrender.com';
       function wbCalc() {
         const country = (document.getElementById('wb-country').value || 'XX').trim().toUpperCase();
         const risk = parseFloat(document.getElementById('wb-risk').value) || 0;
         const base = parseFloat(document.getElementById('wb-price').value) || 1000;
-        let tier, adj, color;
-        if (risk >= 75) { tier = 'HIGH'; adj = 8; color = 'var(--warning)'; }
-        else if (risk >= 50) { tier = 'MEDIUM'; adj = 3; color = 'var(--primary)'; }
-        else { tier = 'LOW'; adj = 0; color = 'var(--success)'; }
-        const mult = +(1 + adj / 100).toFixed(4);
-        const final = +(base * mult).toFixed(2);
-        const chips = [['País', country,'var(--primary)'],['Risk Score',risk,color],['Tier',tier,color],['Ajuste','+'+adj+'%',color]];
-        document.getElementById('wb-chips').innerHTML = chips.map(([l,v,c]) =>
-          '<span style="background:rgba(255,255,255,.05);border:1px solid var(--line);padding:.25rem .6rem;border-radius:8px;font-size:.85rem"><span style="color:var(--muted)">'+l+':</span> <strong style="color:'+c+'">'+v+'</strong></span>'
-        ).join(' ');
-        document.getElementById('wb-meta').innerHTML =
-          'Multiplicador: <strong>×'+mult+'</strong> · Preço Base: <strong>USD '+base.toFixed(2)+'</strong> → Preço Final: <strong style="color:var(--primary);font-size:1.1rem">USD '+final.toFixed(2)+'</strong>';
-        document.getElementById('wb-result').hidden = false;
+        const btn = document.querySelector('[onclick="wbCalc()"]');
+        btn.textContent = 'Calculando...'; btn.disabled = true;
+
+        fetch(WB_API + '/v1/pricing/quote', {
+          method: 'POST',
+          headers: {'Content-Type':'application/json'},
+          body: JSON.stringify({countryCode: country, riskScore: risk, basePrice: base, currency: 'USD'})
+        }).then(r => r.json()).catch(() => null).then(data => {
+          let tier, adj, color, final, mult, source;
+          if (data && data.finalPrice) {
+            tier = (data.tier||'').toUpperCase(); adj = data.adjustment||0;
+            mult = data.multiplier||1; final = data.finalPrice; source = 'API';
+          } else {
+            if (risk >= 75) { tier='HIGH'; adj=8; color='var(--warning)'; }
+            else if (risk >= 50) { tier='MEDIUM'; adj=3; color='var(--primary)'; }
+            else { tier='LOW'; adj=0; color='var(--success)'; }
+            mult = +(1+adj/100).toFixed(4); final = +(base*mult).toFixed(2); source = 'local';
+          }
+          color = tier==='HIGH' ? 'var(--warning)' : tier==='MEDIUM' ? 'var(--primary)' : 'var(--success)';
+          const chips = [['País',country,'var(--primary)'],['Risk Score',risk,color],['Tier',tier,color],['Ajuste','+'+adj+'%',color]];
+          document.getElementById('wb-chips').innerHTML = chips.map(([l,v,c]) =>
+            '<span style="background:rgba(255,255,255,.05);border:1px solid var(--line);padding:.25rem .6rem;border-radius:8px;font-size:.85rem"><span style="color:var(--muted)">'+l+':</span> <strong style="color:'+c+'">'+v+'</strong></span>'
+          ).join(' ');
+          document.getElementById('wb-meta').innerHTML =
+            'Multiplicador: <strong>×'+mult+'</strong> · Base: <strong>USD '+base.toFixed(2)+'</strong> → Final: <strong style="color:var(--primary);font-size:1.1rem">USD '+final.toFixed(2)+'</strong> <span style="font-size:.75rem;color:var(--muted)">(via '+source+')</span>';
+          document.getElementById('wb-result').hidden = false;
+          btn.textContent = 'Calcular Quote'; btn.disabled = false;
+        });
       }
       </script>
 
@@ -282,7 +298,7 @@
             suas decisões comerciais e financeiras internacionais.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="mailto:leandroclf@hotmail.com">Solicitar Demonstração</a>
+            <a class="btn btn-primary" href="https://wa.me/5561992491132?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20demonstração" target="_blank" rel="noopener noreferrer">Solicitar Demonstração</a>
             <a class="btn btn-outline" href="https://wa.me/5561992491132" target="_blank" rel="noopener noreferrer"
               >WhatsApp: (61) 99249-1132</a
             >

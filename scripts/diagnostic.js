@@ -114,6 +114,16 @@ function showDiagnostic(output) {
   renderList(GAPS, "Gargalos provaveis", output.gaps);
   renderList(ACTIONS, "Recomendacoes imediatas", output.actions);
   CTA.textContent = output.cta;
+
+  // Update WhatsApp CTA with diagnostic context
+  const waBtn = document.getElementById("diagnostic-wa-btn");
+  if (waBtn) {
+    const msg = encodeURIComponent(
+      `Olá! Fiz o diagnóstico no site da LF Soluções e recebi: ${output.tags.join(", ")}. Gostaria de conversar sobre as recomendações.`
+    );
+    waBtn.href = `https://wa.me/5561992491132?text=${msg}`;
+    waBtn.hidden = false;
+  }
 }
 
 function persist(data) {

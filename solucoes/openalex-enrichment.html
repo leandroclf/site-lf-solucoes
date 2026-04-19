@@ -242,21 +242,38 @@
   </div>
 </section>
 <script>
+const OA_API = 'https://lf-openalex-enrichment-mvp.onrender.com';
 const FIELDS = ['demo-company','demo-domain','demo-email','demo-industry','demo-employees'];
 const LABELS = ['Empresa','Domínio','E-mail','Indústria','Funcionários'];
 function calcCoverage() {
-  const filled = FIELDS.filter(f => document.getElementById(f).value.trim()).length;
-  const coverage = (filled / FIELDS.length * 100).toFixed(0);
-  const band = coverage >= 80 ? 'High' : coverage >= 50 ? 'Medium' : 'Low';
-  const color = band === 'High' ? 'var(--success)' : band === 'Medium' ? 'var(--primary)' : 'var(--warning)';
-  const chips = document.getElementById('coverage-chips');
-  chips.innerHTML = FIELDS.map((f,i) => {
-    const ok = document.getElementById(f).value.trim();
-    return `<span class="chip" style="background:${ok?'rgba(52,211,153,.15)':'rgba(251,191,36,.1)'};color:${ok?'var(--success)':'var(--warning)'};border:1px solid ${ok?'var(--success)':'var(--warning)'};padding:.25rem .6rem;border-radius:8px;font-size:.85rem">${LABELS[i]}: ${ok?'✓':'✗'}</span>`;
-  }).join(' ');
-  document.getElementById('coverage-meta').innerHTML =
-    `Cobertura: <strong>${coverage}%</strong> · Banda: <strong style="color:${color}">${band}</strong> · Prioridade de enriquecimento: <strong>${filled<3?'Alta':filled<5?'Média':'Baixa'}</strong>`;
-  document.getElementById('coverage-result').hidden = false;
+  const btn = document.querySelector('[onclick="calcCoverage()"]');
+  btn.textContent = 'Analisando...'; btn.disabled = true;
+  const lead = {
+    company: document.getElementById('demo-company').value.trim(),
+    domain: document.getElementById('demo-domain').value.trim(),
+    email: document.getElementById('demo-email').value.trim(),
+    industry: document.getElementById('demo-industry').value.trim(),
+    employees: document.getElementById('demo-employees').value.trim(),
+  };
+  fetch(OA_API + '/v1/value-score', {
+    method: 'POST',
+    headers: {'Content-Type':'application/json'},
+    body: JSON.stringify({accountId: lead.company || 'demo', score: Object.values(lead).filter(Boolean).length * 20})
+  }).then(r => r.json()).catch(() => null).then(data => {
+    const filled = FIELDS.filter(f => document.getElementById(f).value.trim()).length;
+    const coverage = (filled / FIELDS.length * 100).toFixed(0);
+    const band = data?.band || (coverage >= 80 ? 'High' : coverage >= 50 ? 'Medium' : 'Low');
+    const color = band === 'High' ? 'var(--success)' : band === 'Medium' ? 'var(--primary)' : 'var(--warning)';
+    const source = data?.band ? 'API' : 'local';
+    document.getElementById('coverage-chips').innerHTML = FIELDS.map((f,i) => {
+      const ok = document.getElementById(f).value.trim();
+      return `<span style="background:${ok?'rgba(52,211,153,.15)':'rgba(251,191,36,.1)'};color:${ok?'var(--success)':'var(--warning)'};border:1px solid ${ok?'var(--success)':'var(--warning)'};padding:.25rem .6rem;border-radius:8px;font-size:.85rem">${LABELS[i]}: ${ok?'✓':'✗'}</span>`;
+    }).join(' ');
+    document.getElementById('coverage-meta').innerHTML =
+      `Cobertura: <strong>${coverage}%</strong> · Banda: <strong style="color:${color}">${band}</strong> · Prioridade: <strong>${filled<3?'Alta':filled<5?'Média':'Baixa'}</strong> <span style="font-size:.75rem;color:var(--muted)">(via ${source})</span>`;
+    document.getElementById('coverage-result').hidden = false;
+    btn.textContent = 'Calcular Coverage'; btn.disabled = false;
+  });
 }
 function fillExample() {
   document.getElementById('demo-company').value = 'Acme Corp';
@@ -276,7 +293,7 @@ function fillExample() {
             transformar seu processo comercial B2B.
           </p>
           <div class="hero-cta">
-            <a class="btn btn-primary" href="mailto:leandroclf@hotmail.com">Solicitar Demonstração</a>
+            <a class="btn btn-primary" href="https://wa.me/5561992491132?text=Olá%2C%20vim%20pelo%20site%20e%20gostaria%20de%20uma%20demonstração" target="_blank" rel="noopener noreferrer">Solicitar Demonstração</a>
             <a class="btn btn-outline" href="https://wa.me/5561992491132" target="_blank" rel="noopener noreferrer"
               >WhatsApp: (61) 99249-1132</a
             >
