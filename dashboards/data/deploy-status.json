@@ -1,25 +1,25 @@
 {
-  "last_updated_utc": "2026-04-08T06:17:14.085711+00:00",
+  "last_updated_utc": "2026-04-26T01:47:25.321187+00:00",
   "owner": "leandroclf",
   "repositories": {
     "lf-openalex-enrichment-mvp": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23658339063,
-        "workflowName": "CI Pipeline",
+        "id": 24631884395,
+        "workflowName": "GitFlow Guard",
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "5086ef3ff53051a97c035097360060004a90b2db",
-        "commitMessage": "fix(openalex): normalize shim file endings",
-        "html_url": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23658339063",
-        "logs_url": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/23658339063/logs",
-        "run_number": 3,
-        "created_at": "2026-03-27T17:09:34Z",
-        "updated_at": "2026-04-05T14:39:39Z"
+        "commitSha": "7d3d7731acd297f8150591712d1c916582d14206",
+        "commitMessage": "docs: add Postman workspace link",
+        "html_url": "https://github.com/leandroclf/lf-openalex-enrichment-mvp/actions/runs/24631884395",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-openalex-enrichment-mvp/actions/runs/24631884395/logs",
+        "run_number": 22,
+        "created_at": "2026-04-19T14:54:20Z",
+        "updated_at": "2026-04-19T14:54:25Z"
       },
       "error": null,
       "consecutiveFailures": 0,
-      "consecutiveSuccesses": 3,
+      "consecutiveSuccesses": 2,
       "aggregatedStatus": "green",
       "requiredWorkflows": [],
       "requiredWorkflowRuns": [],
@@ -29,21 +29,21 @@
     "lf-wikidata-entity-graph": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23414716429,
+        "id": 24631879133,
         "workflowName": "GitFlow Guard",
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "2f974a5c01f30071ea93a859fe0fe1f5d7d9ef90",
-        "commitMessage": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o",
-        "html_url": "https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/23414716429",
-        "logs_url": "https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/23414716429/logs",
-        "run_number": 13,
-        "created_at": "2026-03-22T23:06:35Z",
-        "updated_at": "2026-03-22T23:06:43Z"
+        "commitSha": "cb6994c973343c45d4476e06a8f4aa520f0fbdd1",
+        "commitMessage": "docs: add Postman workspace link",
+        "html_url": "https://github.com/leandroclf/lf-wikidata-entity-graph/actions/runs/24631879133",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-wikidata-entity-graph/actions/runs/24631879133/logs",
+        "run_number": 21,
+        "created_at": "2026-04-19T14:54:03Z",
+        "updated_at": "2026-04-19T14:54:09Z"
       },
       "error": null,
       "consecutiveFailures": 0,
-      "consecutiveSuccesses": 19,
+      "consecutiveSuccesses": 2,
       "aggregatedStatus": "green",
       "requiredWorkflows": [],
       "requiredWorkflowRuns": [],
@@ -53,21 +53,21 @@
     "lf-worldbank-risk-pricing": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 23627442392,
+        "id": 24631872598,
         "workflowName": "CI",
         "status": "completed",
         "conclusion": "success",
-        "commitSha": "a73bb756c12f2371e2988f651b9c8e20848f57d7",
-        "commitMessage": "feat(worldbank): add telemetry and contract governance",
-        "html_url": "https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392",
-        "logs_url": "https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/23627442392/logs",
-        "run_number": 22,
-        "created_at": "2026-03-27T02:00:34Z",
-        "updated_at": "2026-03-27T02:00:55Z"
+        "commitSha": "33b5edaedd87e17344332828e29196e7f788e6b4",
+        "commitMessage": "docs: add Postman workspace link",
+        "html_url": "https://github.com/leandroclf/lf-worldbank-risk-pricing/actions/runs/24631872598",
+        "logs_url": "https://api.github.com/repos/leandroclf/lf-worldbank-risk-pricing/actions/runs/24631872598/logs",
+        "run_number": 31,
+        "created_at": "2026-04-19T14:53:41Z",
+        "updated_at": "2026-04-19T14:53:58Z"
       },
       "error": null,
       "consecutiveFailures": 0,
-      "consecutiveSuccesses": 9,
+      "consecutiveSuccesses": 2,
       "aggregatedStatus": "green",
       "requiredWorkflows": [],
       "requiredWorkflowRuns": [],
@@ -77,17 +77,17 @@
     "site-lf-solucoes": {
       "owner": "leandroclf",
       "latestRun": {
-        "id": 24120983697,
+        "id": 24945598525,
         "workflowName": "Quality Smoke",
         "status": "in_progress",
         "conclusion": null,
-        "commitSha": "d29c7107a4614500f263ce7cfec26fcd740285cf",
+        "commitSha": "1fe75bf57c5069e82b8a24dcbc7ff6335700f706",
         "commitMessage": "chore(dashboard): sync data - automated update",
-        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24120983697",
-        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24120983697/logs",
-        "run_number": 320,
-        "created_at": "2026-04-08T06:17:14Z",
-        "updated_at": "2026-04-08T06:17:18Z"
+        "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24945598525",
+        "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24945598525/logs",
+        "run_number": 333,
+        "created_at": "2026-04-26T01:47:25Z",
+        "updated_at": "2026-04-26T01:47:29Z"
       },
       "error": null,
       "consecutiveFailures": 0,
@@ -102,17 +102,17 @@
         {
           "workflowName": "Quality Smoke",
           "latestRun": {
-            "id": 24120983697,
+            "id": 24945598525,
             "workflowName": "Quality Smoke",
             "status": "in_progress",
             "conclusion": null,
-            "commitSha": "d29c7107a4614500f263ce7cfec26fcd740285cf",
+            "commitSha": "1fe75bf57c5069e82b8a24dcbc7ff6335700f706",
             "commitMessage": "chore(dashboard): sync data - automated update",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24120983697",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24120983697/logs",
-            "run_number": 320,
-            "created_at": "2026-04-08T06:17:14Z",
-            "updated_at": "2026-04-08T06:17:18Z"
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24945598525",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24945598525/logs",
+            "run_number": 333,
+            "created_at": "2026-04-26T01:47:25Z",
+            "updated_at": "2026-04-26T01:47:29Z"
           },
           "aggregatedStatus": "yellow",
           "missing": false
@@ -120,17 +120,17 @@
         {
           "workflowName": "Lighthouse CI",
           "latestRun": {
-            "id": 24120983716,
+            "id": 24945598527,
             "workflowName": "Lighthouse CI",
             "status": "in_progress",
             "conclusion": null,
-            "commitSha": "d29c7107a4614500f263ce7cfec26fcd740285cf",
+            "commitSha": "1fe75bf57c5069e82b8a24dcbc7ff6335700f706",
             "commitMessage": "chore(dashboard): sync data - automated update",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24120983716",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24120983716/logs",
-            "run_number": 321,
-            "created_at": "2026-04-08T06:17:14Z",
-            "updated_at": "2026-04-08T06:17:18Z"
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24945598527",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24945598527/logs",
+            "run_number": 334,
+            "created_at": "2026-04-26T01:47:25Z",
+            "updated_at": "2026-04-26T01:47:28Z"
           },
           "aggregatedStatus": "yellow",
           "missing": false
@@ -138,17 +138,17 @@
         {
           "workflowName": "Deploy static site to GitHub Pages",
           "latestRun": {
-            "id": 24120983700,
+            "id": 24945598528,
             "workflowName": "Deploy static site to GitHub Pages",
             "status": "in_progress",
             "conclusion": null,
-            "commitSha": "d29c7107a4614500f263ce7cfec26fcd740285cf",
+            "commitSha": "1fe75bf57c5069e82b8a24dcbc7ff6335700f706",
             "commitMessage": "chore(dashboard): sync data - automated update",
-            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24120983700",
-            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24120983700/logs",
-            "run_number": 421,
-            "created_at": "2026-04-08T06:17:14Z",
-            "updated_at": "2026-04-08T06:17:19Z"
+            "html_url": "https://github.com/leandroclf/site-lf-solucoes/actions/runs/24945598528",
+            "logs_url": "https://api.github.com/repos/leandroclf/site-lf-solucoes/actions/runs/24945598528/logs",
+            "run_number": 434,
+            "created_at": "2026-04-26T01:47:25Z",
+            "updated_at": "2026-04-26T01:47:29Z"
           },
           "aggregatedStatus": "yellow",
           "missing": false
@@ -178,5 +178,5 @@
     "status": "yellow",
     "rule": "repos + ci-regression-watchdog"
   },
-  "updatedAt": "2026-04-26T01:47:21.959189+00:00"
+  "updatedAt": "2026-04-26T01:48:05.402274+00:00"
 }

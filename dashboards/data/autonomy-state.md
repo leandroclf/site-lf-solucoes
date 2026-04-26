@@ -1,12 +1,12 @@
 # Autonomy Supervisor Snapshot
 
-Atualizado em: `2026-04-08T06:17:31.050394Z`
+Atualizado em: `2026-04-26T01:48:05.006633Z`
 Status: `Autonomia em atenção`
 Score de autonomia: `61`
 
 ## Próxima ação
 - `Continuar monitorando ISSUE-007`
-- Motivo: Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp).
+- Motivo: Gate 5/5 por repo crítico: lf-openalex-enrichment-mvp 2/5, lf-wikidata-entity-graph 2/5, lf-worldbank-risk-pricing 2/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp).
 - Tipo: `monitor-ci-gate`
 
 ## Sinais
@@ -36,21 +36,22 @@ Score de autonomia: `61`
 - nenhum packet pendente no snapshot atual.
 
 ### Artifacts recentes
-- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-06.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-07.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-08.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-08 06:05 UTC
-- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-06.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-07.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-08.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-08 06:05 UTC
+- `ISSUE-011` — ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-05.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-06.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-07.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-08.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-09.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-10.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-11.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-12.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-13.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-14.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-15.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-16.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-17.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-18.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-19.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-20.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-21.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-22.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-23.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-24.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-25.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md, ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md | packet=True | board=True | 2026-04-26 01:36 UTC
+- `ISSUE-012` — ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-05.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-06.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-07.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-08.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-09.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-10.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-11.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-12.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-13.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-14.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-15.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-16.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-17.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-18.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-19.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-20.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-21.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-22.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-23.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-24.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-25.md, ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-26 01:36 UTC
+- `ISSUE-004` — ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md, ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md, ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md | packet=True | board=True | 2026-04-25 03:05 UTC
 
 ## CI gate ISSUE-007
 - Target: `5/5` por repo crítico
 - Completo: `False`
-- Resumo: `lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5`
+- Resumo: `lf-openalex-enrichment-mvp 2/5, lf-wikidata-entity-graph 2/5, lf-worldbank-risk-pricing 2/5, site-lf-solucoes 0/5`
 - Próximo repo: `lf-openalex-enrichment-mvp`
-- `lf-wikidata-entity-graph`: `19/5` restante `0`
-- `lf-worldbank-risk-pricing`: `9/5` restante `0`
-- `lf-openalex-enrichment-mvp`: `3/5` restante `2`
+- `lf-openalex-enrichment-mvp`: `2/5` restante `3`
+- `lf-wikidata-entity-graph`: `2/5` restante `3`
+- `lf-worldbank-risk-pricing`: `2/5` restante `3`
 - `site-lf-solucoes`: `0/5` restante `5`
 
 ## Próximos 5 passos
-- `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
+- `Continuar monitorando ISSUE-007` — Gate 5/5 por repo crítico: lf-openalex-enrichment-mvp 2/5, lf-wikidata-entity-graph 2/5, lf-worldbank-risk-pricing 2/5, site-lf-solucoes 0/5 (próximo repo: lf-openalex-enrichment-mvp). | tipo: `monitor-ci-gate`
 - `Reconciliar site-lf-solucoes` — site-lf-solucoes em amarelo | tipo: `reconcile-warning`
 - `Finance export autowire em execução` — Status atual: capture_failed | candidatos: 3 | tipo: `finance-export-autowire`
 - `Continuar wave ISSUE-007` — Manter a wave ativa: ISSUE-007 (infra-analyst + builder-repo) | tipo: `continue-wave`
@@ -75,9 +76,9 @@ Score de autonomia: `61`
 - Finance autowire: capture_failed | candidatos=3 | sugestão=/home/leandro/openclaw/data/finance/ledger.csv
 
 ## Repos estagnados
-- `lf-openalex-enrichment-mvp` — stale | age 277.1h | fix(openalex): normalize shim file endings
-- `lf-wikidata-entity-graph` — stale | age 391.2h | Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o
-- `lf-worldbank-risk-pricing` — stale | age 292.3h | feat(worldbank): add telemetry and contract governance
+- `lf-openalex-enrichment-mvp` — stale | age 154.9h | docs: add Postman workspace link
+- `lf-wikidata-entity-graph` — stale | age 154.9h | docs: add Postman workspace link
+- `lf-worldbank-risk-pricing` — stale | age 154.9h | docs: add Postman workspace link
 
 ---
 Agente: reviewer-delivery + orchestrator

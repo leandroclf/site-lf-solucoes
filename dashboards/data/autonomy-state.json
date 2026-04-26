@@ -1,5 +1,5 @@
 {
-  "updatedAt": "2026-04-26T01:47:21.960532+00:00",
+  "updatedAt": "2026-04-26T01:48:05.403724+00:00",
   "overallStatus": "yellow",
   "overallStatusLabel": "Autonomia em aten\u00e7\u00e3o",
   "autonomyScore": 61,
@@ -8,10 +8,10 @@
     "kind": "monitor-ci-gate",
     "label": "Continuar monitorando ISSUE-007",
     "ctaLabel": "Continuar monitorando ISSUE-007",
-    "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
+    "reason": "Gate 5/5 por repo cr\u00edtico: lf-openalex-enrichment-mvp 2/5, lf-wikidata-entity-graph 2/5, lf-worldbank-risk-pricing 2/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
     "issueId": "ISSUE-007",
     "target": 5,
-    "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+    "summary": "lf-openalex-enrichment-mvp 2/5, lf-wikidata-entity-graph 2/5, lf-worldbank-risk-pricing 2/5, site-lf-solucoes 0/5",
     "nextRepo": "lf-openalex-enrichment-mvp",
     "href": "#deploy-ci",
     "priority": 1,
@@ -22,10 +22,10 @@
       "kind": "monitor-ci-gate",
       "label": "Continuar monitorando ISSUE-007",
       "ctaLabel": "Continuar monitorando ISSUE-007",
-      "reason": "Gate 5/5 por repo cr\u00edtico: lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
+      "reason": "Gate 5/5 por repo cr\u00edtico: lf-openalex-enrichment-mvp 2/5, lf-wikidata-entity-graph 2/5, lf-worldbank-risk-pricing 2/5, site-lf-solucoes 0/5 (pr\u00f3ximo repo: lf-openalex-enrichment-mvp).",
       "issueId": "ISSUE-007",
       "target": 5,
-      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+      "summary": "lf-openalex-enrichment-mvp 2/5, lf-wikidata-entity-graph 2/5, lf-worldbank-risk-pricing 2/5, site-lf-solucoes 0/5",
       "nextRepo": "lf-openalex-enrichment-mvp",
       "href": "#deploy-ci",
       "priority": 1,
@@ -680,10 +680,27 @@
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-06.md",
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-07.md",
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-08.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-09.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-10.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-11.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-12.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-13.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-14.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-15.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-16.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-17.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-18.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-19.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-20.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-21.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-22.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-23.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-24.md",
+          "ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-25.md",
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-pack-v1.md",
           "ops/multiagent/delivery/issue-011-financial-baseline-weekly-template.md"
         ],
-        "latestArtifactAt": "2026-04-08 06:05 UTC",
+        "latestArtifactAt": "2026-04-26 01:36 UTC",
         "hasTaskPacket": true,
         "boardLinked": true
       },
@@ -694,10 +711,38 @@
           "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-06.md",
           "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-07.md",
           "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-08.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-09.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-10.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-11.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-12.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-13.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-14.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-15.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-16.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-17.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-18.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-19.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-20.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-21.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-22.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-23.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-24.md",
+          "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-25.md",
           "ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-template.md",
           "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
         ],
-        "latestArtifactAt": "2026-04-08 06:05 UTC",
+        "latestArtifactAt": "2026-04-26 01:36 UTC",
+        "hasTaskPacket": true,
+        "boardLinked": true
+      },
+      {
+        "issueId": "ISSUE-004",
+        "artifactPaths": [
+          "ops/multiagent/delivery/issue-009-decision-enforcement-checklist-2026-02-25-2301.md",
+          "ops/multiagent/delivery/issue-009-ownership-map-2026-02-25.md",
+          "ops/multiagent/delivery/issue-012-lgpd-source-matrix-v1.md"
+        ],
+        "latestArtifactAt": "2026-04-25 03:05 UTC",
         "hasTaskPacket": true,
         "boardLinked": true
       }
@@ -708,7 +753,7 @@
   },
   "signals": {
     "deploy": {
-      "updatedAt": "2026-04-08T06:17:14.085711+00:00",
+      "updatedAt": "2026-04-26T01:47:25.321187+00:00",
       "greenRepos": 4,
       "yellowRepos": 1,
       "redRepos": 0,
@@ -721,26 +766,26 @@
     "ciGate": {
       "target": 5,
       "complete": false,
-      "summary": "lf-wikidata-entity-graph 19/5, lf-worldbank-risk-pricing 9/5, lf-openalex-enrichment-mvp 3/5, site-lf-solucoes 0/5",
+      "summary": "lf-openalex-enrichment-mvp 2/5, lf-wikidata-entity-graph 2/5, lf-worldbank-risk-pricing 2/5, site-lf-solucoes 0/5",
       "repos": [
         {
+          "repo": "lf-openalex-enrichment-mvp",
+          "successes": 2,
+          "remaining": 3,
+          "complete": false,
+          "status": "green"
+        },
+        {
           "repo": "lf-wikidata-entity-graph",
-          "successes": 19,
-          "remaining": 0,
-          "complete": true,
+          "successes": 2,
+          "remaining": 3,
+          "complete": false,
           "status": "green"
         },
         {
           "repo": "lf-worldbank-risk-pricing",
-          "successes": 9,
-          "remaining": 0,
-          "complete": true,
-          "status": "green"
-        },
-        {
-          "repo": "lf-openalex-enrichment-mvp",
-          "successes": 3,
-          "remaining": 2,
+          "successes": 2,
+          "remaining": 3,
           "complete": false,
           "status": "green"
         },
@@ -755,7 +800,7 @@
       "nextRepo": "lf-openalex-enrichment-mvp"
     },
     "autopilot": {
-      "updatedAt": "2026-04-08T01:45:07Z",
+      "updatedAt": "2026-04-26T01:45:12Z",
       "cycleCompletionPct": 96.67,
       "humanInterventionCount": 1
     },
@@ -768,12 +813,12 @@
       "path": "/home/leandro/openclaw/data/finance/ledger.csv",
       "exists": true,
       "changeType": "stable",
-      "observedAt": "2026-04-08T06:00:03.742887+00:00",
+      "observedAt": "2026-04-26T01:30:06.639052+00:00",
       "lastChangeAt": "2026-04-05T14:28:02.852786+00:00",
       "lastAlertAt": null,
       "stateFile": "/home/leandro/openclaw/runtime/agentos/ledger-export-watchdog.json",
       "discovery": {
-        "observedAt": "2026-04-08T06:00:03.769261+00:00",
+        "observedAt": "2026-04-26T01:30:06.666358+00:00",
         "searchRoots": [
           "/home/leandro/openclaw/data/finance",
           "/home/leandro/openclaw/data",
@@ -819,13 +864,13 @@
         "candidateCount": 3,
         "recommendedSource": {
           "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-          "score": 188,
+          "score": 177,
           "reasons": [
             "canonical finance export path",
             "supported format .csv",
             "name matches ledger",
             "path matches finance",
-            "updated in the last 3 days"
+            "updated in the last 2 months"
           ],
           "size": 2372,
           "mtime": "2026-04-05T14:28:02.748678+00:00",
@@ -835,13 +880,13 @@
         "candidates": [
           {
             "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-            "score": 188,
+            "score": 177,
             "reasons": [
               "canonical finance export path",
               "supported format .csv",
               "name matches ledger",
               "path matches finance",
-              "updated in the last 3 days"
+              "updated in the last 2 months"
             ],
             "size": 2372,
             "mtime": "2026-04-05T14:28:02.748678+00:00",
@@ -878,17 +923,17 @@
       },
       "autowire": {
         "status": "capture_failed",
-        "observedAt": "2026-04-08T06:05:49.777801+00:00",
+        "observedAt": "2026-04-26T01:36:10.295796+00:00",
         "candidateCount": 3,
         "recommendedSource": {
           "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-          "score": 188,
+          "score": 177,
           "reasons": [
             "canonical finance export path",
             "supported format .csv",
             "name matches ledger",
             "path matches finance",
-            "updated in the last 3 days"
+            "updated in the last 2 months"
           ],
           "size": 2372,
           "mtime": "2026-04-05T14:28:02.748678+00:00",
@@ -898,20 +943,20 @@
       }
     },
     "financeAutowire": {
-      "observedAt": "2026-04-08T06:05:49.777801+00:00",
+      "observedAt": "2026-04-26T01:36:10.295796+00:00",
       "status": "capture_failed",
       "dryRun": false,
       "canonicalLedger": "/home/leandro/openclaw/data/finance/ledger.csv",
       "candidateCount": 3,
       "recommendedSource": {
         "path": "/home/leandro/openclaw/data/finance/ledger.csv",
-        "score": 188,
+        "score": 177,
         "reasons": [
           "canonical finance export path",
           "supported format .csv",
           "name matches ledger",
           "path matches finance",
-          "updated in the last 3 days"
+          "updated in the last 2 months"
         ],
         "size": 2372,
         "mtime": "2026-04-05T14:28:02.748678+00:00",
@@ -964,8 +1009,8 @@
       "install": null,
       "capture": {
         "returncode": 1,
-        "stdout": "finance_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-08.md\nlegal_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-08.md",
-        "stderr": "On branch main\nYour branch is up to date with 'origin/main'.\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n  (commit or discard the untracked or modified content in submodules)\n\tmodified:   dashboards/data/deploy-status.json\n\tmodified:   dashboards/data/deploy-status.md\n\tmodified:   dashboards/data/metrics-history.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.md\n\tmodified:   ops/multiagent/delivery/autopilot-sla.json\n\tmodified:   ops/multiagent/delivery/autopilot-sla.md\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.json\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.md\n\tmodified:   ops/multiagent/delivery/daily-summary.md\n\tmodified:   ops/multiagent/delivery/deploy-status.json\n\tmodified:   ops/multiagent/delivery/deploy-status.md\n\tmodified:   ops/multiagent/delivery/ops-lint-report.md\n\tmodified:   ops/multiagent/delivery/product-code-progress.json\n\tmodified:   ops/multiagent/delivery/product-code-progress.md\n\tmodified:   ops/multiagent/delivery/watchdog-monitor.json\n\tmodified:   ops/multiagent/delivery/watchdog-monitor.md\n\tmodified:   projects/site-lf-solucoes (modified content)\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
+        "stdout": "finance_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-011-financial-baseline-weekly-2026-04-25.md\nlegal_run=/home/leandro/openclaw-workspace/ops/multiagent/delivery/issue-012-lgpd-openaq-osm-source-matrix-2026-04-25.md",
+        "stderr": "On branch main\nYour branch is up to date with 'origin/main'.\n\nChanges not staged for commit:\n  (use \"git add <file>...\" to update what will be committed)\n  (use \"git restore <file>...\" to discard changes in working directory)\n\tmodified:   MEMORY.md\n\tmodified:   dashboards/data/deploy-status.json\n\tmodified:   dashboards/data/deploy-status.md\n\tmodified:   dashboards/data/metrics-history.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.json\n\tmodified:   ops/multiagent/delivery/autonomy-state.md\n\tmodified:   ops/multiagent/delivery/autopilot-sla.json\n\tmodified:   ops/multiagent/delivery/autopilot-sla.md\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.json\n\tmodified:   ops/multiagent/delivery/ci-regression-watchdog.md\n\tmodified:   ops/multiagent/delivery/daily-summary.md\n\tmodified:   ops/multiagent/delivery/deploy-status.json\n\tmodified:   ops/multiagent/delivery/deploy-status.md\n\tmodified:   ops/multiagent/delivery/ops-lint-report.md\n\tmodified:   ops/multiagent/delivery/product-code-progress.json\n\tmodified:   ops/multiagent/delivery/product-code-progress.md\n\tmodified:   ops/multiagent/delivery/watchdog-monitor.json\n\tmodified:   ops/multiagent/delivery/watchdog-monitor.md\n\tmodified:   projects/site-lf-solucoes (new commits)\n\nUntracked files:\n  (use \"git add <file>...\" to include in what will be committed)\n\tmemory/2026-04-25.md\n\nno changes added to commit (use \"git add\" and/or \"git commit -a\")",
         "commit": null
       },
       "watchdog": {
@@ -1018,20 +1063,20 @@
     {
       "repo": "lf-openalex-enrichment-mvp",
       "status": "stale",
-      "ageHours": 277.1,
-      "subject": "fix(openalex): normalize shim file endings"
+      "ageHours": 154.9,
+      "subject": "docs: add Postman workspace link"
     },
     {
       "repo": "lf-wikidata-entity-graph",
       "status": "stale",
-      "ageHours": 391.2,
-      "subject": "Merge pull request #4 from leandroclf/feature/issue-002-grafo-de-entidades-com-wikidata-para-normaliza-o"
+      "ageHours": 154.9,
+      "subject": "docs: add Postman workspace link"
     },
     {
       "repo": "lf-worldbank-risk-pricing",
       "status": "stale",
-      "ageHours": 292.3,
-      "subject": "feat(worldbank): add telemetry and contract governance"
+      "ageHours": 154.9,
+      "subject": "docs: add Postman workspace link"
     }
   ],
   "sources": {
