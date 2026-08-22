@@ -10,7 +10,8 @@ from pathlib import Path
 ROOT = Path(__file__).resolve().parents[1]
 
 BUDGETS = {
-    "html_total_bytes": 170_000,
+    # A navigation downloads one HTML document, not every page in the site.
+    "html_max_page_bytes": 50_000,
     "css_total_bytes": 80_000,
     "js_total_bytes": 170_000,
     "image_total_bytes": 450_000,
@@ -41,7 +42,7 @@ def main() -> int:
     image_files = collect(("*.jpg", "*.jpeg", "*.png", "*.svg", "*.webp"))
 
     current = {
-        "html_total_bytes": total_size(html_files),
+        "html_max_page_bytes": max((path.stat().st_size for path in html_files), default=0),
         "css_total_bytes": total_size(css_files),
         "js_total_bytes": total_size(js_files),
         "image_total_bytes": total_size(image_files),

@@ -5,6 +5,7 @@
 - [ ] `python3 scripts/collect_perf_baseline.py` atualizado
 - [ ] JS total sem crescimento fora do budget
 - [ ] CSS total sem crescimento fora do budget
+- [ ] Maior pagina HTML dentro do budget por navegacao
 - [ ] Lighthouse CI aprovado
 - [ ] Dashboard com meta final aplicada (Performance >= 90 e A11y >= 95)
 
