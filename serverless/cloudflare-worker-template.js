@@ -9,7 +9,15 @@ export default {
       return new Response("Method not allowed", { status: 405 });
     }
 
-    // Rate limit simples por IP (exemplo com KV/R2 pode ser acoplado aqui).
+    if (env.REPORT_API_TOKEN && request.headers.get("Authorization") !== `Bearer ${env.REPORT_API_TOKEN}`) {
+      return json({ error: "unauthorized" }, 401);
+    }
+    const origin = request.headers.get("Origin");
+    if (env.ALLOWED_ORIGIN && origin !== env.ALLOWED_ORIGIN) {
+      return json({ error: "forbidden_origin" }, 403);
+    }
+
+    // Rate limit simples por IP (substituir por Durable Objects/KV em produção).
     const ip = request.headers.get("cf-connecting-ip") || "unknown";
     if (!ip) {
       return new Response("Forbidden", { status: 403 });
@@ -19,7 +27,10 @@ export default {
     try {
       payload = await request.json();
     } catch {
-      return Response.json({ error: "invalid_json" }, { status: 400 });
+      return json({ error: "invalid_json" }, 400);
+    }
+    if (!payload || typeof payload !== "object" || Array.isArray(payload)) {
+      return json({ error: "invalid_payload" }, 400);
     }
 
     // Sanitizacao minima para evitar prompt injection trivial.
@@ -40,6 +51,18 @@ export default {
       `canal principal ${safe.canal || "nao informado"}, ` +
       `com prioridade para padronizacao e monitoramento de indicadores de conversao e custo.`;
 
-    return Response.json({ report }, { status: 200 });
+    return json({ report }, 200);
   },
 };
+
+function json(payload, status) {
+  return new Response(JSON.stringify(payload), {
+    headers: {
+      "Content-Type": "application/json; charset=utf-8",
+      "Cache-Control": "no-store",
+      "X-Content-Type-Options": "nosniff",
+      "Referrer-Policy": "no-referrer",
+    },
+    status,
+  });
+}

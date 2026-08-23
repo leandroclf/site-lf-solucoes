@@ -47,6 +47,16 @@ Definir endpoint global em script inline opcional:
 
 Sem essa variavel, o site usa somente o fallback local.
 
+## Protecoes obrigatorias no endpoint
+
+Quando o endpoint for privado, ele deve exigir `Authorization: Bearer
+<REPORT_API_TOKEN>`. Para o fluxo publico do site, o token pode permanecer
+ausente, mas o endpoint deve rejeitar origens diferentes de `ALLOWED_ORIGIN`
+quando essa configuracao estiver definida.
+O template aplica limite basico de 30 requisicoes por IP a cada minuto. Em
+producao, substituir o contador em memoria por Durable Objects ou KV para
+garantir o limite entre instancias.
+
 ## Observabilidade minima
 
 - Logar apenas status da chamada (ok/falha/timeout).

@@ -58,7 +58,13 @@ export class ApiSandbox {
       const btn = document.createElement('button');
       btn.className = 'sb-nav-btn';
       btn.dataset.id = ep.id;
-      btn.innerHTML = `<span class="sb-badge sb-badge-${ep.method.toLowerCase()}">${ep.method}</span><span class="sb-nav-label">${ep.label}</span>`;
+      const badge = document.createElement('span');
+      badge.className = `sb-badge sb-badge-${String(ep.method || '').toLowerCase().replace(/[^a-z]/g, '')}`;
+      badge.textContent = ep.method || '';
+      const label = document.createElement('span');
+      label.className = 'sb-nav-label';
+      label.textContent = ep.label || '';
+      btn.append(badge, label);
       btn.addEventListener('click', () => this._selectEndpoint(ep));
       nav.appendChild(btn);
     });
@@ -91,12 +97,25 @@ export class ApiSandbox {
     const paramsEl = document.getElementById('sb-params');
     if (ep.params && ep.params.length) {
       paramsWrap.hidden = false;
-      paramsEl.innerHTML = ep.params.map(p => `
-        <div class="sb-param-row">
-          <label class="sb-param-label">${p.name}${p.required ? ' <span style="color:var(--warning)">*</span>' : ''}</label>
-          <input class="sb-param-input" data-param="${p.name}" type="${p.type || 'text'}" value="${p.default ?? ''}" placeholder="${p.placeholder || ''}" />
-          <span class="sb-param-desc">${p.description || ''}</span>
-        </div>`).join('');
+      paramsEl.replaceChildren();
+      ep.params.forEach((p) => {
+        const row = document.createElement('div');
+        row.className = 'sb-param-row';
+        const label = document.createElement('label');
+        label.className = 'sb-param-label';
+        label.textContent = `${p.name || ''}${p.required ? ' *' : ''}`;
+        const input = document.createElement('input');
+        input.className = 'sb-param-input';
+        input.dataset.param = p.name || '';
+        input.type = ['text', 'number', 'email', 'url'].includes(p.type) ? p.type : 'text';
+        input.value = p.default ?? '';
+        input.placeholder = p.placeholder || '';
+        const description = document.createElement('span');
+        description.className = 'sb-param-desc';
+        description.textContent = p.description || '';
+        row.append(label, input, description);
+        paramsEl.appendChild(row);
+      });
     } else {
       paramsWrap.hidden = true;
     }

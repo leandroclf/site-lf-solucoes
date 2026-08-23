@@ -8,7 +8,7 @@ const RESET_BTN = document.getElementById("diagnostic-reset");
 const REPORT_BTN = document.getElementById("diagnostic-report-btn");
 const REPORT_BOX = document.getElementById("diagnostic-report");
 const REPORT_TEXT = document.getElementById("diagnostic-report-text");
-const STORAGE_KEY = "lf_diagnostic_v1";
+const STORAGE_KEY = "lf_diagnostic_state_v1";
 
 if (!FORM || !RESULT || !TAGS || !GAPS || !ACTIONS || !CTA || !RESET_BTN || !REPORT_BTN || !REPORT_BOX || !REPORT_TEXT) {
   throw new Error("Modulo de diagnostico nao encontrou elementos obrigatorios no DOM.");
@@ -37,7 +37,9 @@ function renderList(target, title, items) {
   target.innerHTML = "";
   if (title) {
     const header = document.createElement("li");
-    header.innerHTML = `<strong>${title}</strong>`;
+    const strong = document.createElement("strong");
+    strong.textContent = title;
+    header.appendChild(strong);
     target.appendChild(header);
   }
   items.forEach((item) => {
@@ -126,20 +128,6 @@ function showDiagnostic(output) {
   }
 }
 
-function persist(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-function loadPersisted() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
 function clearPersisted() {
   localStorage.removeItem(STORAGE_KEY);
 }
@@ -222,7 +210,6 @@ FORM.addEventListener("submit", (event) => {
   const data = toObject(new FormData(FORM));
   const output = getDiagnostic(data);
   showDiagnostic(output);
-  persist(data);
   track("diagnostic_completed", { objective: data.objetivo, channel: data.canal });
 });
 
@@ -239,8 +226,5 @@ REPORT_BTN.addEventListener("click", () => {
   generateReport();
 });
 
-const persisted = loadPersisted();
-if (persisted) {
-  fillForm(persisted);
-  showDiagnostic(getDiagnostic(persisted));
-}
+// Dados de diagnóstico podem conter informações comerciais e não são persistidos.
+clearPersisted();

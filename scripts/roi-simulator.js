@@ -3,7 +3,7 @@ const RESULT = document.getElementById("roi-result");
 const RANGES = document.getElementById("roi-ranges");
 const PAYBACK = document.getElementById("roi-payback");
 const RESET_BTN = document.getElementById("roi-reset");
-const STORAGE_KEY = "lf_roi_simulator_v1";
+const STORAGE_KEY = "lf_roi_simulator_state_v1";
 
 if (!FORM || !RESULT || !RANGES || !PAYBACK || !RESET_BTN) {
   throw new Error("Modulo de ROI nao encontrou elementos obrigatorios no DOM.");
@@ -26,27 +26,6 @@ function currency(value) {
     currency: "BRL",
     maximumFractionDigits: 0,
   }).format(Math.max(0, value));
-}
-
-function persist(data) {
-  localStorage.setItem(STORAGE_KEY, JSON.stringify(data));
-}
-
-function loadPersisted() {
-  const raw = localStorage.getItem(STORAGE_KEY);
-  if (!raw) return null;
-  try {
-    return JSON.parse(raw);
-  } catch {
-    return null;
-  }
-}
-
-function fillForm(data) {
-  Object.entries(data).forEach(([key, value]) => {
-    const input = FORM.elements.namedItem(key);
-    if (input) input.value = value;
-  });
 }
 
 function computeROI(input) {
@@ -78,7 +57,9 @@ function renderResult(output) {
 
   lines.forEach(([label, value]) => {
     const li = document.createElement("li");
-    li.innerHTML = `<strong>${label}:</strong> ${currency(value)} / mes`;
+    const strong = document.createElement("strong");
+    strong.textContent = `${label}:`;
+    li.append(strong, ` ${currency(value)} / mes`);
     RANGES.appendChild(li);
   });
 
@@ -101,7 +82,6 @@ FORM.addEventListener("submit", (event) => {
 
   const output = computeROI(input);
   renderResult(output);
-  persist(input);
   track("roi_calculated", {
     leads: input.leads,
     conversao: input.conversao,
@@ -115,8 +95,5 @@ RESET_BTN.addEventListener("click", () => {
   track("roi_reset");
 });
 
-const persisted = loadPersisted();
-if (persisted) {
-  fillForm(persisted);
-  renderResult(computeROI(persisted));
-}
+// Dados comerciais do simulador não são persistidos no navegador.
+localStorage.removeItem(STORAGE_KEY);
