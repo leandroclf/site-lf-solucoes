@@ -71,13 +71,23 @@ function normalize(text) {
 }
 
 function escapeHtml(text) {
-  return String(text || '').replace(/[&<>"']/g, (ch) => ({
+  return String(text ?? '').replace(/[&<>"']/g, (ch) => ({
     '&': '&amp;',
     '<': '&lt;',
     '>': '&gt;',
     '"': '&quot;',
     "'": '&#39;',
   }[ch]));
+}
+
+function safeExternalUrl(value) {
+  try {
+    const url = new URL(String(value || ''), window.location.href);
+    if (!['http:', 'https:'].includes(url.protocol)) return '#';
+    return escapeHtml(url.href);
+  } catch {
+    return '#';
+  }
 }
 
 function extractUpdatedAt(data) {
@@ -189,13 +199,13 @@ function renderDashboardSignals() {
   familiesEl.innerHTML = coverage.map((item) => {
     const status = item.active ? 'ativo' : 'pendente';
     const statusClass = item.active ? 'signal-family-active' : 'signal-family-idle';
-    return `<li><strong>${item.family}</strong><span class="${statusClass}">${status}</span></li>`;
+    return `<li><strong>${escapeHtml(item.family)}</strong><span class="${statusClass}">${escapeHtml(status)}</span></li>`;
   }).join('');
 
   listEl.innerHTML = events7d.slice(-5).reverse().map((event) => {
     const stamp = formatBrtTimestamp(event.at) || event.at || 'n/d';
     const detail = event.detail?.label ? ` — ${event.detail.label}` : '';
-    return `<li><strong>${event.family || 'signal'}</strong> — ${event.action || 'n/d'}${detail} <span class="task-meta">${stamp}</span></li>`;
+    return `<li><strong>${escapeHtml(event.family || 'signal')}</strong> — ${escapeHtml(event.action || 'n/d')}${escapeHtml(detail)} <span class="task-meta">${escapeHtml(stamp)}</span></li>`;
   }).join('') || '<li class="task-meta">Sem sinais rastreados ainda.</li>';
 }
 
@@ -218,10 +228,10 @@ function renderCommitReference(url) {
   try {
     const parsed = new URL(url);
     const sha = parsed.pathname.split('/').pop() || url;
-    const shortSha = sha.slice(0, 7);
-    return `<a href="${url}" target="_blank" rel="noreferrer"><code>${shortSha}</code></a>`;
+    const shortSha = escapeHtml(sha.slice(0, 7));
+    return `<a href="${safeExternalUrl(parsed.href)}" target="_blank" rel="noopener noreferrer"><code>${shortSha}</code></a>`;
   } catch {
-    return `<a href="${url}" target="_blank" rel="noreferrer">commit</a>`;
+    return `<a href="#" target="_blank" rel="noopener noreferrer">commit</a>`;
   }
 }
 
@@ -341,9 +351,9 @@ function renderOwnerBars(tasks) {
     const width = Math.max(8, Math.round((count / max) * 100));
 
     row.innerHTML = `
-      <span class="task-meta">${owner}</span>
+      <span class="task-meta">${escapeHtml(owner)}</span>
       <div class="bar" style="width:${width}%"></div>
-      <span class="task-meta">${count}</span>
+      <span class="task-meta">${escapeHtml(count)}</span>
     `;
     target.appendChild(row);
   });
@@ -709,7 +719,7 @@ function renderOperationalAlerts(tasks, deployData) {
   };
 
   const top = [...tasks].sort((a, b) => score(b) - score(a)).slice(0, 5);
-  bottlenecksEl.innerHTML = top.map((t, idx) => `<li><button class="btn btn-secondary drill-task" data-task-title="${String(t.title || '').replace(/"/g, '&quot;')}">#${idx + 1} ${t.title}</button> — ${t.status || 'n/d'} (${t.ownerPrimary || t.owner || 'n/d'})</li>`).join('') || '<li>Sem gargalos relevantes.</li>';
+  bottlenecksEl.innerHTML = top.map((t, idx) => `<li><button class="btn btn-secondary drill-task" data-task-title="${escapeHtml(t.title || '')}">#${idx + 1} ${escapeHtml(t.title || '')}</button> — ${escapeHtml(t.status || 'n/d')} (${escapeHtml(t.ownerPrimary || t.owner || 'n/d')})</li>`).join('') || '<li>Sem gargalos relevantes.</li>';
   bottlenecksEl.querySelectorAll('.drill-task').forEach((btn) => {
     btn.addEventListener('click', () => {
       const title = btn.getAttribute('data-task-title') || '';
@@ -734,7 +744,7 @@ function renderOperationalAlerts(tasks, deployData) {
     const row = document.createElement('div');
     row.className = 'bar-row';
     const width = Math.max(10, (j.weight / 3) * 100);
-    row.innerHTML = `<span class='task-meta'>${j.name}</span><div class='bar' style='width:${width}%;'></div><span class='task-meta'>${j.c || 'n/d'}</span>`;
+    row.innerHTML = `<span class='task-meta'>${escapeHtml(j.name)}</span><div class='bar' style='width:${width}%;'></div><span class='task-meta'>${escapeHtml(j.c || 'n/d')}</span>`;
     criticalJobsEl.appendChild(row);
   });
 
@@ -751,7 +761,7 @@ function renderOperationalAlerts(tasks, deployData) {
     .filter((x) => x && x.elapsed > threshold)
     .sort((a, b) => b.violation - a.violation)
     .slice(0, 5);
-  slaViolEl.innerHTML = slaViol.map(({ task, violation }) => `<li><strong>${task.title}</strong> — violação ${violation.toFixed(1)}h</li>`).join('') || '<li>Nenhum SLA vencido nas últimas 24h.</li>';
+  slaViolEl.innerHTML = slaViol.map(({ task, violation }) => `<li><strong>${escapeHtml(task.title)}</strong> — violação ${escapeHtml(violation.toFixed(1))}h</li>`).join('') || '<li>Nenhum SLA vencido nas últimas 24h.</li>';
 
   const blockedByType = {
     onboarding: tasks.filter((t) => String(t.status || '').includes('BLOCKED_ONBOARDING')).length,
@@ -775,7 +785,7 @@ function renderOperationalAlerts(tasks, deployData) {
   heatEl.innerHTML = Object.entries(byCat).map(([cat, v]) => {
     const ratio = v.total ? (v.blocked / v.total) : 0;
     const bg = ratio > 0.4 ? 'rgba(239,68,68,.25)' : (ratio > 0.15 ? 'rgba(245,158,11,.25)' : 'rgba(16,185,129,.2)');
-    return `<div class='heat-cell' style='background:${bg}'><strong>${cat}</strong><div>Bloq: ${v.blocked}/${v.total}</div></div>`;
+    return `<div class='heat-cell' style='background:${bg}'><strong>${escapeHtml(cat)}</strong><div>Bloq: ${v.blocked}/${v.total}</div></div>`;
   }).join('');
 }
 
@@ -809,9 +819,9 @@ function drawSparkline(containerId, values, suffix = '', goal = null, goalLabel 
     const goalFill = goalMet ? '#10b981' : '#fbbf24';
     goalSvg = `
       <line x1="10" y1="${goalY}" x2="${w - 10}" y2="${goalY}" stroke="${goalStroke}" stroke-width="1.5" stroke-dasharray="5 4" opacity="0.9"></line>
-      <text x="${w - 12}" y="${Math.max(12, goalY - 4)}" text-anchor="end" fill="${goalFill}" font-size="10">${goalLabel || `Meta ${goal}`}</text>
+      <text x="${w - 12}" y="${Math.max(12, goalY - 4)}" text-anchor="end" fill="${goalFill}" font-size="10">${escapeHtml(goalLabel || `Meta ${goal}`)}</text>
     `;
-    goalNote = `<p class="task-meta goal-line ${goalMet ? 'goal-hit' : 'goal-miss'}">${goalLabel || `Meta: ${goal}`} — ${goalMet ? 'meta atingida' : 'fora do alvo'}</p>`;
+    goalNote = `<p class="task-meta goal-line ${goalMet ? 'goal-hit' : 'goal-miss'}">${escapeHtml(goalLabel || `Meta: ${goal}`)} — ${goalMet ? 'meta atingida' : 'fora do alvo'}</p>`;
   }
 
   el.innerHTML = `<svg width='100%' viewBox='0 0 ${w} ${h}'>${goalSvg}<polyline fill='none' stroke='#2563eb' stroke-width='3' points='${pts}'/></svg><p class='task-meta'>${arrow} ${Math.abs(delta).toFixed(1)}%${suffix}</p>${goalNote}`;
@@ -882,7 +892,7 @@ function renderAnalyticalLayer(tasks, activities) {
     .map((a) => ({ title: a.title || a.id, tmr: (new Date(a.completedAt) - new Date(a.createdAt)) / 36e5 }))
     .sort((a, b) => b.tmr - a.tmr)
     .slice(0, 5);
-  if (outEl) outEl.innerHTML = out.map((o) => `<li><strong>${o.title}</strong> — ${o.tmr.toFixed(1)}h</li>`).join('') || '<li>Sem outliers relevantes.</li>';
+  if (outEl) outEl.innerHTML = out.map((o) => `<li><strong>${escapeHtml(o.title)}</strong> — ${escapeHtml(o.tmr.toFixed(1))}h</li>`).join('') || '<li>Sem outliers relevantes.</li>';
   renderDashboardSignals();
 }
 
@@ -1004,7 +1014,7 @@ async function loadSemaphoreState() {
       const date = String(d.date || '').slice(5);
       const item = document.createElement('div');
       item.className = 'traffic-day';
-      item.innerHTML = `<div class="dot ${dotClassByStatus(d.status)}"></div><div>${date}</div><div>${d.status.toUpperCase()}</div>`;
+      item.innerHTML = `<div class="dot ${dotClassByStatus(d.status)}"></div><div>${escapeHtml(date)}</div><div>${escapeHtml(d.status.toUpperCase())}</div>`;
       historyEl.appendChild(item);
     });
 
@@ -1025,8 +1035,8 @@ function createTaskCard(task) {
       runbookHtml = `
         <details class="runbook">
           <summary>Passo a passo (HUMAN)</summary>
-          <ol>${task.runbookSteps.map((s) => `<li>${s}</li>`).join('')}</ol>
-          ${Array.isArray(task.expectedEvidence) && task.expectedEvidence.length > 0 ? `<p class="task-meta"><strong>Evidências:</strong> ${task.expectedEvidence.join(' • ')}</p>` : '<p class="task-meta"><strong>Evidências:</strong> não informadas</p>'}
+          <ol>${task.runbookSteps.map((s) => `<li>${escapeHtml(s)}</li>`).join('')}</ol>
+          ${Array.isArray(task.expectedEvidence) && task.expectedEvidence.length > 0 ? `<p class="task-meta"><strong>Evidências:</strong> ${task.expectedEvidence.map(escapeHtml).join(' • ')}</p>` : '<p class="task-meta"><strong>Evidências:</strong> não informadas</p>'}
         </details>
       `;
     } else {
@@ -1039,11 +1049,11 @@ function createTaskCard(task) {
   }
 
   card.innerHTML = `
-    <p class="task-title">${task.title || '-'}</p>
-    <p class="task-desc">${task.description || ''}</p>
-    <p class="task-meta">Projeto: ${task.project || '-'} • Responsável: ${task.owner || '-'} • Modo: ${task.mode || '-'}</p>
-    <p class="task-meta">Status: ${task.status || '-'}</p>
-    <p class="priority ${priorityClass(task.priority)}">Prioridade: ${task.priority || 'Baixa'}</p>
+    <p class="task-title">${escapeHtml(task.title || '-')}</p>
+    <p class="task-desc">${escapeHtml(task.description || '')}</p>
+    <p class="task-meta">Projeto: ${escapeHtml(task.project || '-')} • Responsável: ${escapeHtml(task.owner || '-')} • Modo: ${escapeHtml(task.mode || '-')}</p>
+    <p class="task-meta">Status: ${escapeHtml(task.status || '-')}</p>
+    <p class="priority ${priorityClass(task.priority)}">Prioridade: ${escapeHtml(task.priority || 'Baixa')}</p>
     ${runbookHtml}
   `;
   return card;
@@ -1195,17 +1205,17 @@ function renderWaveMonitor(data) {
       <li class="wave-card${focusClass}">
         <div class="wave-card-head">
           <div>
-            <p class="wave-card-title">${issueCode} · ${task.title || ''}</p>
-            <p class="task-meta">Projeto: ${project} · Owner: ${owner}</p>
+        <p class="wave-card-title">${escapeHtml(issueCode)} · ${escapeHtml(task.title || '')}</p>
+            <p class="task-meta">Projeto: ${escapeHtml(project)} · Owner: ${escapeHtml(owner)}</p>
           </div>
           <span class="wave-pill">${statusLabel}${isIssue022Wave(task) ? ' • MONITORADA' : ''}</span>
         </div>
         <div class="wave-card-meta">
-          <span class="wave-pill">KPI: ${kpi}</span>
-          <span class="wave-pill">Categoria: ${task.categoryPrimary || 'n/d'}</span>
-          <span class="wave-pill">Modo: ${task.mode || 'n/d'}</span>
+          <span class="wave-pill">KPI: ${escapeHtml(kpi)}</span>
+          <span class="wave-pill">Categoria: ${escapeHtml(task.categoryPrimary || 'n/d')}</span>
+          <span class="wave-pill">Modo: ${escapeHtml(task.mode || 'n/d')}</span>
         </div>
-        <p class="wave-card-desc">${description}</p>
+        <p class="wave-card-desc">${escapeHtml(description)}</p>
       </li>
     `;
   }).join('');
@@ -1579,33 +1589,33 @@ async function loadHandoff() {
     }
 
     const projects = (data.projects || []).map((p) => {
-      const repoLink = p.repo ? ` — <a href="${p.repo}" target="_blank" rel="noreferrer">repo</a>` : '';
+      const repoLink = p.repo ? ` — <a href="${safeExternalUrl(p.repo)}" target="_blank" rel="noopener noreferrer">repo</a>` : '';
       const latestCommit = p.latestCommit ? ` — último commit ${renderCommitReference(p.latestCommit)}` : '';
-      return `<li><strong>${p.name}</strong> — ${p.status}${repoLink}${latestCommit}</li>`;
+      return `<li><strong>${escapeHtml(p.name)}</strong> — ${escapeHtml(p.status)}${repoLink}${latestCommit}</li>`;
     }).join('');
     // const team = (data.team?.roles || []).map((r) => `<li>${r}</li>`).join(''); // REMOVED
     const categoriesObj = data.team?.categories || {};
     const categories = Object.keys(categoriesObj).length
-      ? Object.entries(categoriesObj).map(([name, roles]) => `<li><strong>${name}</strong><ul>${(roles || []).map((r) => `<li>${r}</li>`).join('')}</ul></li>`).join('')
+      ? Object.entries(categoriesObj).map(([name, roles]) => `<li><strong>${escapeHtml(name)}</strong><ul>${(roles || []).map((r) => `<li>${escapeHtml(r)}</li>`).join('')}</ul></li>`).join('')
       : '';
-    const daily = (data.automation?.daily || []).map((x) => `<li>${x}</li>`).join('');
-    const weekly = (data.automation?.weekly || []).map((x) => `<li>${x}</li>`).join('');
-    const checklist = (data.handoffChecklist || []).map((x) => `<li>${x}</li>`).join('');
+    const daily = (data.automation?.daily || []).map((x) => `<li>${escapeHtml(x)}</li>`).join('');
+    const weekly = (data.automation?.weekly || []).map((x) => `<li>${escapeHtml(x)}</li>`).join('');
+    const checklist = (data.handoffChecklist || []).map((x) => `<li>${escapeHtml(x)}</li>`).join('');
     const capability = data.team?.capabilityControl || {};
-    const requiredFields = (capability.requiredTaskFields || []).map((f) => `<li>${f}</li>`).join('');
+    const requiredFields = (capability.requiredTaskFields || []).map((f) => `<li>${escapeHtml(f)}</li>`).join('');
     const recentAdvances = Array.isArray(data.recentAdvances) ? data.recentAdvances.slice(0, 4) : [];
     const recentAdvancesHtml = recentAdvances.length
       ? recentAdvances.map((entry) => {
           const stamp = formatBrtTimestamp(entry.at) || entry.at || 'n/d';
           const items = Array.isArray(entry.items) ? entry.items : [];
-          return `<li><strong>${stamp}</strong><ul>${items.map((item) => `<li>${item}</li>`).join('')}</ul></li>`;
+          return `<li><strong>${escapeHtml(stamp)}</strong><ul>${items.map((item) => `<li>${escapeHtml(item)}</li>`).join('')}</ul></li>`;
         }).join('')
       : '<li class="task-meta">Sem avanços recentes registrados.</li>';
 
     target.innerHTML = `
       <div class="handoff-block">
         <h3>Objetivo do programa</h3>
-        <p class="task-meta">${data.program?.objective || '-'}</p>
+        <p class="task-meta">${escapeHtml(data.program?.objective || '-')}</p>
       </div>
       <div class="handoff-block">
         <h3>Projetos e status</h3>
@@ -1625,9 +1635,9 @@ async function loadHandoff() {
       <div class="handoff-block">
         <h3>Controle de capacidade e função</h3>
         <ul>
-          <li>Matriz: ${capability.matrix || 'n/d'}</li>
-          <li>Alocação ativa: ${capability.allocation || 'n/d'}</li>
-          <li>Roteamento: ${capability.routing || 'n/d'}</li>
+          <li>Matriz: ${escapeHtml(capability.matrix || 'n/d')}</li>
+          <li>Alocação ativa: ${escapeHtml(capability.allocation || 'n/d')}</li>
+          <li>Roteamento: ${escapeHtml(capability.routing || 'n/d')}</li>
         </ul>
         <p class="task-meta"><strong>Campos obrigatórios por task</strong></p>
         <ul>${requiredFields}</ul>
@@ -1681,7 +1691,7 @@ async function loadRepoProgress() {
         : 'n/d';
       const prs = typeof repo.open_prs === 'number' ? `${repo.open_prs}` : 'n/d';
       const subject = commit.subject || '';
-      return `<li><strong>${badge} ${repo.repo}</strong> — ${status} | ${branch} | <code>${shortSha}</code> ${subject} | age ${age} | 48h ${commits48h} | ahead/behind ${ahead} | PRs ${prs} | worktree ${worktree}</li>`;
+      return `<li><strong>${badge} ${escapeHtml(repo.repo)}</strong> — ${escapeHtml(status)} | ${escapeHtml(branch)} | <code>${escapeHtml(shortSha)}</code> ${escapeHtml(subject)} | age ${escapeHtml(age)} | 48h ${escapeHtml(commits48h)} | ahead/behind ${escapeHtml(ahead)} | PRs ${escapeHtml(prs)} | worktree ${escapeHtml(worktree)}</li>`;
     }).join('');
 
     if (!listEl.innerHTML) {
@@ -1715,7 +1725,7 @@ function renderSlaWeeklyBars(weekStats, targetPct) {
     const row = document.createElement('div');
     row.className = 'sla-week-row';
     row.innerHTML = `
-      <span class="task-meta">${wk}</span>
+      <span class="task-meta">${escapeHtml(wk)}</span>
       <div class="sla-week-bar-wrap"><div class="sla-week-bar" style="width:${Math.min(100, Math.max(0, pctVal))}%"></div></div>
       <span class="task-meta">${pctVal.toFixed(0)}%</span>
     `;
@@ -1809,8 +1819,8 @@ function renderMetricsHistory(data) {
       return `
         <li class="metrics-history-item">
           <div class="metrics-history-head">
-            <strong>${captured}</strong>
-            <span class="badge">${snapshot.commit || 'WORKTREE'}</span>
+            <strong>${escapeHtml(captured)}</strong>
+            <span class="badge">${escapeHtml(snapshot.commit || 'WORKTREE')}</span>
           </div>
           <p class="task-meta">
             Abertas: ${open} (${deltaOpen >= 0 ? '+' : ''}${deltaOpen}) |
@@ -1962,7 +1972,7 @@ async function loadOpsAnalytics() {
     const corrective = data.sla?.correctiveRule ? [`Regra corretiva: ${data.sla.correctiveRule}`] : [];
     const merged = [...alerts, ...predictiveDerived, ...corrective];
     alertsEl.innerHTML = merged.length
-      ? merged.map((a) => `<li>${a}</li>`).join('')
+      ? merged.map((a) => `<li>${escapeHtml(a)}</li>`).join('')
       : '<li>Sem alertas preditivos no momento.</li>';
   } catch {
     if (updated) updated.textContent = 'Atualizado em: erro de leitura';
@@ -2064,12 +2074,12 @@ async function loadDeployStatus() {
         : '';
       const failedWorkflow = requiredRuns.find((item) => String(item.aggregatedStatus || '').toLowerCase() === 'red' && item.latestRun);
       const runUrl = failedWorkflow?.latestRun?.html_url || r.runUrl || r.latestRun?.html_url || r.latest_run?.html_url || '';
-      const run = runUrl ? `<a href="${runUrl}" target="_blank" rel="noreferrer">run</a>` : 'run n/d';
+      const run = runUrl ? `<a href="${safeExternalUrl(runUrl)}" target="_blank" rel="noopener noreferrer">run</a>` : 'run n/d';
       const extra = consecutive
         ? ` | ${consecutive} falhas seguidas`
         : (successStreak ? ` | ${successStreak} sucessos seguidos` : '');
       const detailLine = workflowSummary ? ` <div class="task-meta">Workflows: ${workflowSummary}</div>` : '';
-      return `<li><strong>${badge} ${repoName}</strong> — ${escapeHtml(aggregated)}${extra} (${run})${detailLine}</li>`;
+      return `<li><strong>${badge} ${escapeHtml(repoName)}</strong> — ${escapeHtml(aggregated)}${escapeHtml(extra)} (${run})${detailLine}</li>`;
     }).join('');
     if (!listEl.innerHTML) listEl.innerHTML = '<li>Sem dados de deploy no momento.</li>';
   } catch {
@@ -2129,7 +2139,7 @@ async function loadHumanDecisionSla() {
     }
 
     listEl.innerHTML = items.map((i) => {
-      return `<li><strong>${i.risk} ${i.title}</strong> — Stage: ${i.stage} | Triagem em: ${i.remainDecision.toFixed(1)}h | Parecer final em: ${i.remainFinal.toFixed(1)}h</li>`;
+      return `<li><strong>${i.risk} ${escapeHtml(i.title)}</strong> — Stage: ${escapeHtml(i.stage)} | Triagem em: ${escapeHtml(i.remainDecision.toFixed(1))}h | Parecer final em: ${escapeHtml(i.remainFinal.toFixed(1))}h</li>`;
     }).join('');
   } catch {
     const cardEl = document.getElementById('human-sla-card');
@@ -2241,7 +2251,7 @@ async function loadDashboardFreshness() {
       const weight = r.critical ? `peso ${r.weight}%` : 'complementar';
       const contribution = r.critical ? ` | aporte ${Number(r.scorePart || 0).toFixed(1)} pts` : '';
       const detail = r.detail ? ` | ${r.detail}` : '';
-      return `<li><strong>${dot} ${r.label}</strong> — ${weight}${contribution} | idade: ${age}${detail}</li>`;
+      return `<li><strong>${dot} ${escapeHtml(r.label)}</strong> — ${escapeHtml(weight)}${escapeHtml(contribution)} | idade: ${escapeHtml(age)}${escapeHtml(detail)}</li>`;
     }).join('');
 
     if (cardEl) {

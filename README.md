@@ -38,6 +38,12 @@ Smoke de qualidade (SEO/A11y basico):
 python3 scripts/quality_smoke.py
 ```
 
+Smoke de segurança (DOM sinks e payloads serverless):
+
+```bash
+python3 scripts/security_smoke.py
+```
+
 Budgets estaticos:
 
 ```bash

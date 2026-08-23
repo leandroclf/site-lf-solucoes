@@ -31,5 +31,8 @@ jobs:
       - name: Quality smoke (SEO/A11y basic)
         run: python3 scripts/quality_smoke.py
 
+      - name: Security smoke (DOM sinks and serverless inputs)
+        run: python3 scripts/security_smoke.py
+
       - name: Budget check
         run: python3 scripts/budget_check.py
