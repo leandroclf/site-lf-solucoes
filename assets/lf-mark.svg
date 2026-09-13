@@ -1,12 +1,7 @@
-<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="lfPremium" x1="18" y1="18" x2="103" y2="102" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#4F46E5"/>
-      <stop offset="0.50" stop-color="#8B5CF6"/>
-      <stop offset="1" stop-color="#00D4FF"/>
-    </linearGradient>
-  </defs>
-  <path d="M29 22V73C29 84 35 91 47 91H66" stroke="url(#lfPremium)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M58 27H94M58 27V92M58 58H87" stroke="url(#lfPremium)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-  <path d="M38 58H58" stroke="url(#lfPremium)" stroke-width="14" stroke-linecap="round"/>
+<svg width="120" height="120" viewBox="0 0 120 120" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-label="LF Soluções">
+<defs><linearGradient id="corp" x1="12" y1="12" x2="108" y2="108" gradientUnits="userSpaceOnUse"><stop stop-color="#061B4F"/><stop offset=".42" stop-color="#0757E8"/><stop offset=".74" stop-color="#008CFF"/><stop offset="1" stop-color="#00D4FF"/></linearGradient><linearGradient id="corp2" x1="42" y1="34" x2="106" y2="92" gradientUnits="userSpaceOnUse"><stop stop-color="#00D4FF"/><stop offset=".5" stop-color="#008CFF"/><stop offset="1" stop-color="#0757E8"/></linearGradient></defs>
+<path d="M24 15C18.477 15 14 19.477 14 25V82C14 96.359 25.641 108 40 108H52V89H42C37.029 89 33 84.971 33 80V34H57V15H24Z" fill="url(#corp)"/>
+<path d="M46 38H100C105.254 38 108.98 43.113 107.392 48.123L103.874 59.222C102.817 62.558 99.72 64.828 96.22 64.828H61L46 79V38Z" fill="url(#corp2)"/>
+<path d="M52 75H96L86 94H52V75Z" fill="url(#corp)"/>
+<path d="M33 79C33 95.016 45.984 108 62 108H73V89H59C44.641 89 33 77.359 33 63V79Z" fill="#0757E8" opacity=".92"/>
 </svg>
