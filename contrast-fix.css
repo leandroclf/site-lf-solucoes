@@ -111,6 +111,42 @@
   color: #EAF6FF !important;
 }
 
+/* Light surfaces must always win over accidental inheritance from dark CTA blocks.
+   This also protects legacy pages where a section was inserted before the CTA
+   wrapper was properly closed. */
+.section-alt,
+.cta .section:not(.cta) {
+  color: var(--brand-text) !important;
+}
+.cta .section-alt { background: var(--brand-ice) !important; }
+.cta .section:not(.cta):not(.section-alt) { background: #fff !important; }
+.section-alt h1,
+.section-alt h2,
+.section-alt h3,
+.section-alt h4,
+.section-alt h5,
+.section-alt h6,
+.section-alt strong,
+.cta .section:not(.cta) h1,
+.cta .section:not(.cta) h2,
+.cta .section:not(.cta) h3,
+.cta .section:not(.cta) h4,
+.cta .section:not(.cta) h5,
+.cta .section:not(.cta) h6,
+.cta .section:not(.cta) strong { color: var(--brand-navy) !important; }
+.section-alt p,
+.section-alt li,
+.section-alt small,
+.section-alt label,
+.cta .section:not(.cta) p,
+.cta .section:not(.cta) li,
+.cta .section:not(.cta) small,
+.cta .section:not(.cta) label { color: var(--brand-muted) !important; }
+.section-alt a.card,
+.cta .section:not(.cta) a.card { color: var(--brand-text) !important; }
+.section-alt .btn-primary,
+.cta .section:not(.cta) .btn-primary { color: #fff !important; }
+
 /* Dark surfaces intentionally keep light text. */
 .cta,
 .cta-box,
@@ -127,6 +163,21 @@
 .cta .legal-note,
 .cta-box p,
 .cta-box .legal-note { color: #C8D9EF !important; }
+
+/* Re-assert light nested sections after dark CTA declarations above. */
+.cta .section:not(.cta),
+.cta .section:not(.cta) h1,
+.cta .section:not(.cta) h2,
+.cta .section:not(.cta) h3,
+.cta .section:not(.cta) h4,
+.cta .section:not(.cta) h5,
+.cta .section:not(.cta) h6,
+.cta .section:not(.cta) strong { color: var(--brand-navy) !important; }
+.cta .section:not(.cta) p,
+.cta .section:not(.cta) li,
+.cta .section:not(.cta) small,
+.cta .section:not(.cta) label { color: var(--brand-muted) !important; }
+.cta .section:not(.cta) .btn-primary { color: #fff !important; }
 
 /* Generic safety net for common legacy elements rendered on light surfaces. */
 .section:not(.cta) h4,
