@@ -89,6 +89,18 @@ h3 { letter-spacing: -.015em; }
 }
 .btn-secondary:hover, .btn-outline:hover { background: #151D3F; border-color: #59688F; }
 
+/* Dynamic operational links must never fall back to browser-default blue on dark cards. */
+.dashboard-container a:not(.btn) {
+  color: #67E8F9;
+  text-decoration-color: rgba(103, 232, 249, .55);
+  text-underline-offset: .18em;
+}
+.dashboard-container a:not(.btn):hover,
+.dashboard-container a:not(.btn):focus-visible {
+  color: #CFFAFE;
+  text-decoration-color: currentColor;
+}
+
 .funnel-panel {
   border-left: 3px solid #4F46E5;
   background: #111936;
