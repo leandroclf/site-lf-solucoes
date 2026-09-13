@@ -1,11 +1,10 @@
 const scriptUrl = document.currentScript ? new URL(document.currentScript.src, window.location.href) : new URL('./script.js', window.location.href);
 const siteRoot = new URL('./', scriptUrl);
 
-if (!document.querySelector('link[data-lf-brand-system]')) {
+if (!document.querySelector('link[href*="brand-system.css"]')) {
   const brandCss = document.createElement('link');
   brandCss.rel = 'stylesheet';
   brandCss.href = new URL('brand-system.css', siteRoot).href;
-  brandCss.dataset.lfBrandSystem = 'true';
   document.head.appendChild(brandCss);
 }
 
@@ -17,6 +16,30 @@ if (brand && !brand.querySelector('.brand-lockup')) {
   logo.alt = 'LF Soluções';
   logo.className = 'brand-lockup';
   brand.appendChild(logo);
+}
+
+const legacyHomeSections = new Map([
+  ['#servicos', '#capacidades'],
+  ['#solucoes-especializadas', '#solucoes'],
+  ['#mini-cases', '#metodo'],
+  ['#sobre', '#empresa'],
+  ['#faq', '#empresa']
+]);
+document.querySelectorAll('.menu a').forEach((link) => {
+  const raw = link.getAttribute('href') || '';
+  legacyHomeSections.forEach((replacement, legacy) => {
+    if (raw.endsWith(legacy)) link.setAttribute('href', raw.slice(0, -legacy.length) + replacement);
+  });
+  const label = link.textContent.trim();
+  if (label === 'Serviços') link.textContent = 'Capacidades';
+  if (label === 'Cases') link.textContent = 'Como atuamos';
+  if (label === 'Sobre') link.textContent = 'Empresa';
+  if (label === 'FAQ') link.remove();
+  if (label === 'Falar agora') link.textContent = 'Conversar';
+});
+
+if (!document.getElementById('conteudo') && document.querySelector('main')) {
+  document.querySelector('main').id = document.querySelector('main').id || 'conteudo';
 }
 
 const year = document.getElementById('year');
