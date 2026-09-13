@@ -18,23 +18,15 @@ if (brand && !brand.querySelector('.brand-lockup')) {
   brand.appendChild(logo);
 }
 
-const legacyHomeSections = new Map([
-  ['#servicos', '#capacidades'],
-  ['#solucoes-especializadas', '#solucoes'],
-  ['#mini-cases', '#metodo'],
-  ['#sobre', '#empresa'],
-  ['#faq', '#empresa']
-]);
+// Normalize legacy labels without rewriting valid section anchors.
+// The current home intentionally keeps the established IDs (#servicos,
+// #solucoes-especializadas, #mini-cases, #sobre and #faq), so changing those
+// hrefs at runtime breaks navigation and can make menu items disappear.
 document.querySelectorAll('.menu a').forEach((link) => {
-  const raw = link.getAttribute('href') || '';
-  legacyHomeSections.forEach((replacement, legacy) => {
-    if (raw.endsWith(legacy)) link.setAttribute('href', raw.slice(0, -legacy.length) + replacement);
-  });
   const label = link.textContent.trim();
   if (label === 'Serviços') link.textContent = 'Capacidades';
   if (label === 'Cases') link.textContent = 'Como atuamos';
   if (label === 'Sobre') link.textContent = 'Empresa';
-  if (label === 'FAQ') link.remove();
   if (label === 'Falar agora') link.textContent = 'Conversar';
 });
 
