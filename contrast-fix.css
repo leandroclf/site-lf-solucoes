@@ -1,0 +1,134 @@
+/* Contrast normalization for Corporate Tech light theme.
+   Loaded after brand-system.css so legacy dark-theme selectors cannot leave
+   light text on light surfaces. */
+
+.brand,
+.brand > span:last-child { color: var(--brand-navy) !important; }
+.menu-toggle {
+  background: #fff !important;
+  color: var(--brand-navy) !important;
+  border-color: var(--brand-border) !important;
+}
+
+.hero-card {
+  background: #fff !important;
+  border: 1px solid var(--brand-border) !important;
+  color: var(--brand-text) !important;
+  box-shadow: 0 8px 26px rgba(6,27,79,.055) !important;
+}
+.hero-card h3,
+.hero-card h4,
+.hero-kpis strong { color: var(--brand-navy) !important; }
+.hero-card p,
+.hero-card li,
+.hero-kpis { color: var(--brand-muted) !important; }
+
+.trust-grid p {
+  background: var(--brand-ice) !important;
+  border-color: var(--brand-border) !important;
+  color: var(--brand-muted) !important;
+}
+.about-list li { color: var(--brand-muted) !important; }
+
+.team-category {
+  background: #fff !important;
+  border-color: var(--brand-border) !important;
+}
+.team-category h4,
+.team-role-list strong { color: var(--brand-navy) !important; }
+.team-role-list li { color: var(--brand-muted) !important; }
+
+.section-badge {
+  background: var(--brand-ice) !important;
+  border-color: #C7DEEF !important;
+  color: var(--brand-blue) !important;
+}
+
+.legal-note,
+.form-field label,
+.result-meta,
+.disclaimer,
+.report-box p,
+.sb-url,
+.sb-param-label,
+.sb-param-desc,
+.sb-time,
+.sandbox-label,
+.sb-nav-btn { color: var(--brand-muted) !important; }
+
+.form-field select,
+.form-field input,
+.form-input,
+.sb-param-input,
+.sb-textarea {
+  background: #fff !important;
+  color: var(--brand-graphite) !important;
+  border-color: #BFD5E7 !important;
+}
+.form-field select::placeholder,
+.form-field input::placeholder,
+.form-input::placeholder,
+.sb-param-input::placeholder,
+.sb-textarea::placeholder { color: #738096 !important; opacity: 1; }
+
+.result-panel,
+.report-box {
+  background: #F7FBFF !important;
+  border-color: #D5E6F3 !important;
+  color: var(--brand-text) !important;
+}
+.result-panel h4,
+.result-panel strong,
+.result-panel li { color: var(--brand-navy) !important; }
+.result-chip {
+  background: var(--brand-ice) !important;
+  border-color: #C7DEEF !important;
+  color: var(--brand-navy) !important;
+}
+
+.sandbox {
+  border-color: var(--brand-border) !important;
+  background: #fff !important;
+  box-shadow: 0 12px 30px rgba(6,27,79,.08) !important;
+}
+.sandbox-sidebar {
+  background: #F4F9FD !important;
+  border-color: var(--brand-border) !important;
+}
+.sandbox-main { background: #fff !important; }
+.sb-nav-btn:hover,
+.sb-nav-btn.active {
+  background: var(--brand-ice) !important;
+  color: var(--brand-navy) !important;
+}
+.sandbox-request-bar {
+  background: #F4F9FD !important;
+  border: 1px solid var(--brand-border) !important;
+}
+.sb-pre {
+  background: #061B4F !important;
+  border-color: #173D79 !important;
+  color: #EAF6FF !important;
+}
+
+/* Dark surfaces intentionally keep light text. */
+.cta,
+.cta-box,
+.footer { color: #C8D9EF !important; }
+.cta h2,
+.cta h3,
+.cta strong,
+.cta-box h2,
+.cta-box h3,
+.cta-box strong,
+.footer strong,
+.footer a { color: #fff !important; }
+.cta p,
+.cta .legal-note,
+.cta-box p,
+.cta-box .legal-note { color: #C8D9EF !important; }
+
+/* Generic safety net for common legacy elements rendered on light surfaces. */
+.section:not(.cta) h4,
+.section:not(.cta) strong { color: var(--brand-navy); }
+.section:not(.cta) li { color: var(--brand-muted); }
