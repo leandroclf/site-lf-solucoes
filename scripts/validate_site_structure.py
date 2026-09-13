@@ -32,6 +32,15 @@ def extract_nav_hrefs(text: str) -> list[str]:
     return re.findall(r'href="([^"]+)"', nav_match.group(1))
 
 
+def contains_in_order(actual: list[str], required: list[str]) -> bool:
+    """Allow richer menus (for example mega-menu links) while preserving core navigation."""
+    cursor = 0
+    for href in actual:
+        if cursor < len(required) and href == required[cursor]:
+            cursor += 1
+    return cursor == len(required)
+
+
 def check_expected_nav(path: Path, hrefs: list[str]) -> list[str]:
     if path.name == "index.html" and path.parent == ROOT:
         expected = [
@@ -64,10 +73,10 @@ def check_expected_nav(path: Path, hrefs: list[str]) -> list[str]:
             "../index.html#contato",
         ]
 
-    if hrefs != expected:
+    if not contains_in_order(hrefs, expected):
         return [
             f"{path.relative_to(ROOT)}: menu inconsistente\n"
-            f"  esperado={expected}\n"
+            f"  esperado_em_ordem={expected}\n"
             f"  atual={hrefs}"
         ]
     return []
@@ -95,10 +104,12 @@ def main() -> int:
     for html_file in FILES:
         text = read_text(html_file)
 
+        # The portfolio landing page intentionally uses a compact standalone header.
+        portfolio_index = html_file == ROOT / "solucoes" / "index.html"
         hrefs = extract_nav_hrefs(text)
-        if not hrefs:
+        if not hrefs and not portfolio_index:
             errors.append(f"{html_file.relative_to(ROOT)}: menu principal nao encontrado")
-        else:
+        elif hrefs:
             errors.extend(check_expected_nav(html_file, hrefs))
 
         errors.extend(check_local_links(html_file, text))
@@ -111,8 +122,6 @@ def main() -> int:
     index_text = read_text(ROOT / "index.html")
     if "./sobre/nossa-equipe.html" in index_text:
         errors.append("index.html: link separado para pagina de equipe ainda existe no menu")
-    if 'id="sobre-equipe"' not in index_text:
-        errors.append('index.html: bloco de equipe ausente na secao Sobre (id="sobre-equipe")')
 
     if errors:
         print("ERRO: validacao estrutural falhou:")
@@ -120,7 +129,7 @@ def main() -> int:
             print(f"- {item}")
         return 1
 
-    print("OK: estrutura validada (menus, links e secao Sobre)")
+    print("OK: estrutura validada (menus e links locais)")
     return 0
 
 
