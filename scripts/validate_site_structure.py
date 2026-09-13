@@ -52,6 +52,16 @@ def check_expected_nav(path: Path, hrefs: list[str]) -> list[str]:
             "./dashboards/",
             "#contato",
         ]
+    elif path == ROOT / "solucoes" / "index.html":
+        expected = [
+            "../index.html#servicos",
+            "./",
+            "../index.html#mini-cases",
+            "../index.html#sobre",
+            "../index.html#faq",
+            "../dashboards/",
+            "../index.html#contato",
+        ]
     elif path.parent.name == "dashboards":
         expected = [
             "../index.html#servicos",
@@ -103,13 +113,10 @@ def main() -> int:
 
     for html_file in FILES:
         text = read_text(html_file)
-
-        # The portfolio landing page intentionally uses a compact standalone header.
-        portfolio_index = html_file == ROOT / "solucoes" / "index.html"
         hrefs = extract_nav_hrefs(text)
-        if not hrefs and not portfolio_index:
+        if not hrefs:
             errors.append(f"{html_file.relative_to(ROOT)}: menu principal nao encontrado")
-        elif hrefs:
+        else:
             errors.extend(check_expected_nav(html_file, hrefs))
 
         errors.extend(check_local_links(html_file, text))
