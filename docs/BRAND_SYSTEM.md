@@ -40,26 +40,29 @@ Projetamos e implementamos soluções de IA, automação, dados e integração p
 - apresentar agentes de IA como substitutos de responsabilidade técnica humana;
 - linguagem genérica de landing page ou texto promocional sem substância.
 
-## Identidade visual
+## Identidade visual — AI Premium
 
-### Paleta principal
+Esta seção é a referência oficial e deve prevalecer sobre aproximações anteriores.
 
-- Ink: `#080D1D`
-- Navy: `#0B1026`
-- Surface: `#10172D`
-- Surface 2: `#151D36`
-- Border: `#26304F`
-- Text: `#F8FAFC`
-- Muted: `#AAB5CC`
-- Indigo: `#5B5CE2`
-- Violet: `#7C3AED`
-- Cyan: `#06B6D4`
+### Paleta oficial exata
+
+- Deep Navy: `#0A0F2C`
+- Indigo: `#4F46E5`
+- AI Purple: `#8B5CF6`
+- Electric Cyan: `#00D4FF`
+- Light: `#E2E8F0`
+- Slate: `#94A3B8`
+- White: `#F8FAFC`
+
+Gradiente oficial do símbolo:
+
+`#4F46E5 → #8B5CF6 → #00D4FF`
+
+Não substituir essas cores por aproximações sem uma revisão explícita de identidade.
 
 ### Hierarquia de uso
 
-Navy e Ink são dominantes. Indigo é a cor institucional primária. Violet e Cyan são acentos e não devem dominar telas completas.
-
-Gradientes devem ficar restritos ao símbolo da marca ou a detalhes pequenos. Não usar grandes áreas com glow, neon ou efeitos futuristas.
+Deep Navy é dominante. Indigo é a cor institucional primária. Purple e Cyan são acentos. O gradiente deve ficar concentrado no símbolo da marca e em poucos detalhes de destaque.
 
 ## Tipografia
 
@@ -67,12 +70,21 @@ Fonte principal: **Inter**.
 
 A hierarquia deve usar contraste de peso, escala e espaço — não efeitos. Headlines devem ter tracking reduzido e peso forte. Textos corridos devem priorizar legibilidade.
 
-## Logo
+## Logo — referência oficial
 
 ### Assets oficiais
 
-- `assets/lf-mark.svg`: símbolo isolado.
-- `assets/lf-logo-horizontal.svg`: versão horizontal institucional.
+- `assets/lf-mark.svg`: símbolo isolado AI Premium.
+- `assets/lf-logo-horizontal.svg`: assinatura horizontal institucional AI Premium.
+
+### Características obrigatórias
+
+- símbolo LF construído como traço/ribbon contínuo e aberto;
+- nenhuma moldura quadrada, tile ou card ao redor do símbolo;
+- gradiente oficial Indigo → Purple → Cyan;
+- aparência limpa e premium, sem glow;
+- wordmark horizontal com “LF” em maior peso e “SOLUÇÕES” mais leve e espaçada;
+- fundo transparente.
 
 ### Uso no menu
 
@@ -80,15 +92,17 @@ A versão horizontal deve ser usada com largura aproximada entre 150 e 180 px em
 
 ### Uso no hero
 
-A marca deve aparecer em escala maior, com largura visual entre 390 e 520 px conforme viewport. O hero deve tratar a logo como elemento editorial e não apenas como identificador de navegação.
+A marca deve aparecer em escala maior, com largura visual entre 390 e 560 px conforme viewport. O hero deve tratar a logo como elemento editorial e não apenas como identificador de navegação.
 
 ### Não fazer
 
+- não colocar o símbolo dentro de quadrado, cápsula ou card;
+- não usar a versão antiga com monograma geométrico em tile;
 - não converter a versão principal para JPG para uso de interface;
-- não colocar a logo dentro de um novo quadrado ou card;
 - não adicionar glow exagerado;
 - não distorcer proporções;
-- não trocar as cores internas do símbolo sem atualizar este documento.
+- não alterar o gradiente oficial;
+- não criar uma nova variação da marca sem atualizar este documento.
 
 ## Princípios de interface
 
