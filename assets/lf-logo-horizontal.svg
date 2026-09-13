@@ -1,16 +1,15 @@
-<svg width="560" height="120" viewBox="0 0 560 120" fill="none" xmlns="http://www.w3.org/2000/svg">
-  <defs>
-    <linearGradient id="lfPremium" x1="18" y1="18" x2="103" y2="102" gradientUnits="userSpaceOnUse">
-      <stop stop-color="#4F46E5"/>
-      <stop offset="0.50" stop-color="#8B5CF6"/>
-      <stop offset="1" stop-color="#00D4FF"/>
-    </linearGradient>
-  </defs>
-  <g transform="translate(0 0)">
-    <path d="M29 22V73C29 84 35 91 47 91H66" stroke="url(#lfPremium)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M58 27H94M58 27V92M58 58H87" stroke="url(#lfPremium)" stroke-width="14" stroke-linecap="round" stroke-linejoin="round"/>
-    <path d="M38 58H58" stroke="url(#lfPremium)" stroke-width="14" stroke-linecap="round"/>
-  </g>
-  <text x="132" y="72" fill="#F8FAFC" font-family="Inter, Arial, sans-serif" font-size="43" font-weight="800" letter-spacing="-1.6">LF</text>
-  <text x="190" y="72" fill="#CBD5E1" font-family="Inter, Arial, sans-serif" font-size="30" font-weight="500" letter-spacing="4.6">SOLUÇÕES</text>
+<svg width="620" height="150" viewBox="0 0 620 150" fill="none" xmlns="http://www.w3.org/2000/svg" role="img" aria-labelledby="title desc">
+<title id="title">LF Soluções</title><desc id="desc">Identidade AI Premium — proposta 2</desc>
+<defs>
+ <linearGradient id="p2a" x1="18" y1="16" x2="122" y2="132" gradientUnits="userSpaceOnUse"><stop stop-color="#4F46E5"/><stop offset=".48" stop-color="#8B5CF6"/><stop offset="1" stop-color="#00D4FF"/></linearGradient>
+ <linearGradient id="p2b" x1="42" y1="36" x2="120" y2="102" gradientUnits="userSpaceOnUse"><stop stop-color="#00D4FF"/><stop offset=".5" stop-color="#4F46E5"/><stop offset="1" stop-color="#8B5CF6"/></linearGradient>
+</defs>
+<g transform="translate(4 3) scale(1.12)">
+ <path d="M28 18C22.477 18 18 22.477 18 28V88C18 100.15 27.85 110 40 110H52V92H42C38.686 92 36 89.314 36 86V36H58V18H28Z" fill="url(#p2a)"/>
+ <path d="M48 40H101C105.418 40 108.561 44.298 107.226 48.51L103.846 59.18C102.789 62.516 99.692 64.786 96.192 64.786H62.5L48 78V40Z" fill="url(#p2b)"/>
+ <path d="M54 75H96L87 92H54V75Z" fill="url(#p2a)"/>
+ <path d="M36 86C36 99.255 46.745 110 60 110H72V92H58C45.85 92 36 82.15 36 70V86Z" fill="#5B5CF6" opacity=".9"/>
+</g>
+<text x="150" y="92" fill="#F8FAFC" font-family="Inter,Arial,sans-serif" font-size="52" font-weight="800" letter-spacing="-2">LF</text>
+<text x="222" y="92" fill="#CBD5E1" font-family="Inter,Arial,sans-serif" font-size="36" font-weight="500" letter-spacing="5">SOLUÇÕES</text>
 </svg>
