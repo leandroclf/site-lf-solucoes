@@ -1,0 +1,64 @@
+{
+  "schema_version": 1,
+  "source_repository": "leandroclf/product-platform",
+  "source_path": "packages/kit/contracts/portfolio-products.json",
+  "source_ref": "main",
+  "sync_mode": "manually-reviewed-snapshot",
+  "live_registry_verified": false,
+  "domain_products": [
+    {
+      "repository": "vehicle-tracking",
+      "domain": "vehicle_tracking",
+      "runtime": "typescript-server",
+      "wave": 1
+    },
+    {
+      "repository": "bussola-financeira",
+      "domain": "financial_insights",
+      "runtime": "python-server",
+      "wave": 1
+    },
+    {
+      "repository": "lf-worldbank-risk-pricing",
+      "domain": "country_risk_pricing",
+      "runtime": "python-server",
+      "wave": 2
+    },
+    {
+      "repository": "lf-openalex-enrichment-mvp",
+      "domain": "b2b_enrichment",
+      "runtime": "python-server",
+      "wave": 2
+    },
+    {
+      "repository": "lf-wikidata-entity-graph",
+      "domain": "entity_resolution",
+      "runtime": "python-server",
+      "wave": 2
+    },
+    {
+      "repository": "agentic-travel-engine",
+      "domain": "travel_search",
+      "runtime": "python-server",
+      "wave": 3
+    },
+    {
+      "repository": "fivem-server-monitor-pro",
+      "domain": "fivem_monitoring",
+      "runtime": "self-hosted-fxserver",
+      "wave": 3
+    },
+    {
+      "repository": "professional-english-coach",
+      "domain": "english_learning",
+      "runtime": "local-first-browser",
+      "wave": 3
+    },
+    {
+      "repository": "ai-docs",
+      "domain": "document_processing",
+      "runtime": "python-server",
+      "wave": 2
+    }
+  ]
+}

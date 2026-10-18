@@ -31,6 +31,19 @@ python3 scripts/quality_smoke.py
 
 O gerador usa apenas Python padrão, lê o JSON local, escapa HTML para evitar XSS e escreve HTML estático com canonical/descrições SEO. O CI existente verifica se todos os produtos do catálogo têm páginas, links locais e conteúdo atualizado. A sincronização entre repositórios ainda é um **gate de processo com revisão**, não um webhook cross-repo implantado; é necessário adicionar automação confiável de abertura de PRs via GitHub App antes de chamar a publicação de totalmente automática.
 
+## Verificação cruzada do registro da plataforma
+
+O arquivo `data/platform-portfolio.snapshot.json` é uma **fotografia revisada** do contrato canônico `leandroclf/product-platform/packages/kit/contracts/portfolio-products.json`. A validação `scripts/validate_portal_registry_sync.py` compara IDs, runtimes, waves, rotas e conteúdo obrigatório 1:1 com `data/product-catalog.json`; está vinculada ao gate estrutural do CI do portal.
+
+Em qualquer inclusão/remoção ou mudança de identidade de produto:
+
+1. Consulte o contrato da plataforma na `main` e atualize o snapshot no mesmo PR editorial do catálogo.
+2. Atualize o catálogo, rode `python3 scripts/build_product_catalog.py` e `python3 scripts/validate_site_structure.py`.
+3. Exija revisão do conteúdo e CI verde antes do merge do portal.
+4. Registre o link do PR de catálogo no handoff G0–G6.
+
+**Limitação explícita:** a fotografia local não autentica a versão mais recente do repositório remoto; uma mudança ocorrida apenas na plataforma não é detectada até a atualização do snapshot. Não interpretar o status `PORTAL_SNAPSHOT_CONSISTENT` como sincronização automática. O mecanismo GitHub App que abre PRs cross-repo ao detectar mudanças permanece pendente na issue https://github.com/leandroclf/product-platform/issues/60.
+
 ## Evolução planejada
 
 - Catálogo completo com nove produtos de domínio inicialmente registrados e o site corporativo classificado na plataforma como produto principal.

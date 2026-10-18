@@ -159,6 +159,18 @@ def main() -> int:
     except (ValueError, OSError, KeyError) as exc:
         errors.append(f"Catalogo de produtos invalido: {exc}")
 
+    # Reuse existing protected site CI to enforce registry-snapshot/catalog consistency.
+    spec_sync = importlib.util.spec_from_file_location("portal_sync", ROOT / "scripts" / "validate_portal_registry_sync.py")
+    sync = importlib.util.module_from_spec(spec_sync)
+    spec_sync.loader.exec_module(sync)
+    try:
+        import json
+        snapshot = json.loads(read_text(ROOT / "data" / "platform-portfolio.snapshot.json"))
+        catalog_data = json.loads(read_text(ROOT / "data" / "product-catalog.json"))
+        errors.extend("portal registry: " + message for message in sync.validate(snapshot, catalog_data))
+    except (ValueError, OSError, KeyError) as exc:
+        errors.append("portal registry snapshot: " + str(exc))
+
     index_text = read_text(ROOT / "index.html")
     if "./sobre/nossa-equipe.html" in index_text:
         errors.append("index.html: link separado para pagina de equipe ainda existe no menu")
