@@ -1,0 +1,132 @@
+{
+  "schema_version": 1,
+  "source_platform": "leandroclf/product-platform",
+  "source_registry": "packages/kit/contracts/portfolio-products.json",
+  "portal_repository": "leandroclf/site-lf-solucoes",
+  "portal_role": "flagship-corporate-product",
+  "publication_policy": {
+    "default_visibility": "review-required",
+    "external_urls_must_be_verified": true,
+    "all_products_need_page": true,
+    "publishing_new_product_requires_portal_change": true
+  },
+  "products": [
+    {
+      "id": "vehicle-tracking",
+      "slug": "vehicle-tracking",
+      "title": "Yukz — Rastreamento Veicular",
+      "category": "Mobilidade e operações",
+      "summary": "Plataforma para acompanhar veículos, eventos de rastreamento, geocercas, alertas e relatórios de operação.",
+      "highlights": "Rastreamento, geocercas, alertas e gestão de frotas.",
+      "runtime": "typescript-server",
+      "wave": 1,
+      "visibility": "public",
+      "detail_url": "/produtos/vehicle-tracking.html",
+      "product_url": null
+    },
+    {
+      "id": "bussola-financeira",
+      "slug": "bussola-financeira",
+      "title": "Bússola Financeira",
+      "category": "Finanças e análise",
+      "summary": "Ferramentas de organização, análise e comparação de indicadores financeiros para apoiar decisões com informação estruturada.",
+      "highlights": "Análises, simulações e visão de indicadores.",
+      "runtime": "python-server",
+      "wave": 1,
+      "visibility": "public",
+      "detail_url": "/produtos/bussola-financeira.html",
+      "product_url": null
+    },
+    {
+      "id": "ai-docs",
+      "slug": "ai-docs",
+      "title": "AI Docs",
+      "category": "Automação documental",
+      "summary": "Processamento de documentos com extração de conteúdo, classificação, validação e integração por API.",
+      "highlights": "Classificação, extração e validação documental.",
+      "runtime": "python-server",
+      "wave": 2,
+      "visibility": "public",
+      "detail_url": "/produtos/ai-docs.html",
+      "product_url": null
+    },
+    {
+      "id": "lf-worldbank-risk-pricing",
+      "slug": "lf-worldbank-risk-pricing",
+      "title": "World Bank Risk Pricing",
+      "category": "Dados e risco",
+      "summary": "Enriquecimento de análises de risco com indicadores econômicos e séries públicas de instituições internacionais.",
+      "highlights": "Indicadores econômicos para análise de risco.",
+      "runtime": "python-server",
+      "wave": 2,
+      "visibility": "public",
+      "detail_url": "/produtos/lf-worldbank-risk-pricing.html",
+      "product_url": null
+    },
+    {
+      "id": "lf-openalex-enrichment-mvp",
+      "slug": "lf-openalex-enrichment-mvp",
+      "title": "OpenAlex Enrichment",
+      "category": "Enriquecimento de dados",
+      "summary": "Enriquecimento de registros e análises com metadados acadêmicos e sinais de pesquisa.",
+      "highlights": "Contextualização de entidades com dados acadêmicos.",
+      "runtime": "python-server",
+      "wave": 2,
+      "visibility": "public",
+      "detail_url": "/produtos/lf-openalex-enrichment-mvp.html",
+      "product_url": null
+    },
+    {
+      "id": "lf-wikidata-entity-graph",
+      "slug": "lf-wikidata-entity-graph",
+      "title": "Entity Graph",
+      "category": "Identidade e dados",
+      "summary": "Resolução e associação de entidades com apoio de bases de conhecimento e relacionamentos estruturados.",
+      "highlights": "Normalização e relacionamento de entidades.",
+      "runtime": "python-server",
+      "wave": 2,
+      "visibility": "public",
+      "detail_url": "/produtos/lf-wikidata-entity-graph.html",
+      "product_url": null
+    },
+    {
+      "id": "agentic-travel-engine",
+      "slug": "agentic-travel-engine",
+      "title": "Agentic Travel Engine",
+      "category": "Viagens e IA",
+      "summary": "Motor de pesquisa e análise de opções de viagem com fluxos assistidos por agentes e critérios de decisão.",
+      "highlights": "Pesquisa estruturada e comparação de viagens.",
+      "runtime": "python-server",
+      "wave": 3,
+      "visibility": "public",
+      "detail_url": "/produtos/agentic-travel-engine.html",
+      "product_url": null
+    },
+    {
+      "id": "fivem-server-monitor-pro",
+      "slug": "fivem-server-monitor-pro",
+      "title": "FiveM Server Monitor Pro",
+      "category": "Comunidades e monitoramento",
+      "summary": "Monitoramento operacional de servidores FiveM, com foco em observabilidade e gestão do ambiente.",
+      "highlights": "Visibilidade e operação de servidores FiveM.",
+      "runtime": "self-hosted-fxserver",
+      "wave": 3,
+      "visibility": "public",
+      "detail_url": "/produtos/fivem-server-monitor-pro.html",
+      "product_url": null
+    },
+    {
+      "id": "professional-english-coach",
+      "slug": "professional-english-coach",
+      "title": "Professional English Coach",
+      "category": "Educação",
+      "summary": "Experiência de aprendizagem de inglês com exercícios, explicações e prática contextualizada.",
+      "highlights": "Prática guiada e progressão de aprendizagem.",
+      "runtime": "local-first-browser",
+      "wave": 3,
+      "visibility": "public",
+      "detail_url": "/produtos/professional-english-coach.html",
+      "product_url": null
+    }
+  ]
+}
