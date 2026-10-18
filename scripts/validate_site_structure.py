@@ -4,6 +4,7 @@
 from __future__ import annotations
 
 import re
+import importlib.util
 import sys
 from pathlib import Path
 
@@ -125,6 +126,38 @@ def main() -> int:
             errors.append(f'{html_file.relative_to(ROOT)}: string proibida "Voltar ao site" encontrada')
         if 'target="_blank" rel="noreferrer">Dashboards' in text:
             errors.append(f"{html_file.relative_to(ROOT)}: menu Dashboards ainda abre em nova aba")
+
+    # Portfolio is a first-class publishing surface. Every registered product needs
+    # a discoverable, current detail page; fail CI rather than silently omit it.
+    spec = importlib.util.spec_from_file_location("catalog", ROOT / "scripts" / "build_product_catalog.py")
+    catalog = importlib.util.module_from_spec(spec)
+    spec.loader.exec_module(catalog)
+    try:
+        pages = catalog.expected_files()
+        product_ids = [p["slug"] for p in catalog.load_catalog()]
+        catalog_html = ROOT / "produtos" / "index.html"
+        if not catalog_html.is_file():
+            errors.append("produtos/index.html: catalogo ausente")
+        else:
+            catalog_text = read_text(catalog_html)
+            errors.extend(check_local_links(catalog_html, catalog_text))
+            for slug in product_ids:
+                if f'{slug}.html' not in catalog_text:
+                    errors.append(f"produtos/index.html: produto {slug} ausente")
+                detail = ROOT / "produtos" / f"{slug}.html"
+                if not detail.is_file():
+                    errors.append(f"produtos/{slug}.html: pagina ausente")
+                else:
+                    text = read_text(detail)
+                    errors.extend(check_local_links(detail, text))
+                    product = next(p for p in catalog.load_catalog() if p["slug"] == slug)
+                    if product["title"].replace("&", "&amp;") not in text or product["summary"].replace("&", "&amp;") not in text:
+                        errors.append(f"produtos/{slug}.html: conteudo defasado")
+        stale = [f.name for f in (ROOT / "produtos").glob("*.html") if f not in pages]
+        if stale:
+            errors.append("Paginas de produto fora do catalogo: " + ", ".join(stale))
+    except (ValueError, OSError, KeyError) as exc:
+        errors.append(f"Catalogo de produtos invalido: {exc}")
 
     index_text = read_text(ROOT / "index.html")
     if "./sobre/nossa-equipe.html" in index_text:
