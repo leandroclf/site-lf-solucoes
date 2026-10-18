@@ -38,7 +38,7 @@ def load_catalog():
         if p.get("visibility") != "public" or p.get("runtime") not in RUNTIMES:
             raise ValueError("Unreviewed product visibility or runtime")
         for key in ("title", "category", "summary", "highlights"):
-            if not isinstance(p.get(key), str) or not 8 <= len(p[key]) <= 600:
+            if not isinstance(p.get(key), str) or not (3 if key == "title" else 8) <= len(p[key]) <= 600:
                 raise ValueError("Missing or implausible public product content: " + key)
         link = p.get("product_url")
         if link is not None and (not isinstance(link, str) or not link.startswith("https://")):
