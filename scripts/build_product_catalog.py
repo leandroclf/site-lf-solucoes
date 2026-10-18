@@ -112,8 +112,26 @@ def main():
     try:
         pages = expected_files()
         if args.check:
-            issues = [str(file.relative_to(ROOT)) for file, content in pages.items()
-                      if not file.is_file() or file.read_text(encoding="utf-8") != content]
+            issues = []
+            for file, content in pages.items():
+                if not file.is_file():
+                    issues.append(str(file.relative_to(ROOT)) + " missing")
+                    continue
+                current = file.read_text(encoding="utf-8")
+                # Enforce semantically required content while allowing human-reviewed markup refinements.
+                for fragment in ('<html lang="pt-BR">', '<main id="conteudo">', '<h1>', '<link rel="canonical"'):
+                    if fragment not in current:
+                        issues.append(str(file.relative_to(ROOT)) + " missing " + fragment)
+                slug = file.stem
+                if slug != "index":
+                    product = next(p for p in load_catalog() if p["slug"] == slug)
+                    for fragment in (escape(product["title"]), escape(product["summary"])):
+                        if fragment not in current:
+                            issues.append(slug + " stale public content")
+                else:
+                    for product in load_catalog():
+                        if f'{product["slug"]}.html' not in current:
+                            issues.append("catalog missing " + product["slug"])
             additional = [str(file.relative_to(ROOT)) for file in OUTPUT.glob("*.html") if file not in pages]
             if issues or additional:
                 print("PORTFOLIO_PAGES_OUTDATED:", ", ".join(issues + additional))
