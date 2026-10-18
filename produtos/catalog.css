@@ -1,0 +1,26 @@
+/* Corporate palette and spacing are inherited from the LF institutional site. */
+.catalog-hero { padding-block: clamp(3rem, 7vw, 5.5rem) 2.5rem; }
+.catalog-hero h1 { max-width: 850px; }
+.catalog-hero .hero-copy { max-width: 780px; }
+.catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 1.4rem; }
+.catalog-card { display: flex; flex-direction: column; gap: .8rem; min-width: 0; }
+.catalog-card h2 { margin: 0; font-size: clamp(1.2rem, 2vw, 1.45rem); }
+.catalog-card h2 a { color: var(--text); text-decoration: none; }
+.catalog-card h2 a:hover, .catalog-card h2 a:focus-visible { color: var(--cyan); text-decoration: underline; }
+.catalog-card p { margin: 0; }
+.catalog-card .btn { align-self: flex-start; margin-top: auto; }
+.catalog-category { color: var(--cyan); font-weight: 700; font-size: .85rem; text-transform: uppercase; letter-spacing: .06em; }
+.catalog-nav { display: flex; flex-wrap: wrap; gap: clamp(.5rem, 2vw, 1.4rem); align-items: center; }
+.catalog-nav a { color: var(--text); font-weight: 600; text-decoration: none; }
+.catalog-nav a:hover, .catalog-nav a:focus-visible { color: var(--cyan); text-decoration: underline; }
+.catalog-actions { display: flex; flex-wrap: wrap; gap: 1rem; margin-top: 2rem; }
+.catalog-detail { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 1.4rem; }
+.catalog-detail h2 { margin-top: 0; }
+@media (max-width: 900px) { .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); } }
+@media (max-width: 650px) {
+  .catalog-grid, .catalog-detail { grid-template-columns: 1fr; }
+  .catalog-nav { justify-content: flex-end; gap: .6rem; }
+  .catalog-nav a { font-size: .86rem; }
+  .catalog-hero { padding-top: 2.5rem; }
+}
+@media (prefers-reduced-motion: reduce) { .catalog-card *, .catalog-nav * { transition: none !important; } }

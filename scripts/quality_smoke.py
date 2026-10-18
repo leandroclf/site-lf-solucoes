@@ -13,6 +13,7 @@ HTML_FILES = sorted(
     list(ROOT.glob("*.html"))
     + list(ROOT.glob("sobre/*.html"))
     + list(ROOT.glob("solucoes/*.html"))
+    + list(ROOT.glob("produtos/*.html"))
     + list(ROOT.glob("dashboards/*.html"))
 )
 JS_FILES = sorted(list(ROOT.glob("*.js")) + list(ROOT.glob("scripts/*.js")))
