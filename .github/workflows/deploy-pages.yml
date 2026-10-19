@@ -24,6 +24,11 @@ jobs:
       - name: Checkout
         uses: actions/checkout@v4
 
+      - name: Verify product catalog before publishing
+        run: |
+          python3 scripts/validate_site_structure.py
+          python3 scripts/verify_public_catalog.py --local
+
       - name: Setup Pages
         uses: actions/configure-pages@v5
 
@@ -35,3 +40,8 @@ jobs:
       - name: Deploy to GitHub Pages
         id: deployment
         uses: actions/deploy-pages@v4
+
+      - name: Verify published catalog and navigation
+        env:
+          SITE_URL: https://lfsolucoes.etc.br
+        run: python3 scripts/verify_public_catalog.py --remote "$SITE_URL" --attempts 6 --delay 10
