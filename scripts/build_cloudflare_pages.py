@@ -33,7 +33,7 @@ def build():
             if not file.is_file():
                 continue
             if file.suffix.lower() not in ALLOWED:
-                raise ValueError(f"unexpected public file type: {file.relative_to(ROOT)}")
+                continue  # Internal Markdown and other source files are never published.
             target = OUTPUT / file.relative_to(ROOT)
             target.parent.mkdir(parents=True, exist_ok=True)
             shutil.copy2(file, target)
