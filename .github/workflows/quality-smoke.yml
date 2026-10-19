@@ -28,6 +28,16 @@ jobs:
       - name: Validate structure
         run: python3 scripts/validate_site_structure.py
 
+      - name: Build Cloudflare Pages public artifact
+        run: |
+          python3 scripts/verify_public_catalog.py --local
+          python3 scripts/build_cloudflare_pages.py
+          test -f dist/index.html
+          test -f dist/produtos/index.html
+          test ! -e dist/data
+          test ! -e dist/.github
+          test ! -e dist/serverless
+
       - name: Quality smoke (SEO/A11y basic)
         run: python3 scripts/quality_smoke.py
 
