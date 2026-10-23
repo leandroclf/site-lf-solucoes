@@ -24,10 +24,9 @@ jobs:
         uses: actions/setup-node@v4
         with:
           node-version: "22"
-          cache: "npm"
 
       - name: Install LHCI
-        run: npm install --no-save @lhci/cli@0.15.x
+        run: npm install --no-save --package-lock=false @lhci/cli@0.15.1
 
       - name: Collect Lighthouse data
         run: npx lhci collect --config=.lighthouserc.collect.json --outputDir=.lighthouseci

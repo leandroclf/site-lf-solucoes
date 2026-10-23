@@ -81,7 +81,7 @@
       "slug": "lf-wikidata-entity-graph",
       "title": "Entity Graph",
       "category": "Identidade e dados",
-      "summary": "Resolução e associação de entidades com apoio de bases de conhecimento e relacionamentos estruturados.",
+      "summary": "Normalização, deduplicação e matching local de entidades com os registros fornecidos. A versão atual não consulta Wikidata nem vincula QIDs.",
       "highlights": "Normalização e relacionamento de entidades.",
       "runtime": "python-server",
       "wave": 2,
