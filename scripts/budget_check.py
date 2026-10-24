@@ -19,12 +19,17 @@ BUDGETS = {
     "roi_js_bytes": 6_000,
 }
 
+# CI builds dist/ before this check. Generated copies are not additional source
+# assets, and installed tooling must never inflate the site's source budget.
+IGNORED_DIRS = {".git", "dist", "node_modules", ".lighthouseci", ".venv", "__pycache__"}
+
 
 def collect(patterns: tuple[str, ...]) -> list[Path]:
     out: list[Path] = []
     for pattern in patterns:
         out.extend(ROOT.rglob(pattern))
-    return sorted({p for p in out if p.is_file() and ".git/" not in str(p)})
+    return sorted({p for p in out if p.is_file()
+                   and not IGNORED_DIRS.intersection(p.relative_to(ROOT).parts[:-1])})
 
 
 def total_size(paths: list[Path]) -> int:

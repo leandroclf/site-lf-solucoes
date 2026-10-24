@@ -6,18 +6,18 @@
     <meta http-equiv="Content-Security-Policy" content="default-src 'self'; base-uri 'self'; object-src 'none'; img-src 'self' data: https:; style-src 'self' 'unsafe-inline' https://fonts.googleapis.com; font-src 'self' https://fonts.gstatic.com; script-src 'self' 'unsafe-inline' https://plausible.io; connect-src 'self' https://plausible.io https://*.onrender.com; form-action 'self' https://wa.me" />
     <meta name="referrer" content="strict-origin-when-cross-origin" />
     <title>Wikidata Entity Graph | LF Soluções</title>
-    <meta name="description" content="Grafo de entidades com Wikidata: correspondência semântica, taxonomia e pipelines de enriquecimento para CRMs e ERPs B2B." />
+    <meta name="description" content="Normalização, deduplicação e matching local de entidades para CRMs e ERPs B2B. Sem consulta externa à Wikidata nesta versão." />
 
     <meta property="og:type" content="website" />
     <meta property="og:title" content="Wikidata Entity Graph | LF Soluções" />
-    <meta property="og:description" content="Grafo de entidades com Wikidata: correspondência semântica, taxonomia e pipelines de enriquecimento para CRMs e ERPs B2B." />
+    <meta property="og:description" content="Normalização, deduplicação e matching local de entidades para CRMs e ERPs B2B. Sem consulta externa à Wikidata nesta versão." />
     <meta property="og:url" content="https://lfsolucoes.etc.br/solucoes/wikidata-entity-graph.html" />
     <meta property="og:image" content="https://lfsolucoes.etc.br/assets/logo-lf-oficial.jpg" />
     <meta property="og:site_name" content="LF Soluções" />
 
     <meta name="twitter:card" content="summary" />
     <meta name="twitter:title" content="Wikidata Entity Graph | LF Soluções" />
-    <meta name="twitter:description" content="Grafo de entidades com Wikidata: correspondência semântica, taxonomia e pipelines de enriquecimento para CRMs e ERPs B2B." />
+    <meta name="twitter:description" content="Normalização, deduplicação e matching local de entidades para CRMs e ERPs B2B. Sem consulta externa à Wikidata nesta versão." />
     <meta name="twitter:image" content="https://lfsolucoes.etc.br/assets/logo-lf-oficial.jpg" />
 
     <link rel="preconnect" href="https://fonts.googleapis.com" />
@@ -34,7 +34,7 @@
   "@type": "SoftwareApplication",
   "name": "Wikidata Entity Graph API",
   "url": "https://lfsolucoes.etc.br/solucoes/wikidata-entity-graph.html",
-  "description": "Grafo de entidades com Wikidata: correspondência semântica, taxonomia e pipelines de enriquecimento para CRMs e ERPs B2B.",
+  "description": "Normalização, deduplicação e matching local de entidades para CRMs e ERPs B2B. Sem consulta externa à Wikidata nesta versão.",
   "applicationCategory": "BusinessApplication",
   "operatingSystem": "Web",
   "offers": {"@type": "Offer", "price": "0", "priceCurrency": "BRL", "description": "API gratuita para teste"},
@@ -74,14 +74,14 @@
     <main id="main-content">
       <section class="hero">
         <div class="container">
-          <p class="eyebrow">Grafo de Entidades com Wikidata</p>
+          <p class="eyebrow">Normalização e Matching Local de Entidades</p>
           <h1>
             Conecte dados de múltiplas fontes com
             <span>precisão e escalabilidade</span>
           </h1>
           <p class="hero-copy">
-            Nossa solução de Entity Graph utiliza Wikidata para normalização e matching de entidades,
-            permitindo integração confiável de dados de diferentes sistemas e fontes externas.
+            A versão atual normaliza nomes e compara candidatos fornecidos na requisição.
+            Não consulta Wikidata, não retorna vínculos QID e não verifica identidades em fontes externas.
           </p>
           <div class="hero-cta">
             <a class="btn btn-primary" href="../index.html#contato">Solicitar demonstração</a>
@@ -124,15 +124,15 @@
             <article class="card">
               <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:.3em"><path d="M10 13a5 5 0 0 0 7.54.54l3-3a5 5 0 0 0-7.07-7.07l-1.72 1.71"/><path d="M14 11a5 5 0 0 0-7.54-.54l-3 3a5 5 0 0 0 7.07 7.07l1.71-1.71"/></svg>Entity Resolution</h3>
               <p>
-                Identifica e une registros duplicados de entidades usando propriedades e classes da Wikidata,
-                garantindo unicidade e consistência.
+                Compara os nomes e candidatos enviados pelo cliente para apoiar normalização e
+                deduplicação local; a revisão dos resultados permanece sob responsabilidade do consumidor.
               </p>
             </article>
             <article class="card">
               <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:.3em"><circle cx="12" cy="12" r="10"/><line x1="2" y1="12" x2="22" y2="12"/><path d="M12 2a15.3 15.3 0 0 1 4 10 15.3 15.3 0 0 1-4 10 15.3 15.3 0 0 1-4-10 15.3 15.3 0 0 1 4-10z"/></svg>Grafo de Conhecimento</h3>
               <p>
-                Constrói um grafo de relações entre entidades, revelando conexões ocultas e permitindo
-                consultas complexas sobre os dados integrados.
+                Organiza registros e aliases fornecidos pelo cliente. As relações refletem os dados
+                de entrada, sem inferir vínculos verificados com bases externas.
               </p>
             </article>
             <article class="card">
@@ -143,10 +143,10 @@
               </p>
             </article>
             <article class="card">
-              <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:.3em"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Enriquecimento com Wikidata</h3>
+              <h3><svg width="18" height="18" viewBox="0 0 24 24" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true" style="vertical-align:middle;margin-right:.3em"><path d="M2 3h6a4 4 0 0 1 4 4v14a3 3 0 0 0-3-3H2z"/><path d="M22 3h-6a4 4 0 0 0-4 4v14a3 3 0 0 1 3-3h7z"/></svg>Resolução externa indisponível</h3>
               <p>
-                Adiciona contexto e metadados das entidades diretamente da Wikidata, ampliando o conhecimento
-                sobre cada registro.
+                A integração com Wikidata não está configurada. Os resultados atuais indicam
+                linked=false, qid=null e confidence=0.0 para resolução externa.
               </p>
             </article>
           </div>
@@ -191,10 +191,10 @@
               </p>
             </article>
             <article class="card">
-              <h3>Due Diligence Automatizada</h3>
+              <h3>Preparação de registros</h3>
               <p>
-                Identifique relações entre pessoas, empresas e locais de forma automatizada para processos
-                de due diligence mais rápidos e precisos.
+                Organize nomes e candidatos antes de uma análise humana ou integração com uma fonte
+                externa verificada. O matching local não comprova identidade ou vínculo societário.
               </p>
             </article>
             <article class="card">
@@ -224,12 +224,12 @@
               <p>Linguagem principal para processamento de grafos e matching de entidades.</p>
             </article>
             <article class="card">
-              <h3>Wikidata API</h3>
-              <p>Fonte de referência para propriedades, classes e relações entre entidades.</p>
+              <h3>Matching local</h3>
+              <p>Comparação dos candidatos enviados na requisição, sem consulta à Wikidata.</p>
             </article>
             <article class="card">
-              <h3>Graph Databases</h3>
-              <p>Suporte para Neo4j, ArangoDB ou Dgraph para armazenamento e consulta eficiente de grafos.</p>
+              <h3>Grafo de aliases</h3>
+              <p>Representação dos registros locais; nenhum suporte a banco de grafos externo é afirmado.</p>
             </article>
           </div>
         </div>
@@ -238,14 +238,14 @@
       <section class="section" id="demo">
         <div class="container">
           <h2>API Sandbox — Teste ao Vivo</h2>
-          <p class="section-copy">Selecione um endpoint, edite os parâmetros e dispare requisições reais contra a API de produção.</p>
+          <p class="section-copy">Selecione um endpoint e edite os parâmetros. As chamadas usam a URL de referência; sua disponibilidade não é garantida.</p>
           <div id="wd-sandbox"></div>
         </div>
       </section>
 
       <section class="section cta">
         <div class="container cta-box">
-          <h2>Pronto para unificar e enriquecer seus dados?</h2>
+          <h2>Pronto para normalizar seus registros?</h2>
           <p>
             Entre em contato para uma demonstração e descubra como o Wikidata Entity Graph pode resolver
             seus desafios de integração e normalização de dados.
@@ -311,7 +311,7 @@
             <code style="font-size:.8rem;color:var(--primary);font-family:monospace">curl https://lf-wikidata-entity-graph.onrender.com/health</code>
           </div>
           <p style="margin-top:1rem;font-size:.85rem;color:var(--muted)">
-            Base URL de produção: <a href="https://lf-wikidata-entity-graph.onrender.com" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">https://lf-wikidata-entity-graph.onrender.com</a>
+            URL de referência (disponibilidade operacional não verificada): <a href="https://lf-wikidata-entity-graph.onrender.com" target="_blank" rel="noopener noreferrer" style="color:var(--primary)">https://lf-wikidata-entity-graph.onrender.com</a>
           </p>
         </div>
       </section>
