@@ -6,6 +6,7 @@ from __future__ import annotations
 import re
 import importlib.util
 import sys
+from html.parser import HTMLParser
 from pathlib import Path
 
 
@@ -109,11 +110,46 @@ def check_local_links(path: Path, text: str) -> list[str]:
     return errors
 
 
+class _SkipLinkCollector(HTMLParser):
+    """Collect element ids and skip-link hrefs from real markup (script bodies are ignored)."""
+
+    def __init__(self) -> None:
+        super().__init__(convert_charrefs=True)
+        self.ids: list[str] = []
+        self.skip_hrefs: list[str] = []
+
+    def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
+        values = dict(attrs)
+        if values.get("id"):
+            self.ids.append(values["id"])
+        if tag == "a" and "skip-link" in (values.get("class") or "").split():
+            self.skip_hrefs.append(values.get("href") or "")
+
+    handle_startendtag = handle_starttag
+
+
+def check_skip_links(label: str, text: str) -> list[str]:
+    """Every skip link must point to a local fragment resolving to exactly one element id."""
+    collector = _SkipLinkCollector()
+    collector.feed(text)
+    collector.close()
+    errors: list[str] = []
+    for href in collector.skip_hrefs:
+        if not href.startswith("#") or len(href) < 2:
+            errors.append(f"{label}: skip link sem fragmento local -> {href!r}")
+            continue
+        count = collector.ids.count(href[1:])
+        if count != 1:
+            errors.append(f"{label}: skip link {href} resolve para {count} destinos (esperado 1)")
+    return errors
+
+
 def main() -> int:
     errors: list[str] = []
 
     for html_file in FILES:
         text = read_text(html_file)
+        errors.extend(check_skip_links(str(html_file.relative_to(ROOT)), text))
         hrefs = extract_nav_hrefs(text)
         if not hrefs:
             errors.append(f"{html_file.relative_to(ROOT)}: menu principal nao encontrado")
@@ -141,6 +177,7 @@ def main() -> int:
         else:
             catalog_text = read_text(catalog_html)
             errors.extend(check_local_links(catalog_html, catalog_text))
+            errors.extend(check_skip_links("produtos/index.html", catalog_text))
             for slug in product_ids:
                 if f'{slug}.html' not in catalog_text:
                     errors.append(f"produtos/index.html: produto {slug} ausente")
@@ -150,6 +187,7 @@ def main() -> int:
                 else:
                     text = read_text(detail)
                     errors.extend(check_local_links(detail, text))
+                    errors.extend(check_skip_links(f"produtos/{slug}.html", text))
                     product = next(p for p in catalog.load_catalog() if p["slug"] == slug)
                     if product["title"].replace("&", "&amp;") not in text or product["summary"].replace("&", "&amp;") not in text:
                         errors.append(f"produtos/{slug}.html: conteudo defasado")
