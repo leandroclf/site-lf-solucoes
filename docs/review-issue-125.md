@@ -95,3 +95,53 @@ Nenhum HTML, CSS, conteúdo ou gerador de produtos foi alterado.
 - Por instrução do ambiente, o agente **não fez commit**. As alterações acima estão no working tree, sobre `0f544f306e0273faf5bdba9003fa6a909e0d7b13`.
 - O SHA final testado será o do commit criado pelo host após rodar as validações. Ele deve ser obtido com `git rev-parse HEAD` e registrado junto deste relatório, separado de qualquer commit posterior só de documentação.
 - Não houve publicação, push, PR ou deploy.
+
+---
+
+# Continuação — destino do skip link não recebia foco
+
+- Plano: `47d7939a2e4a62a44aaa8500134be73360ab0759d964cbc7f7f8e0d2a18f0b3d` (risco R1); base do plano `3e0cf5c89714a8d2f921fddab330faabbed6f899`.
+- HEAD do checkout ao implementar: `a4b567909ef92b986448760f20d735a1105fa198` (branch `ai-team/cf0ce0f4473a4772822127f81f130109`, limpo no início; o commit `a4b5679` contém só os registros OpenSpec da orquestração).
+- Alterações no working tree, **sem commit**. Nada foi publicado, enviado (push), aberto como PR ou implantado.
+
+## 7. Defeito
+
+Evidência fornecida pelo operador (Chromium, não reproduzida pelo agente): na home, Tab → Enter no skip link muda o hash para `#conteudo`, mas o foco permanece no link, e o próximo Tab volta ao logo do cabeçalho.
+
+Causa, confirmada por inspeção: os 15 destinos eram `<main id="...">` sem `tabindex`. Um `main` não é focável por padrão, então a navegação nativa por fragmento rola até ele, mas não move `document.activeElement`. A correção anterior (`ae4f6d3` e F1) só garantiu que o JavaScript não interceptasse o link. O validador verificava que o destino existia e era único, mas não que podia receber foco.
+
+## 8. Correção
+
+- `tabindex="-1"` adicionado **somente** aos 15 `main` que são destino de skip link: `index.html`, `dashboards/index.html`, `solucoes/openalex-enrichment.html`, `solucoes/wikidata-entity-graph.html`, `solucoes/worldbank-risk-pricing.html`, `produtos/index.html` e as 9 páginas `produtos/*.html`. IDs, hrefs, classes e conteúdo foram preservados. Nenhum JavaScript foi alterado: a navegação continua nativa, sem `preventDefault` nem `focus()` artificial, inclusive nos produtos sem JavaScript.
+- `scripts/build_product_catalog.py`: `base_html` agora emite `<main id="conteudo" tabindex="-1">`. No `--check`, o fragmento literal `<main id="conteudo">` foi trocado por `has_focusable_main()`, que usa `html.parser`. Ele exige exatamente um `main#conteudo` com `tabindex="-1"` e aceita qualquer ordem ou estilo de aspas dos atributos, o que preserva a tolerância a refinamentos manuais.
+- `scripts/validate_site_structure.py`: `check_skip_links()` agora exige que o destino único seja `<main>` com `tabindex="-1"`. O validador também verifica a saída em memória do gerador (`gerador:produtos/*.html`), não apenas as páginas versionadas.
+- Mains sem skip link (`solucoes/index.html`, as 6 soluções genéricas e `sobre/nossa-equipe.html`) **não** foram alterados.
+- `styles.css` tem `:focus-visible` global. Se o navegador tratar o foco no `main` como visível, aparece um contorno ao redor do conteúdo. A alteração de CSS ficou fora do escopo.
+
+## 9. Regressões (`scripts/test_skip_links.py`)
+
+- Variações aceitas: ordem dos atributos, aspas simples, sem aspas, `class` extra e espaços no valor.
+- Rejeições: ausência de `tabindex` (o markup exato anterior), valores `0`, vazio, `1`, `-2`, `abc` e atributo sem valor, além de destino que não é `<main>`. Destino ausente, duplicado ou fora do fragmento e IDs dentro de `<script>` continuam cobertos.
+- Inventário real: exatamente 15 skip links, todos com destino focável. Remover o `tabindex` de qualquer um dos 15 (`test_previous_site_markup_is_rejected`) gera exatamente um erro "nao recebe foco".
+- Mains em páginas sem skip link não podem ter `tabindex` (`test_mains_without_skip_link_are_left_unchanged`).
+- Gerador: as 10 saídas contêm `main#conteudo` focável. O `--check` real roda sobre uma **cópia temporária** de `produtos/` e: aceita as páginas versionadas; aceita a reordenação manual dos atributos; aceita a saída recém-gerada; rejeita `produtos/index.html` e `produtos/ai-docs.html` sem `tabindex`.
+- Comportamental (Node): `script.js` mantém `tabindex="-1"` em `main#main-content`/`#conteudo` depois de inicializar e não intercepta o skip link. Os testes de fallback, IDs preservados, navegação nativa do dashboard e atalhos foram mantidos.
+
+## 10. Comandos e resultados desta etapa
+
+Pelas regras do ambiente, o agente **não executou** código do checkout. As execuções ficam com o host, sem credenciais. Nada abaixo deve ser considerado aprovado até que o host registre o resultado:
+
+| Comando / verificação | Status |
+|---|---|
+| Baseline em `3e0cf5c`/`a4b5679` (validadores e reprodução Chromium) | não executado pelo agente; só existe a evidência do operador |
+| `python3 scripts/validate_site_structure.py` | não executado pelo agente (esperado: OK; no markup anterior, 15 erros "nao recebe foco" e mais 10 do gerador) |
+| `python3 scripts/quality_smoke.py`, `security_smoke.py`, `budget_check.py` | não executado pelo agente |
+| `python3 -m unittest discover -s scripts -p 'test_*.py'` (com Node) | não executado pelo agente |
+| `python3 scripts/verify_public_catalog.py --local`, `python3 scripts/build_product_catalog.py --check` | não executado pelo agente |
+| Regeneração em cópia temporária / rejeição de amostra sem `tabindex` | coberta por testes; não executada pelo agente |
+| Lighthouse local (`@lhci/cli@0.15.1`, sem upload), `collect_perf_baseline.py` | não executado pelo agente |
+| `python3 scripts/build_cloudflare_pages.py` + limites de `dist` | não executado pelo agente |
+| Teclado real em Chromium/Firefox (desktop, 360x800, 390x844, movimento reduzido) | **não executado**: não há navegador disponível. AC3 continua pendente. Roteiro em `docs/QA_ACCEPTANCE.md` §3.1 |
+| `git diff --check`, `git status --short`, `git rev-parse HEAD` | não executado pelo agente |
+
+Limitação pré-existente, sem relação com esta correção: os atalhos comuns do dashboard continuam com `behavior:'smooth'` fixo (ver seção 2).

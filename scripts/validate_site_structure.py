@@ -117,11 +117,14 @@ class _SkipLinkCollector(HTMLParser):
         super().__init__(convert_charrefs=True)
         self.ids: list[str] = []
         self.skip_hrefs: list[str] = []
+        # id -> (tag, attributes) of every element carrying that id, in document order.
+        self.elements: dict[str, list[tuple[str, dict[str, str | None]]]] = {}
 
     def handle_starttag(self, tag: str, attrs: list[tuple[str, str | None]]) -> None:
         values = dict(attrs)
         if values.get("id"):
             self.ids.append(values["id"])
+            self.elements.setdefault(values["id"], []).append((tag, values))
         if tag == "a" and "skip-link" in (values.get("class") or "").split():
             self.skip_hrefs.append(values.get("href") or "")
 
@@ -129,7 +132,11 @@ class _SkipLinkCollector(HTMLParser):
 
 
 def check_skip_links(label: str, text: str) -> list[str]:
-    """Every skip link must point to a local fragment resolving to exactly one element id."""
+    """Every skip link must point to a local fragment resolving to exactly one focusable main.
+
+    Native fragment navigation only moves keyboard focus to the target when it is focusable;
+    the contract is ``<main id="..." tabindex="-1">`` (focusable by script/fragment, not in Tab order).
+    """
     collector = _SkipLinkCollector()
     collector.feed(text)
     collector.close()
@@ -141,6 +148,16 @@ def check_skip_links(label: str, text: str) -> list[str]:
         count = collector.ids.count(href[1:])
         if count != 1:
             errors.append(f"{label}: skip link {href} resolve para {count} destinos (esperado 1)")
+            continue
+        tag, values = collector.elements[href[1:]][0]
+        if tag != "main":
+            errors.append(f"{label}: skip link {href} aponta para <{tag}> (esperado <main>)")
+            continue
+        tabindex = values.get("tabindex")
+        if tabindex is None or tabindex.strip() != "-1":
+            errors.append(
+                f'{label}: destino {href} do skip link nao recebe foco (esperado tabindex="-1", encontrado {tabindex!r})'
+            )
     return errors
 
 
@@ -191,6 +208,9 @@ def main() -> int:
                     product = next(p for p in catalog.load_catalog() if p["slug"] == slug)
                     if product["title"].replace("&", "&amp;") not in text or product["summary"].replace("&", "&amp;") not in text:
                         errors.append(f"produtos/{slug}.html: conteudo defasado")
+        # The generator output itself must keep focusable skip-link targets, not only the committed pages.
+        for generated_path, generated_html in pages.items():
+            errors.extend(check_skip_links(f"gerador:{generated_path.relative_to(ROOT)}", generated_html))
         stale = [f.name for f in (ROOT / "produtos").glob("*.html") if f not in pages]
         if stale:
             errors.append("Paginas de produto fora do catalogo: " + ", ".join(stale))
