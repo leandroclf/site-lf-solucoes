@@ -145,3 +145,29 @@ Pelas regras do ambiente, o agente **não executou** código do checkout. As exe
 | `git diff --check`, `git status --short`, `git rev-parse HEAD` | não executado pelo agente |
 
 Limitação pré-existente, sem relação com esta correção: os atalhos comuns do dashboard continuam com `behavior:'smooth'` fixo (ver seção 2).
+
+## 11. Validação do host — HEAD `c6ecac1`
+
+O host repetiu os checks sobre o branch final após integrar a correção do `ai-team`:
+
+| Verificação | Resultado |
+|---|---|
+| `node --check script.js` e `node --check dashboards/script.js` | passou |
+| `python3 -m unittest discover -s scripts -p 'test_*.py'` | 39 testes passaram |
+| `validate_site_structure.py`, `quality_smoke.py` (23 HTML), `security_smoke.py` | passaram |
+| `budget_check.py`, `verify_public_catalog.py --local`, `build_product_catalog.py --check` | passaram; 9 produtos |
+| `build_cloudflare_pages.py` e inspeção do diretório `dist` | passou; sem `data`, `.github` ou `serverless` na raiz |
+| `git diff --check` | passou |
+
+### Teclado real em Chromium
+
+Executado com Chrome headless `google-chrome` via CDP contra o site servido localmente no próprio HEAD. Para cada página abaixo, o fluxo usou Tab → Enter → Tab em viewports 1280×900, 360×800 e 390×844, com `prefers-reduced-motion: reduce`:
+
+| Página | Após Enter | Próximo Tab |
+|---|---|---|
+| Home (`/`) | `document.activeElement` é `main#conteudo` | link “Discutir um projeto”, dentro do `main` |
+| Dashboard (`/dashboards/`) | `document.activeElement` é `main#main-content` | botão `#view-executive`, dentro do `main` |
+
+Em ambos os destinos, `:focus-visible` correspondeu e o `outline` computado foi `3px solid`; a navegação preservou o fragmento. A comparação com o estado anterior reproduziu o problema da home: após Enter, o foco permanecia no skip link e o próximo Tab retornava ao logo. A validação de todos os outros 13 destinos foi estrutural, pelo validador e pelos testes; o roteiro de navegador foi exercitado na home e no dashboard.
+
+Firefox não foi testado. Lighthouse local e coleta de baseline de performance também não foram executados; não são evidência de aceitação desta correção de foco.
