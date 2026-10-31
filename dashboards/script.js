@@ -46,6 +46,8 @@ if (menuToggle && menu) {
 
 for (const link of document.querySelectorAll('a[href^="#"]')) {
   link.addEventListener('click', (event) => {
+    // Skip links rely on native fragment navigation so keyboard focus moves to the target (issue #125).
+    if (link.classList.contains('skip-link')) return;
     const targetId = link.getAttribute('href');
     if (!targetId || targetId === '#') return;
     const target = document.querySelector(targetId);
